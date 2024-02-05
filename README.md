@@ -12,7 +12,7 @@ Object serialization is the process of converting Java objects into byte streams
 @JoinColumn
 https://www.geeksforgeeks.org/when-to-use-joincolumn-annotation-in-hibernate/
 @OneToOne
-https://www.javatpoint.com/hibernate-one-to-one-example-using-annotation
+https://www.geeksforgeeks.org/hibernate-one-to-one-mapping/
 https://www.baeldung.com/jpa-one-to-one
 
  Student student = new Student("Vyom", "Yadav",
@@ -32,7 +32,7 @@ https://www.baeldung.com/jpa-one-to-one
             session.save(student);
 We add a single object of StudentGfgDetail inside the Student class which is annotated with @OneToOne annotation which specifies the one-to-one mapping. This annotation contains an element called cascade which specifies the cascading strategy. Cascading is a feature that is used to manage the state of the target entity whenever the state of the parent entity changes.  Basic Hibernate cascade types are-
 
- 
+ https://www.geeksforgeeks.org/hibernate-one-to-one-mapping/
 
 CascadeType.ALL – Propagates all operations from parent to target entity.
 CascadeType.PERSIST – Propagates persist from parent to target entity.
