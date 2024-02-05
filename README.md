@@ -43,3 +43,43 @@ CascadeType.DETACH – Propagates detach from parent to target entity.
 Many To Many
 https://www.javaguides.net/2019/12/hibernate-5-many-to-many-annotation-mapping-example.html
 
+@Many To @Many
+https://www.javaguides.net/2019/12/hibernate-5-many-to-many-annotation-mapping-example.html
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class YourServiceOrController {
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    public void saveEmployeeAndProjects() {
+        // Create an employee
+        Employee employee = new Employee();
+        employee.setFirstName("Ramesh");
+        employee.setLastName("Fadatare");
+
+        // Create projects
+        Project project1 = new Project();
+        project1.setTitle("Employee Management System");
+
+        Project project2 = new Project();
+        project2.setTitle("Content Management System");
+
+        // Set up relationships
+        employee.getProjects().add(project1);
+        employee.getProjects().add(project2);
+
+        project1.getEmployees().add(employee);
+        project2.getEmployees().add(employee);
+
+        // Save entities using repositories
+        employeeRepository.save(employee);
+        projectRepository.saveAll(List.of(project1, project2));
+    }
+}
+
