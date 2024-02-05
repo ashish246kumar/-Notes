@@ -11,3 +11,6 @@ Object serialization is the process of converting Java objects into byte streams
 
 @JoinColumn
 https://www.geeksforgeeks.org/when-to-use-joincolumn-annotation-in-hibernate/
+@OneToOne
+https://www.javatpoint.com/hibernate-one-to-one-example-using-annotation
+https://www.baeldung.com/jpa-one-to-one
