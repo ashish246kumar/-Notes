@@ -40,3 +40,6 @@ CascadeType.MERGE – Propagates merge from parent to target entity.
 CascadeType.REMOVE – Propagates remove from parent to target entity.
 CascadeType.REFRESH – Propagates refresh from parent to target entity.
 CascadeType.DETACH – Propagates detach from parent to target entity.
+Many To Many
+https://www.javaguides.net/2019/12/hibernate-5-many-to-many-annotation-mapping-example.html
+
