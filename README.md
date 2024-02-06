@@ -1,6 +1,7 @@
 # -Notes
-
+To create jar file run as->maven build (2nd option) ->goal(write package)
 To run Jar File
+
 java -jar accountService-0.0.1-SNAPSHOT.jar --spring.config.location=C:\Users\ashis\Downloads\application.properties
 
 https://www.callicoder.com/java-executor-service-and-thread-pool-tutorial/
