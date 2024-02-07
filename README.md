@@ -1,4 +1,6 @@
 # -Notes
+Resilence4J circuit breaker
+https://javatechonline.com/how-to-implement-fault-tolerance-in-microservices-using-resilience4j/
 To create jar file run as->maven build (2nd option) ->goal(write package)
 To run Jar File
 
