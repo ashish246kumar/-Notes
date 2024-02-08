@@ -1,5 +1,19 @@
 # -Notes
+
+
+String sql = "SELECT * FROM products WHERE product_name = ? AND brand = ?";
+PreparedStatement preparedStatement = connection.prepareStatement(sql);
+preparedStatement.setString(1, productName);
+preparedStatement.setString(2, brand);
+
+ResultSet resultSet = preparedStatement.executeQuery();
+
+
+
 Resilence4J circuit breaker
+
+
+
 https://javatechonline.com/how-to-implement-fault-tolerance-in-microservices-using-resilience4j/
 
 
