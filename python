@@ -2,3 +2,4 @@ pip install django
 django-admin --version
 django-admin startproject company   -> To make a project
 python manage.py runserver ->to run server
+pip install djangorestframework
