@@ -6,3 +6,6 @@ pip install djangorestframework
 python manage.py startapp api  -> To make a   project  inside starting project
 python manage.py makemigrations
 http://127.0.0.1:8000/admin/
+
+
+json to object-deserilazation(it happen when we need to save data in the database)
