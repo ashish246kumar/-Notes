@@ -5,3 +5,4 @@ python manage.py runserver ->to run server
 pip install djangorestframework
 python manage.py startapp api  -> To make a   project  inside starting project
 python manage.py makemigrations
+http://127.0.0.1:8000/admin/
