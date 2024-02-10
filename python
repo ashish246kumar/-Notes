@@ -1,5 +1,6 @@
 pip install django
 django-admin --version
-django-admin startproject company   -> To make a project
+django-admin startproject company   -> To make a  Starting project
 python manage.py runserver ->to run server
 pip install djangorestframework
+python manage.py startapp api  -> To make a   project  inside starting project
