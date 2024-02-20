@@ -1,0 +1,74 @@
+React is a front-end and open-source JavaScript library 
+applications with a single page. 
+used for building complex and reusable user interface(UI) components
+make use of the virtual DOM rather than real DOM 
+follows unidirectional data binding 
+React uses virtual DOM to render the view. As the name suggests, virtual DOM is a virtual representation of the real DOM. Each time the data changes in a react app, a new virtual DOM gets created. Creating a virtual DOM is much faster than rendering the UI inside the browser.
+**************************
+const [count, setCounter] = useState(0);
+useState() is a hook provided by the React library that allows functional components to manage state
+keys are special attributes that provide a way to identify unique virtual DOM elements 
+<li key={item.id}>{item.text}</li>
+Keys help react identify which elements were added, changed or removed.
+JSX stands for JavaScript XML. It allows us to write HTML inside JavaScript  and place them in the DOM without using functions like appendChild( ) or createElement( ).
+const container = (
+<div>
+  <p>This is a text</p>
+</div>
+);
+ReactDOM.render(container,rootElement)
+**************************************************
+Functional components promote a more functional programming style
+ Class components encapsulate state and behavior within a single class instance.
+Functional components  more lightweight and have better performance
+class component has higher overhead due to the instantiation of class instances
+Functional components are JavaScript functions that accept props as arguments and return React elements to describe what should appear on the screen.
+class component use a render() method to return React elements.
+*******************************************************************************************************************************
+ the Virtual DOM is a lightweight representation of the actual DOM maintained by React in memory. React utilizes the Virtual DOM to optimize the process of updating the UI by efficiently.
+****************************
+useEffect-perform side effects in function components.Side effects can include things like fetching data, subscribing to external events
+useEffect(() => {
+    // Update the document title with the current count
+    document.title = `You clicked ${count} times`;
+  }, [count]);
+The function will be executed after every render by default.
+You can also pass a second argument, an array of dependencie
+******************************************************************
+propdrelling-
+parent->childA->childB->childC
+when  we want to send data from parent to childC at lower hierchy we can achieve this throgh with the help of useContext with sending to each and every 
+child.
+//create provider useContext
+const data=createContext()
+const app = () => {
+  const name="abc"
+
+  return (
+
+    <data.Provider value={name}>
+     <ChildA/>
+    </data.Provider>
+  );
+};
+
+export default app;
+export{data}
+*****child C componet
+import  data
+function childC(){
+const name=useContext(data1);
+	return(
+<>
+<h1>{name}</h1>
+</>
+)
+
+
+}
+*****************************************
+useReducer-for managing the state .preferable for complex state management logic 
+const[state,dispatch]=useReducer(reducer,initialState)
+Reducer is a function that accept two parameter
+newState=reducer(currentState,action)
+
