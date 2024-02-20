@@ -1,0 +1,258 @@
+num=101
+a=num
+new=0
+while(num>0):
+    rem=num%10
+    new=new*10+rem
+    num=num//10
+if(a==new):
+    print("palindrome");
+
+else:
+    print("Not palindrome"); 
+    
+
+************************
+for i in range(2,math.ceil(num//2)+1):
+    
+    if(num%i==0):
+        
+        c=1;
+        break;
+        
+    
+if(c==1):
+    print("Not prime");
+
+else:
+    print("Prime"); 
+*********************************
+
+def is_Armstrong():
+    num=153
+    a=num
+    length=len(str(num))
+    sum=0
+    while(num>0):
+        rem=num%10
+        sum=sum+rem**length;
+        num=num//10
+        
+    if(sum==a):
+        print("armStrong")
+    else:
+         print("Not armStrong")
+is_Armstrong()        
+***********************************
+for i in range(1,5):
+    for j in range(1,11):
+        print(i,"x",j,"=",i*j)
+    print()
+****************************
+arr=[6,8,10,12]
+target=10
+low=0;
+high=len(arr)-1
+c=0
+while(low<=high):
+    mid=(low+high)//2
+    if(arr[mid]==target):
+        c=1
+        print("Number exist")
+        break;
+    elif(arr[mid]<target):
+        low=mid+1;
+      
+    else:
+        high=mid-1;
+    
+if(c==0):
+    print("no not found")
+*************************
+as1=set(arr)
+print(as1)
+************************
+arr=[1,"abc"]
+arr1=[1,2,1]
+
+as1=arr1.count(2)
+print(as1)
+*****************************\
+a=int(input("Enter first no"))
+
+**********************************
+map-
+maxHeap={"a":1,"b":2}
+for key in maxHeap:
+    print(key,maxHeap[key])
+
+for val in maxHeap.values():
+    print(val)
+
+for k,v in maxHeap.items():
+    print(k,v)
+**********************
+map={"a":1,"b":2}
+map["c"]=3
+print(map["c"])
+for i in range(ord('a'),ord('z')+1):
+    print(chr(i) in map )
+*****************************
+Find out common letters between two strings
+
+a="Naina"
+b="Reena"
+l=set()
+for char in a:
+    if char in b:
+        l.add(char)
+print(l)
+*****************************************
+find the occurance and word that appear max time
+b="She is a  a good girl"
+words=b.split()
+l={}
+for w in words:
+    l[w]=l.get(w,0)+1
+max_word=max(l,key=l.get)
+print(max_word)
+print(l)    
+***************************************
+    l1=["a","b","c"]
+l2=[1,2,3]
+my=dict(zip(l1,l2))
+print(my)
+****************************************
+FIND MISSING NUMBER IN AN ARRAY IN PYTHON
+
+a=[1,2,3,4]
+sum=sum(a)
+n=len(a)
+asum=((n+1)*(n+2))//2
+
+print(asum-sum)
+********************************************
+
+Parenthesis blance
+def balance(str):
+    # print(str)
+    stack=[]
+    for ch in str:
+        if ch in "({[":
+            stack.append(ch)
+           
+        elif ch in ")}]":
+            if not stack:
+                
+                return False
+            top=stack.pop()
+
+            if (ch==')' and top!='(')or(ch=='}' and top!='{')or(ch==']' and top!='['):
+                
+                return False
+    print(stack)            
+    return not stack   
+expression = "(()[])"
+print(balance(expression))
+*****************************************************************
+Reverse a String
+
+str="abcs"
+a=str[::-1]
+print(a)
+******************************
+Reverse a word in sentence
+
+str="Hello world, how are you?"
+word=str.split()
+print(word)
+a=' '.join(reversed(word))
+print(a)
+*************************************
+str="Hello world, how are you?"
+str=str.split()
+for ch in str[::-1]:
+    
+    print(ch)
+*************************************
+Check whether the string is palindrome or not
+
+str="ollo"
+l1=''
+
+for ch in str[::-1]:
+   
+    l1=l1+ch
+print(str)    
+if l1==str:
+    print("palindrome")
+else:
+    print("Not palindrome")
+
+*********************************************************
+list=[1,3,0,4,9]
+list.sort()
+print(list[-2])
+*******************************************
+Two sum
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        a=[]
+        n=len(nums)
+        for i in range(n):
+            
+            if (target-nums[i]) in nums and (nums.index(target-nums[i])!=i):
+                a.append(i)
+                a.append(nums.index(target-nums[i]))
+                break;
+        return a;        
+****************************************
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        a={}
+        n=len(nums)
+        for i,value in enumerate(nums):
+            rem=target-value
+            if rem in a:
+                return [i,a[rem]]
+            else:
+                a[value]=i   
+
+           
+        return a;        
+***************************************************
+buy and sell stock
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit=0
+        for i,value in enumerate(prices):
+            if((i+1)<len(prices)):
+                buy=value;
+                sell=max(prices[i+1:])
+                dif=sell-buy;
+                profit=max(dif,profit)
+
+            
+        return profit    
+*************************************
+buy and sell stock
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit=0
+        buy=sys.maxsize
+        for i in range(1,len(prices)):
+            buy=min(prices[i-1],buy)
+            sell=prices[i]
+            if(sell>buy):
+                dif=sell-buy;
+                profit=max(profit,dif)
+
+            
+        return profit    
+
+
+        
+
+
+        
