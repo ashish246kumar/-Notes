@@ -1,0 +1,22 @@
+.A commit records a snapshot of all the changes you've made since the last commit, along with a commit message that describes the changes.
+Commits are essential for tracking the history of your project.
+git branch -d <branch_name>` to delete local branch
+To delete a remote branch, use `git push <remote_name> --delete <branch_name>`.
+git push` is used to upload local repository content to a remote repository.
+git commit --amend to modify the most recent commit.
+git rebase:
+Rebase integrates changes by moving the commits from one branch onto another branch.
+git merge creates a new commit that combines the changes from both branches.
+git rebase applies the changes from one branch onto another.
+To resolve a merge conflict, edit the files to fix the conflicting changes
+git branch <branch_name>` to create a new branch. Use `git checkout -b <branch_name>`
+git log` to view the commit histor
+remote refers to a shared repository utilized by all team members for the purpose of exchanging their updates.
+git clone <repository_url>`.
+git stash temporarily shelves changes allowing you to switch branches or save work-in-progress without committing. Later, you can apply or drop the stashed changes.
+To revert a commit that has already been pushed and made public, you can use git revert
+git log  # Identify the commit hash
+git revert <commit-hash>
+git push origin <branch-name>
+git fetch retrieves changes from a remote repository to your local repository, updating your remote-tracking branches, but it doesn't merge those changes into your current branch
+git pull` not only fetches the updates but also incorporates them into your active branch.
