@@ -72,3 +72,171 @@ const[state,dispatch]=useReducer(reducer,initialState)
 Reducer is a function that accept two parameter
 newState=reducer(currentState,action)
 
+*****************************************
+useReducer-for managing the state .preferable for complex state management logic 
+const[state,dispatch]=useReducer(reducer,initialState)
+const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+Reducer is a function that accept two parameter
+newState=reducer(currentState,action)
+When a button is clicked, it dispatches an action object to the reducer, which updates the state accordingly.
+dispatcher call the reducer function
+<button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+********************************
+useRef is used for manupulating the dom directly
+usememo is enhance the application performance.
+useMemo is a React hook used for memoizing expensive computations in functional components.
+Memoizes the result of a function so that it's only recomputed when its dependencies change, preventing unnecessary calculations.
+**************************************************************************
+HOCs are functions that take a component as an argument and return a new component with enhanced functionality.
+Use HOCs when you have logic that needs to be shared across multiple components. Instead of duplicating code in multiple places, you can create an HOC to encapsulate the shared logic.
+*********************************************
+lifecycle is managed by a set of lifecycle methods 
+Main Lifecycle Phases:
+
+Mounting:constructor() (optional): Set up initial state and bind methods.
+
+Update state based on changes in props.
+
+Updating Phase:
+
+These methods are called when a component is being re-rendered due to changes in props or state.
+
+Unmounting Phase:
+
+These methods are called when a component is being removed from the DOM.
+
+Error Handling:
+
+These methods are called when an error occurs during rendering, in a lifecycle method, or in the constructor of any child component.
+*************************************************
+props-way to pass data from a parent component to a child component.they are read-only and cannot be modified by the child component.They are read-only and cannot be modified by the child component.
+// ParentComponent.jsx
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  return <ChildComponent name="John" age={30} />;
+};
+
+export default ParentComponent;
+const ChildComponent = (props) => {
+  return (
+    <div>
+      <p>Name: {props.name}</p>
+      <p>Age: {props.age}</p>
+    </div>
+  );
+
+****************************
+React Hooks are functions that enable developers to use state and other React features in functional components
+*******************
+A Custom Hook is a function in Javascript whose name begins with ‘use’ and which calls other hooks.
+
+import { useState } from 'react';
+
+function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  const reset = () => {
+    setCount(initialValue);
+  };
+
+  return { count, increment, decrement, reset };
+}
+
+export default useCounter;
+
+function Counter() {
+  const { count, increment, decrement, reset } = useCounter(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+}
+
+export default Counter;
+*******************
+StrictMode is a tool  that highlight potential problems in an application. It performs additional checks on the application.
+<React.StrictMode>
+  <App />
+</React.StrictMode>,
+StrictMode currently helps with the following issues:
+
+Identifying components with unsafe lifecycle methods: 
+**********************************
+Re-rendering of a component when props or the state of the component has been changed.
+****************
+
+<h3 style={{ color: "Yellow" }}>This is a heading</h3>
+**********************
+   let [counter, setCounter] = useState(0);
+   
+    let increment = () => setCounter(++counter);
+   
+    return (
+      <div>
+        <button onClick={increment}>Increment Counter</button>
+        <ChildComponent counterValue={counter} />
+      </div>
+function ChildComponent(props) {
+return (
+  <div>
+    <p>Value of counter: {props.counterValue}</p>
+  </div>
+);
+}
+to pass a data between two component
+**********************
+What are the different phases of the component lifecycle?
+Initialization:During this phase by setting up the default props and initial state for the upcoming tough journey.
+Mounting: Mounting refers to putting the elements into the browser DOM.
+Updating: In this phase, a component will be updated when there is a change in the state or props of a component.
+Unmounting: In this last phase of the component lifecycle, the component will be removed from the DOM.
+******************************
+React Router is a popular library for handling routing in React applications.
+npm install react-router-dom
+***************************************
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+**********************************
+<Router>
+      <div className="AppDemo">
+      <ul>
+        <li>
+          <NavLink to="/"  activeStyle={{ color:'blue' }}>Home</NavLink>
+        </li>
+ <Route path="/about/:aboutId" component={AboutPage} />
+**************************
+
+
