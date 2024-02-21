@@ -1,0 +1,68 @@
+ DBMS is a system software responsible for the creation, retrieval, updation, and management of the database
+ MySQL is a relational database management system  that is used to manage SQL databases
+A table is an organized collection of data stored in the form of rows and columns.
+Constraints are used to specify the rules concerning data in the table
+NOT NULL - Restricts NULL value from being inserted into a column.
+CHECK - Verifies that all values in a field satisfy a condition.
+PRIMARY KEY - Uniquely identifies each record in a table.
+FOREIGN KEY
+CREATE TABLE Students (   /* Create table with a single field as primary key */
+   ID INT NOT NULL
+   Name VARCHAR(255)
+   PRIMARY KEY (ID)
+);
+The SQL Join clause is used to combine records (rows) from two or more tables in a SQL database based on a related column between the two.
+SELECT Employees.employee_id, Employees.name, Employees.salary, Departments.department_name
+FROM Employees
+INNER JOIN Departments ON Employees.department_id = Departments.department_id;
+
+********
+Indexing
+We have to choose frequently searched columns to significantly speed up queries.
+We have to analyze common queries to identify columns frequently used in:
+We can apply indexing when there is more read operation. In case where there is more write
+operation indexing can slow down the performance
+We do normalization for organizing data in a database to reduce redundancy and improve
+efficiency.Normalization involves dividing data into smaller, more focused tables and
+creating relationships between them.
+When we need to frequently access data then we do denormalization to reduce joins and
+improve performance
+
+*****************
+The DROP statement is used to delete database objects such as tables, indexes, views, or stored procedures.
+Unlike DROP, TRUNCATE only removes data from the table, but it does not delete the table structure or any associated metadata.
+When you drop an object using DROP, it removes the entire object along with all its associated data and metadat
+The DELETE command deletes only the rows from the table based on the condition given in the where clause or deletes all the rows from the table if no condition is specified
+TRUNCATE is a DDL (Data Definition Language) operation, which means it is non-transactional and cannot be rolled back
+DELETE is a DML (Data Manipulation Language) operation, which means it can be used within transactions and supports rollback.
+TRUNCATE is faster and more efficient for removing all rows from a table.
+DELETE is more flexible and can be used to remove specific rows based on conditions
+*********************
+LIKE 'abc_';
+column_name starts with "abc" followed by any single character.
+LIKE '%substring%'
+column_name contains the substring 
+LIKE 'abc[0-9]%'
+column_name starts with "abc" followed by a digit (0-9), 
+NOT LIKE 'K%'
+**********************
+1NF is the first level of normalization.
+all columns in a table are atomic, meaning they cannot be further divided into smaller pieces of data.
+The 1NF only eliminates repeating groups, not redundancy. 
+2NF requires data to be in 1NF and have no partial dependencies on the primary key
+3NF requires data to be in 2NF and have no transitive dependencies on the primary key
+This means a non-prime attribute (an attribute that is not part of the candidate’s key) is dependent on another non-prime attribute. This is what the third normal form (3NF) eliminates.
+**************
+DDL is used to define and manage the structure of a database and its objects, such as tables, views
+ommon DDL commands include CREATE, ALTER, DROP, TRUNCATE, and RENAME.
+DML is used to manipulate and retrieve data stored in a database.
+Common DML commands include SELECT, INSERT, UPDATE, and DELETE.
+DCL is used to control access to data
+Common DCL commands include GRANT and REVOKE.
+*************
+ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee the reliability and correctness of database transaction
+Atomicity
+ It means if any operation is performed on the data, either it should be performed or executed completely or should not be executed at all. 
+Consistency ensures that the database remains in a valid state before and after a transaction.
+Isolation ensures that the execution of one transaction is isolated from the effects of other concurrent transactions until the transaction is completed and committed.
+Durability ensures that once a transaction is committed, its changes are permanent and will survive any subsequent system failures
