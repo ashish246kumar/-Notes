@@ -1,0 +1,195 @@
+JDK (Java Development Kit):
+ includes tools and libraries necessary for developing, compiling, debugging, and documenting Java programs.
+JRE (Java Runtime Environment):
+The JRE is a runtime environment used for running Java applications
+JVM (Java Virtual Machine):
+It is responsible for loading, verifying, and executing Java bytecode, 
+*************************************
+synchronization is process which keep all the concurrent thread in execution to be synchronous.
+it avoid memory consistency error
+***********************
+process is controlled by operating system
+thread are controlled by programmer in program
+***************************
+each of the primitive datatype of java has a dedicated classes known as wrapper classs
+because they wrap primitive datatype into object of that class
+int-Integer
+*************************
+Autoboxing and unboxing are features  that automatically convert primitive data types to their corresponding wrapper classes (autoboxing) and vice versa (unboxing).
+***************
+finalize is use to perform cleanup processing
+finalize() method is called by the garbage collector before reclaiming the memory occupied by an object that is no longer reachable.
+system.gc()
+**************
+string bufer-operation are thread safe and synchronized while string builder not
+string builder-perfomance is fast b/c no overhed of synchronization
+string buffer-are used when multiple thread are working on same string
+both are mutable
+*************
+object are stored  on heap
+object are stored  on heap are globally accesible
+stack memory can be accessed by other thread.
+stack follow lifo manner to free memory space
+in heap memory management is based on generation associated to each object
+life-time-till thread live in stack
+
+**************************
+arraylist vs vector-
+arraylist is non synchronized so fast
+arraylist inc it size by 50%.uses iterator for traversing
+vector deault to doubling the size of the array.uses enumeration and iterator
+********************
+hashMap vs hashTable
+hashMap are not synhronized so thread safe-one null key and multiple null value
+hashmap-iterator while hashtable-enumerator and iterator
+*************
+== ->binary operator
+equals()-defined in object class
+equals() method in Java is used for content comparison when comparing objects.
+The == operator in Java is used for reference comparison when comparing objects.
+
+
+String str1 = new String("hello");
+String str2 = new String("hello");
+String str3 = str1;
+
+System.out.println(str1 == str2); // false (different objects, different memory addresses)
+System.out.println(str1 == str3); // true (same object, same memory address)
+
+******************
+abstraact class vs interface
+a class may implement only one abstract classes
+
+a abstact class can have instance variable while interface can have
+all the method are abstact in iterface
+interface-can not contain constructor
+**************
+oops is a programming methodology
+************
+object-instance of class.real world entity.occupy space.have state and behaviour
+class-collection of object.blueprint
+******************
+inheritece-extend keyword-inherting parent class property-inherit all the public and protected property and method from parent class
+class Animal{
+}
+class dog extend Animal{
+}
+single
+multiple-single child multiple parent
+multilevel
+class A {
+    // superclass A
+}
+
+class B extends A {
+    // subclass B extends superclass A
+}
+
+class C extends B {
+    // subclass C extends subclass B
+}
+
+hierarchil
+class A {
+    // superclass A
+}
+
+class B extends A {
+    // subclass B extends superclass A
+}
+
+class C extends A {
+    // subclass C extends superclass A
+}
+
+
+hybrid-not supported in java
+******************
+polymorphism
+ability of a variable function or object to take   multiple form.like water have three form (solid liquid, gas).May have function with same but different behabiour
+two type-
+compile time (static)
+runtime(dynamic)
+***************
+data hiding-the variable is hidden from other classes and can accessed only throgh method of current class
+***************
+private-only in class
+default-class and package
+protected-"+subclass
+
+**********************************
+Multiple inheritance is not possible in java  to avoid certain design complexities and ambiguities
+********************
+Multithreading is used to obtain the multitasking.
+************
+Threads share the same address space.
+The thread is lightweight.
+***************8
+ wait() method-Object class in Java--is used for inter-thread communication in Java.-->used to pause the current thread, and wait until another thread does not call the notify() or notifyAll() method
+
+wait() method must be called from within a synchronized block or method to ensure proper synchronization and to avoid potential race conditions. 
+
+By calling wait() from within a synchronized block, you ensure that the thread releases the intrinsic lock before entering a waiting state. This prevents deadlock situations and allows other threads to acquire the lock and perform necessary actions while the current thread is waiting.
+******************
+New: In this state, a Thread class object is created using a new operator,
+Runnable: In this state, the thread is ready to run after calling the start() method.
+Running: In this state, the thread scheduler picks the thread from the ready state, and the thread is running.
+Waiting/Blocked: In this state, a thread is not running but still alive, or it is waiting for the other thread to finish.
+Dead/Terminated: A thread is in terminated or dead state when the run() method exits.
+**************************************************
+hread can be created by using two ways.
+
+By extending the Thread class
+By implementing the Runnable interface
+******************
+join()--causes the currently running threads to stop executing until the thread it joins with completes its task.
+Sleep() method in java is used to block a thread for a particular time, which means it pause the execution of a thread for a specific time.
+***************
+) The wait() method releases the lock.	The sleep() method doesn't release the lock.
+
+When we call the start() method, it internally calls the run() method, which creates a new stack for a thread while directly calling the run() will not create a new stack.
+*****
+daemon threads are the low priority threads that provide the background support and services to the user threads.
+
+
+ExecutorServcie and ScheduledExecutorService both are the interfaces.but scheduledExecutorService provides some additional methods to execute the Runnable and Callable tasks with the delay or every fixed time period
+ 
+**********************************
+Thread pool represents a group of worker threads, which are waiting for the task to be allocated.
+Threads in the thread pool are supervised by the service provider which pulls one thread from the pool and assign a job to it.
+After completion of the given task, thread again came to the thread pool.
+******************
+Race condition is a problem which occurs. when various threads execute simultaneously accessing a shared resource at the same time.The proper use of synchronization can avoid the Race condition.
+*****************
+the safety of a thread achieved?
+Synchronization
+Using Volatile keyword
+Using a lock based mechanism
+****************
+Deadlock is a situation in which every thread is waiting for a resource which is held by some other waiting thread.
+***************
+notify() is used to unblock one waiting thread whereas notifyAll() method is used to unblock all the threads in waiting state.
+Synchronized block?- Only one thread at a time can execute on a particular resource, and all other threads which attempt to enter the synchronized block are blocked.
+*******************
+Errors are mainly caused by the environment in which an application is running. For example, OutOfMemoryError happens when JVM runs out of memory. Where as exceptions are mainly caused by the application itself.
+********************
+ From Java 7, with the introduction of try-with resources blocks, we can write only try block without catch and finally blocks provided resources must be AutoCloseable.
+****
+ What is unreachable catch block error?
+When you are keeping multiple catch blocks, the order of catch blocks must be from most specific to general ones
+*********************************
+Checked exceptions are the exceptions which are known to compiler. These exceptions are checked at compile time only. 
+Unchecked exceptions are those exceptions which are not at all known to compiler. These exceptions occur only at run time.
+xamples to checked exceptions?
+
+ClassNotFoundException, SQLException, IOException
+
+unchecked exceptions?
+
+NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException
+
+**********
+throws keyword is used to specify the exceptions that a particular method can throw. 
+throw is a keyword in Java which is used to throw an exception manually.
+clean up operations like closing the DB resources to keep inside a finally block?
+java.lang.Throwable is the super class for all types of errors and exceptions in Java.
