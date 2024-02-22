@@ -190,7 +190,8 @@ In this example, we assume you have an AuthService with a method isAuthenticated
 
 Next, you can apply this guard to the routes you want to protect in your app-routing.module.ts file:
 ************************************
-redux
+redux- provides a centralized store to manage the entire state of your application. 
+
 Creating the Store
 Defining Actions
 Implementing Reducers
