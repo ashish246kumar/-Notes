@@ -100,6 +100,22 @@ const server = http.createServer((req, res) => {
   res.end('Hello World\n');
 });
 *******************************
+const express = require('express');
+const app = express();
+const port = 3000;
 
+// Define a route for the API endpoint
+app.get('/api', (req, res) => {
+  res.json({ message: 'Welcome to the API!' });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is listening at http://localhost:${port}`);
+});
+Run your Node.js application by executing the following command in your terminal or command prompt:
+
+
+node app.js
 
 
