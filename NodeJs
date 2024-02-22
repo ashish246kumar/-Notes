@@ -1,0 +1,105 @@
+node js provide a runtime enviornment for executing javascript code on server side
+neither a language nor framework
+V8 is javaScript engine for the javaScript language
+browser exceute javaScript code on client side while node js on the server side
+express.js is a framework built on the top of node js.designed to simplify the process of the building application.
+***************************
+feature of node js
+bidirectional communication
+single threaded
+asynchronous
+provide node package manager(npm)
+event-driven
+***********
+after initiating task1 thead1 will not wait for task1 to complete but it will imediately start  the task2,that is why node js is single threded and asynchronous
+whenever task1 1 completed an event is emitted->thread t1 being event driven properly respond to this event,intrupting its current task  and delevring the result of task1
+
+********************
+event-signal that something has happened in the program
+event-emitter->emit event
+events-queue->events emiited queued in event queue
+events-handler->functin that respond to specific events
+events-loop->pick the events from event queue
+*****************
+
+
+Node js is essential for building  scalable and restful  api that handle large no of concurrent connection.| for making chat application
+******************
+node modules contin all the dependencies of node proect
+npm is used to manage the dependency for your node project
+package.json-contain metadata about the project
+****************
+a module contain specific functionality that can be easily resued within node js application.
+module can contain multiple function and variable.
+
+****************
+// Exporting a single function
+function add(a, b) {
+    return a + b;
+}
+
+module.exports = add;
+
+// Exporting an object with multiple functions/properties
+module.exports = {
+    add: function(a, b) {
+        return a + b;
+    },
+    subtract: function(a, b) {
+        return a - b;
+    }
+};
+// Named exports
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+module.exports = {
+    add,
+    subtract
+};
+const { add, subtract } = require('./math');
+const add = require('./math').add;
+***********************
+type of module in node js
+builtin module->(allready present module in node js which provide essential functionality)
+for example filesystem,httpServer
+
+local module-created for developer for specific functionality
+third party module-
+************************
+
+builtin module->fs,path,os,events,http
+fs->read the content of the file asynchronously
+const fs=require('fs')
+fs.readFile()
+****************
+path module provide utility for joining resolving and manupulating path
+path.join()
+path.parse()
+***************
+os module provide a set of method for interacting with the operating system
+**************
+createServer is  a methd of  http module in node js  used to create http server
+**************************
+// Importing the http module
+const http = require('http');
+
+// Creating an HTTP server instance
+const server = http.createServer((req, res) => {
+  // Callback function to handle incoming requests
+
+  // Set the response HTTP header with HTTP status and content type
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+
+  // Write the response body
+  res.end('Hello World\n');
+});
+*******************************
+
+
+
