@@ -197,3 +197,7 @@ Implementing Reducers
 Creating Selectors
 Dispatching Actions
 Displaying Data in Components
+**************************************
+State changes are handled by pure functions called reducers that take the current state and the latest action to compute a new state.
+Actions describe unique events that are dispatched from components and services.
+State is accessed with the Store, an observable of state and an observer of actions.
