@@ -1,0 +1,67 @@
+servlet-used for handling http request-create dynamic web pages
+************
+Generic Servlet-work with any protocol-memeber of JavaX.servlet package-only uses service() method for accessing the request and send response in the background
+httpServlet-work with only http protocol-member of javaX.servlet.http package-httpservlet have doGet(),doPost(),doTrace(),doDelete() etc
+****************
+lifeCycle of Servlet
+servlet class->create new instanse of httpServlet->call init() method->call service method()->call destroy()->Garbage Collection
+                                                                            |															
+                                                                         client Request
+service method call on every time on every client request.after servlet  when we switch control from  from servlet or close the servlet then destory method of the servlet get executed automatically.
+**********************
+Servlet chaining or looping refers to the process of passing a request from one servlet to another, either sequentially or in a loop, before generating a response to the client.
+********
+SendRedirect->work at client side and used for the redirect and reponse to another resource like a servlet jsp html etc
+response.sendRedirect("https://www.example.com/newpag")
+
+*************
+RequestDispatcher->create object that is reponsible for receving a request from browser and navigate them to any resource like servlet jsp or html
+two main methods provided by the RequestDispatcher interface:
+
+forward():-when client send request then forward method tranfer its control on the specified servlet
+e.g. client send request to servelet 1  then servlet1 process the request and forward the control to servlet 2. then servelt 2 process the request and generate the response and send back to client
+
+include() method is used to include the response of another servlet within the response of the current servlet.
+*********************
+different session tracking in servlet:-
+Cookies:-small info added at client side and cookie data store at client side.httpsession vanish it data when browser get close but cookie can store it data for a long period of time.after browser close.session data store at server side
+URL Rewriting:.
+Hidden Form Fields:
+HTTP Session Object:
+
+***********************
+load-on-startup->element defined on web.xml.which help servlet to load at the time of deployment.while server is restarting.
+User
+why we need to load on startup on web.xml
+Sometimes, servlets need to perform certain tasks when they start up, such as loading configuration files, initializing database connections, 
+By specifying "load-on-startup," you ensure that these initialization tasks are completed before the first request comes in. This can make your application more responsive to user requests.
+
+*****
+webcontainer-used for interacting with servlet, jsp and xml files
+responsebility-load the servlet and create its instance
+manage the life of servlet
+map the servlet with specified url
+call the servlet using url as per the client request
+
+****************
+servlet event execute automatically when we change the state of conntext object,session object or request object.
+three major type of event in servlet
+context level-when server start or stop or value added in the context object
+session level-
+request level
+*******************************
+scope of the object help to share the info among web component using setAttribute() and getAttribute() method.
+session level scope store the data  whenever  browser is running or client is running
+application or context-store the data when server is running
+request
+page
+*****************
+servlet create only one instance no matter how many request it recieve.
+************************
+
+
+
+
+
+
+
