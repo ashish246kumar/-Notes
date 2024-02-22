@@ -1,0 +1,170 @@
+observable are used to perform asynchronous operation and handle asynchronous data.
+in asynchronous task all the task are executed parallely.
+observable  emit multiple value ver a period of time.while promise emit a single value at a time.
+observable are lazy and they are not executed untill we subscribe them using subscribe method.
+promises are not lazy
+**********************
+Rxjs(Reactive extension for javascript)-javascript libraary-allow us to work with asynchronous data stream  with the help of observable.
+*****************
+way to implement observable
+import observable from rxjs library
+create obserable and emit data
+finally subscribe the data
+********************************
+httpclient is builtin Service class in angular
+@angular/common/http package
+perform http request
+*********************
+typescript is superset of javascript.__>has object oriented feature-detect error at compile time-strongly typed 
+****************
+type annotation is assigning a variable or object a type which will show the compile time error if we try to assign the variable a different type.
+let i:number
+
+when the value is of type any then no type chcking is done by compiler.
+enum allow us to define a set of name constant
+enum Direction {
+  Up = 1,
+  Down,
+  Left,
+  Right
+}
+
+console.log(Direction.Down); // Output: 2
+**********************
+arrow function are shorthand syntax for defining the anynmyous function.
+let y=(a,b)=>a*b
+******************************
+Angular decorator store metadata about class, method or property-represented as a  "@"
+meta data is data that provide information about data
+************
+types of decrator-
+class decorator-@NgModule @Pipe @Component
+property-@Input, @Output,@Contentchild
+Method decrator-@HostListner
+Parameter decrator-@Inject @Host
+**************************
+pipes are the simple function which accept an input value and return traformed value
+Angular pipe->built in pipe(lower case, upper case, date) and custom pipe
+the chaning pipe use multiple pipe on data input.{{dob|date|uppercase}}
+*****************
+directives are classes that add adtional behaviour to element in your angular application.
+type of directive
+strctural->*ngIf,*ngFor,*ngSwitch(it change the apperance of dom by adding or removing element)
+Attribute->[ngClass],[ngStyle](changes the apperance or behaviour of element)
+
+component-(directive with own template)
+
+*****************************
+*ngIf-used to add or remove item based on the condition
+[ngStyle] it is an attribute directive that update the style for an html element
+<div [ngClass]="['first', 'second']">
+[ngClass] add and remove css classes on html element
+
+@Component({
+  selector: 'app-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['./example.component.css']
+})
+it is reponsible for showing the first whole view.it is the most used ones
+**************************
+lifecycle hook-a component from creation to destruction goes through several stages known as life cycle hook.
+component instantiating
+rendring the component html view
+creting the child componet
+destroying the component
+***************
+ngOnchanges->called when input property changes
+constructor-not part of the lifecycle hook.default method of the typeScript class that is executed when the class is instantiated
+ngOnInit-called when the component is created-called only once during the lifecycle
+constrctor is used to inject dependencies(services) into component class
+ngOnInit-called after ngOnchanges lifeCycle hook
+constructor-called before any lifecycle hook
+***************
+A service is a typeScript class and reusable code which can be used in multiple component.
+A provider is a object declared inside decorator which inform angular that particular service is avilable for inecting inside the component.
+********************
+ with @Injectale decorator one service can be used by another service
+****************************
+Static form-validation rules are defined directly in the HTML template using directives such as ngModel, ngForm, and ngSubmit.
+
+******************
+<!-- static-form.component.html -->
+<form #staticForm="ngForm" (ngSubmit)="onSubmit(staticForm.value)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" ngModel required email>
+  </div>
+  <button type="submit" [disabled]="!staticForm.valid">Submit</button>
+</form>
+
+// static-form.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-static-form',
+  templateUrl: './static-form.component.html'
+})
+export class StaticFormComponent {
+  onSubmit(formData: any) {
+    console.log('Static Form Data:', formData);
+  }
+}
+**************************************
+Reactive Form Example:
+we define the form controls and validation programmatically using TypeScript code.
+Reactive forms are preferred for applications with complex form requirements, 
+
+<!-- reactive-form.component.html -->
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+  </div>
+  <button type="submit" [disabled]="!reactiveForm.valid">Submit</button>
+</form>
+// reactive-form.component.ts
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-reactive-form',
+  templateUrl: './reactive-form.component.html'
+})
+export class ReactiveFormComponent implements OnInit {
+  reactiveForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.reactiveForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  onSubmit() {
+    console.log('Reactive Form Data:', this.reactiveForm.value);
+  }
+}
+**************************
+import { RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  // Add more route definitions as needed
+];
+<router-outlet>  in app.html
+
+*************************
+
+
+
