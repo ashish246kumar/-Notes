@@ -165,6 +165,35 @@ const routes: Routes = [
 <router-outlet>  in app.html
 
 *************************
+ng generate guard auth
 
+authentication guard is a mechanism used to protect routes in your application.
+It ensures that certain routes can only be accessed by authenticated users.
 
+const routes: Routes = [
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },]
 
+export class AuthGuard implements CanActivate {
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(): boolean {
+    if (this.authService.isAuthenticated()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']); // Redirect to login page if not authenticated
+      return false;
+    }
+  }
+}
+In this example, we assume you have an AuthService with a method isAuthenticated() that returns a boolean indicating whether the user is authenticated.
+
+Next, you can apply this guard to the routes you want to protect in your app-routing.module.ts file:
+************************************
+redux
+Creating the Store
+Defining Actions
+Implementing Reducers
+Creating Selectors
+Dispatching Actions
+Displaying Data in Components
