@@ -27,3 +27,49 @@ public static void bubbleSort(int[] arr) {
         }
     }
 ***************************
+heap -max and min
+max-value of node is less than or equal to parent node value
+min heap-value of node is greater than or equal to parent node value
+it should follow the property of complete binary tree
+that is any new node coming should be added to the left first
+inserTHeap(A,N,Value)
+{
+n=n+1
+A[n]=value
+i=N
+while(i>1){
+parent=i/2
+if(A[parent]<A[i]){
+swap(A[parent],A[i])
+i=parent
+}
+else{
+return
+}}
+element should be deleted from root  node and we swap it with leaf node
+
+********************
+priority queue->
+public static void main(String[] args) {
+        // Create a priority queue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the priority queue
+        priorityQueue.add(1);
+        priorityQueue.add(2);
+        priorityQueue.add(3);
+        priorityQueue.add(0);
+        priorityQueue.add(10);
+        priorityQueue.add(5);
+
+        // Print elements in ascending order
+        System.out.println("Elements in ascending order:");
+        while (!priorityQueue.isEmpty()) {
+            System.out.println(priorityQueue.poll());
+        }
+    }
+}
+To-do list: You might prioritize tasks based on urgency and importance, 
+with deadlines taking precedence over less pressing tasks (highest priority). 
+******************************************************
+
