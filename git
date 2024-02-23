@@ -20,3 +20,13 @@ git revert <commit-hash>
 git push origin <branch-name>
 git fetch retrieves changes from a remote repository to your local repository, updating your remote-tracking branches, but it doesn't merge those changes into your current branch
 git pull` not only fetches the updates but also incorporates them into your active branch.
+state of file-modified-staged-commited
+git add will move the code from working directory to staging area
+git commit(to commit changes to head but not to remote repo) will move code from staging area to repository
+git config-to configure userBName and email address
+git diff-to view the changes made in the file
+git pull=git fetch+git merge
+git statsh capture the present state of the working directory and index it and keep it n the stack at later stage.it 
+returns a clean working directory
+git reset --mixed is used to undo the changes made in the working directory and the staging area
+git merge --abort is used to stop the merge process and return back to the state before merging again
