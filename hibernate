@@ -1,0 +1,8 @@
+Hibernate is orm tool used to map java object and database table|it provide jpa implementation that is jpa is an interface and hibernate is implenting jpa
+it remove biolerplate code|provide transaction management implicitly
+important interface used in the hibernate
+SessionFactory-one session factory object per database connection-it provide session object
+session-session is used to get physical connection with database
+cascade-used to define cascading between two entity bean used with mapping
+
+
