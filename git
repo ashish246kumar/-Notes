@@ -30,3 +30,4 @@ git statsh capture the present state of the working directory and index it and k
 returns a clean working directory
 git reset --mixed is used to undo the changes made in the working directory and the staging area
 git merge --abort is used to stop the merge process and return back to the state before merging again
+git clean remove the untracked file from the working directory
