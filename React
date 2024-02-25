@@ -249,5 +249,7 @@ function App() {
                         ></Route>
                     </Routes>
 **************************
-
+				React                Angular
+Data Binding	Uni-directional (One-way)	Bi-directional (Two-way)
+		Regular dom				virtual-dom
 
