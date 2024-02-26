@@ -72,4 +72,14 @@ public static void main(String[] args) {
 To-do list: You might prioritize tasks based on urgency and importance, 
 with deadlines taking precedence over less pressing tasks (highest priority). 
 ******************************************************
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {5, 2, 8, 1, 9};
 
+        // Sorting the array
+        Arrays.stream(numbers)
+              .sorted()
+              .forEach(System.out::println);
+    }
+}
+**********************************************
