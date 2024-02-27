@@ -106,3 +106,4 @@ public class YourServiceOrController {
     }
 }
 
+https://dis000000hmr22ag-dev-ed.develop.lightning.force.com/lightning/setup/ObjectManager/home
