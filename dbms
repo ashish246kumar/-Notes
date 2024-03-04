@@ -66,3 +66,7 @@ Atomicity
 Consistency ensures that the database remains in a valid state before and after a transaction.
 Isolation ensures that the execution of one transaction is isolated from the effects of other concurrent transactions until the transaction is completed and committed.
 Durability ensures that once a transaction is committed, its changes are permanent and will survive any subsequent system failures
+****************************
+Compile-time polymorphism refers to the polymorphic behavior that is resolved during compile-time based on the signatures of the methods involved
+Runtime polymorphism refers to the polymorphic behavior that is resolved during runtime based on the 
+actual type of the object. It is also known as dynamic polymorphism or late binding.
