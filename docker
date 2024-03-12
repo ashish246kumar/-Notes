@@ -1,0 +1,15 @@
+docker -v->to see the version of the docker
+docker run hello-world
+docker images
+docker.hub-where all the images are stored
+cls
+docker pull hello-world
+docker pull openjdk
+docker pull openjdk:18
+docker pull python
+docker search nginx
+ docker run -d openjdk----->to run jdk
+docker ps->to see which container is runnig
+docker run --name jdkContainer -d openjdk-->to run the image in detached mode and giving the name to jdkContainer
+docker run --name jdkContainer1 -it -d openjdk
+docker exec -it 0510bda0d8b9 jshell-> command is used to execute the Java shell (JShell) within a Docker container with the specified container ID (0510bda0d8b9) 
