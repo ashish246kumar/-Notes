@@ -13,3 +13,19 @@ docker ps->to see which container is runnig
 docker run --name jdkContainer -d openjdk-->to run the image in detached mode and giving the name to jdkContainer
 docker run --name jdkContainer1 -it -d openjdk
 docker exec -it 0510bda0d8b9 jshell-> command is used to execute the Java shell (JShell) within a Docker container with the specified container ID (0510bda0d8b9) 
+id we get from docker ps command 
+to run mysql
+docker run --name mySqlDB -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker exec -it mySqlDB bash
+ mysql -p
+enter passowod-root
+docker pull httpd is used to pull the official Apache HTTP Server Docker image from Docker Hub
+Once the image is pulled, you can run a container using the following command:
+docker run --name my-httpd-container -p 8080:80 -d httpd
+ docker stop mySqlDB->to stop container which is runnning
+command docker ps -a is used to list all containers, both running and stoppe
+If you want to remove all stopped containers, you can combine docker ps -a with docker rm using shell command substitution like this:
+docker rm $(docker ps -a -q)
+docker restart mySqlDB-to restart mysql container
+docker build -t myubuntuimage .---->to build image
+docker run --name JavaProject myjavauimage
