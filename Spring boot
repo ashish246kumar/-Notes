@@ -1,0 +1,13 @@
+@COMPONENT->it tell the spring container to automatically create spring bean.It indicate that annotated class is spring bean or component.
+3types of configuration-Java Based,xml based and annotation based
+when we use @Component we donot need to create object by new keyword
+@Autowired-used to inject bean automatically
+@Autowired-used in constrctor injection, setter injection and field injection.
+@Qualifiier-used in conjuction with autowired  to avoid confusion when we have two or more bean configured for same type
+ private  ExampleInterface exampleInterface;
+@Autowired
+public ExampleService(@Qualifier("implementationA") ExampleInterface exampleInterface) {
+        this.exampleInterface = exampleInterface;
+    }
+ExampleInterface  is implemented by implementationA class and implementationB class.if we not use @Qualifier annotation here then there will 
+confusion that which class bean it will  create implemetationA or implementationB
