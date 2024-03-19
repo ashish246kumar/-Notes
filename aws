@@ -5,3 +5,4 @@ putty-.ppk
 ec2-instance-userName->ubuntu
 sudo apt update-->Ubuntu checks the repositories defined in /etc/apt/sources.list file and /etc/apt/sources.list.d/ directory for updates. 
 It downloads the package lists from the repositories and updates the information about available packages and their versions.
+
