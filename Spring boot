@@ -11,3 +11,70 @@ public ExampleService(@Qualifier("implementationA") ExampleInterface exampleInte
     }
 ExampleInterface  is implemented by implementationA class and implementationB class.if we not use @Qualifier annotation here then there will 
 confusion that which class bean it will  create implemetationA or implementationB
+@Primary-to give higher preference to bean when there are multiple bean of same type.
+@Component
+@Primary
+public class ImplementationB implements ExampleInterface {
+    @Override
+    public void doSomething() {
+        // Implementation B
+    }
+}
+ private  ExampleInterface exampleInterface;
+@Autowired
+public ExampleService( ExampleInterface exampleInterface) {
+        this.exampleInterface = exampleInterface;
+    }
+*****************************
+@Bean-method produces a bean to be managed  by the spring container
+public class vegPizza implements Pizza{
+
+  public String getPizza(){
+   return "vegPizza";
+}
+}
+@Configuration
+public class AppConfig{
+
+ @Bean
+public Pizza vegPizza(){
+    return new VegPizza()
+}
+@Bean 
+public PizzController pizzController(){
+     return new PizzaController(vegPizza());
+}
+}
+
+public class PizzaController{
+
+private Pizza pizza;
+public PizzaController(Pizza pizza){
+   this.pizza=pizza
+}
+public String getPizza(){
+   return pizza.getPizza();
+}
+}
+@Bean provide init method and destroy method to perform certain action after bean initilzation or before bean destruction by the container.
+@Bean annotation to create Spring Bean definitions using Java-based configuration.
+*********************
+@Controller-for handling http request @ResponseBody  is not included
+@RestController is used for creating RESTful APIs 
+**********************************************
+@Lazy-@Lazy annotation to load the Spring beans lazily (on-demand).
+By default Spring crete all the bean eagrly at the startup or bootStraping of the application context.
+@Lazy can be useful for beans that are resource-intensive
+**********************
+@Scope annotation is used to define the scope of the bean
+Singleton: only one instance of the bean is created and shared across the entire application. This is the default scope.
+
+Prototype: a new instance of the bean is created every time it is requested.
+@Component
+@Scope("singleton")
+public class MySingletonBean {
+    // Singleton bean properties and methods...
+}
+
+
+
