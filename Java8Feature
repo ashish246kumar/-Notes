@@ -70,5 +70,50 @@ Java Predefined-Functional Interfaces----->
 Function<T,R>--->It represents a function that accepts one argument and returns a result.
 BiFunction<T,U,R>	It represents a function that accepts two arguments and returns a a result.
 *************************************
+List<Integer>al=Array.asList(1,2,3,4)
+int a=al.stream().count()
+al.ForEach(b->System.out.println(b));
+bollean b=al.stream().anyMatch(n->n%2==0);
+List<Integer>distinctNumber=al.stream().distinct().collect(Collectors.toList())
+List<Integer>evenSquare=al.stream().filter(n->n%2==0).map(n->n*n).collect(Collectors.toList());
+*********************************************************************************************************
+optional class was introduced to address the issue of NullPointerExceptions and provide a more elegant way to handle nullable values.
+import java.util.Optional;
 
+public class OptionalExample {
+    public static void main(String[] args) {
+        String[] str = new String[5];
+        str[2] = "Geeks Classes are coming soon";
+
+        // Create an Optional with a non-null value
+        Optional<String> value = Optional.of(str[2]);
+
+        // Retrieve the value
+        System.out.println("Value: " + value.get());
+
+        // Check if a value is present
+        System.out.println("Is present? " + value.isPresent());
+
+        // Hash code of the Optional
+        System.out.println("Hash code: " + value.hashCode());
+    }
+}
+
+**************************************
+import java.util.Optional;
+
+public class Example {
+    public static void main(String[] args) {
+        String[] names = new String[5];
+        Optional<String> optionalName = Optional.ofNullable(names[3]);
+
+        if (optionalName.isPresent()) {
+            String upperCaseName = optionalName.get().toUpperCase();
+            System.out.println("Name: " + upperCaseName);
+        } else {
+            System.out.println("Name is not present.");
+        }
+    }
+}
+***********************************************************
 
