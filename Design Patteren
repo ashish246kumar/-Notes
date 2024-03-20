@@ -119,3 +119,43 @@ public class Main {
     }
 }
 ******************************************************
+Singleton Design Pattern---> ensure that a class has only one instance while allowing global access to that instance.
+. Here are the key elements of the Singleton pattern:
+
+Private Constructor: To prevent direct instantiation of multiple instances.
+Static Method: Provides access to the single instance.
+Static Variable: Holds the single instance.
+Database Connections: ensure that there’s only one connection pool instance throughout your application.
+Singleton ensures efficient resource utilization and avoids unnecessary overhead.
+*****************************************
+Singleton Lazy
+public class SingletonLazy {
+    private static SingletonLazy instance;
+
+    private SingletonLazy() {}
+
+    public static SingletonLazy getInstance() {
+        if (instance == null) {
+            instance = new SingletonLazy();
+        }
+        return instance;
+    }
+}
+Thread Safety Issue: It is not thread-safe, meaning in a multi-threaded environment, 
+multiple threads can simultaneously enter the if (instance == null) block and create multiple instances unintentionally.
+Singleton Lazy Thread Safe
+public class SingletonLazyThreadSafe {
+    private static SingletonLazyThreadSafe instance;
+
+    private SingletonLazyThreadSafe() {}
+
+    public static synchronized SingletonLazyThreadSafe getInstance() {
+        if (instance == null) {
+            instance = new SingletonLazyThreadSafe();
+        }
+        return instance;
+    }
+}
+*********************************
+
+
