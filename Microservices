@@ -1,0 +1,5 @@
+ each microservice is focused on single business capability. Search, Rating & Review and Payment each have their instance (server) and communicate with each other.
+Each service is designed to perform a specific business function and can be developed, deployed, and scaled independently of other services.
+Advantages:
+Scalability: Microservices architecture allows for individual services to be scaled independently based on demand. 
+Microservices architecture allows teams to choose the most suitable technologies, programming languages, and frameworks for each service. 
