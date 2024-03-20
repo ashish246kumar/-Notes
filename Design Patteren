@@ -1,3 +1,31 @@
+creational design patteren control the creation of object
+***********************************
+---------------------------------
+|            Client             |
+---------------------------------
+| |
+---------------------------------
+                  |
+                  |
+          -----------------
+          |   Shape Factory   |
+          -----------------
+          | 
+          -----------------
+                  |create object of
+         -------------------
+         |      shape     |
+         -------------------
+         | 
+         -------------------
+                  |
+          -----------------
+          | circle|Square|Rectangle
+
+          -----------------
+          | 
+          -----------------
+************************************
  Factory Method is one of the best ways to create an object while keeping the object creation logic hidden from the client.
 use the Factory Method when:
 A class cannot predict the type of objects it needs to create.
@@ -7,8 +35,7 @@ By using this pattern, we can make the object creation process more flexible and
 Database Connection Management:
 When an application needs to connect to different types of databases (e.g., MySQL, PostgreSQL, MongoDB),
 the Factory Method can create the appropriate database connection objects based on configuration or user input.
-For applications that need to support multiple languages, the Factory Method 
-can create language-specific resources (e.g., translations, date formats) based on the user’s locale.
+It is used when all the object Creation and it bushiness logic we need to kept at one place.
 *****************************************************************************************************************
 public interface Shape {
    void draw();
@@ -128,7 +155,26 @@ Static Variable: Holds the single instance.
 Database Connections: ensure that there’s only one connection pool instance throughout your application.
 Singleton ensures efficient resource utilization and avoids unnecessary overhead.
 *****************************************
+Eager 
+public class DbConnection{
+
+   private Static DbConncetion conObject=new DbConncetion();
+private DbConnection(){
+}
+public static DbConnection dbGetInstance(){
+     return conObject;
+}
+public class Main{
+   public static void main(String[]args){
+     DbConncetion conObject= DbConncetion.getInstance();
+}
+}
+
+
+}
+*****************************
 Singleton Lazy
+
 public class SingletonLazy {
     private static SingletonLazy instance;
 
@@ -143,6 +189,7 @@ public class SingletonLazy {
 }
 Thread Safety Issue: It is not thread-safe, meaning in a multi-threaded environment, 
 multiple threads can simultaneously enter the if (instance == null) block and create multiple instances unintentionally.
+*********************************
 Singleton Lazy Thread Safe
 public class SingletonLazyThreadSafe {
     private static SingletonLazyThreadSafe instance;
@@ -155,7 +202,65 @@ public class SingletonLazyThreadSafe {
         }
         return instance;
     }
+
+}
+**********************
+double locking used in the industry
+public class DbConnection{
+   private static DbConnection conObject;
+   private DbConnection(){
+   }
+  public static DbConnection dbGetInstance(){
+     if(conObject==null){
+      synchronized(DbConnection.class){
+        if(conObject==null){
+         conObject=new DbConnection();
+}
+}
+
+}
+return conObject;
+}
 }
 *********************************
+Prototype design pattern in Java.
+The concept is to copy an existing object rather than create a new instance from scratch, especially when object creation involves costly operations1.
+When to Use the Prototype Pattern:
+Use the prototype pattern when:
+Object creation is time-consuming and costly.
+You have a similar object already existing that can serve as a prototype
+******************************************
+public abstract class Shape {
+    public abstract Shape copy();
+    // Other common shape methods...
+}
+public class DrawingApp {
+    public static void main(String[] args) {
+        // Create a prototype of a red circle
+        Shape circlePrototype = new Circle();
+        circlePrototype.setColor("red");
 
+        // Create a new shape (red circle) by cloning the prototype
+        Shape redCircle = circlePrototype.copy();
+        redCircle.setPosition(100, 200);
+
+        // Draw the red circle
+        redCircle.draw();
+    }
+}
+public class DrawingApp {
+    public static void main(String[] args) {
+        // Create a prototype of a red circle
+        Shape circlePrototype = new Circle();
+        circlePrototype.setColor("red");
+
+        // Create a new shape (red circle) by cloning the prototype
+        Shape redCircle = circlePrototype.copy();
+        redCircle.setPosition(100, 200);
+
+        // Draw the red circle
+        redCircle.draw();
+    }
+}
+**************************************************
 
