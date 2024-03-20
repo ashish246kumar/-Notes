@@ -12,9 +12,12 @@ Name  commonly used tools for Microservices.
 Docker: Docker is a popular containerization platform that allows developers to package applications and their dependencies into lightweight, portable containers.
 Hystrix is a latency and fault tolerance library.Hystrix implements the Circuit Breaker pattern, which monitors the health of external dependencies. 
 If the failure rate exceeds a certain threshold, Hystrix opens the circuit, preventing further requests from being sent to that service.
+*************************************************************
 In Monolithic Architecture all the software components of an application are clubbed inside a single package.
-Microservices are loosely coupled architecture.
-Monolithic architecture is mostly tightly coupled.
+Microservices are loosely coupled architecture.It mainly focuses on products, not projects.
+Monolithic architecture is mostly tightly coupled.It mainly focuses on the whole project.
+
+***************************************************
 What is RESTful?
 Representational State Transfer (REST)/RESTful web services is an architectural style that helps computer systems to communicate over the internet.
 ***************************************
@@ -25,3 +28,13 @@ OAuth means open authorization protocol.  It helps you to share resources stored
 Containers are easiest and effective method to manage the microservice based application. It also helps you to develop and deploy individually.
  open-standard authorization protocol 
 **************************************************************************
+Spring Cloud-->. It provides a set of tools and libraries for building and managing cloud-native applications, addressing common challenges such as service discovery, 
+configuration management, load balancing, circuit breaking, and distributed tracing.
+*********************************************************************
+ What are the biggest challenges in Microservice deployment?
+The main challenges from the business point of view:
+Microservices require a heavy investment.
+It requires a heavy infrastructure setup also.
+
+*******************************************************
+
