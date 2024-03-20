@@ -1,0 +1,121 @@
+ Factory Method is one of the best ways to create an object while keeping the object creation logic hidden from the client.
+use the Factory Method when:
+A class cannot predict the type of objects it needs to create.
+By using this pattern, we can make the object creation process more flexible and modular, making it easier to change or add new object types in the future.
+
+*****************************************************************
+Database Connection Management:
+When an application needs to connect to different types of databases (e.g., MySQL, PostgreSQL, MongoDB),
+the Factory Method can create the appropriate database connection objects based on configuration or user input.
+For applications that need to support multiple languages, the Factory Method 
+can create language-specific resources (e.g., translations, date formats) based on the user’s locale.
+*****************************************************************************************************************
+public interface Shape {
+   void draw();
+}
+public class Circle implements Shape {
+   @Override
+   public void draw() {
+      System.out.println("Drawing Circle");
+   }
+}
+
+public class Square implements Shape {
+   @Override
+   public void draw() {
+      System.out.println("Drawing Square");
+   }
+}
+public class ShapeFactory {
+   public static Shape getShape(String shapeType) {
+      if (shapeType == null) {
+         return null;
+      }
+      if (shapeType.equalsIgnoreCase("CIRCLE")) {
+         return new Circle();
+      } else if (shapeType.equalsIgnoreCase("SQUARE")) {
+         return new Square();
+      }
+      return null;
+   }
+}
+public class FactoryPatternDemo {
+   public static void main(String[] args) {
+      Shape shape1 = ShapeFactory.getShape("CIRCLE");
+      shape1.draw();
+
+      Shape shape2 = ShapeFactory.getShape("SQUARE");
+      shape2.draw();
+   }
+}
+***************************************************
+// Abstract product: DatabaseConnection
+abstract class DatabaseConnection {
+    abstract void connect();
+    // Other common methods for database connections
+}
+
+// Concrete products
+class MySqlConnection extends DatabaseConnection {
+    @Override
+    void connect() {
+        System.out.println("Connected to MySQL database.");
+        // MySQL-specific connection logic
+    }
+}
+
+class PostgreSqlConnection extends DatabaseConnection {
+    @Override
+    void connect() {
+        System.out.println("Connected to PostgreSQL database.");
+        // PostgreSQL-specific connection logic
+    }
+}
+
+class MongoDbConnection extends DatabaseConnection {
+    @Override
+    void connect() {
+        System.out.println("Connected to MongoDB database.");
+        // MongoDB-specific connection logic
+    }
+}
+
+// Creator: DatabaseConnectionFactory
+abstract class DatabaseConnectionFactory {
+    abstract DatabaseConnection createConnection();
+}
+
+// Concrete creators
+class MySqlConnectionFactory extends DatabaseConnectionFactory {
+    @Override
+    DatabaseConnection createConnection() {
+        return new MySqlConnection();
+    }
+}
+
+class PostgreSqlConnectionFactory extends DatabaseConnectionFactory {
+    @Override
+    DatabaseConnection createConnection() {
+        return new PostgreSqlConnection();
+    }
+}
+
+class MongoDbConnectionFactory extends DatabaseConnectionFactory {
+    @Override
+    DatabaseConnection createConnection() {
+        return new MongoDbConnection();
+    }
+}
+
+// Client code
+public class Main {
+    public static void main(String[] args) {
+        DatabaseConnectionFactory factory = new MySqlConnectionFactory();
+        DatabaseConnection connection = factory.createConnection();
+        connection.connect();
+        // Use the connection for MySQL operations
+
+        // Similarly, you can switch to other factories (PostgreSQL, MongoDB) as needed
+    }
+}
+******************************************************
