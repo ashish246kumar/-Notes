@@ -2,4 +2,25 @@
 Each service is designed to perform a specific business function and can be developed, deployed, and scaled independently of other services.
 Advantages:
 Scalability: Microservices architecture allows for individual services to be scaled independently based on demand. 
-Microservices architecture allows teams to choose the most suitable technologies, programming languages, and frameworks for each service. 
+Microservices architecture allows teams to choose the most suitable technologies, programming languages, and frameworks for each service.
+Fault isolation, e., a process failure should not bring the whole system down.
+Disadvantages:
+If you are using Microservice architecture, you need to ready for operations overhead.
+Increased Complexity
+Microservices always rely on each other. Therefore, they need to communicate with each other.
+Name  commonly used tools for Microservices.
+Docker: Docker is a popular containerization platform that allows developers to package applications and their dependencies into lightweight, portable containers.
+Hystrix is a latency and fault tolerance library.Hystrix implements the Circuit Breaker pattern, which monitors the health of external dependencies. 
+If the failure rate exceeds a certain threshold, Hystrix opens the circuit, preventing further requests from being sent to that service.
+In Monolithic Architecture all the software components of an application are clubbed inside a single package.
+Microservices are loosely coupled architecture.
+Monolithic architecture is mostly tightly coupled.
+What is RESTful?
+Representational State Transfer (REST)/RESTful web services is an architectural style that helps computer systems to communicate over the internet.
+***************************************
+How independent micro-services communicate with each other?
+It depends upon your project needs. However, in most cases, developers use HTTP/REST with JSON or Binary protocol. However, they can use any communication protocol.
+What is the meaning of OAuth?
+OAuth means open authorization protocol.  It helps you to share resources stored on one site with another site without the need for their credentials.
+Containers are easiest and effective method to manage the microservice based application. It also helps you to develop and deploy individually.
+ open-standard authorization protocol 
