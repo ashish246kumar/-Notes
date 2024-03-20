@@ -1,1 +1,11 @@
  Executor SERVICE--> A framework for creating and managing threads.It manages the life cycle of the threads in the thread pool.
+Thread Management: It manages the life cycle of the threads in the thread pool.
+Java Concurrency API defines the following three executor interfaces that covers everything that is needed for creating and managing threads -
+Executor -to launch a task specified by a Runnable object.
+ExecutorService -
+ScheduledExecutorService-
+***************************************************
+ThreadPool->collection of thread which are able to perform submited task.once the task completed worker thread get back to threadPool and wait for the new task to be assigned.
+advantage of thread pool
+thread creation time can be safe-->perfrmance improved
+overhead of managing the thread lifecycle  can not beremoved.
