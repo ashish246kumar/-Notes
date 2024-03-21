@@ -10,4 +10,48 @@ advantage of thread pool
 thread creation time can be safe-->perfrmance improved
 overhead of managing the thread lifecycle  can not beremoved.
 ***************************************************************
+ExecutorService with a single worker thread, and then submit a task to be executed inside the worker thread
+ExecutorService executorService=Executors.newSingleThreadExecutor();
+Runnable runnable=()=>{
+    System.out.println(Thread.currentThread().getName());
+}
+executorService.submit(runnable);
+executorService.shutdown();
+*************************************************************************
+ExecutorService executorService=Executors.newFixedThreadPool(2);
+Runnable task1=()->{
+System.out.println(Thread.currentThread().getName())
+   try{
+     TimeUnit.SECONDS.sleep(2);
+   }
+   catch(InteruptedException e){
+        throw new IllegalStateException(ex);
+}
+
+}
+Runnable task2=()->{
+System.out.println(Thread.currentThread().getName())
+   try{
+     TimeUnit.SECONDS.sleep(4);
+   }
+   catch(InteruptedException e){
+        throw new IllegalStateException(ex);
+}
+
+}
+executorService.submit(task1);
+executorService.submit(task2);
+executorService.shutdown();
+********************************************************************
+Tasks are submitted to a thread pool via an internal queue called the Blocking Queue. If there are more tasks than the number of active threads, 
+they are inserted into the blocking queue for waiting until any thread becomes available.
+****************************************************************************************
+ScheduledExecutorService is used to execute a task either periodically or after a specified delay.
+ScheduledExecuorService  scheduledExecuorService=Executors.newScheduledThreadPool(1);
+Runnable task=()->{
+      System.out.println("Executing Task At " + System.nanoTime());
+};
+scheduledExecuorService.schedule(task,5,TIMEUNIT.SECONDS)
+scheduledExecuorService.shutdown();
+***********************************************************************************
 
