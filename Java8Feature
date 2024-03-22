@@ -77,7 +77,9 @@ bollean b=al.stream().anyMatch(n->n%2==0);
 List<Integer>distinctNumber=al.stream().distinct().collect(Collectors.toList())
 List<Integer>evenSquare=al.stream().filter(n->n%2==0).map(n->n*n).collect(Collectors.toList());
 *********************************************************************************************************
-optional class was introduced to address the issue of NullPointerExceptions and provide a more elegant way to handle nullable values.
+optional class was introduced to avoid NullPointerExceptions to handle nullable values.
+optional represnt the state of empty as well as filled.
+
 import java.util.Optional;
 
 public class OptionalExample {
