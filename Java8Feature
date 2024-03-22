@@ -403,3 +403,54 @@ public class Main {
 
 ************************************************************
 
+Consumer Interface is used in Java8
+it has two method accept and doThen
+Consumer<String> consumer=(t)->{
+       System.out.println(t);
+}
+ consumer.accept("akk");
+******************
+Consumer<String> consumer1=(t)->{
+       System.out.println(t+"world");
+}
+Consumer<String> consumer2=(t)->{
+       System.out.println(t+"Java");
+}
+consumer2.andThen(Consumer3).accept("Hello");
+**************************
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+// Using a Consumer to print each element of the list
+Consumer<String> printConsumer = System.out::println;
+names.forEach(printConsumer);
+***********************************
+names.forEach(System.out::println);
+same as 
+names.forEach(name -> System.out.println(name));
+******************************************
+Supplier is a functional interface in java8 
+T get()  method
+
+***********************************
+Supplier < LocalDateTime > supplier = () -> LocalDateTime.now();
+System.out.println(supplier.get());
+*****************************************
+private static Supplier < List < Product >> productSupplier() {
+        Supplier < List < Product >> productSupplier = () -> {
+            List < Product > productsList = new ArrayList < Product > ();
+            productsList.add(new Product(1, "HP Laptop", 25000 f));
+            productsList.add(new Product(2, "Dell Laptop", 30000 f));
+            productsList.add(new Product(3, "Lenevo Laptop", 28000 f));
+            productsList.add(new Product(4, "Sony Laptop", 28000 f));
+            productsList.add(new Product(5, "Apple Laptop", 90000 f));
+            productsList.add(new Product(6, "Apple Laptop", 90000 f));
+            productsList.add(new Product(7, "Dell Laptop", 30000 f));
+            productsList.add(new Product(8, "Dell Laptop", 30000 f));
+            return productsList;
+        };
+        return productSupplier;
+    }
+public static void main(String[] args) {
+        System.out.println(productSupplier().get());
+    }
+************************************************
