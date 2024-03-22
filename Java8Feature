@@ -118,4 +118,87 @@ public class Example {
     }
 }
 ***********************************************************
+obtain an empty Optional instance using its static method empty()
+ Optional<String> emptyOptional = Optional.empty();
+*********
+equals() method is used to compare two Optional instances. 
+Optional<String> opt1 = Optional.of("Hello");
+        Optional<String> opt2 = Optional.of("Hello");
+        
+        if (opt1.equals(opt2)) {
+            System.out.println("Opt1 and Opt2 are equal.");
+        } else {
+            System.out.println("Opt1 and Opt2 are not equal.");
+        }
+ 
+**************************************************
+ifPresent() - It takes a Consumer functional interface as an argument, 
+which represents the action to be performed on the value if it is present.
+Optional<String> optionalString = Optional.of("Hello");
+        
+        optionalString.ifPresent(s -> System.out.println("Value is present: " + s));
+        
+        Optional<String> emptyOptional = Optional.empty();
+        
+        emptyOptional.ifPresent(s -> System.out.println("This will not be printed as the Optional is empty."));
+******************************
+of()-->Creating an Optional with a non-null value
+Optional<String> nullOptional = Optional.of(null);--->will throw a NullPointerException
+*****************************************
+orElse() method is used in the Optional class to provide a default value if the Optional instance is empty
+Optional<String> optionalString = Optional.of("Hello");
+        
+        // Retrieving the value from optionalString, or "Default" if optionalString is empty
+        String value = optionalString.orElse("Default");
+        System.out.println("Value: " + value); // Output: Value: Hello
+        
+        Optional<String> emptyOptional = Optional.empty();
+        
+        // Retrieving the value from emptyOptional, or "Default" if emptyOptional is empty
+        String value2 = emptyOptional.orElse("Default");
+        System.out.println("Value2: " + value2); // Output: Value2: Default
+******************************
+orElseGet()  
+ it takes a Supplier functional interface as an argument instead of a direct value.
+Optional<String> optionalString = Optional.of("Hello");
+        
+        // Using orElseGet with a supplier that generates the default value
+        String value = optionalString.orElseGet(() -> generateDefaultValue());
+        System.out.println("Value: " + value); // Output: Value: Hello
+        
+        Optional<String> emptyOptional = Optional.empty();
+        
+        // Using orElseGet with a supplier that generates the default value
+        String value2 = emptyOptional.orElseGet(() -> generateDefaultValue());
+        System.out.println("Value2: " + value2); // Output: Value2: Default Value
+ public static String generateDefaultValue() {
+        System.out.println("Generating default value...");
+        return "Default Value";
+    }
+********************
+orElseThrow() method in the Optional class is used to retrieve the value contained in the Optional if it is present. 
+If the Optional is empty, it throws an exception specified by a provided supplier.
+Optional<String> optionalString = Optional.of("Hello");
+        
+        // Retrieving the value from optionalString, or throwing an exception if optionalString is empty
+        String value = optionalString.orElseThrow(() -> new IllegalStateException("Value is not present"));
+        System.out.println("Value: " + value); // Output: Value: Hello
+        
+        Optional<String> emptyOptional = Optional.empty();
+        
+        try {
+            // Attempting to retrieve the value from emptyOptional, which will throw an exception
+            String value2 = emptyOptional.orElseThrow(() -> new IllegalStateException("Value is not present"));
+            System.out.println("Value2: " + value2);
+        } catch (IllegalStateException e) {
+            System.out.println("Exception caught: " + e.getMessage()); // Output: Exception caught: Value is not present
+        }
+*********************************************
+String str=null
+Optional<String> o=Optional.ofNullable(str);
+System.out.println( o.get())------->Optional.ofNullable() and the value is null, it will throw a NoSuchElementException.
+*******************
+
+
+
 
