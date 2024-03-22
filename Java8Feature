@@ -22,12 +22,70 @@ public class LambdaExpressionExample2 {
 List<Integer>al=Array.asList(1,2,3,4,5)
 al.stream().filter(n->n%2==0).forEach(System.out::println)
 **********************************************
+Method Reference
+*****************************************************
+List<String> strings = Arrays.asList("apple", "banana", "cherry");
+strings.stream().map(String::toUpperCase).forEach(System.out::println);
+Runnable runnable = this::run;
+
+special type of lambda expression
+create a simple lamda expression  by refreshing a existing method.
+Method reference biggest advantage is code reusability.
 There are following types of method references in java:
 
 Reference to a static method.
 Reference to an instance method.
 Reference to a constructor.
+
 ***************************************
+import java.util.function.Function;
+
+class MyClass {
+    private int value;
+
+    // Constructor with a parameter
+    public MyClass(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Using constructor reference to create instances of MyClass
+        Function<Integer, MyClass> constructorRef = MyClass::new;
+
+        // Create an instance of MyClass using the constructor reference
+        MyClass obj = constructorRef.apply(10);
+
+        // Print the value
+        System.out.println("Value: " + obj.getValue()); // Output: Value: 10
+    }
+}
+
+****************************************************
+Thread Creation with the help of method reference
+public class Main {
+    // Method that will be executed in a separate thread
+    public static void myMethod() {
+        System.out.println("Thread is running.");
+    }
+
+    public static void main(String[] args) {
+        // Create a reference to the static method using method reference
+        Runnable myRunnable = Main::myMethod;
+
+        // Create a thread with the runnable
+        Thread thread = new Thread(myRunnable);
+
+        // Start the thread
+        thread.start();
+    }
+}
+****************************************
 interface Sayable{  
     void say();  
 }  
@@ -198,7 +256,150 @@ String str=null
 Optional<String> o=Optional.ofNullable(str);
 System.out.println( o.get())------->Optional.ofNullable() and the value is null, it will throw a NoSuchElementException.
 *******************
+Instead of using Optional<List<T>>, use an empty list (Collections.emptyList()) to represent the absence of elements.
+Using Optional for collections can add unnecessary complexity and hinder consistency.
+Avoid using Optional in Constructors
+Avoid using Optional with Lists
+Avoid using Optional as a parameter in a method
+Avoid using Optional when returning a method’s value
+We should avoid returning a method with an Optional.
+*********************************************
+optional provides various methods to work with potential values safely, 
+such as isPresent(), get(), orElse(), orElseGet(), orElseThrow(), map(), flatMap(), filter(),
+Avoid using Optional as a ternary operator
+return Optional.ofNullable(value).orElse("BLUE");
+return value == null ? "BLUE" : value;
 
+**************************
+Optional<String> modelCar = ... ;
+if(modelCar.isPresent()) {
+    System.out.println("Model is: " + modelCar.get());
+} else {
+    System.out.println("Model not found");
+}
+instead of these use this
+Optional<String> modelCar = ... ;
+modelCar.ifPresentOrElse(
+    System.out::println, 
+    () -> System.out.println("Model not found")
+);
+***************************\
+public Optional<List<String>> getDoctors(String name) {
+    Hospital hospital = new Hospital (List.of("Pepe", "Juan"))      
+    List<String> doctors = hospital.getDoctors(); 
+    return Optional.ofNullable(doctors);
+}
+instead  of this  use this
+public List<String> getDoctors(String name) {
+    Hospital hospital = new Hospital (List.of("Pepe", "Juan"))      
+    List<String> doctors = hospital.getDoctors(); 
+    return doctors!= null ? items: Collections.emptyList();
+}
+***************************************
+List<Car> cars = //lista de coches;
+Optional<Car> findCar = cars.stream()
+    .filter(car -> c.getColor().equalsIgnoreCase("blue")
+    .findFirst();
 
+if (findCar.isPresent()) {
+    return findCar.get().getModel();
+} else {
+    return throw new NotFoundExcepcion("Car blue not found");
+}
+instead  of this  use this
+List<Car> cars = //lista de coches;
+Optional<Car> findCar = cars.stream()
+    .filter(car -> c.getColor().equalsIgnoreCase("blue")
+    .findFirst()
+   .map(Car::getModel)
+  .orElseThrow(()-> new NotFoundException("Car blue not found")
 
+**********************************************************
+public static optional<String> getName(){
+     String name="durgesh"
+     return Optional.ofNullable(name);
+}
+class Main{
+psvm(){
+   Optional<String> name=getName();
+  System.out.println(name.orElse("abc"))
+}
+}
+**********************************
+Lambda function is an anynomous function with 
+no name,no modifier,no return type
+it reduces line of code.used only with functional interface.call Api very effectively.
+to write more redable writable and concisable code.
+***********************
+(a, b)->{
+    return (a+b);
+}
+
+*****************
+example of Runnable,interface and callable
+to call lamda function  we require functional interface
+***************
+@FunctionalInterface
+**********************
+// Define a functional interface Function that takes a String and returns its length
+        Function<String, Integer> stringLength = s -> s.length();
+        
+        // Call the lambda function using the functional interface
+        int length = stringLength.apply("Hello Lambda");
+************************
+
+*****************************
+public interface SumInterface{
+    int sum(int a,int b)
+}
+class Main{
+SumInterface  sumInterface=(a,b)->a+b;
+sumInterface.sum(2,3);
+}
+}
+********************************
+Runnable thread1=()->{
+    for(int i=0;i<5;i++){
+        System.out.println(i);
+       try{
+            Thread.sleep(1000);
+         } 
+        catch(InteruptedException e){
+
+}
+}
+
+}
+Thread t1=new Thread(thread1)
+t1.start();
+************************************************
+Anoumous class interface implementation  because lambda expresion only useful if interface contai only one method.
+
+interface MyInterface {
+    void method1();
+    void method2();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Implementing MyInterface using an anonymous class
+        MyInterface myInterface = new MyInterface() {
+            @Override
+            public void method1() {
+                System.out.println("Implementation of method1 in anonymous class");
+            }
+
+            @Override
+            public void method2() {
+                System.out.println("Implementation of method2 in anonymous class");
+            }
+        };
+
+        // Calling the implemented methods
+        myInterface.method1();
+        myInterface.method2();
+    }
+}
+
+************************************************************
 
