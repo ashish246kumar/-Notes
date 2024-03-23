@@ -187,5 +187,71 @@ public static void main(String[] args) {
         System.out.println(h.size());
 }
 }
-**********************************
+***************************************************************************************************************
+                                          Concurrent HashMap
+************************************************************************************************
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+public class ConcurrentHashmapDemo {
+
+	
+	 private static final int NUM_THREADS = 5;
+	    private static final int NUM_INSERTIONS = 100;
+
+	    private static ConcurrentHashMap<String, Integer> hashMap = new ConcurrentHashMap<>();
+
+
+	    public static void main(String[] args) throws InterruptedException {
+	        ExecutorService executorService = Executors.newFixedThreadPool(NUM_THREADS);
+
+	        for (int i = 0; i < NUM_THREADS; i++) {
+	            executorService.execute(insertRecord());
+	        }
+
+	        executorService.shutdown();
+
+	        if (!executorService.isTerminated()) {
+	            Thread.sleep(1000);
+	        }
+
+	        System.out.println("Size of the hashmap = " + hashMap.size());
+	    }
+
+	    private static Runnable insertRecord() {
+	        return () -> {
+	            for (int i = 0; i < NUM_INSERTIONS; i++) {
+	            	System.out.println( Thread.currentThread().getName());
+	                hashMap.put(i + Thread.currentThread().getName(), i);
+	            }
+	        };
+	    }
+}
+
+****************************
+concurent hashMAP has a segmented or bucket level locking.
+*************************************
+public class ConcurrentHashmapDemo {
+
+	
+	   public static void main(String[] args) {
+           Map<String, Integer> map = new ConcurrentHashMap<>();
+           map.put("one", 1);
+           map.put("two", 2);
+           map.put("three", 3);
+
+           Iterator<Map.Entry<String, Integer>> iterator = map.entrySet().iterator();
+
+           // Attempt to modify the map while iterating
+           while (iterator.hasNext()) {
+               Map.Entry<String, Integer> entry = iterator.next();
+               if (entry.getKey().equals("two")) {
+                   map.put("four", 4); 
+               }
+           }
+
+       System.out.println(map);
+       }
+}
+this will throw exception if we use HashMap--->// This will throw ConcurrentModificationException
