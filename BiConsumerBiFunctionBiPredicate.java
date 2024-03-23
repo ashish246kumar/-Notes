@@ -63,4 +63,15 @@ public class BiFunction {
 	}
 }
 **************************************************************************************
+	public class BiPredicate {
+
+	
+	public static void main(String[]args) {
+		BiPredicate<String,String> isEqual= (x,y)-> x.equals(y);
+        BiPredicate<String,String> islengthEqual=(x,y)->x.length()==y.length();
+		System.out.println(isEqual.test("Hello","World")); 
+		System.out.println(islengthEqual.test("Hello","World"));
+        
+	}
+}
 	
