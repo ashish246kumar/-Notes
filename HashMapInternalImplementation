@@ -138,7 +138,7 @@ hashMap has not limit
  ******************
 ConcurrentHashMap can be safely used in concurent and multithreaded java program. It is thread safe
 ***************
-HashTable and ConcurrentHashMap  both are thread safe but ConcurrentHashMap performace is better.
+HashTable and ConcurrentHashMap  both are thread safe but ConcurrentHashMap performace and throghput is better.
 ConcurrentHashMap  can lock only few segment.
 HashTable  can lock whole object.
 ****************
@@ -231,6 +231,17 @@ public class ConcurrentHashmapDemo {
 
 ****************************
 concurent hashMAP has a segmented or bucket level locking.
+concurent hashMAP  is designed to allow multiple thread to access and modify the map concurrently without the need of explicit synchronization.This make it
+well suited for scenario where high concurrency is required and  different thread need to access and manipulate the map concurrently.
+Map(I)<-extends- ConcurrentMap(I) <-extends-ConcuurentNavigableMap(i)<-Implements-ConncurrentHashMap(c)
+											|Implements
+											Serializable
+concurrent hashMap achieve high concurrenccy by dividing its data into segments each acting as an independent hashtable.
+Read operation are fully concurrent allowing multiple thread to read simountaously from the same or differenrt segment.
+write operation are synchronized at segment level to ensure thread safety during updates.
+Any number of thread can perform read operaion but fo write in object the thread must lock the particular segment in which thread want to operate.
+collection.synchronizedMap() lower performance due to coarse grained locking.
+
 *************************************
 public class ConcurrentHashmapDemo {
 
@@ -255,3 +266,5 @@ public class ConcurrentHashmapDemo {
        }
 }
 this will throw exception if we use HashMap--->// This will throw ConcurrentModificationException
+********************************************
+
