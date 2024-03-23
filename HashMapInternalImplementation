@@ -105,7 +105,87 @@ public class Main {
 
 }
 *******************************
+which datastrcture hashMap represent
+A HashMap is a data structure that allows you to store and manage key-value pairs.
+It is also known as a Hash Table.
+insertion of elements are very fast, usually with O(1) time complexity.
+which data Strcture use to implemet hashMap
+Array and LinkedList
+Array for bucket and LinkedList for mAPIING which land in the same bucket.
+HashMap is not thread safe
+When multiple thread access the HashMap they can modify the data at the same time.
+**********************************
+how do you remove mapping while iterating over hashMap in java
 
 
- 
+
+Iterator<Map.Entry<Integer, String>> iterator = hashMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> entry = iterator.next();
+            if (entry.getValue().equals("Two")) {
+                iterator.remove(); // Remove the entry if the value is "Two"
+            }
+        }
+*********************
+loadFactor->no that control resizing of the hashMap or table
+initally load factor value is 0.75
+that is 75%
+***********
+mappingCount() ->it return the size of the hashMap it return type is long 
+size is also used but if hashMap size increases beyond 2^31 it will fail .size return type is integer.
+hashMap has not limit
+
+ ******************
+ConcurrentHashMap can be safely used in concurent and multithreaded java program. It is thread safe
+***************
+HashTable and ConcurrentHashMap  both are thread safe but ConcurrentHashMap performace is better.
+ConcurrentHashMap  can lock only few segment.
+HashTable  can lock whole object.
+****************
+In hashMap element are not stored in ordered way because hashIndex is calculated.
+*********************
+import java.util.Objects;
+
+public class Employee {
+    private String name;
+    private int age;
+    private String department;
+    private double salary;
+
+    public Employee(String name, int age, String department, double salary) {
+        this.name = name;
+        this.age = age;
+        this.department = department;
+        this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return age == employee.age &&
+                Double.compare(employee.salary, salary) == 0 &&
+                Objects.equals(name, employee.name) &&
+                Objects.equals(department, employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, department, salary);
+    }
+}
+**********
+public class Test{
+public static void main(String[] args) {
+        // Creating an Employee object
+        Employee e1 = new Employee("John Doe", 30, "Engineering", 50000.0);
+        Employee e2 = new Employee("Jane Smith", 35, "HR", 60000.0);
+	HashMap<Employee,String>h=new HashMap<>();
+	h.put(e1,"First");
+	h.put(e2,"Second");
+        System.out.println(h.size());
+}
+}
+**********************************
 
