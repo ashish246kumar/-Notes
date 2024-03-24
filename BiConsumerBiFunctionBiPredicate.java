@@ -89,3 +89,20 @@ public static void main(String[] args) {
     map.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(System.out::println);
 
     }
+***********************************
+	Consumer represents an operation that takes a single input and returns no result.
+	Consumer<String> printer = message -> System.out.println("Message: " + message);
+printer.accept("Hello, world!"); // Output: Message: Hello, world!
+***************
+	It does not accept any arguments but produces a value.
+	Supplier<Integer> randomNumberSupplier = () -> (int) (Math.random() * 100);
+int randomNumber = randomNumberSupplier.get();
+System.out.println("Random number: " + randomNumber);
+***********************
+	Function represents a function that accepts one argument and produces a result.
+	Function<Integer, String> toStringFunction = number -> "Number: " + number;
+String result = toStringFunction.apply(42);
+System.out.println(result); // Output: Number: 42
+
+
+
