@@ -405,6 +405,8 @@ public class Main {
 
 Consumer Interface is used in Java8
 it has two method accept and doThen
+Consumer is used where object is taken as input and some operation is performed on that object without returning any result.
+
 Consumer<String> consumer=(t)->{
        System.out.println(t);
 }
@@ -454,3 +456,7 @@ public static void main(String[] args) {
         System.out.println(productSupplier().get());
     }
 ************************************************
+Predicate Functional Interface is used for Conditional check
+List<Integer> l2=Arrays.asList(1,4,8,9);
+    l2.stream().filter(n->n%2==0).forEach(System.out::println);
+Supplier is used in all context where there is no input but output is expected.
