@@ -76,4 +76,16 @@ public class BiFunction {
 }
 *************************************
 	
-	
+public static void main(String[] args) {
+
+      Map<String,Integer> map = new HashMap<>();
+        map.put("eight", 8);
+		map.put("four", 4);
+		map.put("ten", 10);
+		map.put("two", 2);
+    List<Entry<String,Integer>> l=new ArrayList<>(map.entrySet());
+    Collections.sort(l,(a,b)->a.getKey().compareTo(b.getKey()));
+   l.forEach(e -> System.out.println(e.getKey() + "   " + e.getValue()));
+    map.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(System.out::println);
+
+    }
