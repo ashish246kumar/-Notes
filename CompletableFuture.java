@@ -161,4 +161,212 @@ Second Task completed...........pool-2-thread-1
 
   
 ***************************************************************************************
-  
+  thenApply() and thenAsync()
+************************************************************************************************
+	
+public class Employee {
+
+	 private String employeeId;
+	    private String firstName;
+	    private String lastName;
+	    private String email;
+	    private String gender;
+	    private String newJoiner;
+	    private String learningPending;
+	    private int salary;
+	    private int rating;
+		public String getEmployeeId() {
+			return employeeId;
+		}
+		public void setEmployeeId(String employeeId) {
+			this.employeeId = employeeId;
+		}
+		public String getFirstName() {
+			return firstName;
+		}
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+		public String getLastName() {
+			return lastName;
+		}
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getGender() {
+			return gender;
+		}
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+		public String getNewJoiner() {
+			return newJoiner;
+		}
+		public void setNewJoiner(String newJoiner) {
+			this.newJoiner = newJoiner;
+		}
+		public String getLearningPending() {
+			return learningPending;
+		}
+		public void setLearningPending(String learningPending) {
+			this.learningPending = learningPending;
+		}
+		public int getSalary() {
+			return salary;
+		}
+		public void setSalary(int salary) {
+			this.salary = salary;
+		}
+		public int getRating() {
+			return rating;
+		}
+		public void setRating(int rating) {
+			this.rating = rating;
+		}
+		public Employee(String employeeId, String firstName, String lastName, String email, String gender,
+				String newJoiner, String learningPending, int salary, int rating) {
+			super();
+			this.employeeId = employeeId;
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.email = email;
+			this.gender = gender;
+			this.newJoiner = newJoiner;
+			this.learningPending = learningPending;
+			this.salary = salary;
+			this.rating = rating;
+		}
+		public Employee() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+	    
+
+}
+****************
+	import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class EmployeeDatabase {
+
+	 public static List<Employee> getEmployees(){
+
+		return Stream.of( new Employee(
+				 "88-017-8770",
+			      "Meris",
+			     "Foote",
+			    "mfoote19@dailymotion.com",
+			      "Female",
+			     "TRUE",
+			     "FALSE",
+			       71972,
+			       4),
+				new Employee(
+						"93-205-9935",
+					      "Pietrek",
+					      "Croxall",
+					      "pcroxallu@rambler.ru",
+					      "Female",
+					      "FALSE",
+					      "TRUE",
+					      87379,
+					      5
+						),
+			new Employee(
+					 "58-726-1029",
+					    "Eric",
+					    "Gilhoolie",
+					    "egilhoolieo@salon.com",
+					    "Male",
+					    "TRUE",
+					    "TRUE",
+					    97509,
+					    0
+					),
+			new Employee(
+					 "84-183-9334",
+					    "Ibrahim",
+					    "Leggett",
+					    "ileggettq@delicious.com",
+					    "Female",
+					    "TRUE",
+					    "TRUE",
+					    197211,
+					    1
+					)
+				 
+		 ).collect(Collectors.toList());
+	    }
+}
+***************
+	import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.stream.Collectors;
+
+public class Main {
+	public static void sendEmail(String email) {
+        System.out.println("sending training reminder email to : " + email);
+    }
+
+	public  CompletableFuture<Void> first() throws InterruptedException, ExecutionException {
+		Executor executor=Executors.newFixedThreadPool(5);
+		  CompletableFuture<Void> voidCompletableFuture =CompletableFuture.supplyAsync(() -> {
+			  
+			  return EmployeeDatabase.getEmployees();
+			},executor).thenApplyAsync((employees)->{
+				
+				 System.out.println("fetchEmployee : " + Thread.currentThread().getName());
+				return employees.stream().filter(employee->employee.getNewJoiner().equals("TRUE"))
+				.collect(Collectors.toList());
+			},executor).thenApplyAsync((employees)->{
+				
+			    System.out.println("filter new joiner employee  : " + Thread.currentThread().getName());
+				return employees.stream().filter(employee->employee.getLearningPending().equals("TRUE"))
+				.collect(Collectors.toList());
+			},executor).thenApplyAsync((employees)->{
+				
+	            System.out.println("get emails  : " + Thread.currentThread().getName());
+
+				return employees.stream().map(Employee::getEmail)
+				.collect(Collectors.toList());
+			},executor)
+		   .thenAcceptAsync((emails)->{
+			 
+			   System.out.println("send email  : " + Thread.currentThread().getName());
+				emails.forEach(Main::sendEmail);
+			},executor);
+		 
+		  return voidCompletableFuture;
+		
+	}
+	
+   
+	
+	 public static void main(String args[]) throws InterruptedException, ExecutionException {
+
+		Main m1=new Main();
+		CompletableFuture<Void> future = m1.first();
+		
+        future.get();
+	 System.out.println("********************************");
+		 
+		 
+	    }
+
+}
+***********************
