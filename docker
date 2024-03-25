@@ -7,6 +7,10 @@ docker pull hello-world
 docker pull openjdk
 docker pull openjdk:18
 docker pull python
+*****************************************************************************************************
+C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker build -t spring-boot-docker.jar .
+this is the path  where dockerFileScript is located                    command to build docker image                                         
+***************************************************************************************************
 docker search nginx
  docker run -d openjdk----->to run jdk
 docker ps->to see which container is runnig
