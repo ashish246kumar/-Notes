@@ -12,6 +12,14 @@ C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker build -t sprin
 this is the path  where dockerFileScript is located                    command to build docker image 
 *******************************
 C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker image ls
+***************************************************************************************
+C:\Users\ashis>docker tag spring-docker.jar ashishhkr14791/spring-docker.jar:v1.0
+                              image name        userName/ImageName
+*************************************************************************************
+C:\Users\ashis>docker push ashishhkr14791/spring-docker.jar:v1.0
+to push docker image into docker hub
+
+
 *************************************************************************************************
 C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker run -p 9090:8082 spring-boot-docker.jar
 to run docker image     8082 is the port in the docker file and our application port
