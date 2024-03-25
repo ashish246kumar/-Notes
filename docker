@@ -19,7 +19,7 @@ C:\Users\ashis>docker tag spring-docker.jar ashishhkr14791/spring-docker.jar:v1.
 C:\Users\ashis>docker push ashishhkr14791/spring-docker.jar:v1.0
 to push docker image into docker hub
 C:\Users\ashis>docker pull ashishhkr14791/spring-docker.jar:v1.0
-C:\Users\ashis>docker run ashishhkr14791/spring-docker.jar
+C:\Users\ashis>docker run -p 9090:8082 ashishhkr14791/spring-docker.jar:v1.0
 
 *************************************************************************************************
 C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker run -p 9090:8082 spring-boot-docker.jar
