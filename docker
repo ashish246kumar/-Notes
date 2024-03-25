@@ -11,6 +11,8 @@ docker pull python
 C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker build -t spring-boot-docker.jar .
 this is the path  where dockerFileScript is located                    command to build docker image 
 *******************************
+C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker image ls
+*************************************************************************************************
 C:\Users\ashis\Downloads\springBootDocker\springBootDocker>docker run -p 9090:8082 spring-boot-docker.jar
 to run docker image     8082 is the port in the docker file and our application port
 ***************************************************************************************************
