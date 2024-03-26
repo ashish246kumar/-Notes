@@ -1,0 +1,21 @@
+Map-transform data
+Reduce-Aggregate data(produces single result by combining multiple)
+**********************************************************************************************************************
+                                                         Reduce
+************************************************************************************************************************
+public static void main(String args[]) {
+		 
+	List<Integer> l1=Arrays.asList(10,20,1,4,5);
+	  Integer sum1=l1.stream().reduce(0,(a,b)->a+b);
+	  Integer max1=l1.stream().reduce(0,(a,b)->a>b?a:b);
+	  Optional<Integer> sum2=l1.stream().reduce(Integer::sum);
+	  double avgSalary =EmployeeDatabase.getEmployees().stream()
+	  .filter((employee)->employee.getLearningPending().equalsIgnoreCase("True"))
+	  .map(Employee::getSalary).mapToDouble(i->i).average().getAsDouble();
+	  
+	  System.out.println(avgSalary);
+	  System.out.println(sum1);
+	  System.out.println(max1);
+	  System.out.println(sum2.get());
+	  
+	 }
