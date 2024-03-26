@@ -63,5 +63,29 @@ public static void main(String args[]) {
 	        System.out.println(intersection);
 	        
 	 }
-	 ***************************************************************************
+	 ***********************************************************************************************************************
+		 				COMPARTOR BASED SORTING QYUESTION
+
+	***********************************************************************************************************************
+		  public static void main(String args[]) {
+		 
+		 List<Integer> nums = Arrays.asList(1,2,4,2,3,4,5,6,8,101);
+		 List<String> fruits = Arrays.asList("apple", "banana", "cherry", "coconut", "amla");
+
+//		 Sort the list based on length in asending order
+		 fruits.sort(Comparator.comparing(String::length));
+	        
+	        System.out.println(fruits);
+	        
+	        
+//	        Sort the list of integer in decending order
+	        fruits.sort(Comparator.comparing(String::length).reversed());
+	        nums.sort(Comparator.reverseOrder());
+	        System.out.println(nums);
+	        
+//	        sort the list of string  
+//	        based on the index of the first occurance of "e"  in each string ad print the result
+	        fruits.sort(Comparator.comparing(e->e.indexOf("a")));
+	        System.out.println("fruits with index position sorting"+fruits);
+		 *************************************************************************************************************
      
