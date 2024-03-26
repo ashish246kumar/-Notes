@@ -264,6 +264,42 @@ Avoid using Optional as a parameter in a method
 Avoid using Optional when returning a method’s value
 We should avoid returning a method with an Optional.
 *********************************************
+
+public class OptinalDemo {
+
+	 public static void main(String args[]) {
+		 String[] str=new String[5];
+		 Optional<String> o2=Optional.empty();
+		 Optional<String> o3=Optional.of("h1");
+		 Optional<String> o4=Optional.of("h1");
+		 System.out.println(o3.equals(o4));
+		 str[2]="Geek for geek";
+		 Optional<String> o=Optional.ofNullable(str[2]);
+		 System.out.println(o.isPresent());
+		 System.out.println("Hash code: " + o.hashCode());
+		 o.ifPresent((s)-> System.out.println("Value is present: " + s));
+		 String value =o.orElse("default");
+		 try {
+		 o.orElseThrow(() -> new IllegalStateException("Value is not present"));
+		 }
+		 catch(IllegalStateException e) {
+			 System.out.println(e.getMessage());
+		 }
+		 System.out.println( o.orElseGet(()->{
+			 return "Hello";
+		 }));
+		 
+		 System.out.println("Value: " + value);
+		 List<String> cars = List.of("a","b","a");
+		 cars.stream().filter((s)->s.equalsIgnoreCase("a")).forEach(System.out::println);
+		 cars.stream().filter((s)->s.equalsIgnoreCase("b")).collect(Collectors.toList()).forEach(System.out::println);
+		 cars.stream().filter((s)->s.equalsIgnoreCase("a")).map((n)->n).collect(Collectors.toList()).forEach(System.out::println);
+		 cars.stream().filter((s)->s.equalsIgnoreCase("a")).findFirst().ifPresent(System.out::println);
+	 }
+	 
+}
+
+*************************************************
 optional provides various methods to work with potential values safely, 
 such as isPresent(), get(), orElse(), orElseGet(), orElseThrow(), map(), flatMap(), filter(),
 Avoid using Optional as a ternary operator
