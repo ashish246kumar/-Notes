@@ -16,6 +16,16 @@ show database.
 *****************
 test> use student
 switched to db student
+******************************************************************************
+
+student> db.createCollection('data')
+{ ok: 1 }
+student> show collections
+data
+student> db.data.drop()
+true
+student> db.dropDatabase()
+{ ok: 1, dropped: 'student' }
 
 
 
