@@ -1,0 +1,47 @@
+client want json-----Adapter convert xml to json------server send xml
+**************************************
+package com.nagarro.adaptee;
+
+public interface WeightMachine {
+
+    public double getWeightInPound();
+}
+package com.nagarro.adaptee;
+
+public class WeightMachineForBabies implements WeightMachine{
+
+    @Override
+    public double getWeightInPound() {
+        return 28;
+    }
+}
+********************************
+package com.nagarro.adaptee;
+
+public interface WeightMachine {
+
+    public double getWeightInPound();
+}
+package com.nagarro.adaptee;
+
+public class WeightMachineForBabies implements WeightMachine{
+
+    @Override
+    public double getWeightInPound() {
+        return 28;
+    }
+}
+******************************
+package com.nagarro.main;
+
+import com.nagarro.adaptee.WeightMachineForBabies;
+import com.nagarro.adapter.WeightMachineAdapterImpl;
+public class Main {
+
+    public static void main(String[] args){
+
+        WeightMachineAdapterImpl weightMachineAdapterImpl=new WeightMachineAdapterImpl(new WeightMachineForBabies());
+        System.out.println(weightMachineAdapterImpl.getWeightInKg());
+    }
+}
+*****************************
