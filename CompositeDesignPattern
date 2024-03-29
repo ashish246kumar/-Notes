@@ -1,0 +1,11 @@
+We are goning to create composit design pattern in tree like strcture object creation that is 
+                                                    CEO
+                                                     |
+                                         -------------------------
+                                         |
+                                     Manager
+                                        |
+                                  ---------------
+                                  |             |
+                              Senior developer  Senior Analyst
+
