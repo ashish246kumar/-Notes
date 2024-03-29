@@ -2,3 +2,21 @@ to search on the basis of id
 {"_id": { "$oid": "660459e7efe8eb0301964a6e" } }
 *************
 MongoDb is Schemaless
+****************
+PS C:\Users\ashis> mongod --version
+***********************
+PS C:\Users\ashis> mongod(To Start mongoDb server)
+*********************************************
+C:\Users\ashis>mongosh(To Start mongo shell)
+
+************************
+test> show dbs
+if we crete database and inside database if we not create collection and if we type show dbs then it will not 
+show database.
+*****************
+test> use student
+switched to db student
+
+
+
+
