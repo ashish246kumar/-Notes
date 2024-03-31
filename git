@@ -92,6 +92,9 @@ To delete the feature branch we have to move to the other branch
 PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git branch -d feature2
 Deleted branch feature2 (was 379c001).
 **********
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git push origin feature1
+Enumerating objects: 17, done.
+*******
 
 
 
