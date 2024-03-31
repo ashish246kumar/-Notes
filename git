@@ -74,6 +74,28 @@ staged-->file is ready to be commited (after adding file move to stagged ahed)
 ******
 unmodified--->after commit 
 ****
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git push origin main
+***********
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git branch
+* main
+********************************************
+git branch -M Main(to change branch name)
+************
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git checkout -b feature1
+Switched to a new branch 'feature1'
+****************
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'
+************
+To delete the feature branch we have to move to the other branch
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git branch -d feature2
+Deleted branch feature2 (was 379c001).
+**********
+
+
+
+
 
 
 
