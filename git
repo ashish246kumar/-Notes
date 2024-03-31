@@ -95,6 +95,9 @@ Deleted branch feature2 (was 379c001).
 PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git push origin feature1
 Enumerating objects: 17, done.
 *******
+To compare between fature branch and main branch and currently you are in feature branch.
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git diff main
+********
 
 
 
