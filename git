@@ -98,6 +98,41 @@ Enumerating objects: 17, done.
 To compare between fature branch and main branch and currently you are in feature branch.
 PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git diff main
 ********
+Remote ke changes ko local par lane ke liye git pull karte hai
+used to fetch and download content frome remote repo and immediately update the local repo to match that content.
+abhi hum main branch mai hai. humne feature1 branch me change karke push feature branch remote me kar diya tha aur merge 
+kar diya tha main ke sath. but local ke main branch me change nhi hua tha kuch bhi.Isliye hume local me main branch me 
+jakar pull request karna pada. 
+
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git pull origin main
+******
+After resolving merge conflict
+we have to first do 
+git add .
+git commit -m "add both features"
+git diff main
+git checkout main
+git merge feature1
+git push
+************
+Every commit has commit id 
+we can find by typing git log
+*******
+if we want to undo changes from staging area in the git  (that is after git add . ) we can write
+git reset
+*****
+if we want to undo changes from Commit area (that is after git commit -m "abc" ) we can write
+git reset HEAD~1
+it will back commit to one commit back
+***********
+if we want multiple commit back then we can write 
+git reset hash(every commit has unique hash)
+*********
+if we want to back in the code also from commit area then we can write
+git reset --hard <_commit hash ->
+
+
+
 
 
 
