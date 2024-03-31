@@ -1,5 +1,83 @@
 .A commit records a snapshot of all the changes you've made since the last commit, along with a commit message that describes the changes.
 Commits are essential for tracking the history of your project.
+*******************************************************************************************************************
+local means- our Computer
+remote-github
+***********
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/notes1
+$ ls
+HELP.md  mvnw*  mvnw.cmd  pom.xml  src/  target/
+****************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/notes1
+$ pwd
+/c/Users/ashishkumar18/OneDrive - Nagarro/Desktop/notes1
+***********
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/notes1
+$ git config --global user.name "Kumar14Ashish"
+*********
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/notes1
+$ git config --global user.email "kumar14ashish06@gmail.com"
+******************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/notes1
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=Kumar14Ashish
+user.email=kumar14ashish06@gmail.com
+credential.https://git.nagarro.com.provider=generic
+********************
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DesignPattern\BuilderPattern> git config user.name
+Kumar14Ashish
+*************
+clear-->to clear terminal
+*********
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> ls 
+
+
+    Directory: C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone
+
+
+Mode                 LastWriteTime         Length Name                                                                                             
+----                 -------------         ------ ----                                                                                             
+d-----        31-03-2024     07:38                .idea
+d-----        31-03-2024     07:37                .mvn
+d-----        31-03-2024     07:37                src                                                                                              
+-a----        31-03-2024     07:37            428 .gitignore
+-a----        31-03-2024     07:37            124 Dockerfile
+-a----        31-03-2024     07:37          11598 mvnw
+-a----        31-03-2024     07:37           7797 mvnw.cmd                                                                                         
+-a----        31-03-2024     07:37           1331 pom.xml
+*****************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/notes1
+$ ls -a
+./  ../  .classpath  .gitignore  .idea/  .mvn/  .project  .settings/  HELP.md  mvnw*  mvnw.cmd  pom.xml  src/  target/
+*********
+when we do git status it show four type of message
+untracked file->untracked file that git does not yet track(means woh  file
+jo humne create pheli bar kiya hai aur kabhi commit nhi kiya hai)
+****
+modified-changed file(Woh file jo phele se exist karti hai aur hum usme change kiye hai)
+****
+staged-->file is ready to be commited (after adding file move to stagged ahed)
+******
+unmodified--->after commit 
+****
+
+
+
+***********************************************************************************************************************
 git branch -d <branch_name>` to delete local branch
 To delete a remote branch, use `git push <remote_name> --delete <branch_name>`.
 git push` is used to upload local repository content to a remote repository.
