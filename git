@@ -130,6 +130,16 @@ git reset hash(every commit has unique hash)
 *********
 if we want to back in the code also from commit area then we can write
 git reset --hard <_commit hash ->
+***********
+it will add changes to staging area
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git add .
+******
+it will remove changes from staging area and back to previous in git not on the code
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git restore --staged src/main/java/com/nagarro/springBootDocker/SpringBootDockerApplication.java
+*******
+It will restore the changes in the code also. It will work only when we apply previous command then this command.
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git restore src/main/java/com/nagarro/springBootDocker/SpringBootDockerApplication.java
+*********
 
 
 
