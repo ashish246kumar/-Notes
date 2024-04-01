@@ -131,6 +131,25 @@ public class MBAStudentBuilder extends StudentBuilder{
 
 }
 ******************************
+    package com.nagarro.builder;
+
+public class Director {
+    private StudentBuilder studentBuilder;
+
+    public Director(StudentBuilder studentBuilder) {
+        this.studentBuilder = studentBuilder;
+    }
+
+    public Student createStudent() {
+        return studentBuilder.setRollNumber(23)
+                            .setAge(20)
+                            .setName("John Doe") // Provide a default name or customize as needed
+                            .setSubjects()
+                            .build();
+    }
+}
+
+    *******************
 package com.nagarro.builder;
 
 public class Client {
