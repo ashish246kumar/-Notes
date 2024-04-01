@@ -27,6 +27,67 @@ true
 student> db.dropDatabase()
 { ok: 1, dropped: 'student' }
 
+******************************
+it will import data into products
+***************************************************************************
+C:\Users\ashis> mongoimport E:\mongo\products.json -d shop -c products
+2024-04-01T00:22:09.435+0530    connected to: mongodb://localhost/
+2024-04-01T00:22:09.727+0530    10355 document(s) imported successfully. 0 document(s) failed to import.
+******************
+
+C:\Users\ashis>mongoimport E:\mongo\sales.json -d tshop -c sales --jsonArray
+2024-04-01T09:22:52.722+0530    connected to: mongodb://localhost/
+2024-04-01T09:22:52.741+0530    5 document(s) imported successfully.
+*************************************************************
+To Export from database to json file
+*****************************************************************
+C:\Users\ashis>mongoExport -c student -d student -o E:\mongo\sales1.json
+2024-04-01T09:29:16.275+0530    connected to: mongodb://localhost/
+2024-04-01T09:29:16.291+0530    exported 6 records
+*********************
+delete Query
+************************************************************
+student> db.student.deleteOne({_id:ObjectId("660993746c9fa0b948c7ffa3")});
+{ acknowledged: true, deletedCount: 1 }
+*******
+student> db.student.deleteMany({'age':29});
+{ acknowledged: true, deletedCount: 2 }
+*****************************************************************
+Update Query
+*****************************************************************************
+student> db.student.updateOne({_id:ObjectId("660994816c9fa0b948c7ffa7")},{$set:{age:30,name:"shyam"},});
+student> db.student.updateMany({age:30},{$set:{age:45}});
+student> db.student.updateOne({_id:ObjectId("660994816c9fa0b948c7ffa7")},{$set:{grade:[50,90,75,82,88]}});
+student> db.student.updateOne({_id:ObjectId("660994816c9fa0b948c7ffa7")},{$unset:{grade:1},});
+student> db.student.updateOne({_id:ObjectId("6609966b6c9fa0b948c7ffa8")},{$set:{"grades.math":95}},);
+student> db.student.updateOne({_id:ObjectId("6609966b6c9fa0b948c7ffa8")},{$set:{"grades":{"math":85,"science":92,"history":78}}},);
+**********************************
+To rename the field
+student> db.student.updateOne({_id:ObjectId("660994816c9fa0b948c7ffa7")},{$rename:{name:"FullName"},});
+************************************************************************************************
+To remove a field in the document
+***************************************************************************************************
+
+
+******************************************************************************************
+removing the last element from an array in a document
+student> db.student.updateOne({_id:ObjectId("660994816c9fa0b948c7ffa7")},{$pop:{grade:1},});
+************************************************
+Read operation
+**********************************************************************************
+shop> db.products.find({$and:[{'price':{$gt:100}},{'name':'Laptop Pro'}]});
+db.products.find({'price':{$gt:10},'name':'Laptop Pro'});
+shop> db.products.find({$or:[{'price':{$gt:100}},{'name':'Laptop Pro'}]});
+*******************************************************************
+In MongoDb Compass
+*******************************************************************
+{"$or": [
+    { "price": { "$gt": 100 } },
+    { "name": "Laptop Pro" }
+  ]}
+{"price":{"$in":[129,29]}}
+{"isFeatured":true}
+******************************************************************************
 
 
 
