@@ -1,3 +1,45 @@
 A LocalDate represents a year-month-day in the ISO calendar and is useful for representing a date without a time.
 reprent a date without time
 ***************************************************************************************************************************************************************************
+/ Current date
+LocalDate currentDate = LocalDate.now();
+int year = currentDate.getYear();
+int month = currentDate.getMonthValue();
+int day = currentDate.getDayOfMonth();
+LocalDate newDate = currentDate.withYear(2025).withMonth(5);
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+String formattedDate = currentDate.format(formatter);
+
+// Specific date
+LocalDate specificDate = LocalDate.of(2024, 4, 2); // Year, Month, Day
+
+**************************************************************
+private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+private static final DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
+private static final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("d/MM/yyyy");
+public static void main(String[] args) {
+ //default format
+ System.out.println("Default format of LocalDate = " + LocalDate.now());
+   
+ // The ISO date formatter that formats or parses a date without an
+  // offset, such as '20111203'
+ LocalDate date = LocalDate.now();
+ 
+ System.out.println(date.format(DateTimeFormatter.BASIC_ISO_DATE));
+ 
+ System.out.println(date.format(DateTimeFormatter.ISO_DATE));
+ 
+ System.out.println(formatter.format(LocalDate.parse("16/08/2016", formatter)));
+ 
+ System.out.println(formatter1.format(LocalDate.parse("16-Aug-2016", formatter1)));
+ 
+ System.out.println(formatter2.format(LocalDate.parse("16/08/2016", formatter2)));
+}
+
+Default format of LocalDate = 2018-07-11
+20180711
+2018-07-11
+16/08/2016
+16-Aug-2016
+16/08/2016
+*******************************************************************************************************************************
