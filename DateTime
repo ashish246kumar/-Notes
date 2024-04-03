@@ -43,3 +43,25 @@ Default format of LocalDate = 2018-07-11
 16-Aug-2016
 16/08/2016
 *******************************************************************************************************************************
+ String timeString="23:45:55";
+ LocalTime l=LocalTime.now();
+ LocalTime parsed= LocalTime.parse(timeString);
+ System.out.println(parsed.getMinute());
+ System.out.println(l.minusHours(3));
+****************************************************************************************************************************
+ LocalDateTime localDateTime=LocalDateTime.now();
+
+        DateTimeFormatter  dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+      System.out.println(localDateTime.format(dateTimeFormatter));
+****************************************************************************************************************************
+UTC-->it is time which is same everywhere in the world
+Universal time 
+ZonedDateTime z=ZonedDateTime.now();
+
+        System.out.println(z);
+        System.out.println(z.getZone());
+2024-04-03T12:08:12.866782900+05:30[Asia/Calcutta]
+Asia/Calcutta
++5:30 is saying that it is ahed of UTC by 5:30 hours
+**********************************************************************************************************************
+
