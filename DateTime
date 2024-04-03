@@ -64,4 +64,7 @@ ZonedDateTime z=ZonedDateTime.now();
 Asia/Calcutta
 +5:30 is saying that it is ahed of UTC by 5:30 hours
 **********************************************************************************************************************
+To get all the zone
+  Set<String> l1=ZoneId.getAvailableZoneIds();
+*************************************************************************************************]
 
