@@ -42,6 +42,22 @@ Default format of LocalDate = 2018-07-11
 16/08/2016
 16-Aug-2016
 16/08/2016
+***********************************************************************************************************
+03-Apr-2024 
+***********************************************************************************************************
+LocalDate currentDate = LocalDate.now();
+
+        // Define a custom DateTimeFormatter to format the date as "dd-MMM-yyyy"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+
+        // Format the current date using the custom formatter
+        String formattedDate = currentDate.format(formatter);
+
+        // Print the formatted date
+        System.out.println("Formatted Date: " + formattedDate);
+
+Formatted Date: 03-Apr-2024
+
 *******************************************************************************************************************************
  String timeString="23:45:55";
  LocalTime l=LocalTime.now();
