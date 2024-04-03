@@ -106,6 +106,55 @@ In MongoDb Compass
   }
 }
 ***************************************************************************
+{"$expr":{"$gt":["$price",50]}}
+******************************************************************************
+{"price":{"$eq":600}}
+{"price":{"$lt":600}}
+{"price":{"$nin":[129,39]}}
+******************************
+In the project section of mongodb
+{"_id": 0,price:1}
+{"name": 1,price:1}
+{"name":0}
+
+************************************************************************************************************
+For Embeded document
+************************************************************************************
+{"comments.user":"Grace"}
+*******************************************************************
+{"metadata.views":{"$gt":800}}
+*****************************************
+{"$and":[{"comments.user":{"$eq":"Henry"}},{"metadata.likes":{"$gt":40}}]}
+*********************************
+{"comments.user":{$all:['Alice','Vinod']}}
+******************************************************************
+{
+  "genres": { "$all": ["Fiction", "Mystery"] }
+}
+
+This query will return all documents where the genres array contains both "Fiction" and "Mystery". 
+*****************************************
+$elemMatch ensures that at least one element in the array satisfies both conditions specified inside it (name is "John Doe" and age is greater than 30).
+{"comments":{$elemMatch:{"user":'Alice',"text":'Awesome article!'}}}
+************************************************
+shop> db.products.find({price:{$gt:100}}).explain('executionStats')
+***********************************************************************************
+Indexes in Products
+*****************************************************************************************
+shop> db.products.createIndex({'name':1})
+shop> db.products.getIndexes()
+
+*******************************************************************************************
+shop> db.products.explain('executionStats').find({'name':'Smart Watch'});
+**************************************************************************
+shop> db.products.dropIndex({'name':1})
+**********************************************************************
+Indexes can slow the things down in some condition . condition is if it return huge amount of data
+*********************************************************************************************************************
+That is if totle product is 50000 and it returning 20k to 30k product on some query then it will slow the performance.
+****************************************************************************************************************
+I create indexex of column that is frequently used
+***************************************************************
 
 
 
