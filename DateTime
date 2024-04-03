@@ -67,4 +67,19 @@ Asia/Calcutta
 To get all the zone
   Set<String> l1=ZoneId.getAvailableZoneIds();
 *************************************************************************************************]
+ ZonedDateTime newWorkTime=ZonedDateTime.now(ZoneId.of("America/New_York"));
+        System.out.println(newWorkTime);
+******************************************************
+Instant start=Instant.now();
+//        System.out.println(i.getNano());
+        Instant end=Instant.now();
+        Duration d1=Duration.between(start,end);
+        System.out.println(d1);
+****************************************************
+ LocalDate l1=LocalDate.now();
+       for(int i=0;i<10000;i++);
+       LocalDate l2=LocalDate.of(1990,2,2);
+        Period p1=Period.between(l1,l2);
+        System.out.println(p1);
+***************************************************
 
