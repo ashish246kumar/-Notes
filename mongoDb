@@ -5,6 +5,7 @@ MongoDb is Schemaless
 ****************
 PS C:\Users\ashis> mongod --version
 ***********************
+when first time installed mongodb server create a data folder inside that create  db folder in c drive that is C:\data\db
 PS C:\Users\ashis> mongod(To Start mongoDb server)
 *********************************************
 C:\Users\ashis>mongosh(To Start mongo shell)
