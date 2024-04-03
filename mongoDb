@@ -19,6 +19,7 @@ test> use student
 switched to db student
 ******************************************************************************
 
+
 student> db.createCollection('data')
 { ok: 1 }
 student> show collections
@@ -156,6 +157,51 @@ That is if totle product is 50000 and it returning 20k to 30k product on some qu
 ****************************************************************************************************************
 I create indexex of column that is frequently used
 ***************************************************************
+Grouping in mongoDb compass
+****************************************
+
+In Aggregation Section
+{
+  _id: '$company',
+  totalProducts: {
+    $sum: "$price"
+  }
+}
+****************************
+$Match  in mongodb compass
+{
+
+company: "64c23350e32f4a51b19b9247"
+   
+}
+**************************************************
+Ist findedd price greater than 900
+{
+
+price: {
+  $gt:900
+}
+   
+}
+then grouped on the basis of company 
+{
+  _id: '$company',
+  totalPrice: {
+    $sum: "$price"
+  }
+}
+******************************************************************************************************************************
+{
+  quantity:5
+}
+{
+  _id: '$quantity',
+  priceAvd: {
+    $avg: '$price'
+  }
+}
+************************************************************************************************
+
 
 
 
