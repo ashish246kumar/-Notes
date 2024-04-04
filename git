@@ -182,3 +182,41 @@ returns a clean working directory
 git reset --mixed is used to undo the changes made in the working directory and the staging area
 git merge --abort is used to stop the merge process and return back to the state before merging again
 git clean remove the untracked file from the working directory
+********************************************************************************************************************
+git config --list
+ git config --list command lists all the configuration settings for your Git installation
+This includes settings like user name, email, aliases, and other configurations.
+
+
+Output
+
+user.name=Your Name
+user.email=your.email@example.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+remote.origin.url=https://github.com/username/repository.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+******************************************************************************************************************
+Three Stages of git:
+working Area
+|git add .
+Staging
+|git commit
+Repository
+***********************************
+.gitIgnore file
+********************************
+Inside that we have to type this to ignore file 
+*.log--->this will ignore all the file with the extension log
+
+*****************************************************************************************************************
+latest commit is called head
+head 
+suppose "a" is the first commit then it will point to the head after that we commit b then head  will point to the b 
+*****************************
+If you want your head should point to the particular commit then you should type 
+git checkout <commit-id>
+*********************************************************************
