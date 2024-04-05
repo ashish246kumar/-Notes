@@ -220,3 +220,8 @@ suppose "a" is the first commit then it will point to the head after that we com
 If you want your head should point to the particular commit then you should type 
 git checkout <commit-id>
 *********************************************************************
+git log --oneline
+left most portion is commit id.
+
+***********************************************************************************************************
+git log --graph
