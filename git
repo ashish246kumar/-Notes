@@ -261,3 +261,4 @@ Dropped refs/stash@{0} (adbc0910f53cccbe38dbe2968ee552af0587aeaf)
 
 *************************************************************************************************************
 PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git stash apply 'stash@{2}' 
+
