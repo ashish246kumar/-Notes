@@ -221,7 +221,43 @@ If you want your head should point to the particular commit then you should type
 git checkout <commit-id>
 *********************************************************************
 git log --oneline
-left most portion is commit id.
+b9167f5 (HEAD -> main) Team added
 
+left most portion is commit id.
+b9167f5------->The string "b9167f5" is an example of an abbreviated commit hash
+The full commit hash is a 40-character hexadecimal string, but it's often cumbersome to work with the entire hash
 ***********************************************************************************************************
 git log --graph
+git log --graph command will display the commit history graphically, showing the branching 
+and merging structure of your repository
+**************************************************************
+git Stash:- Sometimes you want to switch the branches, but you are working on an incomplete part of your current project.
+You don't want to make a commit of half-done work. Git stashing allows you to do so.
+ Normally when you switch branch you will commit the code and switch to the new branch.
+If you switch branch without committing. Two things will happen.
+1. Switches to the branch carrying the changes.
+2. Glt will not allow to switch the branch and asks to commit or stash the changes
+The git stash command enables you to switch branches without committing the current branch.
+The stash's meaning is "store something safely in a hidden place." The sense in Git is also the same for stash; 
+Git temporarily saves your data safely without committing.
+*************************************************************************************************************************
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git stash save "modified index2"
+Saved working directory and index state On feature1: modified index2
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git stash list                  
+stash@{0}: On feature1: modified index2
+stash@{1}: On feature1: modified index
+stash@{2}: WIP on main: b9167f5 Team added
+******************************************************************************************************
+        stash
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git stash pop 
+On branch feature1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/main/java/com/nagarro/springBootDocker/SpringBootDockerApplication.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (adbc0910f53cccbe38dbe2968ee552af0587aeaf)
+
+*************************************************************************************************************
+PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git stash apply 'stash@{2}' 
