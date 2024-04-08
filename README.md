@@ -7,7 +7,10 @@ preparedStatement.setString(1, productName);
 preparedStatement.setString(2, brand);
 
 ResultSet resultSet = preparedStatement.executeQuery();
+*****************************************************************************
 
+https://www.jobrunr.io/en/blog/2023-02-20-moving-from-quartz-scheduler-to-jobrunr/
+*************************************
 
 
 Resilence4J circuit breaker
