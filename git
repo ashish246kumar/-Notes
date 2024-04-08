@@ -322,4 +322,8 @@ $ git stash show stash@{1} -p
 $ git stash drop stash@{1}
 
 ****************************************************************************************
+To move to the new branch and apply changes there
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
+$ git stash branch feature3 stash@{0}
+********************************************************************************************************
 
