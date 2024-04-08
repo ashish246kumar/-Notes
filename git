@@ -262,4 +262,64 @@ Dropped refs/stash@{0} (adbc0910f53cccbe38dbe2968ee552af0587aeaf)
 *************************************************************************************************************
 PS C:\Users\ashishkumar18\OneDrive - Nagarro\Desktop\Project\DemoClone> git stash apply 'stash@{2}' 
 **********************************************************************************************************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
+$ git stash apply
+On branch feature1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/main/java/com/nagarro/springBootBestPractice/BestPractice/controller/ProductController.java
+        modified:   src/main/java/com/nagarro/springBootBestPractice/BestPractice/service/ProductService.java
+**************************************************************************************************************
+
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
+$ git reset head --hard
+HEAD is now at 78d307e first Commit
+*********************************************************************
+git stash show  --->ye show karega jo humlogo ne stash kiya hai.
+jaise kis file me changes ki hai.ye apply nhi karega code me ye bas show kis file me changes hua hai. 
+***************************************************************************************************************************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
+$ git stash show
+ .../BestPractice/controller/ProductController.java                      | 1 +
+ .../springBootBestPractice/BestPractice/service/ProductService.java     | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+************************************************************************************************************************
+
+git stash show -p--->ye show bhi karega kiya changes kiya changes kya hai humlogo ne like content me.
+***************************************************************************************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
+$ git stash show -p
+diff --git a/src/main/java/com/nagarro/springBootBestPractice/BestPractice/controller/ProductController.java b/src/main/java/com/nagarro/springBootBestPractice/BestPractice/controller/ProductController.java
+index bf300e3..f60690e 100644
+--- a/src/main/java/com/nagarro/springBootBestPractice/BestPractice/controller/ProductController.java
++++ b/src/main/java/com/nagarro/springBootBestPractice/BestPractice/controller/ProductController.java
+@@ -80,4 +80,5 @@ public class ProductController {
+         log.info("ProductController::getProductByType Execution ended");
+         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
+     }
++
+ }
+diff --git a/src/main/java/com/nagarro/springBootBestPractice/BestPractice/service/ProductService.java b/src/main/java/com/nagarro/springBootBestPractice/BestPractice/service/ProductService.java
+index b0e6ff2..751aa48 100644
+--- a/src/main/java/com/nagarro/springBootBestPractice/BestPractice/service/ProductService.java
++++ b/src/main/java/com/nagarro/springBootBestPractice/BestPractice/service/ProductService.java
+@@ -97,7 +97,7 @@ public class ProductService {
+             return productMap;
+         }
+         catch (Exception ex){
+-            log.error("Error occured while fetching productByType Error message {}",ex.getMessage());
++            log.error("Error Occured while fetching productByType Error message {}",ex.getMessage());
+             throw new ProductServiceBusinessException("Exception occurred while retrieving product grouping by type from database");
+         }
+
+*************************************************************************************************************************
+ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
+$ git stash show stash@{1} -p
+****************************************************
+***********************************************************
+
+$ git stash drop stash@{1}
+
+****************************************************************************************
 
