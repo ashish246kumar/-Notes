@@ -12,6 +12,10 @@ ResultSet resultSet = preparedStatement.executeQuery();
 https://www.jobrunr.io/en/blog/2023-02-20-moving-from-quartz-scheduler-to-jobrunr/
 *************************************
 
+ShedLock Link
+****************************************************
+https://medium.com/adessoturkey/shedlock-with-spring-75beabf913d6#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYjQ5NTE2MmFmMGM4N2NjN2E1MTY4NjI5NDA5NzA0MGRhZjNiNDMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTUyMDY4NjEzNzQ5Njc4MTA3MjMiLCJlbWFpbCI6ImFzaGlzaGhrcjE0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYmYiOjE3MTI1NjQ5MTMsIm5hbWUiOiJBc2hpc2ggS3VtYXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSkVMbktpQ0ozWF9LZlpzZE9IajJpZmphb3dFbTRsWWpZb0E5dkhYT29hSFRRZWl3PXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkFzaGlzaCIsImZhbWlseV9uYW1lIjoiS3VtYXIiLCJpYXQiOjE3MTI1NjUyMTMsImV4cCI6MTcxMjU2ODgxMywianRpIjoiNGQ3MzY0ODZjZjNmMzAyNTQ3ZWZlYWIxM2NiOTUzNjM0YjNmMTJlOCJ9.eDDsa2emBHe4gjwa04cUXJcO63p7i2fTUO_5Z7FDSX0thswHrfPInSNcfPRt3s3TKM2OTbnADfaFjNMVqFUj4Zoi7v3McwQQZJHXAVZv-zfirzRoNEcLK0IZSURcq3_yMW9PZ18ruHA_xYXCHlABZYtg_-BhCOKFHb-w4xuNwf41puYH88_QI5u4yYOfUjjMG4mvSn8_TAOh87xk1FycZ3NvmYasca1OhrRKWAdrY_TBeoPYBhyVJcWlhU0agob4GX_zrFoBOdIhVQblb2I1Jcv3WHHCjbkU-pKIMiz12FPU8kLEJ0zqRucG6HRriF16KVHNU8m0fFKilHIpKM3SqA
+********************************************************************************************************************************************************************
 
 Resilence4J circuit breaker
 
