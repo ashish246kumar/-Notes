@@ -1,0 +1,33 @@
+@EmbededId
+@RepositoryRestResource(exported=false)
+@PathVariable(value='tourId')int tourId
+@RequestParam("customers")Integer customers[]
+@Transactional
+logging-->monitoring,accessing and debuging
+@Runwith(MockitoJunitRunner.class)
+@EnableWebMvc
+************************************************************************************************************************************************************************************
+Add this dependency for swagger
+<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+***************************
+docker images-to view all images
+docker ps -a->to view all the container running or not
+docker stop ec-mysql
+docker start ec-mysql
+***************************************************************************
+flyway-->database migration tool
+<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+***********************************************************************************************************************
