@@ -326,4 +326,11 @@ To move to the new branch and apply changes there
 ashishkumar18@IN-9YZC5S3 MINGW64 ~/OneDrive - Nagarro/Desktop/Project/BestPractice/BestPractice (feature1)
 $ git stash branch feature3 stash@{0}
 ********************************************************************************************************
+Rebashing-->Alternative of merging
+Rebashing a branch update one branch with another 
+by applying commit of one branch on the top of the commit of another branch.
+git rebase is used to cleanup your local commit history
+common places where we use rebase -->clean up your commit before sharing your branch
+pulling changes from another branch without merge.
+**************************************************************************************************************************
 
