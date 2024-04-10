@@ -1,0 +1,61 @@
+package com.nagarro.observerDesignPattern;
+
+public interface Subject {
+    void subscribe(Observer ob);
+    void unSubscribe(Observer ob);
+    void newVideoUpoaded();
+}
+
+**********************************************
+package com.nagarro.observerDesignPattern;
+
+public interface Observer {
+    void notified();
+}
+****************************************
+package com.nagarro.observerDesignPattern;
+
+public class Subscriber implements Observer{
+
+    String name;
+    Subscriber(String name){
+        this.name=name;
+    }
+    @Override
+    public void notified() {
+       System.out.println("new video upload notification");
+    }
+}
+*************************************************************
+package com.nagarro.observerDesignPattern;
+import java.util.*;
+public class YoutubeChannel implements Subject{
+
+    List<Observer> subscriber=new ArrayList<>();
+    @Override
+    public void subscribe(Observer ob) {
+         this.subscriber.add(ob);
+    }
+
+    @Override
+    public void unSubscribe(Observer ob) {
+        this.subscriber.remove(ob);
+    }
+
+    @Override
+    public void newVideoUpoaded() {
+        for(Observer ob:this.subscriber){
+            ob.notified();
+        }
+    }
+}
+*************************************************************************************************************
+public class Main {
+    public static void main(String[] args){
+        YoutubeChannel youtubeChannel=new YoutubeChannel();
+        Subscriber subscriber=new Subscriber("Ak");
+        youtubeChannel.subscribe(subscriber);
+         youtubeChannel.newVideoUpoaded();
+    }
+}
+*******************************************************************************************************************************************************************
