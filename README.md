@@ -5,9 +5,12 @@ String sql = "SELECT * FROM products WHERE product_name = ? AND brand = ?";
 PreparedStatement preparedStatement = connection.prepareStatement(sql);
 preparedStatement.setString(1, productName);
 preparedStatement.setString(2, brand);
+***************************************************************************************
 
 ResultSet resultSet = preparedStatement.executeQuery();
 *****************************************************************************
+https://github.com/gulbalasalamov/bank-loan-application?tab=readme-ov-file
+*******************************************************************************************
 
 https://www.jobrunr.io/en/blog/2023-02-20-moving-from-quartz-scheduler-to-jobrunr/
 *************************************
