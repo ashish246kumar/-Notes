@@ -1,5 +1,9 @@
 Store the kafka  file in c drive only. if we try to store in the other file it  will give the error that file path is too long when we try to strt zookeper server.
 C:\kafka\kafka\bin\windows>zookeeper-server-start.bat ..\..\config\zookeeper.properties------> to start zookeeper server
 C:\kafka\kafka\bin\windows>kafka-server-start.bat ..\..\config\server.properties---->Start Kafka Server / Broker
-
-
+************************************************************************************************************************
+To create topic
+C:\kafka\kafka\bin\windows>kafka-topics.bat --create --topic java --bootstrap-server localhost:9092 --replication-factor 1 --partitio
+ns 3
+Created topic java.
+*************************************************************************************************************************************************************************
