@@ -339,5 +339,13 @@ It will show all the command
 git help add
 It will open the page releated to add command
 ******************************************************************************************
+git diff --->it is used in the git to track the difference between the changes made on the file
+diff command take two input and reflect the difference  between them
+***************************************************************************************************
+git diff-->it will check the difference between the file in the working area and the staging area
+git diff --staged-->it will check the difference between the file in the staging area and the repository area
+git diff head-->it will check the difference between the file in the working area and the repository area
+*****************************************************************************************************
+
 
 
