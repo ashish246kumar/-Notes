@@ -333,4 +333,11 @@ git rebase is used to cleanup your local commit history
 common places where we use rebase -->clean up your commit before sharing your branch
 pulling changes from another branch without merge.
 **************************************************************************************************************************
+ git help --all;
+It will show all the command
+******************************************************************************************************
+git help add
+It will open the page releated to add command
+******************************************************************************************
+
 
