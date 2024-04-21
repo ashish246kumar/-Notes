@@ -7,3 +7,10 @@ C:\kafka\kafka\bin\windows>kafka-topics.bat --create --topic java --bootstrap-se
 ns 3
 Created topic java.
 *************************************************************************************************************************************************************************
+Describe topics
+C:\kafka\kafka\bin\windows>kafka-topics.bat --bootstrap-server localhost:9092 --describe --topic java
+Topic: java     TopicId: gI2J47QdT2qEksslN9kxvQ PartitionCount: 3       ReplicationFactor: 1    Configs:
+        Topic: java     Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+        Topic: java     Partition: 1    Leader: 0       Replicas: 0     Isr: 0
+        Topic: java     Partition: 2    Leader: 0       Replicas: 0     Isr: 0
+***********************************************************************************************************************************************************************
