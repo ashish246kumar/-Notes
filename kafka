@@ -1,0 +1,2 @@
+Store the kafka  file in c drive only. if we try to store in the other file it  will give the error that file path is too long when we try to strt zookeper server.
+C:\kafka\kafka\bin\windows>zookeeper-server-start.bat ..\..\config\zookeeper.properties------> to start zookeeper server
