@@ -2,6 +2,8 @@ Store the kafka  file in c drive only. if we try to store in the other file it  
 C:\kafka\kafka\bin\windows>zookeeper-server-start.bat ..\..\config\zookeeper.properties------> to start zookeeper server
 C:\kafka\kafka\bin\windows>kafka-server-start.bat ..\..\config\server.properties---->Start Kafka Server / Broker
 ************************************************************************************************************************
+C:\kafka\kafka\bin\windows>kafka-server-stop.bat-->to stop kafka server.. use this command on the other termain other than the terminal
+in which kafka server is running
 To create topic
 C:\kafka\kafka\bin\windows>kafka-topics.bat --create --topic java --bootstrap-server localhost:9092 --replication-factor 1 --partitio
 ns 3
