@@ -14,3 +14,40 @@ Topic: java     TopicId: gI2J47QdT2qEksslN9kxvQ PartitionCount: 3       Replicat
         Topic: java     Partition: 1    Leader: 0       Replicas: 0     Isr: 0
         Topic: java     Partition: 2    Leader: 0       Replicas: 0     Isr: 0
 ***********************************************************************************************************************************************************************
+Topics-->
+A stream of message belonging to particular category is called a topic.
+It is logical feed name to whch records are published.
+It is Simlar to a table in a database.(records are considred message here)
+Unique identifier of topic is it name.
+we can create as many topics as we want.
+we can create the topic for finance->this topics contain finance related messagge just like finance table
+sport topic
+******************************************************************************************************************
+kafka cluster-->Kafka Broker-->kafka topics-->partition
+*********************************************************************
+Topics are split into partions. All the message within the partion are ordered and immutable. Each message within a partion 
+has unique id known as offset
+**********************
+Replicas are backup of partion. replicas are never read or write data. they are used to prevent data loss.
+********************************
+producer are application that produces message to the topics within a cluster using the producing Apis. they produce message at topic level or partion level
+****************************************************************************************************
+Consumers are always associated with exactly one consumer group.
+A consumer group is a group of related consumer that perform a task.
+consumer are application tht read data from topics
+*****************************************************************
+Brokers are simple software processes who maintain and manage the published message.
+Also known as kafka servers.
+Brokers also manages the conumer-offsets and are responsible for the delivery of message to the right consumers.
+A set of brokers who are communicating with each other to perform the management and maintanence task are collectively known as
+kafka cluster.
+we can add more broker in a alread runnning kafka cluster without any downtime
+****************************
+Zookeeper-->
+it is used to moniotr kafka cluster and cordinate with each broker
+keeps all the metadata informaion related to kafka cluster in the form of key value pair.
+Metadata include -->Condfiguration information. Health status of each broker. 
+********************************************************************************************************************
+
+
+
