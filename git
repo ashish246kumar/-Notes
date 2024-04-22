@@ -370,5 +370,8 @@ suppose you have done some changes on feature branch and commited that changes. 
 then you should type the command git merge feature.
 here source is the feature and target is the master
 *********************************************************************
+git merge --abort
+it will not merge the changes
+****************************************************************************
 
 
