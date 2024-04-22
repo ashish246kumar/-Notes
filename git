@@ -354,7 +354,12 @@ git cacluate hash using sha1 algo.
 mv channel.txt chaneel.html--->to renaming the file
 after that do --->git add .
 git restore 
-*****************************************************************
+**********************************************************************************************************************************************************
+git branch -m new_branch--->to change the branch name of your current branch
+*******************************************************************************************************************************************************
+git branch -d new_branch-->to delete branch you should be on the other branch not on the new_branch
+
+
 
 
 
