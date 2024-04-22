@@ -30,6 +30,10 @@ C:\kafka\kafka\bin\windows>kafka-console-consumer.bat --bootstrap-server localho
 given the group name for the consumer
 
 ***************************************************************************************************************************
+
+
+C:\kafka\kafka\bin\windows>kafka-topics.bat --create --topic java4 --bootstrap-server localhost:9092, localhost:9093, localhost:9094 --replication-factor 3 --partitions 3
+******************************************************************************************************************
 Multiple producer can happen for same topic
 ******************
 
@@ -75,6 +79,9 @@ Zero down time-->It ensure zero downtime when required number of brokers are pre
 **************************************************************
 It is strongly recomended to run odd no of zookeper cluster
 ***************************************************************************
+Leader will be decided by the partition. suppose there are three partion and two brocker then brocker 1 may be the leader partion 1 and 3 
+and brocker 2 may be the leader of partion 2.
+**************************************************************************************
 
 
 
