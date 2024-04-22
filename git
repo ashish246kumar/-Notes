@@ -371,7 +371,7 @@ then you should type the command git merge feature.
 here source is the feature and target is the master
 *********************************************************************
 git merge --abort
-it will not merge the changes
+it will back the perivous merge means if you have merged some thing by mstake and now you want the previous state before merge then ypu can type this git merge --abort
 ****************************************************************************
 
 
