@@ -346,6 +346,15 @@ git diff-->it will check the difference between the file in the working area and
 git diff --staged-->it will check the difference between the file in the staging area and the repository area
 git diff head-->it will check the difference between the file in the working area and the repository area
 *****************************************************************************************************
+git store the data in the form of key and value. value is nothing but content of file. you give the value and it will calculate 
+a key for it that is nothing but hash.
+**************************************************************************************************
+git cacluate hash using sha1 algo.
+****************************************
+mv channel.txt chaneel.html--->to renaming the file
+after that do --->git add .
+git restore 
+*****************************************************************
 
 
 
