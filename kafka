@@ -48,6 +48,12 @@ it is used to moniotr kafka cluster and cordinate with each broker
 keeps all the metadata informaion related to kafka cluster in the form of key value pair.
 Metadata include -->Condfiguration information. Health status of each broker. 
 ********************************************************************************************************************
+Kafka is 
+Sclable->Horizontal Scaling is done by adding new brokers to the existing cluster.
+Fault tolerence->Kafka cluster can handle failures because of its distributed nature.
+Durable-->Kafka uses "Distributed commit log" which means message persist on a disk as fast as possible.
+Zero down time-->It ensure zero downtime when required number of brokers are present in the cluster
+**************************************************************
 
 
 
