@@ -358,8 +358,17 @@ git restore
 git branch -m new_branch--->to change the branch name of your current branch
 *******************************************************************************************************************************************************
 git branch -d new_branch-->to delete branch you should be on the other branch not on the new_branch
-
-
-
+**************************************
+Suppose you are in the feature branch and you have done some changes on the feature branch and done commit. After that  you moved to the master branch 
+now you want to delete the feature branch when you type the command  git branch -d new_branch  it will give errror, because you have not merged the changes you have done on the 
+feature branch to the master.
+if you still want to delete without merging you should type the command git branch -D new_branch
+****************************************************************************************************************
+Source and target
+Source is the branch you want to merge and target is the branch where you want to merge
+suppose you have done some changes on feature branch and commited that changes. now you want to merge that changes to master. First you need to come to the master 
+then you should type the command git merge feature.
+here source is the feature and target is the master
+*********************************************************************
 
 
