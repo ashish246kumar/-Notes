@@ -33,6 +33,7 @@ given the group name for the consumer
 
 
 C:\kafka\kafka\bin\windows>kafka-topics.bat --create --topic java4 --bootstrap-server localhost:9092, localhost:9093, localhost:9094 --replication-factor 3 --partitions 3
+It will create one topic with three copy . In my case there are three brocker. These brocker will have a copy of the data
 ******************************************************************************************************************
 Multiple producer can happen for same topic
 ******************
