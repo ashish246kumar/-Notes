@@ -73,6 +73,8 @@ Fault tolerence->Kafka cluster can handle failures because of its distributed na
 Durable-->Kafka uses "Distributed commit log" which means message persist on a disk as fast as possible.
 Zero down time-->It ensure zero downtime when required number of brokers are present in the cluster
 **************************************************************
+It is strongly recomended to run odd no of zookeper cluster
+***************************************************************************
 
 
 
