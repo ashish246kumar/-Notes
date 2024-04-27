@@ -92,7 +92,9 @@ public class StudentScoreCalculatorTest {
     }
 }
 ****************************************************************************************************
-E
+Testing for Exception
+***********************************************************************************************
+
 
  public static double validateTransaction(String currency, double amount) {
 
@@ -118,7 +120,8 @@ E
     }
 
 **************************************************************************************************************
-
+Mock, When and ThenReturn with Mockito
+*************************************
 public class BookingManager {
 
     private HotelDao dao;
