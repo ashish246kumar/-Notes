@@ -69,6 +69,98 @@ char[] expected = {'a', 'b', 'c'};
 char[] actual = {'a', 'b', 'c'};
 assertArrayEquals(expected, actual, "The arrays should be equal");
 *******************************************************************************
+public class StudentScoreCalculatorTest {
+
+    private static Stream<Object[]> testValues() {
+        return Stream.of(
+            new Object[]{50, 50, 2500},
+            new Object[]{-10, 50, 1},
+            new Object[]{50, -1, -1},
+            new Object[]{-1, -1, -1},
+            new Object[]{158, 50, -1},
+            new Object[]{50, 150, -1},
+            new Object[]{150, 150, -1}
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("testValues")
+    public void studentScoreCalculator(int mathsScore, int literacyScore, int expectedScore) {
+        StudentScoreCalculator sc = new StudentScoreCalculator();
+        sc.calculateSATScore(mathsScore, literacyScore);
+        Assertions.assertEquals(expectedScore, sc.getSatScore(), "SAT scores should match expected values.");
+    }
+}
+****************************************************************************************************
+E
+
+ public static double validateTransaction(String currency, double amount) {
+
+        if (currencyIsAccepted(currency) && amountIsValid(amount)) {
+            return amount;
+        }
+        return -1;
+    }
+
+    private static boolean currencyIsAccepted(String currency) {
+        if (!acceptedCurrencies.contains(currency)) {
+            throw new IllegalArgumentException("Currency " + currency + " not within accepted currencies list.");
+        }
+        return true;
+    }
 
 
+@Test
+    public void validateTransactionUnacceptedCurrency() {
+        assertThrows(RuntimeException.class, () -> {
+            Cashier.validateTransaction("USD", 10);
+        }, "Expected validateTransaction to throw, but it did not");
+    }
 
+**************************************************************************************************************
+
+public class BookingManager {
+
+    private HotelDao dao;
+
+    public BookingManager(HotelDao dao) {
+        this.dao = dao;
+    }
+
+    public boolean checkRoomAvailability(String roomName) throws SQLException {
+
+        List<String> roomsAvailable = dao.fetchAvailableRooms();
+        return roomsAvailable.contains(roomName);
+    }
+
+}
+
+
+public class BookingManagerTest {
+
+    private HotelDao hotelDaoMock;
+    private BookingManager bookingManager;
+
+    @Before
+    public void setup() throws SQLException {
+
+        hotelDaoMock = mock(HotelDao.class);
+        bookingManager = new BookingManager(hotelDaoMock);
+
+        List<String> availableRooms = Arrays.asList("A");
+        when(hotelDaoMock.fetchAvailableRooms()).thenReturn(availableRooms);
+
+    }
+
+    @Test
+    public void checkAvailableRoomsTrue() throws SQLException {
+        assertTrue(bookingManager.checkRoomAvailability("A"));
+    }
+
+    @Test
+    public void checkAvailableRoomsFalse() throws SQLException {
+        assertFalse(bookingManager.checkRoomAvailability("B"));
+    }
+}
+
+**********************************************************************************************
