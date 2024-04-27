@@ -36,3 +36,39 @@ assertTrue('a' < 'b', () -> "Assertion messages can be lazily evaluated -- "
                 + "to avoid constructing complex messages unnecessarily.");
 
 }
+**********************************************************************************
+Player p1=new Player("Rj");
+Player p2=new Player("Rj");
+assertEquals(p1,p2);
+
+assertEquals--> This method is suitable when you want to confirm that two objects represent the same value or 
+data, even if they are two separate instances.
+***********************************************************************************
+assertNotEquals(p1,p2);--->test two object are not equal using there .equals method
+****************************************************************
+assertSame--> method is used to verify that two references point to the exact same object
+ Object obj1 = new Object();
+        Object obj2 = obj1;  // obj2 points to the same object as obj1
+        Object obj3 = new Object();
+
+        assertSame("Should be the same", obj1, obj2);  // This will pass
+        assertNotSame("Should not be the same", obj1, obj3);  // This will pass
+*****************************************
+  int a = 5;
+        int b = 3;
+        assertTrue(a > b, "a should be greater than b");
+***************************************************************************
+assertNotNull: Checks that an object reference is not null
+******************
+assertTrue checks whether the expression a > b is true. If a is indeed greater than b, the test passes; 
+if not, it fails with the provided message "a should be greater than b."
+*************************
+This assertion is particularly useful when you want to verify that the arrays produced
+by your code match the expected arrays exactly.
+char[] expected = {'a', 'b', 'c'};
+char[] actual = {'a', 'b', 'c'};
+assertArrayEquals(expected, actual, "The arrays should be equal");
+*******************************************************************************
+
+
+
