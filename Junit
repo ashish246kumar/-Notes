@@ -167,3 +167,40 @@ public class BookingManagerTest {
 }
 
 **********************************************************************************************
+
+public class TrainBarriers {
+
+    private PassengerRepository repository;
+    private EmailService emailService;
+
+    public TrainBarriers(PassengerRepository repository, EmailService emailService) {
+        this.repository = repository;
+        this.emailService = emailService;
+    }
+
+    public void passengerEntry(int passengerId){
+
+        repository.registerPassengerOnTrain(passengerId);
+        emailService.notifyPassenger(passengerId);
+    }
+}
+
+public class TrainBarriersTest {
+
+    @Test
+    public void passengerEntry(){
+
+        final int PASSENGER_ID = 3;
+
+        PassengerRepository passengerRepositoryMock = mock(PassengerRepository.class);
+        EmailService emailServiceMock = mock(EmailService.class);
+        TrainBarriers trainBarriers = new TrainBarriers(passengerRepositoryMock, emailServiceMock);
+
+        trainBarriers.passengerEntry(PASSENGER_ID);
+
+        verify(passengerRepositoryMock).registerPassengerOnTrain(PASSENGER_ID);
+        verify(emailServiceMock).notifyPassenger(PASSENGER_ID);
+    }
+}
+********************************************************************************************************************
+
