@@ -203,4 +203,147 @@ public class TrainBarriersTest {
     }
 }
 ********************************************************************************************************************
+Mocks, Stubs and Spies with Mockito
+***********************
+import java.util.List;
 
+public class NewsletterSender {
+
+    private SubscribersDatabase subscribersDatabase;
+    private MessagingEngine messagingEngine;
+
+    public NewsletterSender(SubscribersDatabase subscribersDatabase, MessagingEngine messagingEngine) {
+        this.subscribersDatabase = subscribersDatabase;
+        this.messagingEngine = messagingEngine;
+    }
+
+    public void sendNewsletter(String subject){
+        List<String> emails = subscribersDatabase.getSubscribers();
+
+        if(numberOfSubscribers() == 0){
+            throw new ZeroSubscribersException();
+        }
+        messagingEngine.sendEmail(subject, emails);
+    }
+
+    public int numberOfSubscribers(){
+        return subscribersDatabase.getSubscribers().size();
+    }
+
+    public SubscribersDatabase getSubscribersDatabase() {
+        return subscribersDatabase;
+    }
+
+    public MessagingEngine getMessagingEngine() {
+        return messagingEngine;
+    }
+}
+********
+
+public class NewsletterSenderTest {
+
+    @Test
+    public void constructorAssignsDatabase(){
+
+        MessagingEngine messagingEngine = mock(MessagingEngine.class);
+        SubscribersDatabase subscribersDatabase = new SubscribersDatabase();
+        NewsletterSender newsletterSender = new NewsletterSender(subscribersDatabase, messagingEngine);
+
+        assertEquals(subscribersDatabase, newsletterSender.getSubscribersDatabase());
+    }
+
+    @Test
+    public void numberOfSubscribers(){
+
+        SubscribersDatabase subscribersDatabaseMock = mock(SubscribersDatabase.class);
+        MessagingEngine messagingEngineMock = mock(MessagingEngine.class);
+
+        NewsletterSender sender = new NewsletterSender(subscribersDatabaseMock, messagingEngineMock);
+
+        List<String> subscribersList = Arrays.asList("email1", "email2", "email3");
+        when(subscribersDatabaseMock.getSubscribers()).thenReturn(subscribersList);
+
+        assertEquals(3, sender.numberOfSubscribers());
+    }
+
+    @Test(expected = ZeroSubscribersException.class)
+    public void zeroSubscribersThrown(){
+
+        NewsletterSender newsletterSender = new NewsletterSender(new SubscribersDatabase(), new MessagingEngine());
+        NewsletterSender newsletterSenderSpy = spy(newsletterSender);
+
+        when(newsletterSenderSpy.numberOfSubscribers()).thenReturn(0);
+
+        newsletterSenderSpy.sendNewsletter("SUBJECT");
+
+    }
+}
+*************************************************************************************************************
+@InjectMocks with Mockito 
+*******************************
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class CustomerOrder {
+
+    @Autowired
+    private BreakfastWaiter breakfastWaiter;
+
+    @Autowired
+    private DinnerWaiter dinnerWaiter;
+
+    public void setBreakfastWaiter(BreakfastWaiter breakfastWaiter) {
+        this.breakfastWaiter = breakfastWaiter;
+    }
+
+    public void setDinnerWaiter(DinnerWaiter dinnerWaiter) {
+        this.dinnerWaiter = dinnerWaiter;
+    }
+
+    public List<String> vegetarianBreakfast() {
+        return breakfastWaiter.getVegetarianMenu();
+    }
+
+    public List<String> meatBreakfast() {
+        return breakfastWaiter.getMeatMenu();
+    }
+
+    public List<String> vegetarianDinner() {
+        return dinnerWaiter.getVegetarianMenu();
+    }
+
+    public List<String> meatDinner() {
+        return dinnerWaiter.getMeatMenu();
+    }
+}
+*********************
+**********************************************
+@RunWith(MockitoJUnitRunner.class)
+public class CustomerOrderTest {
+
+    @Spy
+    BreakfastWaiter breakfastWaiter;
+
+    @Spy
+    DinnerWaiter dinnerWaiter;
+
+    @InjectMocks
+    CustomerOrder customerOrder;
+
+    @Test
+    public void testServeVegetarianBreakfast(){
+
+        List<String> expectedBreakfast = Arrays.asList("Apple", "Beans", "Hash brown", "Toast");
+        List<String> actualBreakfast = customerOrder.vegetarianBreakfast();
+        assertThat(expectedBreakfast, is(actualBreakfast));
+    }
+
+    @Test
+    public void testServeMeatDinner(){
+
+        List<String> expectedDinner = Arrays.asList("Calamari", "Roast Chicken", "Sticky toffee pudding");
+        List<String> actualDinner = customerOrder.meatDinner();
+        assertThat(expectedDinner, is(actualDinner));
+    }
+}
