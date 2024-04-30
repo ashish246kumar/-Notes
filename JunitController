@@ -1,4 +1,9 @@
- @PostMapping("/tutorials")
+ @TestInstance-->annotation to change the lifecycle behaviour of the test class.
+ @TestInstance(Lifecycle.PER_CLASS)-->Ensures that no state is shared between test methods. Each method operates on a fresh instance of the class.
+@TestInstance(Lifecycle.PER_METHOD)-->Reduces the overhead of constructing new instances of the test class for each test method, which can be significant 
+if the setup process is costly
+************************************************************************************************
+@PostMapping("/tutorials")
   public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
     try {
       Tutorial _tutorial = tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
