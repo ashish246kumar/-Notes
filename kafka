@@ -83,6 +83,23 @@ It is strongly recomended to run odd no of zookeper cluster
 Leader will be decided by the partition. suppose there are three partion and two brocker then brocker 1 may be the leader partion 1 and 3 
 and brocker 2 may be the leader of partion 2.
 **************************************************************************************
+The replicated group of server is called quoroum.zookeeper server run as leader folower node. If leader fails a new leader 
+is elected.
+************************************************************************************
+Kafka cluster is managed by Zookeeper clutster(Zookeeper cluster have zookeeper node)
+***********************************
+Never no of replication factor should be greater than the no of avilable brocker.Brocker is nothing but a kafka server.
+***********************************************************************
+No of partition we always can increase but we never decrease the no of the partition.
+*****************************************************************************************
+we can move the partition from one brocker to another broker 
+****************************************************
+we can increase the replication factor
+********************************************
+we can change the topic partition
+*******************************
+we can increase the partition 
+********************
 
 
 
