@@ -221,7 +221,39 @@ This acts as a holding area for data before it is successfully delivered.
 **************************************************************************************
 max.block.ms setting determines the maximum amount of time (in milliseconds) that the Kafka producer will wait when trying to send data and the buffer is full. 
 This is the maximum time the producer is blocked before it decides it cannot send data.
+*****************************************
 The linger.ms setting controls how long the Kafka producer waits, hoping that more records will
- arrive to fill up the same batch before sending the batch to the server.
+arrive to fill up the same batch before sending the batch to the server.
 ******************************************************************
+max.request.size limits how large a single data request sent by the Kafka producer can be, measured in bytes.
+When a Kafka producer groups records into batches (as controlled by other settings 
+like batch.size and linger.ms), this setting ensures that the size of those batches doesn't exceed the specified limit.
+ If a batch of records grows too large, 
+it must be split into smaller batches to comply with this setting.
+**************************************************************************************
+Kafka Consumer Config:_
+Bootstrap Server
+client.id
+Key.desarilizer
+value.deseralizer
+group.id
+fetch.min.bytes
+***********************************************************************************
+client.id setting in Apache Kafka is a configuration option for both producers and consumers. 
+Whenever your client sends requests to the Kafka servers, the client.id is included in those requests. 
+On the server side, Kafka can log this ID along with other request details. This makes it easier to trace which application
+ or client made specific requests, especially when multiple clients are interacting with Kafka 
+from the same IP address or port.
+Setting a client.id is especially useful in environments where multiple clients are connected to Kafka, and distinguishing between them in server logs is
+ necessary for maintenance, monitoring, or debugging. 
+*************************************************************************************************
+fetch.min.bytes setting in Apache Kafka is a configuration option used by consumers to specify the minimum amount of data they want to receive 
+from the Kafka broker when making a fetch request. 
+The fetch.min.bytes setting tells the Kafka broker the smallest amount of data that
+ a consumer is willing to accept in response to a fetch request
+: If the available data is less than the specified fetch.min.bytes, the server waits for more data to accumulate, which can increase latency (delay) but reduces the number 
+of times the server needs to respond, thus saving resources.
+The default value is 1 byte, 
+**********************************************************************************
+
 
