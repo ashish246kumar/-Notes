@@ -156,7 +156,65 @@ This method will block until the broker confirms the commit, ensuring reliabilit
 Asynchronous Commit: You can also commit offsets asynchronously using consumer.commitAsync(). 
 This method does not block; it sends the offsets to be committed and immediately returns to allow further processing.
 *****************************************************
-
-
+consumer.poll is about fetching records from Kafka.
+consumer.commit is about acknowledging the successful processing of those records.
+******************************
+When Does Rebalancing Happen?
+A Consumer Joins the Group:
+A Consumer Leaves the Group:
+Partitions Added to a Topic:
+A Partition Goes Offline:
+****************************************
+Rebalancing is crucial for distributing work evenly across a consumer group. Without rebalancing, some consumers might end up doing more work than others, 
+or some partitions might not get processed at all if their assigned consumer fails.
+**************************************
+Serialization is the process of converting an object (which could be any kind of data structure,
+ like a list, a dictionary, or a custom object) into a stream of bytes. This conversion makes 
+it easy to store the object (for example, in a file or a database) or send it over a network to another computer.
+********************
+Responsibilities of the Group Coordinator:
+Handles Rebalancing of Consumers:
+Blocks Data Reads During Rebalancing:
+********************************************************************************************
+connections.max.idle.ms-->
+This setting determines the maximum amount of time (in milliseconds)
+ that a network connection can remain idle (unused) before Kafka decides to close it.
+An idle connection is one where no data is being sent or received.
+*****************************************************************************************
+ACK=0
+ When you set acks to 0, the producer sends the data but does not wait for any confirmation 
+from the server that the data has been received.
+********************
+ACK=1
+With acks set to 1, the producer waits for a basic acknowledgment from the leader (the main server handling that piece of data). The leader confirms it has saved the data,
+ but it doesn't wait for all the follower servers to save it too.
+********************
+Acks=-1 or Acks=all
+What It Means: This setting requires that the leader and all in-sync follower servers confirm that they have received the data.
+******************
+compression.type is used by producers to compress the messages they send. 
+The compression.type configuration specifies how messages should be compressed before they're sent by the producer to the Kafka server. Compression helps reduce the size of the messages, 
+which can save network bandwidth and storage space on the Kafka brokers.
+******************
+Valid Values:
+none: No compression is applied.
+gzip: Uses Gzip for compression, which is effective but might be slightly slower in terms of compression and decompression speed.
+snappy: Provides a good balance between compression rate and speed, making it faster at compressing and decompressing.
+lz4: Similar to Snappy, it's fast but offers a slightly better compression ratio compared to Snappy.
+zstd: This is a newer compression algorithm that offers excellent compression ratios at decent speeds.
+*************************************************************
+Batching Impact: Kafka compresses data in batches. 
+This means that the effectiveness of compression can be influenced by how much data you batch together. 
+Larger batches typically can be compressed more effectively compared to smaller ones,
+ because the compression algorithm works better with more data to analyze.
+***************************
+batch.size setting is an important configuration for producers (the components that send data to Kafka). 
+It determines how data is grouped and sent to the Kafka brokers. 
+The batch.size value specifies the maximum amount of data (in bytes) that can be included in one batch. If you have lots of small messages going to the same partition, 
+they can be grouped together up to this size limit.
+****************************************
+Default: The default value of batch.size is 16384 bytes (which is about 16KB). 
+This is a balanced choice for typical scenarios.
+**************************************************************************************
 
 
