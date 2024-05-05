@@ -216,5 +216,12 @@ they can be grouped together up to this size limit.
 Default: The default value of batch.size is 16384 bytes (which is about 16KB). 
 This is a balanced choice for typical scenarios.
 **************************************************************************************
-
+Buffer Memory: The buffer.memory specifies the total amount of memory (in bytes) that the producer is allowed to use for storing records that are waiting to be sent to the Kafka broker. 
+This acts as a holding area for data before it is successfully delivered.
+**************************************************************************************
+max.block.ms setting determines the maximum amount of time (in milliseconds) that the Kafka producer will wait when trying to send data and the buffer is full. 
+This is the maximum time the producer is blocked before it decides it cannot send data.
+The linger.ms setting controls how long the Kafka producer waits, hoping that more records will
+ arrive to fill up the same batch before sending the batch to the server.
+******************************************************************
 
