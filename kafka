@@ -95,11 +95,68 @@ No of partition we always can increase but we never decrease the no of the parti
 we can move the partition from one brocker to another broker 
 ****************************************************
 we can increase the replication factor
-********************************************
+***********************************************************************************************************
 we can change the topic partition
-*******************************
+**********************************************************************************************************
 we can increase the partition 
-********************
+****************************************************************************************************
+Group leader--> In Kafka, when several consumers come together to form a group (a consumer group) to read data, 
+the first consumer that connects is automatically chosen as the group leader.
+This leader keeps track of all the other consumers that are currently connected as part of the group
+ Whenever a new consumer joins the group or an existing one leaves, the group leader organizes a rebalance. This means the leader reassesses and redistributes the tasks 
+(which parts of the data each consumer should handle) among all current members.
+*************************************************************************************************
+Group cordinator-->In a Kafka system, which is used to handle and store real-time data streams, there are servers known as brokers. 
+Some of these brokers are given a special role called "group coordinators."
+When a consumer (a program that reads and processes data) starts, it first needs to find out who the manager (coordinator) is for its group. 
+It does this by sending a "FindCoordinator" request. 
+Once the consumer knows who the coordinator is, it tells the coordinator that 
+it wants to join the group by sending a "Join Group" request.While the consumer is working, it regularly sends a "Heartbeat" request to the coordinator. 
+This lets the coordinator know that the consumer is still active and working.
+****************************************************************************************************
+5. During the time the rebalancing process is happening,
+ the consumers in that group can't read any messages. They need to wait until the rebalance is complete and they have 
+their new instructions.
+*************************************
+offset-->In Kafka, each message or record in a partition is given a unique number called an "offset". 
+This number helps identify each record uniquely within its partition. 
+***********************************
+Log-end Offset:
+This is the offset of the newest record added to a partition.
+The log-end offset tells you what the current last page (or record number) is.
+************
+Current Offset:
+This offset points to the last record that Kafka has sent to a consumer the last time it asked for data.
+***************************************
+Committed Offset:
+Simple Explanation: When you're consuming records (like reading pages in a book), 
+marking an offset as committed is like telling the system, "I've read up to here."
+************************************************
+Internals when producer send a message-->
+Message:-key:
+payload:"abcd"
+topic
+partition:
+offset:
+timestamp:
+************************************************************
+consumer.poll method is used by Kafka consumers to fetch data from the broker. 
+When you call this method, the consumer reaches out to the Kafka broker and requests any new records that are available since the last poll.
+Request for Records: You specify a timeout when calling consumer.poll(timeout). The consumer waits for the specified duration to receive any new records from the server. The duration can be set based on how responsive you want your consumer to be.
+Batch of Records: The method returns a list of records that can be processed by the consumer. These records are grouped by the partitions they came from, allowing efficient processing.
+Handling Data: Once records are fetched, your application can process them accordingly.
+**********************************
+consumer.commit method is used to manually commit the offsets of records that have been processed.
+ When you commit an offset, you are telling Kafka that the consumer has successfully processed all prior records up to that offset. 
+The committed offset is used as a checkpoint from which the consumer can resume reading in case of a failure or restart.
+***************************
+Types of Commit:
+Synchronous Commit: You can commit offsets synchronously using consumer.commitSync().
+This method will block until the broker confirms the commit, ensuring reliability at the cost of latency and throughput.
+Asynchronous Commit: You can also commit offsets asynchronously using consumer.commitAsync(). 
+This method does not block; it sends the offsets to be committed and immediately returns to allow further processing.
+*****************************************************
+
 
 
 
