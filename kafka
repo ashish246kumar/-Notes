@@ -1,3 +1,4 @@
+
 Store the kafka  file in c drive only. if we try to store in the other file it  will give the error that file path is too long when we try to strt zookeper server.
 C:\kafka\kafka\bin\windows>zookeeper-server-start.bat ..\..\config\zookeeper.properties------> to start zookeeper server
 C:\kafka\kafka\bin\windows>kafka-server-start.bat ..\..\config\server.properties---->Start Kafka Server / Broker
@@ -37,6 +38,22 @@ It will create one topic with three copy . In my case there are three brocker. T
 ******************************************************************************************************************
 Multiple producer can happen for same topic
 ******************
+result.getRecordMetadata().partition()
+kafkaTemplate.send(producerRecord);
+afkaTemplate.sendDefault(key,value)
+spring.kafka.producer.properties.acks=all
+spring.kafka.producer.properties.retries=10
+spring.kafka.producer.properties.retry.backoff.ms=1000
+spring.kafka.producer.bootstrap-servers=localhost:9092,localhost:9093,localhost:9094
+****************************************************
+topics:
+  retry: 'library-events.RETRY'
+  dlt: 'library-events.DLT'
+This defines a Kafka topic intended for retrying messages. 
+If a message fails to process correctly the first time, it can be sent to this "retry" topic to attempt reprocessing.
+topics.dlt: 'library-events.DLT' - This stands for "Dead Letter Topic," which is typically used in messaging systems. If a message cannot be processed successfully after several retries,
+ it might be sent to this "dead letter" topic
+****************************************
 
 Topics-->
 A stream of message belonging to particular category is called a topic.
