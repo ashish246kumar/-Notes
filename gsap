@@ -24,3 +24,10 @@ stagger:1-->ye apply karne se harek h1 element ek ek karke ayga matlab upar wali
 
 
 })
+var tl=gsap.timeline()-->all the thing occur synchronously. Matlab phele box1 chalega then box2 chalega aur humlogo ko delay lagane ki jarrort nhi hai.
+tl.to("#box1",{
+
+})
+tl.to("#box2",{
+}
+)
