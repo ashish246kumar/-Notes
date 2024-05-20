@@ -2,3 +2,25 @@ GSAP-Java Script Animation Library
 Locomative Js-For Somooth scrolling
 Scrolltrigger->work during the scrolling time
 Swiper js->Sliding Animation banane me kam karta hai
+gsap.to(element which you want to animate,{
+x:1000->Move to x axis 1000px
+y:1000->Move to y axis 10000px
+duration:2->it will take 2 sec to move
+delay:1->take 1 sec delay
+rotate:360,-->to rotate it by 360 
+backgroundColor:blue,
+borderRadius:50%,
+scale:1->size of the element is same as the initial. when i set scale to 2 the size of the element become double.value can be (0.5,1,2)
+
+})->
+.to-->is used to move the box from initial to final
+.from-->move from final to initial
+gsap.from("h1",{
+opacity:0,-->element phele nhi dikhi dega 1 sec bad dikhai dega
+duration:1,
+repeat:1->ye do bar repeat chalega.agar -1 dege to infinite time repeat hoga
+yoyo:true->repeat hone ke bad phir wapas ayga.like from starting to final and then final to initial.
+stagger:1-->ye apply karne se harek h1 element ek ek karke ayga matlab upar wali sari property harek h1 element par ek ek karke apply hogi.value can be (-1,1, 0.3)
+
+
+})
