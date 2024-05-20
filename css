@@ -1,0 +1,14 @@
+transform:translate(-50%,-50%)
+white-space:no-wrap-->ek hi line me aa jata hai pura sentence wrap nhi hota hai 
+align-item:center->y axis se center ke liye
+flex-direction:column
+gap:20
+text-transform:
+body{
+overflow-x:hidden-->ye jo x axis me scroller aa raha tha woh nhi ayga
+  
+}
+transform:translateX(-100%);
+**********
+svg-->it is a container
+
