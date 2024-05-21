@@ -64,3 +64,28 @@ pin :true-->to apply this property you need to change the value of trigger from 
 
 }
 })
+*****************
+var path=`"M 10 100 Q 500 100 990 100`
+var finalpath=`"M 10 100 Q 500 100 990 100`
+var string=document.querySelector("#string")
+string.addEventListner("mousemove",function(dets){  -->mousemove matlab jab mouse enter karega string wale area me tab kam chalu hoga
+
+path=`M 10 100 Q ${dets.x} ${dets.y} 990 100`  -->
+gsap.to("svg path",{
+attr:{d:path},--->attribute
+duration:0.3
+ease:"power3.out"
+
+
+})
+})
+string.addEventListner("mouseleave",function(dets){  -->mouseleave matlab jab mouse leave karega string wale area se
+path=`M 10 100 Q 500 ${dets.y} 990 100`  -->
+gsap.to("svg path",{
+attr:{d:finalpath},
+duration:0.8
+ease:"elastic.out(1,0.2)"
+
+
+})
+})
