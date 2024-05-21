@@ -11,4 +11,11 @@ overflow-x:hidden-->ye jo x axis me scroller aa raha tha woh nhi ayga
 transform:translateX(-100%);
 **********
 svg-->it is a container
+********************************
+<svg width="190" height="160" >
+  <path d="M 10 80 Q 95 10 180 80" stroke="black" fill="transparent"/>-->svg image pathata nhi hai bahane ya ghatne par size.
+</svg>
 
+M(10,80)-->starting point of curve
+Q(95,10)-->Middle point of curve
+q(180,80)-->end point of the curve
