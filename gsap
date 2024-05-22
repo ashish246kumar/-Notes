@@ -108,7 +108,29 @@ website
 There is a website "ease visualizer "-->for smothning of the animation
 remix-icon-->to use this use cdn link and paste in the head section
 unsplashed.com
+colorzila extension for picking the color
 ************************
+Here t1 timeline
+var t1=gsap.timeLine();
+t1.to("#full",{
+ right:0,
+duration:0.8
+})
+t1.from("#full h4",{
+x:150,
+duration:0.7,
+stagger:0.28,
+opacity:0
+}
+)
+tl.pause()-->ye animation chalene nhi dega
+menu.addEventListner("click",function(){
+ t1.play();
+})
+cross.addEventListner("click",function(){
+t1.pause();
+})
+******
 
 
 
