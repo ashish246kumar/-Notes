@@ -1,12 +1,13 @@
 transform:translate(-50%,-50%)
 white-space:no-wrap-->ek hi line me aa jata hai pura sentence wrap nhi hota hai 
 align-item:center->y axis se center ke liye
+flex-shrink: 0
 flex-direction:column
 justify-content:center
 text-align:center
 filter:blur(30px)->ye blur kar deta hai element ko
 background-filter:blur(10px)
-
+width-->vw 
 background-color:transparent-->hum log background color ko transparent kar de rahe hai. humlog chae toh background color ke opacity ko bhi kam kar sakte  hai taki pura transparent aur pura color na dikhe kind of translucent.
 gap:20
 background-size:cover-->ye hum jab background-image:url() e image laga raha hai tab. agar humm img tag me image lagate hai toh usme object-fit:cover lagate hai
@@ -31,4 +32,54 @@ Q(95,10)-->Middle point of curve
 q(180,80)-->end point of the curve
 **************************************
 autoprixer-->it is website for making your css code working same for all the browser
+****************************
+one new concept is 
+#box{
+  cursor:pointer
+  position:absolute;
+  width:40%;
+  top:0%;
+  background-color:
+  right:-40%-->hume right -40% isliye diya taki woh chup jaye right side me.-40% isliye diya kyuki width 40% le rakha hai humne.
+               aur hum agar right -40% kar rahe hai toh ye overflow kar dega x direction me. Iska solution hai
+               hum body me overflow-x:hideen laga denge
+  
+}
+***************************************
+var h1=document.querySelector("h1")
+var h1text=h1.textContent()
+var splitedText=h1Text.split("")
+splitedText.forEach(function(elem){
+  clutter+=`<span>${elem}</span>`
+})
+h1.innerHtml=clutter;
+****************************
+  concept
+****************************
+span tag is inline element when we apply on gsap("",{
+  y:100 
+});  it will not create any effeect because y:100 it will take it as a transform:translate(100).but this propery is not applicable for
+  inline element. so what i need to do is make this element inline block like this
+  h1 span(
+    dispaly:inline-block
+    )
+  then it will work
+  **************************************************
+  var h1=document.querySelector("h1")
+var h1text=h1.textContent()
+var splitedText=h1Text.split("")
+  var halfValue=Math.floor(splitedText.length/2)
+splitedText.forEach(function(elem,idx){
+  if(idx<halfValue){
+    clutter+=`<span class="a">${elem}</span>`
+  }
+  else{
+     clutter+=`<span class="b">${elem}</span>`
+  }
+  
+})
+h1.innerHtml=clutter;
+***********************
+
+
 
