@@ -10,6 +10,7 @@ delay:1->take 1 sec delay
 rotate:360,-->to rotate it by 360 
 backgroundColor:blue,
 borderRadius:50%,
+
 scale:1->size of the element is same as the initial. when i set scale to 2 the size of the element become double.value can be (0.5,1,2)
 
 })->
@@ -65,10 +66,14 @@ pin :true-->to apply this property you need to change the value of trigger from 
 }
 })
 *****************
+window.addEventListner("keypress",function(dets){
+
+})
+***************************
 var path=`"M 10 100 Q 500 100 990 100`
 var finalpath=`"M 10 100 Q 500 100 990 100`
 var string=document.querySelector("#string")
-string.addEventListner("mousemove",function(dets){  -->mousemove matlab jab mouse enter karega string wale area me tab kam chalu hoga
+string.addEventListner("mousemove",function(dets){  -->mousemove matlab jab mouse enter karega string wale area me tab kam chalu hoga value can be (click,mouseleave,keypress
 
 path=`M 10 100 Q ${dets.x} ${dets.y} 990 100`  -->
 gsap.to("svg path",{
@@ -90,4 +95,21 @@ ease:"elastic.out(1,0.2)"
 })
 })
 ***************
+main.addEventListner("mousemove",function(dets){
+   gsap.to(cursor,{
+x:dets.x,
+y:dets.y
+ease:"back.out"
+})
+})
+*******************************
+website
+******************************
+There is a website "ease visualizer "-->for smothning of the animation
+remix-icon-->to use this use cdn link and paste in the head section
+unsplashed.com
+************************
+
+
+
 
