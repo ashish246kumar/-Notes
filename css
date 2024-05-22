@@ -2,8 +2,18 @@ transform:translate(-50%,-50%)
 white-space:no-wrap-->ek hi line me aa jata hai pura sentence wrap nhi hota hai 
 align-item:center->y axis se center ke liye
 flex-direction:column
+justify-content:center
+text-align:center
+filter:blur(30px)->ye blur kar deta hai element ko
+background-filter:blur(10px)
+
+background-color:transparent-->hum log background color ko transparent kar de rahe hai. humlog chae toh background color ke opacity ko bhi kam kar sakte  hai taki pura transparent aur pura color na dikhe kind of translucent.
 gap:20
+background-size:cover-->ye hum jab background-image:url() e image laga raha hai tab. agar humm img tag me image lagate hai toh usme object-fit:cover lagate hai
+background-position:center
 text-transform:
+position:fixed -->ye kisi element par lagane se harek element page par ane lagta hai jab hum scroll karenge.jabki absolute kisi ek page ke liye hota hai.
+i tag me font-size laga sakte bada karne ke liye
 body{
 overflow-x:hidden-->ye jo x axis me scroller aa raha tha woh nhi ayga
   
@@ -21,3 +31,4 @@ Q(95,10)-->Middle point of curve
 q(180,80)-->end point of the curve
 **************************************
 autoprixer-->it is website for making your css code working same for all the browser
+
