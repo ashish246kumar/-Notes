@@ -6,6 +6,11 @@
 logging-->monitoring,accessing and debuging
 @Runwith(MockitoJunitRunner.class)
 @EnableWebMvc
+***************************************************************************************
+@Metrics annotation helps you track these kinds of statistics automatically
+@Metrics annotation is used to collect and monitor metrics about your application's performance.
+Metrics are important because they help you understand how well your application is running,
+whether it's fast or slow, and how often certain actions are happening
 ************************************************************************************************************************************************************************************
 Add this dependency for swagger
 <dependency>
@@ -33,3 +38,13 @@ flyway-->database migration tool
 ***********************************************************************************************************************
 localhost:9191/actuator                      localhost:9191/actuator/info
 **********************************************************************************************************************************
+CompletableFuture.runAsync(() -> {
+    log.info(">> Publishing event details to topic - {} for lead - {}", this.eventTopic, eventTrackerRequest.getLeadId());
+    this.kafkaService.sendMessage(this.eventTopic, eventTrackerRequest);
+}).whenComplete((result, ex) -> {
+    if (ex != null) {
+        log.error("Failed to publish message. error - {}", ex.getMessage());
+    }
+});
+
+*******************
