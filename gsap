@@ -131,6 +131,30 @@ cross.addEventListner("click",function(){
 t1.pause();
 })
 ******
+window.addEventListner("wheel",function(dets){
+  if(dets.deltaY>0){
+
+    console.log("seedha scrolling")
+   gsap.to(".marque",{
+ transform:'translateX(-100%)',
+ duration:2,
+ repeat:-1,-->ye property lagane se animation hamesa chalta rahega
+ ease:"none"
+ 
+ })
+  }
+    else{
+
+ gsap.to(".marque",{
+ transform:'translateX(100%)',
+ duration:2,
+ repeat:-1,-->ye property lagane se animation hamesa chalta rahega
+ ease:"none"
+ 
+ })
+      console.log("ulta scrolling")
+    }
+})
 
 
 
