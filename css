@@ -1,9 +1,13 @@
 transform:translate(-50%,-50%)
 white-space:no-wrap-->ek hi line me aa jata hai pura sentence wrap nhi hota hai 
 align-item:center->y axis se center ke liye
-flex-shrink: 0
+flex-shrink: 0--->
 flex-direction:column
 justify-content:center
+.content{
+  height:calc(100%-100px)
+  width:100%
+}
 text-align:center
 filter:blur(30px)->ye blur kar deta hai element ko
 background-filter:blur(10px)
@@ -79,7 +83,52 @@ splitedText.forEach(function(elem,idx){
   
 })
 h1.innerHtml=clutter;
-***********************
+**********************************************************************************
+Media query
+************************************************************************************
+  @Media(width<=400px){                     |   @Media(max-width:400px){ 
+  body{                                     |   maxwidth means upto matlab 400 ya 400 se less
+    background-color:green   same as
+  }
+  }
+  
+******************
+  @Media(orientation:portrait){    or landscape  |pprtrait means jab apki height width se jayda ho 
+*************
+   @Media(min-width:200px){
+   body{                                    
+    background-color:green   same as
+  }
+  -->iska matlab starting from 400 px se ho toh ye wala property apply kar do
+*****************************
+ @media  (min-width:400px) and (max-width:600px){
+  body{
+    backgroundColor:green
+  }
+}-->400 se 600 px ke bich me hoga toh green color apply ho jayga
+    ***********************
+@media screen and (max-width:1024px){
+.container{
+  flex-direction:column;
+  }
+.gallary{
+  width:100%
+  }
+   .nav i{
+     display:none;
+     flex-wrap:800
+   }
+                       
+  }
 
-
-
+*******************************
+window.addEventListner("wheel",function(dets){
+  if(dets.deltaY>0){
+    console.log("seedha scrolling")
+  }
+    else{
+      console.log("ulta scrolling")
+    }
+})
+****************
+use section tag it is seo friendly
