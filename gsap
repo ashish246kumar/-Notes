@@ -155,7 +155,25 @@ window.addEventListner("wheel",function(dets){
       console.log("ulta scrolling")
     }
 })
+**********
+To use gsap in react
+npm install @gsap/react
+***************************
+useGSAP(()=>{
+  gsap.to(".box",{
 
-
+})
+})
+**************
+const gsapRef=useRef();
+useGSAP(()=>{
+gsap.to(gsapRef.current,{
+   x:1500,
+  duration:2,
+  delay:1
+  rotate:720
+})
+})
+************
 
 
