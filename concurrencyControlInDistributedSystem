@@ -1,0 +1,6 @@
+Synchorinzed keyword is not helpful in distributed system.
+Distributed Concurrency control-->
+optimistic Concurrency control, Pessimistic concurrency control---->Transaction help us to achieve Integrity. Means it help to avoid Inconsistency in our database.
+  exclusive lock means ->agar koi exclusive lock liya hua hai then no other can take any other lock beacause exclusive lock lene ke bad read write dono nhi ho sakta.
+  shared lock-->these lock purpose is to read from db.
+  
