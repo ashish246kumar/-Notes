@@ -1,0 +1,20 @@
+OAuth-stand for open Authorization.It is Authorization framework. Enable secure third party access to user protected data.
+4 imp roles or Actors involved in it.
+Resource owner, Client, Authorization, Resource hosting server.
+Resource owner-->hum hote hai jiska gmail Account hota ya facebook Account hota hai
+Client--->gmail ya facebook hota hai
+Authorization server-->Gmail Authorization server
+Authorization Grant types-->Mechanism used by the client to obtain access token.There are five way of taking token(Authorization code grant,Implict grant,Resource owner 
+Password credentional grant, Client credtional grant, Refresh token grant)
+a                       b                           c                         d
+Resource Owner      Client(Insta)           Gmail Authorization Server   Gmail Resource Server
+                   
+                    | 1)1Registration--c->
+                    | 2)client Id And<--c---
+                    |    secret
+3)sign in using--b-->   4)Redirect Owner to ----c-->
+                         Authorization server
+Gmail
+                                       5)Owner Authenticaticate And Provide Consent
+                     6)Provide Authorization<----c----
+                        code
