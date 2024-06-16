@@ -6,6 +6,9 @@ PreparedStatement preparedStatement = connection.prepareStatement(sql);
 preparedStatement.setString(1, productName);
 preparedStatement.setString(2, brand);
 ***************************************************************************************
+https://www.linkedin.com/pulse/unique-id-generation-distributed-systems-yeshwanth-n-msb0c/?trackingId=8%2F3RhGhHQmuXVfn6n%2BVQPw%3D%3D
+
+***********************************************************************
 
 ResultSet resultSet = preparedStatement.executeQuery();
 *****************************************************************************
