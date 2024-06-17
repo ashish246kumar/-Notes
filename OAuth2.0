@@ -18,3 +18,22 @@ Gmail
                                        5)Owner Authenticaticate And Provide Consent
                      6)Provide Authorization<----c----
                         code
+                    7)Request token using Authorization--c-->
+                      code
+                    8)Provide token And refresh<----c------
+                     token
+                    9)Requested Protected Owner Data---d---->
+                      using token
+                                                                   10)Validate token<--dc---
+                                                                    11)Valid or Invalid-->
+                                                                    12)If valid token provide the data<-----db---- 
+                                                                         else 4xx error thrown
+                  13) Sign in sucessful orFailure<---ba--
+
+
+
+**********
+Bearer-->Token type. It is a security mechanism and it means client should add token in authorization header. Whenever it want to access protected resource.
+Token value-->It can be either using jwt or plain string
+
+                      
