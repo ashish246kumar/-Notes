@@ -16,4 +16,6 @@ the applications (clients) they secure. Keycloak can host multiple realms.
 ************
 A client in Keycloak is an entity that can request Keycloak to authenticate a user. Clients can be applications or services that use Keycloak to handle user authentication.
 ********************************
+http://localhost:8080/realms/keycloack-demo/.well-known/openid-configuration
+*************
 
