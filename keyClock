@@ -1,0 +1,19 @@
+keyClock is used with microservices and apiFirst architecture.
+keyClock main feature:
+single sign on and single logout
+single signon keyclock support both openId connect. which is an identity layer build on the top of oAuth2.0. 
+it enable user to authenticate once and gain access to multiple application without needing to login again and then we have identity brokering and social login so kicklog
+can interface with external identity provider allowing Aid to act as identiy broker it also support social login like google, facebook, Twitter so and so forth and making it 
+user to authenticate using there existing  social media account and then we have user federation so kicklog can interface with existing user database.
+keyClock support fine grained Authorization services,role based access control. 
+
+************
+Terms in keyClock-->
+Realm-->it is way to isolate and manage a set of user roles  client and group. It is essentially a security domain that manages a group of user there credtional roles and
+group. so each realm has it own dedicated setting like login policies token user registration etc.
+a realm is a central concept that refers to a space or domain that contains users, credentials, roles, and groups. Realms manage and isolate the data and configuration of 
+the applications (clients) they secure. Keycloak can host multiple realms.
+************
+A client in Keycloak is an entity that can request Keycloak to authenticate a user. Clients can be applications or services that use Keycloak to handle user authentication.
+********************************
+
