@@ -18,4 +18,16 @@ A client in Keycloak is an entity that can request Keycloak to authenticate a us
 ********************************
 http://localhost:8080/realms/keycloack-demo/.well-known/openid-configuration
 *************
+to go to the keyCloack admin console-->localhost:8080
+********************
+http://localhost:8080/realms/keycloack-demo/protocol/openid-connect/token
+to generate token throgh postman:
+in the body-->x-www-form-urlencoded
+grant_type:password
+client_id:
+username:
+password:
+*****************************************
+
+
 
