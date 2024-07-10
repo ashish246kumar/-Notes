@@ -37,4 +37,48 @@ management.metrics.web.client.requests-metrics-enabled=true
 this property enable the collections of metrics for http client request made using restTemplate or webClient. these metrics can include request count sucess and failure
 rates response time and more
 *****************
+management.metrics.web.client.requests-metrics.request-mapping-name=true
+When this property is enabled, the metrics collected for web client requests will include the request mapping names. 
+This means that metrics will be labeled with the names of the mappings (e.g., the names of the methods or endpoints) that are handling the requests.
+*************************************************************
+By default, when you enable web client request metrics (management.metrics.web.client.requests-metrics-enabled=true), the collected metrics might look something like this:
 
+http.client.requests.count{uri="/api/users",status="200"}
+http.client.requests.count{uri="/api/orders",status="200"}
+When you enable the request-mapping-name property (management.metrics.web.client.requests-metrics.request-mapping-name=true), the metrics collected will include the request mapping names. 
+With request-mapping-name enabled, the metrics might now look like this:
+
+http.client.requests.count{uri="/api/users",status="200",method="GET",name="getUsers"}
+http.client.requests.count{uri="/api/orders",status="200",method="GET",name="getOrders"}
+*********************
+@RestController
+@RequestMapping("/api")
+public class ApiController {
+
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        // Implementation to fetch users
+    }
+*************************************
+metrics.exception.status.map = { 'ServiceUnavailableException':'503', 'NotFoundException':'404', 'ValidationException':'400', 'FeignException.NotFound':'300','FeignException.BadRequest.':'200', 'ServiceException': '500', 'NullPointerException': '500', 'IndexOutOfBoundsException': 'IOBE'}
+ When an exception is thrown in your application, Micrometer will collect a metric for that exception.
+By providing the metrics.exception.status.map configuration, you're telling Micrometer how to map those exceptions to HTTP status codes,
+which can be useful for monitoring and reporting purposes.
+*****************************************************************************************************************************************************
+http::localhost:8080/actuator->to access actuator endpoint
+http::localhost:8080/actuator/prometheus
+**********
+to pull prometheus server
+docker pull prom/prometheus
+docker image ls
+to run prometheus server
+docker run -p 9090:9090 -v (path of the prometheus.yaml file) prom/prometheus
+************
+docker run -d --name=grafana88 -p 3000:3000 grafana/grafana
+***************************
+
+
+**********************************
+
+
+ 
