@@ -1,0 +1,40 @@
+ Micrometer provides a simple facade to integrate actuator metrics with external monitoring systems and it allowing us to instrument your JVM-based application
+
+* It supports several monitoring systems like Netflix Atlas, AWS Cloudwatch, Datadog, InfluxData, SignalFx, Graphite, Wavefront, Prometheus etc.
+***********************************************************************************************************************************************************
+ * Prometheus is an open-source monitoring system that was original built by SoundCloud. It consists of the following core components -
+
+* A data scraper that pulls metrics data over HTTP periodically at a configured interval.
+
+A time-series database to store all the metrics data.
+***********************************************************************************************************************************************************
+Grafana
+* A simple user interface where you can visualize, query, and monitor the metrics.
+ Grafana allows you to bring data from various data sources like Elasticsearch, Prometheus, Graphite, InfluxDB etc, and visualize them with beautiful graphs.
+
+* It also lets you set alert rules based on your metrics data. When an alert changes state, it can notify you over email, slack, or various other channels.
+***********************************************************************************************************************************************************
+<dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-prometheus</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+*********************
+Actuator-config
+management.endpoints.web.exposure.include=metrics,info,health,prometheus
+or
+management.endpoints.web.exposure.include=*;
+********
+we need to create promethus.yaml file for running the promethous server.we can run the promethus server by first pulling the promethous server image fro docker th
+******************************
+management.metrics.web.client.requests-metrics-enabled=true
+this property enable the collections of metrics for http client request made using restTemplate or webClient. these metrics can include request count sucess and failure
+rates response time and more
+*****************
+
