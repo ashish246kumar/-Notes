@@ -63,6 +63,38 @@ Have you ever done some big blunder?
 *************
 how will you convince your teammate in your ideas
 *****************
+what is your current project and what is your roe and responsebility
+we are taking the requirement from the client and after understanding the requirement it is assigned by understanding the actual reqirement.we were having the team who is
+understanding the requirement and we were assigned with a user story. we are taking the story and for that sprint basically we were having the responsebility to complete te sory 
+with in that sprint.
+*********
+what changes come in date and time api in java8
+LocalDateTime
+************
+what are the predefined function interface in java8 explain it
+
+*********************
+String s=there is a tree and tree has a leaves and leaves are green.
+Just count how many word that are reppeated. 
+e.g 
+tree-2
+leaves-2
+String[] str=s.split(" ");
+List<String> res=new ArrayList<>();
+for(String s:str){
+  res.add(s);
+}
+final Map<String,Integer> resMap=res.stream().collect(Collectors.groupingBy(Function.identity)
+**************
+why are you using map.entrySet().stream() that is why are you using entrySet
+******************
+what are the changes comes in HASHMap in java8.
+*************
+what is meaning of threshhold value in java 8? can you explain with the help of java8
+
+********************
+
+
 
 
 
