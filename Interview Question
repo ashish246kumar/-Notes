@@ -91,6 +91,10 @@ why are you using map.entrySet().stream() that is why are you using entrySet
 what are the changes comes in HASHMap in java8.
 *************
 what is meaning of threshhold value in java 8? can you explain with the help of java8
+Shift all the  the 1 to the left 
+Array a={1,2,1,2,1,2,1,2}
+How we are handling the custom exception?
+
 
 ********************
 
