@@ -1,0 +1,78 @@
+Q)Not say thats all from when you introduce yourSelf.Insted say thank you so much
+Q)what is the diffrence between @Service annotation @Component annotation and @Repository annotation
+service we are using as a service layer and repository layer and these all are sterotype annotation
+@Component i put on a class that take a part in dependency registration . if i put on a class it will be register into class path and application context and all those ioc container
+will be peak those bean from there because i have put those @Anotation .
+****************************
+can you tell difference between different type of modifier  (pubic,private,default,protected)
+**************************************
+HashMap is a part of collection framework and it is implemetation of Map interface.It bring uniqueness.key can not be duplicate . key and value can be object or literal.
+********************
+Java 8 feature . Comparable and comparartor, functional Interface, lambda expression list.
+***********************
+oops concept , exception handling, multithreading. Internal working of hashMap, Hashset, arraylist vs linkedList. Java8 feature stream api.
+spring dependency injection ,annotation, bean scope, lifeCycle
+database connection-hibrenate jpa mapping 
+database- sql
+microservice vs monolithichs| how microservices communicate with each other. how if in one microservice failure come how you can handle.
+dsa-array and string->two string (s1 is substring of s2 or not). Palindromic sequence. Sorting algo . sum of maximum subarray. 
+stack, quueue
+string immutablity
+what is anagram and write anagram code
+find the missing no from the unsotedlist.
+sort the custom object using java 8
+Object class & its method available
+difference between sleep and wait
+equals hashcode contract
+difference between hashset and arraylist
+write a api to retrive user data based on the userId
+Autowire these 2 userName & userPassword  and explain this in terms of dependency injection
+Implement two resttemplate with timeout 30 and 50 s
+what is cyclic dependency and how to resolve this in spring boot
+how to extract unique key from json object and return type should be string
+******************
+Implemet the code for comparable and comparator
+how to handle and manage exception
+Rabbitmq and kafka
+how will you handle bulk of message using rabbit mq
+If your queue size limit is reached what will happen next?
+If your queue is down how will the message be processed
+what collection will you use to access list of integer
+how do you do logging within your project?
+what is concurrent exception and how you fix it.
+design patteren->singleton,
+If there is multithreaded env, how will you achieve synchronisation
+why cache thread pool is used?
+******************************
+Configuration setup to deploy a service
+how to make a hashmap synchronised?
+how to count a occurance of chaeracter using stream api
+unit test case?
+how do you optimise test coverage.
+Garbage collecction
+how to make object unreference for garbaje collection
+*****************************************************
+what challanges did you face in project?
+what kind of step you take to solve the issue?
+how do you implemet test coverage did you maintain
+*****************************
+do you also do deployment
+what step to take in case the pipeline fails
+*************************
+Have you ever done some big blunder?
+*************
+how will you convince your teammate in your ideas
+*****************
+
+
+
+
+
+
+**********
+
+
+
+*******************************************
+
+
