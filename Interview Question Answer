@@ -59,4 +59,41 @@ HttpStatus.FORBIDDEN
 always use this in controller
  return ResponseEntity.ok()
 ********************************************************************************
+Q)what is meaning of threshhold value in context of hashMap
+ the threshold value is a value that determines when the HashMap needs to resize itself.
+**
+Capacity: This is the number of buckets in the HashMap. It defines the initial size of the internal array used to store entries.
+**
+Load Factor: This is a measure of how full the HashMap is allowed
+ to get before its capacity is automatically increased. The default load factor is 0.75, 
+which provides a good balance between time and space costs.
+*******
+When the number of entries in the HashMap exceeds the threshold, the HashMap resizes itself by doubling its capacity and rehashing all of its entries into the new internal array.
+When you create a HashMap without specifying the capacity, it defaults to 16.
+threshold = capacity * load factor
+           = 16 * 0.75
+           = 12
+**********
+In Java 8, significant changes were made to the HashMap to improve performance, particularly in handling hash collisions. The major change is the introduction of balanced trees (specifically, red-black trees) for buckets with a high number of collisions. 
+**********
+Before Java 8:HashMap was optimized to handle cases where many keys have the same hash code (i.e., hash collisions). When multiple entries hash to the same bucket (i.e., collision), they are stored in a linked list. As the number of collisions increases, the time complexity for operations like get and put degrades to O(n) in the worst case.
+Java 8: To address this, Java 8 introduces a threshold for converting a linked list to a balanced tree (red-black tree) within a bucket. This is known as the treeification threshold, which is set to 8 by default.
+Impact: When the number of entries in a single bucket exceeds this threshold, the linked list is converted to a red-black tree, reducing the time complexity for operations in that bucket to O(log n).
+************
+java 8 added several useful methods to the Map interface, which HashMap implements. Some of these methods include:
+
+V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)
+V computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)
+************
+ Q)why are you using map.entrySet().stream() that is why are you using entrySet
+When you need to operate on both the keys and the values of the map entries, entrySet() provides an efficient way to do so
+Map<String, Integer> studentScores = new HashMap<>();
+        studentScores.put("Alice", 85);
+        studentScores.put("Bob", 60);
+Map<String, Integer> filteredScores = studentScores.entrySet().stream()
+                .filter(entry -> entry.getValue() > 70)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+******************************************
+
+
 
