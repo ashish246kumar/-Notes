@@ -1,0 +1,61 @@
+How do we handle custom Exception in java
+1)First, we create a custom exception class by extending the Exception class or Extending a Runtime Exception
+public class CustomException extends Exception {
+    public CustomException() {
+        super();
+    }
+}
+2)Then in the code, we can throw the custom exception using the throw keyword.
+public void someMethod(String param) {
+        if (param == null) {
+            throw new CustomRuntimeException("Parameter cannot be null");
+        }
+        // Additional logic
+    }
+3)Then Use try-catch blocks to handle the exception appropriately.
+ try {
+            service.someMethod(null);
+        } catch (CustomRuntimeException e) {
+            System.err.println("Caught custom runtime exception: " + e.getMessage());
+            // Handle the exception (e.g., logging, user notification)
+        }
+**************
+you can use the @ControllerAdvice annotation to handle exceptions globally across all controllers. 
+Custom exceptions provide meaningful names and messages, making it easier to understand the type of error that occurred.
+Getter
+@Setter
+public class APIError {
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+  private LocalDateTime timestamp;
+
+  private Integer status;
+  private HttpStatus error;
+  private String message;
+APIError(
+      final HttpStatus status, final String message, final HttpStatus error, final Throwable ex) {
+    this();
+    this.error = error;
+    this.status = status.value();
+    this.message = message;
+  }
+}
+@ControllerAdvice
+@Slf4j
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class GenericExceptionHandler {
+private ResponseEntity<Object> buildResponseEntity(final APIError apiError) {
+    return new ResponseEntity<>(apiError, apiError.getError());
+  }
+@ExceptionHandler(LeadNotFoundException.class)
+  protected ResponseEntity<Object> handleLeadNotFoundException(final LeadNotFoundException ex) {
+    MetricsUtil.increment(ex.getMetricName(), MetricType.TOTAL_FAILURE_COUNT);
+    final APIError apiError =
+        new APIError(HttpStatus.NOT_FOUND, ex.getMessage(), HttpStatus.OK, ex);
+    return buildResponseEntity(apiError);
+  }
+}
+HttpStatus.FORBIDDEN
+always use this in controller
+ return ResponseEntity.ok()
+********************************************************************************
