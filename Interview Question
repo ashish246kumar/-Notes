@@ -1,4 +1,4 @@
-Q)Not say thats all from when you introduce yourSelf.Insted say thank you so much
+Q)Not say thats end from my side when you introduce yourSelf.Insted say thank you so much
 Q)what is the diffrence between @Service annotation @Component annotation and @Repository annotation
 service we are using as a service layer and repository layer and these all are sterotype annotation
 @Component i put on a class that take a part in dependency registration . if i put on a class it will be register into class path and application context and all those ioc container
