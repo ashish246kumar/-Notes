@@ -1,0 +1,111 @@
+
+
+import feign.Request;
+import feign.Response;
+import feign.codec.ErrorDecoder;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Slf4j
+public class CustomErrorDecoder implements ErrorDecoder {
+  private static final int MAX_RETRIES = 3;
+  private final ErrorDecoder defaultErrorDecoder = new Default();
+  private final ThreadLocal<Optional<Integer>> retryCountThreadLocal =
+      ThreadLocal.withInitial(() -> Optional.of(0));
+  @Autowired private ClientErrorLogsRepository clientErrorLogsRepository;
+
+  @Override
+  public Exception decode(final String methodKey, final Response response) {
+
+    int currentRetryCount = retryCountThreadLocal.get().orElse(0);
+    if (currentRetryCount < MAX_RETRIES) {
+      currentRetryCount++;
+      retryCountThreadLocal.set(Optional.of(currentRetryCount));
+    }
+
+    log.warn("Retrying api - {} for - {} time... ", response.request().url(), currentRetryCount);
+
+    // Retrieve the default exception
+    final Exception defaultException = defaultErrorDecoder.decode(methodKey, response);
+    // Extract the necessary information from the response
+    final String url = response.request().url();
+    final int status = response.status();
+    final String httpMethod = response.request().httpMethod().name();
+    final Map<String, Collection<String>> headers = response.request().headers();
+    final Map<String, Collection<String>> queryParams = extractQueryParams(response.request());
+    final String requestBody =
+        new String(extractRequestBody(response.request()), StandardCharsets.UTF_8);
+    final String responseBody = extractMethodDetails(defaultException.getMessage());
+
+    final FeignClientRequest feignClientRequest =
+        FeignClientRequest.builder()
+            .headers(headers)
+            .queryParams(queryParams)
+            .requestBody(requestBody)
+            .build();
+
+    final FeignClientResponse feignClientResponse =
+        FeignClientResponse.builder().status(status).responseBody(responseBody).build();
+    // Save the error log to the repository
+    MongoOperations.saveDocument(
+        clientErrorLogsRepository,
+        ClientErrorLogsRecord.builder()
+            .url(url)
+            .method(httpMethod)
+            .request(feignClientRequest)
+            .response(feignClientResponse)
+            .retryCount(currentRetryCount)
+            .createdAt(LocalDateTime.now())
+            .build());
+
+    return defaultException;
+  }
+
+  private byte[] extractRequestBody(final Request request) {
+    if (request.body() != null) {
+      return request.body();
+    }
+    return new byte[0];
+  }
+
+  private Map<String, Collection<String>> extractQueryParams(final Request request) {
+    final String url = request.url();
+    final int queryParamIndex = url.indexOf('?');
+    if (queryParamIndex >= 0) {
+      final String queryString = url.substring(queryParamIndex + 1);
+      // Parse the query string and extract the parameters
+      // query string is in the form "key1=value1&key2=value2"
+      final Map<String, Collection<String>> queryParams = new HashMap<>();
+      Arrays.stream(queryString.split("&"))
+          .map(param -> param.split("="))
+          .forEach(
+              keyValue -> {
+                final String key = keyValue[0];
+                final String value = keyValue.length > 1 ? keyValue[1] : "";
+                queryParams.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
+              });
+
+      return queryParams;
+    }
+    return Collections.emptyMap();
+  }
+
+  private String extractMethodDetails(final String errorMessage) {
+    // Extract the actual exception message from the detailMessage
+    final String startTag = "]: ";
+    final int startIndex = errorMessage.lastIndexOf(startTag);
+    if (startIndex != -1) {
+      return errorMessage.substring(startIndex + startTag.length());
+    }
+    return errorMessage;
+  }
+}
