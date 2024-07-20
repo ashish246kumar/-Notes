@@ -1,4 +1,4 @@
-How do we handle custom Exception in java
+Q)How do we handle custom Exception in java
 1)First, we create a custom exception class by extending the Exception class or Extending a Runtime Exception
 public class CustomException extends Exception {
     public CustomException() {
@@ -59,3 +59,4 @@ HttpStatus.FORBIDDEN
 always use this in controller
  return ResponseEntity.ok()
 ********************************************************************************
+
