@@ -129,7 +129,21 @@ ye main class ke upar laga denge.
 MongoTransactionManager plateFormTransactionManager ko implement kar raha hai
 
 ************************************************************************
-
+public- it is accessible to anywhere in your application
+private:-The member is accessible with in the same package
+protected:- Accessible within the same package and by subclasses, even if they are in different packages
+default:-Accessible only within the same package.
+**************************************************************
+Comparable vs Comparator
+Comparable and Comparator are interfaces that are used for sorting objects, but they serve different purposes and are used in different contexts
+ final List<Phone> phoneList = customerDetail.getPhones();
+ existingRecordLists.get().sort((r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+phoneList.sort((r1, r2) -> Integer.compare(r2.getPriority(), r1.getPriority()));--aabove two are example of comparator
+Comparator is a functional interface in Java that defines a method for comparing two objects.
+uuidBigInt.compareTo(BigInteger.ZERO)->example of comparable interface
+ BigInteger uuidBigInt = new BigInteger(UUID.randomUUID().toString().replace("-", ""), SIXTEEN);
+Comparable is an interface in Java that defines a method for comparing the current object with another object of the same type.
+********************************************************
 
 
 
