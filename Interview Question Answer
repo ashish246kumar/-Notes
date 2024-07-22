@@ -94,6 +94,43 @@ Map<String, Integer> filteredScores = studentScores.entrySet().stream()
                 .filter(entry -> entry.getValue() > 70)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 ******************************************
+@Transactional annotation-->
+
+public void saveEntry(JournalEntry journalEntry, String userName) { 
+User user=userservice.findByUserName (userllame); 
+journalEntry.setDate(LocalDateTime.now()); 
+JournalEntry saved =journalEntryRepository.save(journalEntry);
+ user.get.JournalEntries().add(saved);
+ user.setUserName(null);
+ userservice.saveEntry(user);
+}
+Problem ye hai iss case me ki JournalEntry me toh save ho ja raha hai but userName hum set null kar rahe aur hum model
+me ye define kiye hai ki userName null na rahe.toh yaha exception throw ho jayga aur user save nhi ho payga database me par
+JournalEntry save ho ja raha hai.
+
+
+@Transactional method ke upar lagane se ye hoga ki agar kuch bhi error ata hai method me toh rollback kar do sucess chige 
+ko bhi.
+
+
+@Configuration
+@EnableTransactionManagement
+public class TransactionConfig {
+
+  @Autowired private MongoDatabaseFactory mongoDbFactory;
+
+  @Bean
+  public MongoTransactionManager transactionManager() {
+    return new MongoTransactionManager(mongoDbFactory);
+  }
+}
+@Import(TransactionConfig.class)
+ye main class ke upar laga denge.
+MongoTransactionManager plateFormTransactionManager ko implement kar raha hai
+
+************************************************************************
+
+
 
 
 
