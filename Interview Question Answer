@@ -238,6 +238,31 @@ Bean used
 Bean Destruction
 
 *********************************
+MicroService Communication
+2 types
+Synchronous Blcking-->A microservices make a call to another microservices and block a operation while wating for response
+Asynchronous->Non Blocking
+******
+Synchronous-->Request/Response
+Asynchronous-->Request/response(rest over http)-->In this approach one service have some how knowledge of another service
+               event driven(Topic based messaging system,Queue based brocker)-->In this approach one service does not 
+               have knowledge of another service.It is used to scale the system.
+               shared database(file system,Database)
+         
+eg->order service-->notification service
+No two service can have share same database if both the services are reading and writing.
+
+*********************************************
+serviceA--->Meassage Brocker--->ServiceB
+2types of message brocker topic based and queue based
+in queue based queue If the message is not consumed then it is placed in the dead letter queue
+in topic based if message is not consued then it need to be retryed upto certain no of times
+problem or chalanges come while implementaing event based communication
+lost of messages
+duplicacy of message
+order of message
+
+************************************************
 
 
 
