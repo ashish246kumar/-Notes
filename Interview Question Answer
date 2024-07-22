@@ -143,7 +143,106 @@ Comparator is a functional interface in Java that defines a method for comparing
 uuidBigInt.compareTo(BigInteger.ZERO)->example of comparable interface
  BigInteger uuidBigInt = new BigInteger(UUID.randomUUID().toString().replace("-", ""), SIXTEEN);
 Comparable is an interface in Java that defines a method for comparing the current object with another object of the same type.
+final List<Map.Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
+
+    // Sorting the list of entries by values using a comparator
+    list.sort(Map.Entry.comparingByValue());
 ********************************************************
+Dependency Injection-->Means Inject object to another Object.It is used to acieve loose coupling.
+we can achieve dependency Injection by SetterMethod Dependency Injection and Constructor Dependency Injection.
+Address class is injected into Student class
+class Student{
+private String name;
+private int roollNo;
+private Address address;
+ public Student(String name, int rollNo, String city, String pin) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.address = new Address(city, pin); // Direct instantiation
+    } 
+}
+class Address{
+String city;
+String pin;
+public Address(String city, String pin) {
+        this.city = city;
+        this.pin = pin;
+    }
+}
+This is an example of tight coupling
+****************
+
+*********************************************************************************************************
+ <bean id="address" class="com.example.Address">
+        <property name="city" value="New York"/> <!-- Inject city -->
+        <property name="pin" value="10001"/>      <!-- Inject pin -->
+    </bean>
+
+    <!-- Define the Student bean and inject the Address bean -->
+    <bean id="student" class="com.example.Student">
+        <property name="name" value="John Doe"/> <!-- Inject name -->
+        <property name="rollNo" value="123"/>     <!-- Inject rollNo -->
+  <property name="address" ref="address"/>   <!-- Reference to Address bean -->
+    </bean>
+public class Main {
+    public static void main(String[] args) {
+        // Load the Spring application context from XML
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // Retrieve the Student bean
+        Student student = (Student) context.getBean("student");
+
+        // Display the student's details
+        System.out.println("Student Name: " + student.getName());
+        System.out.println("Roll No: " + student.getRollNo());
+}
+This is setter method dependency Injection
+*********
+This Constructor based dependency Injection
+<bean id="address" class="com.example.Address">
+        <constructor-arg value="New York"/> <!-- city -->
+        <constructor-arg value="10001"/>    <!-- pin -->
+    </bean>
+
+    <!-- Define the Student bean and inject the Address bean -->
+    <bean id="student" class="com.example.Student">
+        <constructor-arg value="John Doe"/> <!-- name -->
+        <constructor-arg value="123"/>      <!-- rollNo -->
+        <constructor-arg ref="address"/>     <!-- reference to Address bean -->
+    </bean>
+******************************************************************************************************
+Spring Container responsebility:
+Bean lifyCycle management.
+Dependency Injection
+Configuration management
+AOP support
+*****************************************************************************************
+LifeCycle of Bean:
+LOADING BEAN DEFINATION(spring load bean defination from various sources such as xml configuration files
+java based configuration)
+(These bean defination contain info about bean classes, dependency and other configuration details)
+|
+|
+Bean Instansiation
+(After bean defination are loaded the spring container create instanses of bean based on this defination.This involve 
+involving the bean class constructor either the default constructor or specified constructor to create actual 
+instanse of bean)(Student-->name=nul,age=0)
+|
+|
+Bean Initilazation (name="ak",age=11)
+|
+|
+Bean used
+|
+|
+Bean Destruction
+
+*********************************
+
+
+
+
+
 
 
 
