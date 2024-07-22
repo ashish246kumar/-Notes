@@ -261,6 +261,11 @@ problem or chalanges come while implementaing event based communication
 lost of messages
 duplicacy of message
 order of message
+consumer at fault
+
+solutiion:
+sending the same message twice
+Retention based message
 
 ************************************************
 
