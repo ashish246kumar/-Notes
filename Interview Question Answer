@@ -268,6 +268,71 @@ sending the same message twice
 Retention based message
 
 ************************************************
+Sleep vs Wait
+The sleep method is a static method of the Thread class.
+ It is used to pause the execution of the current thread for a specified number of milliseconds.
+It does not releases the lock
+It is typically used for slowing down the execution
+It throws InterruptedException
+
+
+wait method is an instance method of the Object class.
+used for inter-thread communication, allowing one thread to wait until another thread notifies it
+called from a synchronized block or method
+It releases a lock allowing another thread to acquire.
+Typically used in conjunction with notify or notifyAll for implementing thread communication
+
+***************************
+Object class & its method available
+
+public boolean equals(Object obj)
+public String toString()
+public final void notify()
+public final void wait(long timeout) throws InterruptedException
+******************************************************************
+HashSet:-not guarantee any specific order of the elements||Does not allow duplicate elements|| Allows a single null element.
+ArrayList: Maintains the insertion order|| Allows a Multiple null element.
+************
+Autowire these 2 userName & userPassword  and explain this in terms of dependency injection:
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public String userName() {
+        return "exampleUser";
+    }
+
+    @Bean
+    public String userPassword() {
+        return "examplePassword";
+    }
+}
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private String userName;
+
+    @Autowired
+    private String userPassword;
+
+    public void printCredentials() {
+        System.out.println("UserName: " + userName);
+        System.out.println("UserPassword: " + userPassword);
+    }
+}
+*****************************************************************
+
+
+
 
 
 
