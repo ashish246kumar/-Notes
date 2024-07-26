@@ -330,6 +330,19 @@ public class UserService {
     }
 }
 *****************************************************************
+Difference between LocalDateTime.now() and new Date()
+LocalDateTime
+API: Part of the java.time package introduced in Java 8.
+LocalDateTime is immutable, meaning that its value cannot be changed once it is created.
+ It represents a date and time without a time zone
+It is ThreadSafe because it is immutable.
+
+Date
+java.util package
+Mutable, which can lead to unintended changes.
+Less comprehensive support for time zones and formatting
+***************************************************
+
 
 
 
