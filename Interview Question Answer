@@ -359,8 +359,22 @@ Q)Give the count of how many word that are repeated
 Q)Give the distinct word that are not repeated
 Map<String,Long> map=Arrays.stream(s3).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
         map.entrySet().stream().filter(v->v.getValue()==1).forEach(x->System.out.println(x.getKey()));
-********
+***************************************************************
+Q)Shift all the 1 in the array to the left
+int[] arr={1, 3, 1, 2, 1, 2, 1, 2};
+int left = 0;
 
+        for (int right = 0; right < arr.length; right++) {
+
+           if (arr[right] == 1) {
+                // Swap arr[left] and arr[right]
+               int temp = arr[left];
+               arr[left] = arr[right];
+               arr[right] = temp;
+               left++;
+            }
+        }
+******************************************************
 
 
 
