@@ -342,6 +342,26 @@ java.util package
 Mutable, which can lead to unintended changes.
 Less comprehensive support for time zones and formatting
 ***************************************************
+Q)Give all the word that have been repeated
+ String s1="there is a tree and tree has a leaves and leaves are green";
+        String[] s3=s1.split(" ");
+        Map<String,Long> map=Arrays.stream(s3).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        map.entrySet().stream().filter(v->v.getValue()>1).forEach(e->System.out.println(e.getKey()+":"+e.getValue()));
+*******
+Q)Give the count of tree word
+Long treeCount=Arrays.stream(s3).filter(v->v.equals("tree")).count();
+**********
+Q)Give the count of how many word that are repeated
+ Map<String,Long> map=Arrays.stream(s3).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        Long count=map.entrySet().stream().filter(v->v.getValue()>1).count();
+        System.out.println(count);
+**********
+Q)Give the distinct word that are not repeated
+Map<String,Long> map=Arrays.stream(s3).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        map.entrySet().stream().filter(v->v.getValue()==1).forEach(x->System.out.println(x.getKey()));
+********
+
+
 
 
 
