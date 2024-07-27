@@ -4,5 +4,59 @@ important interface used in the hibernate
 SessionFactory-one session factory object per database connection-it provide session object
 session-session is used to get physical connection with database
 cascade-used to define cascading between two entity bean used with mapping
+Persistance means->the process of storing and  managing the data for long time.
+***************
+@Table(name = "user",indexes = {
+        @Index(name = "mobile_no", columnList = "mobile_no"),
+        @Index(name = "pan", columnList = "pan"),
+        @Index(name = "created_at", columnList = "created_at"),
+      
+@Slf4j
+public class UserEntity {
 
+@Column(name = "created_at", nullable = false, updatable = false)
+  @CreatedDate
+  private LocalDateTime createdAt = LocalDateTime.now();
+**************************
+@Convert(converter = EncryptionServiceAES.class)
+  @Column
+  private String pan;
+*************
+ @Column(name = "updated_at", nullable = false)
+  @LastModifiedDate
+  private LocalDateTime updatedAt = LocalDateTime.now();
+***************
+@Data
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(
+    value = {"createdAt", "modifiedAt"},
+    allowGetters = true)
+public abstract class AuditModel {
+  @Column(name = "created_at", nullable = false, updatable = false)
+  @CreatedDate
+  private LocalDateTime createdAt = LocalDateTime.now();
+
+  @Column(name = "modified_at", nullable = false)
+  @LastModifiedDate
+  private LocalDateTime modifiedAt = LocalDateTime.now();
+
+  @CreatedBy
+  @Column(name = "created_by", nullable = false)
+  private String createdBy = "System";
+
+  @LastModifiedBy
+  @Column(name = "modified_by", nullable = false)
+  private String modifiedBy = "System";
+}
+**********
+  @Enumerated(EnumType.STRING)
+********
+@Entity(name = "addresses")
+public class AddressEntity extends AuditModel {
+*******
+@ManyToOne
+  @JoinColumn(name = "bank_id", referencedColumnName = "id")
+  private CustomerEntity bank;
+******************
 
