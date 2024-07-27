@@ -375,6 +375,19 @@ int left = 0;
             }
         }
 ******************************************************
+@Transactional
+  @Modifying(flushAutomatically = true, clearAutomatically = true)
+  @Query(
+      nativeQuery = true,
+      value =
+          "UPDATE addresses SET\n"
+              + "primary_address =:isPrimary,\n"
+              + "modified_at =:modifiedAt\n"
+              + "where id=:id")
+  void updatePrimaryAddressFlagForId(boolean isPrimary, LocalDateTime modifiedAt, UUID id);
+
+@Modifying Annotation
+The @Modifying annotation is used in Spring Data JPA to indicate that a query method is modifying the data (i.e., it is an UPDATE, DELETE, or INSERT query) 
 
 
 
