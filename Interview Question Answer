@@ -385,9 +385,17 @@ int left = 0;
               + "modified_at =:modifiedAt\n"
               + "where id=:id")
   void updatePrimaryAddressFlagForId(boolean isPrimary, LocalDateTime modifiedAt, UUID id);
-
+*******************************************************************************************************
 @Modifying Annotation
 The @Modifying annotation is used in Spring Data JPA to indicate that a query method is modifying the data (i.e., it is an UPDATE, DELETE, or INSERT query) 
+Flush: In JPA, flushing means synchronizing the state of the persistence context
+(the in-memory representation of the entities) with the underlying database. 
+When you make changes to entities, those changes are stored in the persistence
+context and may not be immediately written to the database.
+*********************************************************************************************************
+flushAutomatically = true: This means that before executing the modifying query,
+the current state of the persistence context will be flushed to the database. 
+This ensures that any pending changes are written to the database before the query is executed
 
 
 
