@@ -1,0 +1,11 @@
+base-path:/api/v1
+paths:
+    /demo/login:
+      post:
+        caller-application:
+           -microservice-name
+   /getUser/{userId}:
+        get:
+       caller-application:
+           -telesales-web
+
