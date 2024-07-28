@@ -8,4 +8,6 @@ paths:
         get:
        caller-application:
            -telesales-web
+nginx-config.yaml file should be present on root directory within service code.
+**************************************
 
