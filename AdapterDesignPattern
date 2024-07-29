@@ -1,4 +1,5 @@
 client want json-----Adapter convert xml to json------server send xml
+https://medium.com/swlh/adapter-pattern-what-it-is-and-how-to-use-it-83e35a02e7f9
 **************************************
 package com.nagarro.adaptee;
 
