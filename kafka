@@ -226,6 +226,9 @@ With acks set to 1, the producer waits for a basic acknowledgment from the leade
 Acks=-1 or Acks=all
 What It Means: This setting requires that the leader and all in-sync follower servers confirm that they have received the data.
 ******************
+final Map<String, String> doc =
+          objectMapper.readValue(message, new TypeReference<HashMap<String, String>>() {});
+*********************************************************************************8
 compression.type is used by producers to compress the messages they send. 
 The compression.type configuration specifies how messages should be compressed before they're sent by the producer to the Kafka server. Compression helps reduce the size of the messages, 
 which can save network bandwidth and storage space on the Kafka brokers.
