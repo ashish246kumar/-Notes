@@ -82,7 +82,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
     final int queryParamIndex = url.indexOf('?');
     if (queryParamIndex >= 0) {
       final String queryString = url.substring(queryParamIndex + 1);
-      // Parse the query string and extract the parameters
+      
       // query string is in the form "key1=value1&key2=value2"
       final Map<String, Collection<String>> queryParams = new HashMap<>();
       Arrays.stream(queryString.split("&"))
