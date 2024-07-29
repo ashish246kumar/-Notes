@@ -138,6 +138,23 @@ their new instructions.
 offset-->In Kafka, each message or record in a partition is given a unique number called an "offset". 
 This number helps identify each record uniquely within its partition. 
 ***********************************
+@KafkaListener(
+      topics = "${a.topic}",
+      groupId = "${b.groupId}",
+      containerFactory = "abc")
+  public void sendLeadToDialerConsumer(final ConsumerRecord<String, Object> consumerRecord) {
+     private final ObjectMapper objectMapper;
+
+    final String message = consumerRecord.value().toString();
+   try {
+     ProductDetailRequest productDetailt= objectMapper.readValue(message, ProductDetailsRequest.class);
+      log.info(
+          "Lead received from );
+}
+catch(){
+
+}
+********************************************************************
 Log-end Offset:
 This is the offset of the newest record added to a partition.
 The log-end offset tells you what the current last page (or record number) is.
