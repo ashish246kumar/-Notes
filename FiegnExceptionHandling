@@ -1,5 +1,14 @@
 
+@FeignClient(name = "LogService", url = "${log.service.endpoint}")
+@Metrics
+public interface statementAnalyserServiceClient {
 
+  @GetMapping("/v1/log/{logId}")
+  ResponseEntity<List<xyResponseAttributes>> getResponseAttributesForead(
+      @PathVariable final String logId, @RequestHeader Map<String, Object> headerMap);
+}
+
+*****************************************************************************************
 import feign.Request;
 import feign.Response;
 import feign.codec.ErrorDecoder;
