@@ -104,5 +104,63 @@ class Solution
     }
 }
 **************************************************************************************************
+check if array is sorted and rotated
+******
+class Solution {
+    public boolean check(int[] nums) {
+     int count=0;
+     for(int i=1;i<nums.length;i++){
+        if(nums[i-1]>nums[i]){
+            count++;
+        }
+     }
+     if(nums[nums.length-1]>nums[0]){
+        count++;
+     }
+       return count<=1;
+    }
+}
+********************************
+Find Second Smallest and Second Largest Element in an array
+
+*****
+class Solution {
+    public int print2largest(List<Integer> arr) {
+        // Code Here
+        
+        int sl=-1,fl=arr.get(0);
+        for(int i=1;i<arr.size();i++){
+            if(arr.get(i)>fl){
+                sl=fl;
+                fl=arr.get(i);
+                continue;
+            }
+            if(sl<arr.get(i)&& arr.get(i)!=fl){
+                sl=arr.get(i);
+            }
+        }
+        
+            return sl;
+      
+    }
+}
+***********************************************************************************************
+26. Remove Duplicates from Sorted Array
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int left=0;
+         for(int i=1;i<nums.length;i++){
+              if(nums[i-1]!=nums[i]){
+                 nums[left]=nums[i-1];
+                 left++;
+              }
+         }
+         nums[left]=nums[nums.length-1];
+         left++;
+         return left;
+    }
+}
+*****************************
 
 
