@@ -1,5 +1,7 @@
 A LocalDate represents a year-month-day in the ISO calendar and is useful for representing a date without a time.
 reprent a date without time
+Issue with old date and calender classes is that they are mutuable that is there object are mutuable.
+
 ***************************************************************************************************************************************************************************
 / Current date
 LocalDate currentDate = LocalDate.now();
@@ -112,10 +114,16 @@ Period is used when we need to copare between year
 2022/01/02
 *************************************************************
   final Date dropOffStatusTime;
-  LocalDateTime.ofInstant(dropOffStatusTime.toInstant(), ZoneId.systemDefault());
+  final LocalDateTime createdAt=LocalDateTime.ofInstant(dropOffStatusTime.toInstant(), ZoneId.systemDefault());
+     private LocalDateTime createdAt;
+     abc.builder().createdAt(createdAt).build();
    Instant: Preferred in modern applications for precise and time zone-independent 
 point-in-time representation, often used in conjunction with other java.time classes 
 for more complex date and time manipulation.
+**************************************************************************
+ public static Date dateAndTimeToDateOnly(LocalDate inputDate) {
+    return Date.from(inputDate.atTime(12, 0, 0).atZone(ZoneId.systemDefault()).toInstant());
+  }
 *******************************************************************************
 
 
