@@ -3,6 +3,8 @@ Q)what is the diffrence between @Service annotation @Component annotation and @R
 service we are using as a service layer and repository layer and these all are sterotype annotation
 @Component i put on a class that take a part in dependency registration . if i put on a class it will be register into class path and application context and all those ioc container
 will be peak those bean from there because i have put those @Anotation .
+My role was in Java Backend development
+
 ****************************
 can you tell difference between different type of modifier  (pubic,private,default,protected)
 **************************************
@@ -97,8 +99,16 @@ How we are handling the custom exception?
 
 
 ********************
-
-
+how do we optimize a query while saving data in database.
+***************************
+what is the complexity you have faced in the project
+**************************
+what is role of packaging . what wil happen if i same class name to two different pckage.
+**********
+static keyword  in term of memory explain;
+can we overide a static method?
+Are you aware about generic 
+*************
 
 
 
