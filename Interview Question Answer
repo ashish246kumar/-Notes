@@ -396,7 +396,17 @@ context and may not be immediately written to the database.
 flushAutomatically = true: This means that before executing the modifying query,
 the current state of the persistence context will be flushed to the database. 
 This ensures that any pending changes are written to the database before the query is executed
-
+***********************
+Q) can we overide a static method
+ No we cannot override static methods because method overriding is based on dynamic binding at runtime
+and the static methods are bonded using static binding at compile time. So, we cannot override static methods.
+While you cannot override static methods, you can hide them. If you define a static method with the same signature in a 
+subclass, it hides the static method in the superclass. This is known as method hiding rather than method overriding
+***********************
+when the class is loaded into the memory at that time static member will be loaded in to the memory and exceuted
+post then when object is created by the constructor of that class and which method that is called by the instance of that c
+class will be executed
+************
 
 
 
