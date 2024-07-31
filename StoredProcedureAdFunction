@@ -1,0 +1,47 @@
+Stored Procedure is a database Object and it is permennantely stored in database.
+A stored procedure can be stored in database and can be reused over again and again.
+A stored procedure  is a series of declarative sql statement.
+parameter can be passed to the stored procedure so that stored procedure can act based on the parameter value.
+sql server create a execution plan and store it in the cache.
+***************************************************************************
+Type of Stored Procedure:
+1)User Defined Stored Procedure:- user defined stored procedure are created by developer.These sp contain one or more sql statement to select update or delete a 
+record from database.
+2)System stored procedure are created and executed by sql server for the server administrative activity.
+********************************************************************************************************
+Create Procedure spDepart
+AS
+BEGIN
+select * from employee where deptId=1
+END
+
+EXEC spDepart
+**************
+ALTER Procedure spDepart
+AS
+BEGIN
+select * from employee where deptId=1
+select * from employee where deptId=2
+END
+
+EXEC spDepart
+***********
+DROP proc spDepart
+*************************
+parametrized procedure
+*********
+Create Procedure spDepart
+@depart_id int
+@emp_name  Varchar(100)
+AS
+BEGIN
+select * from employee where deptId=@depart_id
+select * from employee where empName=@emp_name 
+END
+
+EXEC spDepart @emp_name='abc', @depart_id=2
+****************************
+
+
+
+
