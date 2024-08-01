@@ -77,6 +77,51 @@ public class FactoryPatternDemo {
    }
 }
 ***************************************************
+@Component
+public class AssistanceFactory {
+
+  @Autowired
+  @Qualifier("consentAssistanceServiceImpl")
+  private StageService consentAssistanceServiceImpl;
+
+  @Autowired
+  @Qualifier("employmentAssistanceServiceImpl")
+  private StageService employmentAssistanceServiceImpl;
+
+ 
+
+  public StageService assistanceServiceFactory(final LeadAssistanceUpdateContext context) {
+    switch (context) {
+      case CONSENT:
+        return consentAssistanceServiceImpl;
+      case EMPLOYMENT_DECLARATION:
+        return employmentAssistanceServiceImpl;
+    
+    default:
+        return nonAssistanceServiceImpl;
+    }
+  }
+}
+*****
+public class ConsentAssistanceServiceImpl implements StageService {
+}
+*****
+public interface StageService {
+  public AssistanceUpdateDetailsResponse updateAssistance(
+      final AssistanceUpdateDetailsRequest assistanceUpdateDetailsRequest);
+}
+************
+@Autowired
+private AssisanceFactory assistanceFactory;
+private StageService assistanceStageService=assistanceFactory.assistanceServiceFactory("");
+ assistanceStageService.updateAssistance();
+***************
+
+
+
+
+
+
 // Abstract product: DatabaseConnection
 abstract class DatabaseConnection {
     abstract void connect();
