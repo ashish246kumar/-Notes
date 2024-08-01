@@ -190,5 +190,53 @@ class Solution{
     
 }
 ***********************************************************************************************************
+349. Intersection of Two Arrays
+*********
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        
+      List<Integer> s =Arrays.stream(nums2).boxed().distinct().collect (Collectors.toList());
+
+        ArrayList<Integer> al=new ArrayList<>();
+        for(int i=0;i<nums1.length;i++){
+            if(s.contains(nums1[i])){
+                 al.add(nums1[i]);
+                 s.remove((Integer)nums1[i]);
+            }
+
+        }
+        return al.stream().mapToInt(i->i).toArray();
+    }
+}
+****************************************************************************************************************
+Merge two sorted array
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        if(n==0){
+            return;
+        }
+        int temp=0,k=0;
+        for(int i=0;i<m;i++){
+            if(nums1[i]>nums2[0]){
+                temp=nums1[i];
+                nums1[i]=nums2[0];
+               int j=1;
+               while(j<n&& nums2[j]<temp){
+                nums2[j-1]=nums2[j];
+                j++;
+               }
+               nums2[j-1]=temp;
+            }
+        }
+        for(int i=m;i<(m+n);i++){
+            nums1[i]=nums2[k];
+            k++;
+        }
+        
+    }
+}
+****************************************************
+
 
 
