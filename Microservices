@@ -35,6 +35,20 @@ configuration management, load balancing, circuit breaking, and distributed trac
 The main challenges from the business point of view:
 Microservices require a heavy investment.
 It requires a heavy infrastructure setup also.
-
+**********************
+Autoscaling->where we automatically and dynamically scale our services to meet the varying levels of demand.
+*********************
+service registry is a place where all the microservices are registred.
+Other microservices or the API Gateway need to know where to send requests. They ask the Service Registry for the location of the microservice they need to communicate with.
+Example: Service B needs to talk to Service A. It asks the registry, "Where is Service A?" The registry responds with the location details (IP and port) of Service A.
+If multiple instances of a microservice are running (for load balancing and fault tolerance), the Service Registry can provide a list of all available instances.
+The requester can then choose one of the instances to send the request to, often using a load balancing algorithm.
 *******************************************************
-
+A client (such as a web browser, mobile app, or another system) initiates a request
+The client request is first received by an API Gateway. The API Gateway acts as a reverse proxy, handling all incoming requests and routing them to the appropriate microservices.
+The API Gateway can also perform other functions such as authentication, authorization, request validation, rate limiting, and logging.
+The API Gateway queries a Service Discovery  to find the network location (IP address and port) of the microservice it needs to forward the request to.
+The API Gateway forwards the request to the appropriate microservice. Each microservice is responsible for a specific piece of business functionality.
+Microservices communicate with each other through lightweight protocols like HTTP/HTTPS or messaging queues like Kafka, RabbitMQ, etc.
+The aggregated response is sent back to the API Gateway, which in turn sends the final response back to the client.
+**************************************************************
