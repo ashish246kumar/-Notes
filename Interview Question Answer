@@ -95,6 +95,7 @@ Map<String, Integer> filteredScores = studentScores.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 ******************************************
 @Transactional annotation-->
+To ensure a series of database operations either all succeed or all fail, preventing partial updates
 
 public void saveEntry(JournalEntry journalEntry, String userName) { 
 User user=userservice.findByUserName (userllame); 
