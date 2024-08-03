@@ -52,3 +52,51 @@ The API Gateway forwards the request to the appropriate microservice. Each micro
 Microservices communicate with each other through lightweight protocols like HTTP/HTTPS or messaging queues like Kafka, RabbitMQ, etc.
 The aggregated response is sent back to the API Gateway, which in turn sends the final response back to the client.
 **************************************************************
+on api gateway-
+spring.cloud.config.uri=http://localhost:9196
+spring.cloud.gateway.routes[0].id=customer-service
+spring.cloud.gateway.routes[0].uri=lb://customer-service
+spring.cloud.gateway.routes[0].predicates[0]=Path=/customer/**
+@SpringBootApplication
+@EnableDiscoveryClient
+public class ApiGatewayApplication {
+***********************
+Api gateway dependency
+<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+**************************************************************************************************************
+Discovery server
+@SpringBootApplication
+@EnableEurekaServer
+public class DiscoveryServerApplication {}
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+***********************************************************************************
+spring.datasource.url=jdbc:mysql://localhost:3306/microservices?serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+**************
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.hibernate.ddl-auto=update
+*****************************************
+resilience4j.circuitbreaker.instances.customer.registerHealthIndicator=true
+#resilience4j.circuitbreaker.instances.customer.eventConsumerBufferSize=10
+#resilience4j.circuitbreaker.instances.customer.slidingWindowType=COUNT_BASED
+#resilience4j.circuitbreaker.instances.customer.slidingWindowSize=10
+#resilience4j.circuitbreaker.instances.customer.failureRateThreshold=50
+#resilience4j.circuitbreaker.instances.customer.waitDurationInOpenState=5s
+#resilience4j.circuitbreaker.instances.customer.permittedNumberOfCallsInHalfOpenState=3
+#resilience4j.circuitbreaker.instances.customer.automaticTransitionFromOpenToHalfOpenEnabled=true
+**********************
