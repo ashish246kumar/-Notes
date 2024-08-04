@@ -100,3 +100,44 @@ resilience4j.circuitbreaker.instances.customer.registerHealthIndicator=true
 #resilience4j.circuitbreaker.instances.customer.permittedNumberOfCallsInHalfOpenState=3
 #resilience4j.circuitbreaker.instances.customer.automaticTransitionFromOpenToHalfOpenEnabled=true
 **********************
+@CircuitBreaker(name = "account", fallbackMethod = "fallbackMethod")
+fallback method
+	public ResponseEntity<String>fallbackMethod(int customerId,Exception runtimeException){
+		
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Some thing went wrong!! please try after some time");
+	}
+*************
+String message=webClientBuilder.build().delete().uri(Constant.ACCOUNT_SERVICE_URL+"/deleteAccount",
+       		 uriBuilder -> uriBuilder.queryParam("customerId",customerId).build())
+        .retrieve()
+        .bodyToMono(String.class)
+        .onErrorResume(error -> Mono.empty()) 
+        .block();
+****************************************************************************************************
+@RateLimiter(name = "account", fallbackMethod = "getMessageFallBack")
+************************************
+RateLimiter-->ratelimiter make the service highly available by limiting the no of call in specific window. It is done to improve the performance.
+rps->request per second
+rpm-> request per minute
+limitrefreshPeriod-->
+limitperiod->the no of permision available during ne period
+we can apply rate limiting with the help of reslinace4J
+*******************************
+for applying ratelimiter-->resliense4j library, aop , actuator library is must
+**********************
+fault tolerance-->
+***********
+circuitbreaker-->It work on the state. It have three state close,open, and helf open. When user service is calling hotel service and is not getting any response.
+ it means hotel service is down and userservice will not call hotel service after certain threshold.
+
+Open State Duration: The circuit breaker remains in the open state for a predefined timeout period to give the service time to recover.
+Transition to Half-Open: After the timeout period expires, the circuit breaker transitions to the half-open state.
+In the half-open state, a limited number of requests are allowed to pass through as a test.
+Success: If the test requests succeed, the circuit breaker transitions back to the closed state.
+Failure: If the test requests fail, the circuit breaker transitions back to the open state and the timeout period restarts.
+**********************
+Fault tolerance in microservices refers to the ability of a system to continue functioning correctly even when some of its components fail. 
+Circuit Breaker: This pattern prevents a service from making calls to a failing service for a specified period, allowing it to recover before retrying.
+Retries: This involves automatically retrying a failed request after a short delay.
+**********
+
