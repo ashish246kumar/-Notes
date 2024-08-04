@@ -75,6 +75,41 @@ Prototype: a new instance of the bean is created every time it is requested.
 public class MySingletonBean {
     // Singleton bean properties and methods...
 }
+**********************
+@SpringBootApplication-->it is mark over the main class over the spring boot application.It is a combination of @Configuration, @EnableAutoConfiguration, and @ComponentScan.
+@RestController-->It indicate that the class is a web controller.and that its methods return data directly in the HTTP response body.
+combination of @Controller and @ResponseBody.
+@RequestMapping-->Used to map web requests to specific handler classes or handler methods. It can be applied at the class level or method level.
+@Service->Indicates that a class is a service component.
+@Repository-->Indicates that a class is a repository component
+  @Value("${my.property}")-->it is used to get the property from application.property
+@Conditional-->Marks a configuration class or bean as conditional, meaning it will only be processed if a specified condition is met.
+@EnableAutoConfiguration---->Enables Spring Boot’s auto-configuration mechanism, which attempts to automatically configure your Spring application 
+based on the jar dependencies you have added
+@Async-->Indicates that a method should be executed asynchronously.
+@EnableAsync-->Enables Spring’s asynchronous method execution capability.
+@Scheduled-->Used to mark a method to be scheduled and executed at fixed intervals.
+@EnableScheduling-->Enables Spring’s scheduled task execution capability.
+
+************************************
+In Spring, both @Configuration and @Component are annotations used to define beans,.
+difference between @Configuration and @Component
+@Configuration-->Methods annotated with @Bean inside a @Configuration class are used to define and configure beans.@Configuration class can have one or more bean defined
+@Component-> The class itself is treated as a bean definition.It is a generic stereotype for any Spring-managed component.
+******************************************************************************
+difference between @RestController and @Controller
+@Controller--> Marks a class as a Spring MVC controller.Return Type: Methods usually return ModelAndView or String representing the view name. 
+To return JSON or XML, methods need to be annotated with @ResponseBody. Suitable for applications serving web pages and using views
+@RestController-->@Controller that is used for RESTful web services.Methods return the response body directly (usually JSON or XML) instead of a view.
+**************************************
+@GetMapping(value = "/user", produces = MediaType.APPLICATION_XML_VALUE)
+**********************************************************************************
+@ComponentScan-->used to specify the base packages to scan for Spring components (i.e., classes annotated with @Component, @Service, @Repository, @Controller, etc.).
+@ComponentScan(basePackages = "com.example.myapp")
+
+
+
+
 
 
 
