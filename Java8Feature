@@ -496,3 +496,67 @@ Predicate Functional Interface is used for Conditional check
 List<Integer> l2=Arrays.asList(1,4,8,9);
     l2.stream().filter(n->n%2==0).forEach(System.out::println);
 Supplier is used in all context where there is no input but output is expected.
+************************************************************************************
+Map vs FlatMap
+
+| Feature                | `map`                                            | `flatMap`                                         |
+|------------------------|--------------------------------------------------|--------------------------------------------------|
+| **Purpose**            | Transforms each element of the stream into a new form (one-to-one mapping). | Transforms each element of the stream into multiple elements (one-to-many mapping). |
+
+| **Return Type**        | Returns a Stream of the same size as the input stream (same number of elements). | Returns a Stream with potentially different size (flattened). |
+
+| **Usage**              | Use when you want to convert each element of the stream into another object. | Use when you want to convert each element into a collection (e.g., List, Set) and flatten the result into a single Stream. 
+*******************************************************************************************************************
+ List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Using map to double each number
+        List<Integer> doubledNumbers = numbers.stream()
+            .map(n -> n * 2)
+            .collect(Collectors.toList());
+*************************************************************
+ List<List<String>> listOfLists = Arrays.asList(
+            Arrays.asList("apple", "banana"),
+            Arrays.asList("orange", "grape"),
+            Arrays.asList("kiwi")
+        );
+
+        // Using flatMap to flatten the list of lists
+        List<String> flattenedList = listOfLists.stream()
+            .flatMap(List::stream)
+            .collect(Collectors.toList());
+  // Output: Flattened List: [apple, banana, orange, grape, kiwi]
+********************************************************
+Stram vs Parallel Stream
+
+| Feature                     | `Stream`                                        | `Parallel Stream`                               |
+|-----------------------------|------------------------------------------------|------------------------------------------------|
+
+| **Execution**               | Processes elements sequentially, one at a time. | Processes elements in parallel, using multiple threads. |
+
+| **Performance**             | Generally better for small datasets or simple operations due to lower overhead. | Can significantly improve performance for large datasets and complex operations by utilizing multiple CPU cores. |
+
+| **Order of Processing**     | Maintains the encounter order of the elements. | Does not guarantee the order of processing unless explicitly specified. |
+
+| **Use Cases**               | Ideal for simple operations on small to moderate datasets. | Suitable for large datasets or computationally intensive operations where the overhead of thread management is justified. |
+
+| **Example**                 | `List<String> names = ...; names.stream().filter(...).collect(...)` | `List<String> names = ...; names.parallelStream().filter(...).collect(...)` |
+***********************************************************************************************
+`ArrayList` and `LinkedList`
+
+| Feature                  | ArrayList                       | LinkedList                    |
+|--------------------------|---------------------------------|-------------------------------|
+| **Implementation**       | Dynamic array                   | Doubly-linked list            |
+
+| **Access Time**          | O(1) (random access)           | O(n) (requires traversal)     |
+
+| **Insertion/Deletion**   | O(n) (except at the end)       | O(1) (at beginning/end), O(n) (middle) |
+
+| **Memory Usage**         | More memory-efficient for small sizes, may require resizing | More memory overhead due to pointers |
+
+| **Use Case**             | Fast access, fewer insertions/deletions | Frequent insertions/deletions, especially at ends |
+****************************************************************************************************************************************************************
+
+
+
+
+
