@@ -42,7 +42,21 @@ vector deault to doubling the size of the array.uses enumeration and iterator
 hashMap vs hashTable
 hashMap are not synhronized so thread safe-one null key and multiple null value
 hashmap-iterator while hashtable-enumerator and iterator
-*************
+
+*************| Feature                | HashMap                               | Hashtable                                |
+|------------------------|-----------------------------------------|--------------------------------------------|
+| **Thread Safety**      | Not thread-safe                         | Thread-safe (synchronized methods)   
+|
+| **Synchronization**    | Must be manually synchronized if needed | Automatically synchronized                 |
+
+| **Null Keys and Values**| Allows one null key and multiple null values | Does not allow null keys or values         |
+
+| **Performance**        | Generally faster (no synchronization overhead) | Slower due to synchronization              |
+
+
+| **Iterator Type**      | Uses Iterator which is fail-fast      | Uses Enumerator which is not fail-fast   |
+| **Initial Capacity**   | Default initial capacity of 16          | Default initial capacity of 11             |
+                              |
 == ->binary operator
 equals()-defined in object class
 equals() method in Java is used for content comparison when comparing objects.
@@ -187,8 +201,187 @@ unchecked exceptions?
 
 NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException
 
-**********
+******************************************************************************************************************************************************
 throws keyword is used to specify the exceptions that a particular method can throw. 
 throw is a keyword in Java which is used to throw an exception manually.
 clean up operations like closing the DB resources to keep inside a finally block?
 java.lang.Throwable is the super class for all types of errors and exceptions in Java.
+*******************************************************************************************************
+ OOPS EXample
+Polymorphism(Run Time)  and Inheritence  Example 
+***************************************************************************************************
+// Base class
+abstract class Employee {
+    private String name;
+    private int employeeId;
+    
+    public Employee(String name, int employeeId) {
+        this.name = name;
+        this.employeeId = employeeId;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getEmployeeId() {
+        return employeeId;
+    }
+    
+    // Abstract method to be overridden by subclasses
+    public abstract double calculateSalary();
+}
+
+// Subclass for full-time employees
+class FullTimeEmployee extends Employee {
+    private double annualSalary;
+    
+    public FullTimeEmployee(String name, int employeeId, double annualSalary) {
+        super(name, employeeId);
+        this.annualSalary = annualSalary;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return annualSalary;
+    }
+}
+class PartTimeEmployee extends Employee {
+    private double hourlyRate;
+    private int hoursWorked;
+    
+    public PartTimeEmployee(String name, int employeeId, double hourlyRate, int hoursWorked) {
+        super(name, employeeId);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return hourlyRate * hoursWorked;
+    }
+}
+class ContractEmployee extends Employee {
+    private double contractAmount;
+    
+    public ContractEmployee(String name, int employeeId, double contractAmount) {
+        super(name, employeeId);
+        this.contractAmount = contractAmount;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return contractAmount;
+    }
+}
+**************************************************************************************************************************************************
+Method OverLoading
+*****************************************************************************************************************************************
+class Calculator {
+    // Method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Method to add two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    // Method to concatenate two strings
+    public String add(String a, String b) {
+        return a + b;
+    }
+}
+
+public class CompileTimePolymorphismExample {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        
+        System.out.println("Sum of two integers: " + calculator.add(10, 20));           // Outputs 30
+        System.out.println("Sum of three integers: " + calculator.add(10, 20, 30));      // Outputs 60
+        System.out.println("Sum of two doubles: " + calculator.add(10.5, 20.5));         // Outputs 31.0
+        System.out.println("Concatenation of two strings: " + calculator.add("Hello", " World"));  // Outputs "Hello World"
+    }
+}
+**********************************************************************************************************************************
+Encapsulation is an object-oriented programming concept that restricts direct access to an object's data and methods,
+ allowing you to control how that data is accessed or modified. This is typically achieved by using access modifiers (like private, public, and protected)
+ and providing public getter and setter methods.
+class Student {
+    // Private fields
+    private String name;
+    private int age;
+    private String studentId;
+
+    // Constructor
+    public Student(String name, int age, String studentId) {
+        this.name = name;
+        this.age = age;
+        this.studentId = studentId;
+    }
+
+    // Public getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Public setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Public getter for age
+    public int getAge() {
+        return age;
+    }
+
+    // Public setter for age
+    public void setAge(int age) {
+        if (age > 0) { // Validation
+            this.age = age;
+        } else {
+            System.out.println("Age must be positive.");
+        }
+    }
+
+    // Public getter for studentId
+    public String getStudentId() {
+        return studentId;
+    }
+
+    // Method to display student details
+    public void displayDetails() {
+        System.out.println("Student ID: " + studentId);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class SchoolManagement {
+    public static void main(String[] args) {
+        // Creating a student object
+        Student student = new Student("Alice", 20, "S001");
+
+        // Displaying initial details
+        student.displayDetails();
+
+        // Modifying the student's name and age
+        student.setName("Alicia");
+        student.setAge(21);
+
+        // Displaying updated details
+        student.displayDetails();
+
+        // Attempting to set an invalid age
+        student.setAge(-5); // Will trigger validation
+    }
+}
+
+*****************************************
+
