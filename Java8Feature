@@ -555,7 +555,17 @@ Stram vs Parallel Stream
 
 | **Use Case**             | Fast access, fewer insertions/deletions | Frequent insertions/deletions, especially at ends |
 ****************************************************************************************************************************************************************
+The java.util package contains all the classes and interfaces for the Collection framework.
 
+                                               Collection
+                         **********************************************************************************************************************************************
+                        |                             |                                |                                                          |  
+                      List                           Queue                            set                                                        Map
+     ********************************       ****************************          ******************************************        ****************************************   
+    |          |            |        |      |                          |         |                |                      |          |             |             |         |
+ArrayList   LinkedList    Vector   Stack   piriority                Dequeue     HashSet         LinkedHashSet        SortedSet   sortedHashMap  LinkedHashMap  HashMap  HashTable       
+                                           Queue                       |                                                |           |
+                                                                  ArrayDeque                                        TreeSet      TreeMap
 
 
 
