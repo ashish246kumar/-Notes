@@ -287,6 +287,22 @@ The test cases are generated so that the answer will fit in a 32-bit integer.
     }
 }
 **************************************************************************************************************************************************
+Kadane's Algorithm : Maximum Subarray Sum in an Array
+**************************************************************
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum=0,max=Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++){
+            sum=sum+nums[i];
+            max=Math.max(sum,max);
+            if(sum<0){
+                sum=0;
+            }
+        }
+       return max;
+    }
+}
+***********************************************************************************************************************************
 
 
 
