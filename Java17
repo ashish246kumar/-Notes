@@ -1,0 +1,34 @@
+Sealed classes
+******************************
+It is used to restrict which classes can extend or implement a given classes or interfaces. | This provide a more control over the inheritence hierarchy. |
+Key Points
+The Sealed keyword is used in the parent class
+THE permit keyword list the allowed subclasses
+Permitted subclasses must be final sealed or non sealed
+************************************************************
+Benefit:
+controllled inhertience
+exhaustive pattern matching : sealed classes work well with switch expressioon, ensuring all the possible cases are handled.
+improved type saftey: compiler can verify that all possible subtypes are considred
+*******************************************************
+public sealed class Shape permits Circle, Square {}
+ public final class Circle extends Shape {
+        public void draw() { /* draw a Circle */ }
+    }
+public non-sealed class Square extends Shape {
+        public void draw() { /* draw a Square */ }
+    }
+************************************************************************************************
+public class main{
+public void processShape(Shape shape) {
+    if (shape instanceof Circle circle) {
+        circle.draw();
+    } else if (shape instanceof Rectangle rectangle) {
+        rectangle.draw();
+    } else if (shape instanceof Square square) {
+        square.draw();
+    }
+}
+}
+***************************************************************************************************************
+
