@@ -1,0 +1,23 @@
+With the help of record we can create special type of class which help to create data carrying obect.
+Record consist of one or more data field, java compiler will auto generate getter method equals, hasMethod and toString
+Record are final means no other class can extend that record
+we can use multiple constructor
+we can create instance method
+we can create static method also inside record
+Record objects are immutable once created value can not be changed.
+*******************
+public record Person(String name, int age) {
+    // No need to explicitly declare constructors, getters, toString, hashCode, or equals.
+}
+*************
+Person p1 = new Person("John", "33");
+String name = p1.name()
+int age = p1.age();
+
+//Comparing the two instances
+Person p2 = new Person("John", "33");
+if(p1.equals(p2)) {
+  System.out.println("Objects are equal");
+}
+*******************************************************************
+
