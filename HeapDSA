@@ -121,3 +121,42 @@ class Solution {
 }
 ************************************************************************************************************************
 
+Max Heap-->parent node is greater than child node that is A[parent(i)]>=A[i] except rooot node.
+Min heap->child node is greater than parent node.
+Heap is always Complete binary tree.
+we have to insert data from leaf and as left as possible.
+insertion of maxHeap timeComplexity o(log n)
+************************************************************************
+Min heap
+*********
+ int parent(int i) { return (i - 1) / 2; }
+    int left(int i) { return (2 * i + 1); }
+    int right(int i) { return (2 * i + 2); }
+
+
+ void insertKey(int k) 
+    {
+        if(heap_size==(capacity-1)){
+            return;
+        }
+        harr[heap_size]=k;
+        int i=heap_size;
+        while(i>=0){
+            if(harr[parent(i)]>harr[i]){
+                int temp=harr[parent(i)];
+                harr[parent(i)]=harr[i];
+                harr[i]=temp;
+                System.out.println("harr[parent(i)]:-"+harr[parent(i)]+"harr[i]:-"+harr[i]);
+                i=parent(i);
+            }
+            else{
+                break;
+            }
+        }
+        heap_size++;
+        // Your code here.
+    }
+****************************************************************************************************************
+
+
+
