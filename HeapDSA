@@ -157,6 +157,95 @@ Min heap
         // Your code here.
     }
 ****************************************************************************************************************
+Maximum pair sum combinATION
+package com.centylatics;
+import java.util.*;
 
+public class Main {
+
+	public List<Integer> maxPairSum(int [] A,int[]B,int n, int k){
+		Arrays.sort(A);
+		Arrays.sort(B);
+		PriorityQueue<PairSum> pq=new PriorityQueue<>();
+		ArrayList<Integer> al= new ArrayList<>();
+		HashSet<Pair> h=new HashSet<>();
+		
+		int l=n-1;
+		int m=n-1;
+		pq.add(new PairSum(A[l]+B[m],l,m));
+		h.add(new Pair(l,m));
+		for(int i=0;i<k;i++) {
+			PairSum max=pq.poll();
+			
+			al.add(max.sum);
+			l=max.l-1;
+			m=max.m;
+			
+			if(l>=0&& m>=0 
+					&& !h.contains(new Pair(l,m))
+					) {
+				pq.add(new PairSum(A[l]+B[m],l,m));
+			}
+			l=max.l;
+			m=max.m-1;
+			System.out.println("l1:"+l+"m1:"+m);
+			if(l>=0&& m>=0 
+					&& !h.contains(new Pair(l,m))
+					) {
+				pq.add(new PairSum(A[l]+B[m],l,m));
+			}
+		}
+		return al;
+	}
+	
+	public static void main(String[]args) {
+		int[] a= {1,4,2,3};
+		int[] b= {2,5,1,6};
+		int n=a.length;
+		int k=4;
+		
+		Main m=new Main();
+	List<Integer> al=m.maxPairSum(a,b,n,k);
+	for(int i=0;i<al.size();i++) {
+		System.out.println(al.get(i));
+	}
+	}
+}
+***********
+package com.centylatics;
+
+public class PairSum implements Comparable<PairSum>{
+
+	int sum;
+	int l;
+	int m;
+	public PairSum(int sum,int l,int m) {
+		this.sum=sum;
+		this.l=l;
+		this.m=m;
+	}
+	@Override
+	public int compareTo(PairSum o) {
+		return Integer.compare(o.sum, sum);
+	}
+	
+}
+****
+package com.centylatics;
+
+import java.util.Objects;
+
+public class Pair {
+
+	int l;
+	int m;
+	Pair(int l,int m){
+		this.l=l;
+		this.m=m;
+	}
+	
+	
+}
+**************************************************************************************************************************
 
 
