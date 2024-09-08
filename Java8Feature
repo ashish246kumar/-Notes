@@ -1,6 +1,12 @@
 Lambda Expressions
 Lambda expression provides implementation of functional interface. An interface which has only one abstract method is called functional interface. 
 Java provides an anotation @FunctionalInterface, which is used to declare an interface as functional interface.
+********************************
+why functional interface has only one abstract method?
+because its primary purpose is to enable the use of lambda expressions and method references.
+Lambda Expression Compatibility
+If a functional interface had multiple abstract methods, it would be unclear which method a lambda expression should implement
+*********************************************************
 In case of lambda expression, we don't need to define the method again for providing the implementation. Here, we just write the implementation code.
 @FunctionalInterface  //It is optional  
 interface Drawable{  
