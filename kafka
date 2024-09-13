@@ -292,5 +292,61 @@ The fetch.min.bytes setting tells the Kafka broker the smallest amount of data t
 of times the server needs to respond, thus saving resources.
 The default value is 1 byte, 
 **********************************************************************************
+****************
+ Apache kafka is a publish subscribe based durable messaging system  exchanging a data between process server and application.
+In real time managaing data and log is a big task.This involve  processing reprocessing analyzing and handling information in real time.
+*******************************************************************************************************
+This is where kafka shines.it play a significant role in handling message efficintly in streaming enviornment. The principle behind the kafka design was focous 
+on increasing demand for a system that can handle large volume of data.
+when we need to do the asynchronous communication btween different application where multiple producer is producing to you topic  and consumer consuming from the
+the topic then you have public subscribe model required.
+*******************************************************************************************************
+Each message published on kafka topic have some durability. when ttl is over then message need to be delted.
+written in scala.
+*******************************************************************************************************
+The architecture of kafka is designed for dstributed,fault tolrent and sclable handling of streaming data.
+*******************************************************************************************************
+on high level over view there is a cluster contaning multiple broker where 1 is leader and rest are followers thereby mantaning replica of data. 
+To make a fault tolrent it need a data replica.
+broker are nothing but kafka server 
+there should we multiple brocker
+*******************************************************************************************************
+consumer acknowledge the kafka that i have sucessfully consumed the message.and it also commit its offset so that it can not read the duplicate message if it come from 
+failure or restart state.
+*******************************************************************************************************
+Data redundency is done at partion level.
+*******************************************************************************************************
+producer push the message to the leader brocker
+*******************************************************************************************************
+each topic is divided into multiple partition which are the basic unit of parallelism. Partion allow kafka to distribute and parellize the processing of message
+*******************************************************************************************************
+kafka brocker are individual server within kafka cluster they store and manage data handle producer and consumer request and participate in replication 
+and distribution of data.
+*******************************************************************************************************
+Topic are the logical chaneel to which message are published
+
+*******************************************************************************************************
+Flow->producer produces the message to the leader partion of the specified topic. leader replicate the message to follower ensuring they have the same set of message
+(ISR reprsent the replicas that are up to date with leader)
+consumer always read from the leader partition, once read it ackowledge the brocker that it has read the message sucessfully and also commit the offset
+so that in case of failure it can come back and read from the same offset.
+*******************************************************************************************************
+kafka scale horizontally by distributing the partion across multiple brocker
+key feature of kafaka::
+scalability
+fault tolerance
+durability
+real time processing
+high throghput
+*****************************
+Main role of Zookeeper in kafka
+cluster cordination
+leader election
+brocker regitration and management
+consumer group management
+topic and partion information
+****** 
+offset management is done by kafka.
+
 
 
