@@ -50,6 +50,14 @@ private Optional<JourneyChecklist> getDigitalLeadDetails(
       final Optional<LeadResponse> processedLeadResponses =
           futures.stream().map(CompletableFuture::join).filter(Objects::nonNull).findFirst();
 ****************************************************************************************************************************
+final CompletableFuture<Optional<LeadRecord>> leadRecordFuture =
+        CompletableFuture.supplyAsync(() -> leadDetailsWrapper.getLead(leadId));
+    final CompletableFuture<Optional<JourneyChecklist>> digitalPlResponseFuture =
+        CompletableFuture.supplyAsync(() -> leadDetailsWrapper.getDigitalPlRecord(leadId));
+    try {
+      final Optional<LeadRecord> leadRecordOptional = leadRecordFuture.get();
+      final Optional<JourneyChecklist> digitalPlRecordOptional = digitalPlResponseFuture.get();
+**************************************************************************
 
 
   Given Example
