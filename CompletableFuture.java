@@ -19,6 +19,15 @@ final CompletableFuture<Optional<JourneyChecklist>> digitalLeadDetailsFuture =
                 () -> digitalLeadServiceClient.getDigitalPlRecord(leadId, xCode));
         final Optional<JourneyChecklist> digitalLeadDetails =
             getDigitalLeadDetails(digitalLeadDetailsFuture);
+private Optional<JourneyChecklist> getDigitalLeadDetails(
+      final CompletableFuture<Optional<JourneyChecklist>> digitalLeadDetailsFuture) {
+    try {
+      return digitalLeadDetailsFuture.get();
+    } catch (final InterruptedException | ExecutionException | FeignException e) {
+      log.error("Exception occurred in digital-loan-service api - {} ", e.getMessage());
+    }
+    return Optional.empty();
+  }
 **********************************************************************************************************************
  if (!leadResponseListOfCrossSell.isEmpty()) {
       // Fetch All leads from cross-sell asynchronously
