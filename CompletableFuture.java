@@ -10,7 +10,11 @@ exception handling, and explicit completion methods, which makes it easier to wr
   when the task completed it will notify main thread whether the task is completed or failed.
   **********
   we can asynchronous programming throgh Future, ExecutreService, callBack Interface, ThreadPool.
-  ***********************
+  **************************************
+Its is not practically possible to combine two asynchronous tasks when these two tasks are independent or the result of second task depends on the first.
+
+******************************************************
+
   Given Example
    is blocking  Main thread.
   ExecutorService executorService=Executors.newFixedThreadPool(10);
