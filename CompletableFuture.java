@@ -13,7 +13,14 @@ exception handling, and explicit completion methods, which makes it easier to wr
   **************************************
 Its is not practically possible to combine two asynchronous tasks when these two tasks are independent or the result of second task depends on the first.
 
-******************************************************
+*************************************************************************
+final CompletableFuture<Optional<JourneyChecklist>> digitalLeadDetailsFuture =
+            CompletableFuture.supplyAsync(
+                () -> digitalLeadServiceClient.getDigitalPlRecord(leadId, xCode));
+        final Optional<JourneyChecklist> digitalLeadDetails =
+            getDigitalLeadDetails(digitalLeadDetailsFuture);
+**********************************************************************************************************************
+
 
   Given Example
    is blocking  Main thread.
