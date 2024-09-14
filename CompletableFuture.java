@@ -20,6 +20,27 @@ final CompletableFuture<Optional<JourneyChecklist>> digitalLeadDetailsFuture =
         final Optional<JourneyChecklist> digitalLeadDetails =
             getDigitalLeadDetails(digitalLeadDetailsFuture);
 **********************************************************************************************************************
+ if (!leadResponseListOfCrossSell.isEmpty()) {
+      // Fetch All leads from cross-sell asynchronously
+      final List<CompletableFuture<LeadResponse>> futures =
+          leadResponseListOfCrossSell.stream()
+              .map(
+                  leadResponse ->
+                      CompletableFuture.supplyAsync(() -> isActiveCrossSellRecord(leadResponse))
+                          .exceptionally(
+                              ex -> {
+                                log.error(
+                                    "Exception while trying to fetch from cross-sell service for leadId - {}, exception - {}",
+                                    leadResponse.getLeadId(),
+                                    ex.getMessage());
+                                return null;
+                              }))
+              .toList();
+
+      // Blocker to wait for getting all responses
+      final Optional<LeadResponse> processedLeadResponses =
+          futures.stream().map(CompletableFuture::join).filter(Objects::nonNull).findFirst();
+****************************************************************************************************************************
 
 
   Given Example
