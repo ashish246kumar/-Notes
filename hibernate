@@ -1,10 +1,29 @@
 Hibernate is orm tool used to map java object and database table|it provide jpa implementation that is jpa is an interface and hibernate is implenting jpa
 it remove biolerplate code|provide transaction management implicitly
 important interface used in the hibernate
-SessionFactory-one session factory object per database connection-it provide session object
-session-session is used to get physical connection with database
+SessionFactory-one session factory object per database connection-it provide session object.
+Key Methods:openSession():,getCurrentSession()
+session-session is used to get physical connection with database.provides methods for CRUD operations, querying, and transaction management.
 cascade-used to define cascading between two entity bean used with mapping
 Persistance means->the process of storing and  managing the data for long time.
+Transaction
+The Transaction interface manages transactions in Hibernate.
+Key Methods:
+begin(): Starts a transaction.
+commit(): Commits the transaction, 
+
+rollback()
+The Query interface is used to create HQL (Hibernate Query Language) or SQL queries.
+In Hibernate, an entity object can exist in different states as it interacts with the session and the database.
+
+When an object is in the transient state, it is not associated with any Hibernate session or database.
+The object has just been created using the new operator but hasn't been saved to the database
+
+Persistent State
+An object enters the persistent state when it is associated with a Hibernate session and the corresponding record exists in the database.
+
+Detached State
+An object enters the detached state when the Hibernate session is closed, but the object still represents a row in the database
 ***************
 @Table(name = "user",indexes = {
         @Index(name = "mobile_no", columnList = "mobile_no"),
@@ -59,4 +78,6 @@ public class AddressEntity extends AuditModel {
   @JoinColumn(name = "bank_id", referencedColumnName = "id")
   private CustomerEntity bank;
 ******************
-
+Spring Data JPA: It reduces the amount of boilerplate code needed for common database operations like GET, PUT, POST, etc.
+Spring Repository: It is an extension of Spring Repository which contains APIs for basic CRUD operations, pagination, and Sorting.
+Hibernate is a popular ORM (Object-Relational Mapping) framework in Java that provides an abstraction over relational databases
