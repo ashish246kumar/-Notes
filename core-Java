@@ -200,6 +200,14 @@ ClassNotFoundException, SQLException, IOException
 unchecked exceptions?
 
 NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException
+**************************************************************************
+Exception
+An issue that can disrupt the normal flow of a program but can be caught and handled.
+Types:-Checked and Unchecked exceptions	
+Error
+Unrecoverable system-level problems
+Types:-JVM and system errors
+
 
 ******************************************************************************************************************************************************
 throws keyword is used to specify the exceptions that a particular method can throw. 
