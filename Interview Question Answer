@@ -409,6 +409,15 @@ post then when object is created by the constructor of that class and which meth
 class will be executed
 ************
 
+Feature	         HashSet	                            LinkedHashSet
+Ordering	    No specific order (unordered)	    Preserves insertion order
+Performance	    Slightly faster	                    Slightly slower
+Time Complexity	Insertion: O(1), Search: O(1)	    Insertion: O(1), Search: O(1) (with more overhead)
+Memory Usage	Lower memory usage	                Higher memory usage (due to linked list for order)
+Internal Structure	Backed by a hash table	        Backed by a hash table and a doubly linked list
+Use Case	When order of elements doesn't matter   When insertion order matters
+Duplicates	No duplicates allowed	                No duplicates allowed
+Iteration Order	Unpredictable	                    Follows the order of insertion
 
 
 
