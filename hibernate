@@ -157,3 +157,5 @@ Specifies the size constraints on a field
 @Min / @Max
 Ensures that numeric fields fall within a specified range.
 ************
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
