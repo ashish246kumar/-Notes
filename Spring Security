@@ -1,0 +1,16 @@
+Spring Security is powerful and custimizable security framework that is used in spring boot application to handle authentication and authorization
+******
+Authentication:- The process of verifying user identity (userName and Password)
+*********
+dependency need to add to enable spring security-->spring boot starter security
+once the dependency is added spring boot autoconfiguration feature will automatically apply security to the application.
+*************
+By default spring security uses Http basic authentication
+***********
+@EnableWebSecurity
+This annotations signals spring to enable its webSecurity support. It is used in conjunction with @Configuration.
+*********
+configure method provide a way to configure how request are secured . It define how request matching should be done and what security action should be applied.
+******
+
+
