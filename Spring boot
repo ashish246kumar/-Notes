@@ -66,10 +66,18 @@ public String getPizza(){
 By default Spring crete all the bean eagrly at the startup or bootStraping of the application context.
 @Lazy can be useful for beans that are resource-intensive
 **********************
+In Spring, the 
+@Scope annotation is used to define the scope of a bean in the Spring context.
+ A scope defines the lifecycle of a bean — how and when a new instance of the bean is created and how long it lives
 @Scope annotation is used to define the scope of the bean
 Singleton: only one instance of the bean is created and shared across the entire application. This is the default scope.
 
 Prototype: a new instance of the bean is created every time it is requested.
+Request (Web Application)
+Definition: A new bean instance is created for each HTTP request. It's used in web applications
+Session (Web Application)
+Definition: A new bean instance is created for each HTTP session
+@Scope("request")
 @Component
 @Scope("singleton")
 public class MySingletonBean {
@@ -106,6 +114,9 @@ To return JSON or XML, methods need to be annotated with @ResponseBody. Suitable
 **********************************************************************************
 @ComponentScan-->used to specify the base packages to scan for Spring components (i.e., classes annotated with @Component, @Service, @Repository, @Controller, etc.).
 @ComponentScan(basePackages = "com.example.myapp")
+***************************
+
+****************************
 
 
 
