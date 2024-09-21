@@ -81,3 +81,79 @@ public class AddressEntity extends AuditModel {
 Spring Data JPA: It reduces the amount of boilerplate code needed for common database operations like GET, PUT, POST, etc.
 Spring Repository: It is an extension of Spring Repository which contains APIs for basic CRUD operations, pagination, and Sorting.
 Hibernate is a popular ORM (Object-Relational Mapping) framework in Java that provides an abstraction over relational databases
+************************************************************************************************************************************
+@Entity
+
+Marks a class as an entity
+@Table
+
+Specifies the name of the table that the entity will be mapped to.
+@Id
+
+Defines the primary key of the entity.
+@GeneratedValue
+
+Specifies the generation strategy for the primary key
+@Column
+
+Specifies the column name, length, and other constraints in the database.
+@Transient
+
+Marks a field to be ignored by Hibernate and not mapped to the database.
+@Lob
+
+Marks a field to be persisted as a large object
+@Temporal
+
+Used for mapping java.util.Date or java.util.Calendar to the database.
+These annotations are used to define relationships between entities (One-to-One, One-to-Many, Many-to-One, Many-to-Many).
+
+@OneToOne
+
+Defines a one-to-one relationship between two entities.
+@ManyToOne
+
+Defines a many-to-one relationship.
+@ManyToOne
+
+Defines a many-to-one relationship.
+@ManyToMany
+
+Defines a many-to-many relationship.
+@JoinColumn
+
+Specifies the foreign key column
+@JoinColumn(name = "address_id")
+private Address address;
+@JoinTable
+
+Used to specify a join table in many-to-many relationships.
+@Cascade
+
+Defines cascading operations (e.g., persist, remove, merge).
+Example:
+java
+Copy code
+@OneToOne(cascade = CascadeType.ALL)
+private Address address;
+@Fetch
+Specifies how Hibernate should fetch related entities (eager or lazy loading).
+@OneToMany(fetch = FetchType.LAZY)
+private List<Order> orders;
+***********************************************************************************************************
+The cascade = CascadeType.ALL means that any operation (like persist, merge, remove, etc.) performed on the User entity will cascade to the associated Order entities
+What this does:
+PERSIST: When a User is saved, all associated Order entities are also saved automatically.
+REMOVE: If a User is deleted, all associated Order entities are also deleted.
+MERGE: If a User is updated, all associated Order entities are updated too.
+DETACH: If a User is detached from the persistence context, all associated Order entities are also detached.
+*********************
+@NotNull
+Ensures that a field cannot be null.
+*********************************************************
+@Size
+Specifies the size constraints on a field
+************
+@Min / @Max
+Ensures that numeric fields fall within a specified range.
+************
