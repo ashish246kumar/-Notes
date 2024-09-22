@@ -12,5 +12,9 @@ This annotations signals spring to enable its webSecurity support. It is used in
 *********
 configure method provide a way to configure how request are secured . It define how request matching should be done and what security action should be applied.
 ******
-
-
+A jwt is string that consist of three part separated by dots. 
+The header typically consist of two part. the token type(JWT) and the signing algorithm  being used such as SHA256 or RSA
+The second part of the token is the payload which contains the claims. claims are the statement about the entity(typically the user)  and the additional data 
+Signature:- to create a signature you have to take a encoded header, encoded payload a secret and the algorithm specified in the header and sign that.
+************************************************************************
+ 
