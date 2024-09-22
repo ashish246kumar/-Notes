@@ -54,4 +54,28 @@ class Solution {
     }
 }
 ***************************************************************************************************************************************************************************
+Fruit Into Baskets(max length of the subarray with at most 2 type of number)
+optimal
+***************************
+class Solution {
+    public static int totalFruits(Integer[] arr) {
+       HashMap<Integer,Integer> h=new HashMap<>();
+       int l=0,r=0,max=0;
+       while(r<arr.length){
+        h.put(arr[r],h.getOrDefault(arr[r],0)+1);
+            while(h.size()>2){
+                h.put(arr[l],h.get(arr[l])-1);
+               if(h.get(arr[l])==0){
+                  h.remove(arr[l]);
+               }
+              l++;
+           }
+           
+          max=Math.max(max,(r-l)+1);
+          r++;
+       }
+       return max;
+    }
+}
+*****************************************************************************************************
 
