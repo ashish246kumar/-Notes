@@ -437,7 +437,21 @@ serialVersionUID: A unique identifier that helps ensure compatibility between di
 Transient fields: Fields marked as transient are not serialized.
 Custom serialization: You can customize the serialization process using the writeObject and readObject methods.
 ***************************************************************************************************************************
+ The ObjectOutputStream class contains writeObject() method for serializing an Object. 
+public final void writeObject(Object obj)
+                       throws IOException
+The ObjectInputStream class contains readObject() method for deserializing an object. 
 
+*****************************************************
+when to use abstract classes and when to use interface in real time
+If several classes share common behavior, an abstract class can provide a central location for that functionality.
+
+When you want to provide a default or partial implementation for certain methods, but leave the rest of the class abstract to be implemented by subclasses
+
+ In a banking application, you might have an abstract class Account with shared properties like accountNumber, balance, and methods like deposit() and withdraw(). 
+Specific account types like SavingsAccount and CheckingAccount would extend Account and implement abstract methods like calculateInterest().
+Use interfaces when you need a class to implement multiple unrelated functionalities that don’t necessarily share state or behavior. 
+******************
 
 
 
