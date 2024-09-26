@@ -418,6 +418,26 @@ Internal Structure	Backed by a hash table	        Backed by a hash table and a d
 Use Case	When order of elements doesn't matter   When insertion order matters
 Duplicates	No duplicates allowed	                No duplicates allowed
 Iteration Order	Unpredictable	                    Follows the order of insertion
+***************************************************************************************************************************************************
+What do you mean by serialization?
+Serialization is the process of converting an object into a stream of bytes, which can then be stored in a file, sent over a network, or used for other purposes. 
+This allows you to save the state of an object and recreate it later. 
+Purpose:
+Serialization is used to persist objects (save their state) or to transport them across a network.
+Mechanism:
+The java.io.Serializable interface marks a class as serializable. When an object of such a class is serialized, its state (the values of its fields) is converted into a byte stream.
+Deserialization:
+The reverse process, deserialization, reads the byte stream and reconstructs the object.
+Use cases:
+Saving application state to a file.
+Passing objects between different JVMs (e.g., in distributed systems).
+Storing objects in a database.
+Key points to remember:
+serialVersionUID: A unique identifier that helps ensure compatibility between different versions of a serialized class. It's recommended to explicitly define this in your serializable classes.
+Transient fields: Fields marked as transient are not serialized.
+Custom serialization: You can customize the serialization process using the writeObject and readObject methods.
+***************************************************************************************************************************
+
 
 
 
