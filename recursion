@@ -1,0 +1,27 @@
+print all permutation of string or array
+*******************
+class Solution{
+public void permute(int[]nums,List<Integer> ds,List<List<Integer>>ans,boolean[] freq){
+          if(ds.size()==nums.length()){
+              ans.add(new ArrayList<>(ans));
+               return;
+            }
+    for(int i=0;i<nums.length;i++){
+      if(!freq[i]){
+          freq[i]=true;
+        ds.add(nums[i]);
+        permute(nums,ds,ans,freq);
+        ds.remove(ds.size()-1);
+        freq[i]=false;
+        }
+      }
+            
+  }
+  public List<List<Integer>> permute(int[] ans){
+    List<List<Integer>>ans=new ArrayList<>();
+    List<Integer> ds=new ArrayList<>();
+    boolean[] freq=new boolean[nums.length];
+    permute(nums,ds,ans,freq);
+    return ans;
+    }
+  }
