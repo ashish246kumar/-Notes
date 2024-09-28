@@ -444,18 +444,69 @@ The ObjectInputStream class contains readObject() method for deserializing an ob
 
 *****************************************************
 when to use abstract classes and when to use interface in real time
+***************
 If several classes share common behavior, an abstract class can provide a central location for that functionality.
 
-When you want to provide a default or partial implementation for certain methods, but leave the rest of the class abstract to be implemented by subclasses
+When you want to provide a default or partial implementation for certain methods, but leave the rest of the class abstract to be implemented by subclasses.
 
- In a banking application, you might have an abstract class Account with shared properties like accountNumber, balance, and methods like deposit() and withdraw(). 
+In a banking application, you might have an abstract class Account with shared properties like accountNumber, balance, and methods like deposit() and withdraw(). 
 Specific account types like SavingsAccount and CheckingAccount would extend Account and implement abstract methods like calculateInterest().
 Use interfaces when you need a class to implement multiple unrelated functionalities that don’t necessarily share state or behavior. 
 ******************
+In noSql mongodb relationship between two table?
+***********
+The relationship between two document inmongodb is maintained throgh embeded document and referencing
+************
+Embeded document
+In this approach, related data is stored together in the same document. This is suitable when the related data is frequently 
+accessed together or when it has a 1-to-1 or 1-to-few relationship.
+{
+  "_id": "order123",
+  "customer": {
+    "name": "Ashish Kumar",
+    "email": "ashish@example.com"
+  },
+  "items": [
+    { "product_id": "prod1", "quantity": 2, "price": 200 },
+    { "product_id": "prod2", "quantity": 1, "price": 500 }
+  ]
+}
+Advantages:
+Fewer queries (single query retrieves the entire document)
+***********
+. Referencing (Normalization)
+where documents reference other documents using a unique identifier (like a foreign key).
+Use case: When the relationship is more complex or when data changes frequently, like 1-to-many or many-to-many relationships.
+{
+  "_id": "customer123",
+  "name": "Ashish Kumar",
+  "email": "ashish@example.com"
+}
+{
+  "_id": "order123",
+  "customer_id": "customer123",
+  "items": [
+    { "product_id": "prod1", "quantity": 2, "price": 200 },
+    { "product_id": "prod2", "quantity": 1, "price": 500 }
+  ]
+}
+Advantages:
+Reduces data duplication
+No need for joins, so better performance for certain use cases.
 
+**************************************************************************************
+what is the use of primary key in table?
+primary key:- it is used to uniquely identify a record in the database.
 
-
-
+***************
+What are the drawback of restApi?
+*******
+REST APIs can cause tight coupling between the client and server, as both parties need to agree on the format and structure of requests and responses
+Security
+URIs and HTTP methods in REST APIs can be intercepted or manipulated by malicious actors. 
+Lack of state
+REST APIs can make it difficult to maintain state, such as for shopping carts
+********
 
 
 
