@@ -507,7 +507,21 @@ URIs and HTTP methods in REST APIs can be intercepted or manipulated by maliciou
 Lack of state
 REST APIs can make it difficult to maintain state, such as for shopping carts
 ********
-
+Advantages of Spring Security
+These are some of the major advantages of Spring security.
+Protection against attacks like session fixation, csrf and clickjacking.
+Spring MVC integration.
+Protect against brute force attacks.
+****
+Spring Security Features
+Authorization:-Users are assigned roles, and access to resources is controlled based on these roles (e.g., ROLE_ADMIN, ROLE_USER
+Single sign-on:-This feature allows a user to utilize a single account to access different apps (user name and password).
+LDAP (Lightweight Directory Access Protocol):- Integration with LDAP (Lightweight Directory Access Protocol) for authenticating against an LDAP directory (e.g., Active Directory).
+Basic Access Authentication:-Spring Security has support for Basic Access Authentication, which is used to give a user name and password when performing network requests        
+Remember Me Functionality
+Provides a "remember me" feature, allowing users to remain authenticated across sessions without needing to log in again.
+Spring Security can store a persistent token in a cookie or on the server to remember users
+***********
 
 
 
