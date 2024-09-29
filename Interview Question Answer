@@ -441,6 +441,8 @@ Custom serialization: You can customize the serialization process using the writ
 public final void writeObject(Object obj)
                        throws IOException
 The ObjectInputStream class contains readObject() method for deserializing an object. 
+***********************************************************************************************************
+The method can specify dependencies, which Spring will automatically inject when the bean is created
 
 *****************************************************
 when to use abstract classes and when to use interface in real time
@@ -521,7 +523,55 @@ Basic Access Authentication:-Spring Security has support for Basic Access Authen
 Remember Me Functionality
 Provides a "remember me" feature, allowing users to remain authenticated across sessions without needing to log in again.
 Spring Security can store a persistent token in a cookie or on the server to remember users
-***********
+************************************************************************************************************************************
+The @Bean annotation is a method-level annotation in the Spring Framework that's used to declare a bean in a Java configuration class: 
+How it works
+When a method is annotated with @Bean, it acts as a factory method that creates a bean instance. The bean is then registered in the Spring Application Context
+The method can specify dependencies, which Spring will automatically inject when the bean is created. 
+**********************************************************************************************************************************************
+different type of memory allocation done by jvm
+Heap Memory:	Stores objects, class instances, and arrays. Managed by the garbage collector.
+Stack Memory:	Stores method calls, local variables, and return addresses. Thread-specific.
+PC Register:	Keeps track of the current instruction for each thread.
+Metaspace:	Stores class metadata, method data, and static fields. Dynamically sized.
+********************************************
+Spring Boot provides an actuator dependency that can be used to monitor and manage your Spring Boot application.
+By default, all IDs are set to false except for ‘health’. To include an ID, use the following property in the application.properties file.
+List down all IDs that you want to include which are separated by a comma.
+management.endpoints.web.exposure.include=metrics,info
+To add/include all ID information about your application
+management.endpoints.web.exposure.include=*
+http://localhost:8080/actuator/health’.
+
+Advantages of Actuator the Application
+It reduces downtime.
+It boosts productivity.
+Id      Description
+beans	Displays a complete list of all the Spring beans in your application.
+caches	Exposes available caches
+health	Shows application health information
+loggers	 Shows and modifies the configuration of loggers in the application.
+Example: /actuator/metrics provides detailed metrics such as JVM memory, garbage collection, thread counts, etc.
+********************************************
+what 
+Traditional collections in Java focus on data storage and manipulation using an imperative programming style,
+ while the Stream API introduced in Java 8 offers a functional, declarative approach to processing collections of 
+data in a more readable, concise, and parallelizable manner.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
