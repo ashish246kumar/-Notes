@@ -553,11 +553,11 @@ health	Shows application health information
 loggers	 Shows and modifies the configuration of loggers in the application.
 Example: /actuator/metrics provides detailed metrics such as JVM memory, garbage collection, thread counts, etc.
 ********************************************
-what 
+what is the tradtional collection used in java  and  then the stram which is introduced in jdk 1.8
 Traditional collections in Java focus on data storage and manipulation using an imperative programming style,
  while the Stream API introduced in Java 8 offers a functional, declarative approach to processing collections of 
 data in a more readable, concise, and parallelizable manner.
-
+*****************************************************************************
 
 
 
