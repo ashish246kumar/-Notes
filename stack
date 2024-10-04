@@ -1,0 +1,52 @@
+Implement stack using array
+*********************************************************************
+package com.nagarro;
+
+public class StackImpl {
+	private int[] arr;
+	private int size;
+	private int top;
+     public StackImpl(int s) {
+    	 this.arr=new int[s];
+    	 this.size=s;
+    	 this.top=-1;
+     }
+     public void push(int elem) {
+    	 if(top>size) {
+    		 System.out.println("stack is full");
+    		 return;
+    	 }
+    	 arr[++top]=elem;
+     }
+     public int peek() {
+    	 return arr[top];
+     }
+     public int pop() {
+    	 if(top<0) {
+    		 System.out.println("stack is empty"); 
+    		 return -1;
+    	 }
+    	 return arr[top--];
+     }
+     public void display() {
+    	 int i=top;
+    	 System.out.println("Element are");
+    	 while(i>=0) {
+    		 
+    		 System.out.println(arr[i]);
+    		 i--;
+    	 }
+     }
+	public static void main(String[]args) {
+		StackImpl si=new StackImpl(5);
+		si.push(3);
+		si.push(10);
+		si.push(8);
+		si.push(12);
+		si.display();
+		System.out.println(si.peek());
+		System.out.println(si.pop());
+		si.display();
+	}
+}
+**************************************************************************************************************************
