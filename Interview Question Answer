@@ -558,10 +558,46 @@ Traditional collections in Java focus on data storage and manipulation using an 
  while the Stream API introduced in Java 8 offers a functional, declarative approach to processing collections of 
 data in a more readable, concise, and parallelizable manner.
 *****************************************************************************
+different different actuator  endpoint that are exposed 
+1. /actuator/health
+Indicates whether the application is running and can include information like database connectivity, disk space, etc., based on configuration.
+/actuator/env
+Description: Exposes the current environment properties (system properties, environment variables, etc.).
+***********************************************************************************
 
+Feature	        String	                                               StringBuffer	                                                             StringBuilder
+Mutability	   Immutable	                                             Mutable	                                                              Mutable
+Thread-Safety Thread-safe (due to immutability)	                  Thread-safe (synchronized methods)	                                     Not thread-safe
+Performance	  Slower for frequent modifications	  Slower than StringBuilder due to synchronization overhead	                           Faster for single-threaded applications
+Usage Scenario	When strings don’t require	               When strings are modified frequently in                                    When strings are modified frequently in single-threaded environments
+                 modification or in read-only cases        multi-threaded environments                                         	
 
-
-
+Synchronization	Not synchronized	                        Synchronized (methods are thread-safe)	                                                Not synchronized
+Speed Slow (due to creation of new objects for each modification)	Moderate (synchronized operations slow it down)	         Fast (no synchronization overhead)
+******************************************************************************************************************************************************************************
+finally block is always executed after the try block completes, whether an exception is thrown or not
+***********************************************************************************************************************************
+Feature	                                          Abstract Method	                                                                                                   Default Method
+Definition	                             A method declared without an implementation in an abstract class or interface	                                    A method in an interface with a default implementation
+Implementation Requirement	            Must be implemented by subclasses or implementing classes	                                                     Can be overridden by implementing classes, but not mandatory
+Keyword	                                 Declared with the abstract keyword (in abstract class or interface)	                                           Declared with the default keyword (in interface only)
+Where It Can Be Used	                 Can be used in abstract classes and interfaces (prior to Java 8)	                                              Can only be used in interfaces (introduced in Java 8)
+Method Body	                             No method body provided, only the method signature	                                                                 Has a method body (implementation)
+********************************************************************************************************************************************************************************************************
+Feature	                                                                             Runnable Interface	                                                                Thread Class
+Inheritance	                                                    Implementing Runnable allows a class to extend another class.	                     Extending Thread means the class cannot extend any other class due to single inheritance in Java.
+Implementation	                                                            Requires implementing the run() method.	                                        Requires overriding the run() method by subclassing Thread.
+Thread Creation	                                                  Cannot directly create a thread, needs to be passed to a Thread object.	           Can create and start a thread directly by calling the start() method.
+Flexibility	                                         Allows for more flexibility, as a class can implement Runnable and extend any other class.	       Less flexible, as extending Thread restricts further inheritance.
+Preferred for	                               Best suited for scenarios where multiple classes need to be threads, as it doesn't restrict inheritance.	Used when directly controlling the thread is necessary, though not often preferred.
+Memory Overhead	                                      Lighter, as the object only implements a single method (run()).	                                   Heavier, as it creates a full thread object with its own overhead.
+Decoupling of Task & Execution	                 The task (what the thread does) and the execution (how the thread runs) are decoupled.                       A Runnable object represents the task, while a Thread object handles execution.	The task and the thread’s execution are tightly coupled because the task is represented by the Thread object itself.
+Thread Pool Usage	                                 Ideal for use in a thread pool. In a thread pool, you submit Runnable tasks for execution.	          Not ideal for thread pools, as Thread objects are not reusable after execution
+************************************************************************************************************************************************************************************************************
+The purpose of a synchronized block in Java is to provide mutual exclusion and ensure thread safety by controlling access to shared resources (such as variables or objects) in a multithreaded environment.
+ When multiple threads attempt to access shared data concurrently,
+ a synchronized block ensures that only one thread can access the critical section of code at a time, preventing race conditions and data inconsistenc
+********************************************************************************************************************************
 
 
 
