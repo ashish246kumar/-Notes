@@ -50,3 +50,70 @@ public class StackImpl {
 	}
 }
 **************************************************************************************************************************
+Circular Queue
+******************************************************************************************************************************
+public class CircularQueue {
+	private int[] arr1;
+	private int maxCapacity;
+	private int front;
+	private int rare;
+	private int size;
+     public CircularQueue(int capcity) {
+    	 this.arr1=new int[capcity];
+    	 this.maxCapacity=capcity;
+    	 this.front=0;
+    	 this.rare=-1;
+    	 this.size=0;
+     }
+     public void enqueue(int elem) {
+    	 if(isFull()) {
+    		 System.out.print("Queue is full");
+    		 return;
+    	 }
+    	 rare=(rare+1)%maxCapacity;
+    	 arr1[rare]=elem;
+         size++;    	
+     }
+     public void dequeue() {
+    	 if(isEmpty()) {
+    		 System.out.print("Queue is Empty");
+    		 return;
+    	 }
+    	 front=(front+1)%maxCapacity;
+    	 size--;
+     }
+     public boolean isFull() {
+    	 return size==maxCapacity;
+     }
+     public boolean isEmpty() {
+    	 return size==0;
+     }
+    
+     public void display() {
+    	 int i=front;
+    	 System.out.println("i"+front);
+    	 System.out.println("Element are");
+    	 int k=0;
+    	 while(k<size) {
+    		 System.out.println(arr1[i]);
+    		 i=(i+1)%maxCapacity;
+    		 k++;
+    		
+    		 
+    	 }
+     }
+	public static void main(String[]args) {
+		CircularQueue queue=new CircularQueue(5);
+		 queue.enqueue(10);
+	        queue.enqueue(20);
+	        queue.enqueue(30);
+	        queue.enqueue(40);
+	        queue.enqueue(50);
+	        System.out.println("mainFront"+queue.front+" "+"mainFront"+queue.rare);
+		queue.display();
+		
+		queue.dequeue();
+		queue.display();
+	}
+}
+************************************************************************************************************************************************************************************
