@@ -16,3 +16,46 @@ Kubelet: The Kubelet is the agent that runs on each Worker Node and communicates
 Container Runtime: Kubernetes supports multiple container runtimes, such as Docker or containerd. The Container Runtime is responsible for pulling container images and running containers on the Worker Nodes
 Kube Proxy: Kube Proxy is responsible for network communication within the cluster. It manages the network routing for services and performs load balancing.
 ****************************************
+when a user deploys a new application, the configuration is sent to the API Server, which then stores it in etcd.
+The Controller Manager continuously monitors the cluster state through the API Server. If there are any deviations from the desired state (e.g., a pod is not running), the Controller 
+Manager takes corrective actions to reconcile the state
+****************************************************************************
+we have a Kubernetes cluster with three worker nodes: Node A, Node B, and Node C. These nodes are responsible for hosting and running our containerized applications
+Nodes represent individual machines in a cluster
+*************************************************************************************************************************************
+A Pod is the smallest deployable unit in Kubernetes and represents one or more tightly coupled containers.
+*****************************************************************************
+Suppose we want to deploy a simple web application in our Kubernetes cluster, and this web application requires both an application server and a database. 
+We can package both the application server and the database server into a single pod.
+****************************************************************************************************************
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-with-db
+  labels:
+    app: my-webapp
+spec:
+  containers:
+    - name: webapp
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+    - name: database
+      image: mongo:latest
+***************************************************************************************************************************************
+A Kubernetes Service is an abstraction that defines a stable endpoint to access a group of pods. 
+It allows you to expose your application to other pods within the cluster or to external clients. 
+Services provide load balancing and automatic scaling for the pods behind them, ensuring that the application remains highly available.
+*****************************************************************************************************************************************
+Ingress:
+While the service enables internal communication between pods within the cluster, Kubernetes Ingress provides a way to expose your services to external clients outside the cluster. 
+It acts as an external entry point to your applications and enables you to configure routing rules and load balancing for incoming traffic.
+**********************************************************************************************************************************************
+A Kubernetes ConfigMap is used to store configuration data that can be consumed by pods as environment variables or mounted as configuration files. It helps separate the configuration from the container image, 
+making it easier to update configurations without rebuilding the container.
+************************************************************************************************************************************
+Kubernetes Secrets are used to store sensitive information, such as passwords, API keys, or TLS certificates. 
+Secrets are base64-encoded by default and can be mounted as files or used as environment variables in pods.
+**********************************************************************************************************************************
+
+
