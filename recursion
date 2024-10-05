@@ -141,13 +141,13 @@ public static List<List<String>> partition(String s){
 }
 static void possiblePartitionning(int idx,String s,List<List<String>>ans,List<String> ds){
     if(s.length()==idx){
-         ans.add(ds);
+         ans.add(new ArrayList < >(ds));
           return;
     }
 for(int i=idx;i<s.length();i++){
   if(isPallindrome(s,idx,i)){
-   ds.add(s.substring(idx,i));
-   possiblePartitionning(idx+1,s,ans,ds);
+   ds.add(s.substring(idx,i+1));
+   possiblePartitionning(i+1,s,ans,ds);
    ds.remove(ds.size()-1);
 }
 }
