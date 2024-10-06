@@ -1,1 +1,27 @@
 https://www.codekarle.com/system-design/Zoom-system-design.html
+*****************************************************************************************************************************************
+System design of scalable url shortner service
+Tiny url are exceedingly handy to share through sms/tweets (where there is limit to number of characters that can be messaged/tweeted) 
+********************************************
+basis for functional requirements.
+How long a tiny url would be ? Will it ever expire ?
+Can a customer create a tiny url of his/her choice or will it always be service generated ? 
+If user is allowed to create customer shortened links, what would be the maximum size of custom url ?
+How many url shortening request expected per month ?
+Do we expect service to provide metrics like most visited links ?
+Click to the short URL should redirect the user to the original long URL
+Shortened link should be as small as possible
+Users can create custom url with maximum character limit of 16
+Service should collect metrics like most clicked links
+Once a shortened link is generated it should stay in system for lifetime
+
+
+Non-Functional Requirements:
+
+Service should be up and running all the time
+URL redirection should be fast and should not degrade at any point of time (Even during peak loads)
+Service should expose REST API’s so that it can be integrated with third party applications
+
+api_key: A unique API key provided to each user, to protect from the spammers, access, and resource control for the user, etc.
+
+****************************************************************************************************************************************
