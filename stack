@@ -117,3 +117,50 @@ public class CircularQueue {
 	}
 }
 ************************************************************************************************************************************************************************************
+496. Next Greater Element I
+Given a string s, partition s such that every 
+substring
+ of the partition is a 
+palindrome
+. Return all possible palindrome partitioning of s.
+Example 1:
+Input: s = "aab"
+Output: [["a","a","b"],["aa","b"]]
+Example 2:
+Input: s = "a"
+Output: [["a"]]
+************************************************************
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        HashMap<Integer,Integer>h=new HashMap<Integer,Integer>();
+        Stack<Integer>st=new Stack<Integer>();
+        
+        int n1=nums1.length,n2=nums2.length;
+        int[] ans=new int[n1];
+        h.put(nums2[n2-1],-1);
+        st.push(nums2[n2-1]);
+        for(int i=n2-2;i>=0;i--)
+        {
+            while(st.size()>0&&nums2[i]>=st.peek())
+            {
+                st.pop();
+            }
+            if(st.size()==0)
+            {
+                h.put(nums2[i],-1);
+            }
+            else{
+                h.put(nums2[i],st.peek());
+            }
+            st.push(nums2[i]);
+        }
+        for(int i=0;i<n1;i++)
+        {
+            ans[i]=h.get(nums1[i]);
+        }
+        return ans;
+
+    }
+}
+******************************************************************************************************************************************
+
