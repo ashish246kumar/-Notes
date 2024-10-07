@@ -57,5 +57,105 @@ making it easier to update configurations without rebuilding the container.
 Kubernetes Secrets are used to store sensitive information, such as passwords, API keys, or TLS certificates. 
 Secrets are base64-encoded by default and can be mounted as files or used as environment variables in pods.
 **********************************************************************************************************************************
+A Kubernetes Volume is a directory that is accessible to all containers in a pod. It decouples the storage from the containers, ensuring that data persists even if a container is restarted or rescheduled.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+We’ve added a new YAML block to create a PersistentVolumeClaim (PVC) named database-pvc.
+The PVC defines the storage requirements for our database. In this example, we request a 1Gi storage volume
+The MongoDB data will be stored persistently in the db-data volume, which is backed by the dynamically provisioned PersistentVolume
+The db-data volume is used by the MongoDB container to store its data.
+The db-data volume is backed by a PersistentVolume (in Kubernetes) that was dynamically
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-with-db
+  labels:
+    app: my-webapp
+spec:
+  containers:
+    - name: webapp
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      envFrom:
+        - configMapRef:
+            name: webapp-config
+    - name: database
+      image: mongo:latest
+      env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+      volumeMounts:
+        - name: db-data
+          mountPath: /data/db
+  volumes:
+    - name: db-data
+      persistentVolumeClaim:
+        claimName: database-pvc
+
+********************************************************************************************************************************************************
+Deployment:
+A Kubernetes Deployment is a higher-level abstraction that manages a set of identical pods. It's ideal for stateless applications where individual pods are interchangeable
+The Deployment ensures that the desired number of replicas is maintained. If a pod fails or is terminated, the Deployment will automatically create a new pod to replace it, ensuring high availability
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-webapp
+  template:
+    metadata:
+      labels:
+        app: my-webapp
+*********************************************************************************************************************************************************************
+Interacting with a Kubernetes cluster is primarily done using the `kubectl` command-line tool. `kubectl`
+ allows you to inspect and manage various Kubernetes resources, such as pods, deployments, services, and more, in the cluster.
+**********************************************************************************************************************************************************************
+Inspecting Cluster Information:
+To check the status of your cluster and its components:
+kubectl cluster-info
+To view the nodes in your cluster:
+kubectl get nodes
+To get a list of resources (pods, services, deployments, etc.) in your namespace
+kubectl get <resource>
+Replace `<resource>` with the name of the resource you want to list (e.g., `pods`, `services`, `deployments`, etc.).
+2. To get detailed information about a specific resource:
+
+kubectl describe <resource> <resource_name
+To create or apply a Kubernetes resource from a YAML configuration file:
+kubectl apply -f <filename>
+2. To delete a resource:
+kubectl delete <resource> <resource_name>
+Interacting with Pods:
+To view the pods in your namespace:
+kubectl get pods
+2. To view the logs of a specific pod:
+kubectl logs <pod_name>
+Interacting with Services:
+To view the services in your namespace:
+kubectl get services
+2. To access a service from your local machine:
+
+kubectl port-forward <service_name> <local_port>:<service_port>
+******************************************************************************
 
 
