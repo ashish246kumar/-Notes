@@ -1,0 +1,174 @@
+CRON
+***************
+cron.py
+***********************************************************************************************************************************************************************************************
+import mysql.connector
+from mysql.connector import MySQLConnection
+import pandas as pd
+from datetime import datetime,timedelta
+import configparser
+from configparser import ConfigParser
+import colorlog
+import logging
+import schedule
+import time
+
+from logging.handlers import RotatingFileHandler
+import os
+def load_config(section,fileName='config.ini'):
+    parser = ConfigParser()
+    parser.read(fileName)
+    db={}
+    if parser.has_section(section):
+        params = parser.items(section)
+        for param in params:
+            db[param[0]]=param[1]
+    else:
+        raise RuntimeError('Section {0} not found in the {1} config file'.format(section,filename))
+        
+    return db
+config=configparser.ConfigParser()
+config.read('config.ini')
+def init_logger(dunder_name,testing_mode):
+    log_format=(
+        '%(asctime)s-'
+        '%(name)s-'
+        '%(funcName)s-'
+        '%(levelname)s-'
+        '%(message)s-'
+    )
+    bold_seq="\033[1m"
+    colorlog_format=(
+        f'{bold_seq}'
+        '%(log_color)s'
+        f'{log_format}'
+    )
+    colorlog.basicConfig(format=colorlog_format)
+    log=logging.getLogger(dunder_name)
+    if testing_mode:
+        log.setLevel(logging.DEBUG)
+    else:
+        log.setLevel(logging.INFO)
+    log_file_dir="logs"
+    os.makedirs(log_file_dir,exist_ok=True)
+    fh=RotatingFileHandler('logs/inactive_telesales_users.log',maxBytes=2000000,backupCount=2)
+    
+    fh.setLevel(logging.DEBUG)
+    formatter=logging.Formatter(log_format)
+    fh.setFormatter(formatter)
+    log.addHandler(fh)
+    fh=RotatingFileHandler('logs/inactive_telesales_users.log',maxBytes=2000000,backupCount=2)
+    fh.setLevel(logging.ERROR)
+    formatter=logging.Formatter(log_format)
+    fh.setFormatter(formatter)
+    log.addHandler(fh)
+    return log
+def fetch_data_and_export():
+    logger=init_logger(__name__,testing_mode=True)
+    logger.info("Logger initialized and ready to capture events.")
+    config=configparser.ConfigParser()
+    config.read('config.ini')
+    db_config = load_config('DATABASE')
+    mysql_host = db_config.get('host')
+    mysql_database = db_config.get('database')
+    mysql_user = db_config.get('user')
+    mysql_password = db_config.get('password')
+    mysql_timezone = db_config.get('timezone')
+    days_ago=int(config.get('DATES','DAYS_AGO'))
+    day=datetime.utcnow()-timedelta(days=days_ago)
+    print(day)
+    connection = mysql.connector.connect(
+    host=mysql_host,
+    database=mysql_database,
+    user=mysql_user,
+    password=mysql_password,
+    auth_plugin='mysql_native_password'
+    )
+    cursor = connection.cursor()
+    query = "SELECT product_code, brand, description, name, price FROM product"
+    cursor.execute(query)
+    result=list(cursor.fetchall())
+    print(f"Connected to database: {result}")
+    cursor.close()
+    connection.close()
+    file_config=load_config('file_config')
+    file_path=file_config.get("output_csv_path")
+    if os.path.exists(file_path) and os.path.isfile(file_path):
+    
+      os.remove(file_path)
+      logger.info(f'deleted csv file on path-{file_path}')
+      df=pd.DataFrame(result)
+      df.to_csv(file_path,index=False)
+# fetch_data_and_export()      
+def schedule_task():
+    schedule.every(1).minute.do(fetch_data_and_export)  # Run daily at midnight
+
+    while True:
+        schedule.run_pending()
+        time.sleep(60)  # Wait one minute before checking the schedule again
+
+# Start the scheduler
+if __name__ == "__main__":
+    schedule_task()          
+
+
+        
+
+
+
+
+logger=init_logger(__name__,testing_mode=True)
+logger.info("Logger initialized and ready to capture events.")
+config=configparser.ConfigParser()
+config.read('config.ini')
+db_config = load_config('DATABASE')
+mysql_host = db_config.get('host')
+mysql_database = db_config.get('database')
+mysql_user = db_config.get('user')
+mysql_password = db_config.get('password')
+mysql_timezone = db_config.get('timezone')
+days_ago=int(config.get('DATES','DAYS_AGO'))
+day=datetime.utcnow()-timedelta(days=days_ago)
+print(day)
+connection = mysql.connector.connect(
+    host=mysql_host,
+    database=mysql_database,
+    user=mysql_user,
+    password=mysql_password,
+    auth_plugin='mysql_native_password'
+)
+cursor = connection.cursor()
+query = "SELECT product_code, brand, description, name, price FROM product"
+cursor.execute(query)
+
+result=list(cursor.fetchall())
+print(f"Connected to database: {result}")
+cursor.close()
+connection.close()
+file_config=load_config('file_config')
+file_path=file_config.get("output_csv_path")
+if os.path.exists(file_path) and os.path.isfile(file_path):
+    os.remove(file_path)
+    logger.info(f'deleted csv file on path-{file_path}')
+df=pd.DataFrame(result)
+df.to_csv(file_path,index=False)    
+**********************************************************************************************************************************************************************************************
+config.ini
+************************************************************************************************************************************************************************************************
+[DATABASE]
+HOST = localhost
+DATABASE = product_catelogue
+USER = root
+PASSWORD = root
+TIMEZONE = UTC
+
+[file_config]
+output_csv_path=null
+
+[DATES]
+DAYS_AGO=30
+*****************************************************************************************************************************************************************************************************
+
+        
+
+
