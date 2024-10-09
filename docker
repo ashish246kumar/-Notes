@@ -64,4 +64,4 @@ We can run several virtual machines on a real physical machine using a hyperviso
 Docker uses a client-server architecture. Where a client component talks with the server component 
 using a restful API, over UNIX sockets, or a network interface.
 ***********************************************************************************
-
+docker is installed globaly so no worry about path 
