@@ -47,3 +47,15 @@ docker rm $(docker ps -a -q)
 docker restart mySqlDB-to restart mysql container
 docker build -t myubuntuimage .---->to build image
 docker run --name JavaProject myjavauimage
+********************************************************************************************
+Let’s assume you built the application and exported the source code to the client but now he is not able to run it on his machine. Probably due to software version mismatch 
+or different configurations. And this is where Docker comes to the rescue
+We can easily package up our application with the respective requirements and run it anywhere, on any machine with Docker
+Configure once and run it on any machine where the configuration part will be then handled with Docker
+*********************************************************
+container:-
+When the dependencies are installed it runs under an isolated environment called containers.
+For example, if there are two applications both using Node but with different versions. They can run side by side in an isolated environment without messing with each other.
+**
+a container is a lightweight, stand-alone, executable package that includes everything needed to run an application: code, runtime, libraries, environment variables, and system tools
+***********************************************************************
