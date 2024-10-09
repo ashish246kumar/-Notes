@@ -1,4 +1,4 @@
-docker -v->to see the version of the docker
+docker -v or docker --version->to see the version of the docker
 docker run hello-world
 docker images
 docker.hub-where all the images are stored
@@ -59,3 +59,9 @@ For example, if there are two applications both using Node but with different ve
 **
 a container is a lightweight, stand-alone, executable package that includes everything needed to run an application: code, runtime, libraries, environment variables, and system tools
 ***********************************************************************
+We can run several virtual machines on a real physical machine using a hypervisor
+**********************************************************************************************************************************
+Docker uses a client-server architecture. Where a client component talks with the server component 
+using a restful API, over UNIX sockets, or a network interface.
+***********************************************************************************
+
