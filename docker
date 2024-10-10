@@ -65,3 +65,6 @@ Docker uses a client-server architecture. Where a client component talks with th
 using a restful API, over UNIX sockets, or a network interface.
 ***********************************************************************************
 docker is installed globaly so no worry about path 
+***********************
+If your system have different node version and your container have different node version then in this case also it will work perfectly fine.
+*********************************************************************
