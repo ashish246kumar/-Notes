@@ -81,4 +81,24 @@ docker build -t basic app .
 if you are not giving the port then you will not able to acess the application still when the application is running in the container.
 There is a chanses that your application is running on different port inside the container but you are accessing those application on different port outside the container
 ***************
+.dockerignore:-if you want particular file not be included whiie making images of the application then you should include all those file inside .dockerignore file
+********************
+file inside .dockerignore
+node_modules
+*.txt-->it will exclude all the file with .txt extension to go to the image
+**********
+delete image->we can not update image. image  is in read only mode
+docker image rm basic-app
+*********
+if the image is running on the container then it will delete the image forcefully
+docker container rm tonny -f--->here tonny is container name
+******
+if the image is stoped in the container
+docker container rm tonny -f
+**********
+
+********************************************************************************************
+
+
+
 
