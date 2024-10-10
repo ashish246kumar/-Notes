@@ -68,3 +68,17 @@ docker is installed globaly so no worry about path
 ***********************
 If your system have different node version and your container have different node version then in this case also it will work perfectly fine.
 *********************************************************************
+FROM node:latest
+     baseImage:version which you want to install
+WORKDIR /app
+COPY . .
+     source , Destination
+RUN npm install
+EXPOSE 5500
+CMD ["node","index.js"]
+******
+docker build -t basic app .
+if you are not giving the port then you will not able to acess the application still when the application is running in the container.
+There is a chanses that your application is running on different port inside the container but you are accessing those application on different port outside the container
+***************
+
