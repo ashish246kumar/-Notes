@@ -96,8 +96,18 @@ docker container rm tonny -f--->here tonny is container name
 if the image is stoped in the container
 docker container rm tonny -f
 **********
+to create image with version
+docker build -t basic-app:v2 .
+to run the image having version
+docker run --name basic-app-container-v2 -p 5500:5500 basic-app:v2
+                                   first port is the port in which you want to access  your application. second one is the port in which your application is running
+
 
 ********************************************************************************************
+data saved inside the container are temproary
+docker run --name basic-container -p 5050:5050 --rm -v <path of the application>:/app basic-app
+                                                                          path in the volume
+*************************************************************************************************
 
 
 
