@@ -157,6 +157,26 @@ kubectl get services
 
 kubectl port-forward <service_name> <local_port>:<service_port>
 ***********************************************************************************************************************************************************************************************************
+apiVersion->describe the version of your api server
+kind->this is you telling to the kubernate what type of object you are creating
+metadata:->it describe the info about the application name, lablels
+we can group multiple pods inside a single service
+replicas:->create two pods of my application in kubernative cluster 
+imagePullPolicy->when you not specify this kubernate will search your image on docker hub but when you specify this it will first search your image in local if it is not
+present in local then it will search in docker hub
+*************
+kubectl get deployment
+kubectl get pods
+kubectl log pods name
+when we have application is running on three different instance .now chalenge here is how i can consume my application here. if i send a request to acess my application
+where does the request will land, whether it will go to first pod second pod or third pod i do not know .now to solve this problem load balancer kind of mechanism
+in kubernate service play the role of service discovery where it expose our application to outside the world or to outside the kubernative cluster as well as it act as a 
+load balancer. where it decide whicch pod should handle the request based on the load
+kubectl get services
+kubectl get nodes -o wide 
+********************************************************************************************************************
+
+
 
 
 
