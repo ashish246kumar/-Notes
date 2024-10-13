@@ -139,6 +139,9 @@ private:-The member is accessible with in the same package
 protected:- Accessible within the same package and by subclasses, even if they are in different packages
 default:-Accessible only within the same package.
 **************************************************************
+Java’s built-in sorting methods, such as Arrays.sort() and Collections.sort(), are powerful and efficient for sorting primitive types and objects with natural
+ ordering (like String), they fall short when it comes to sorting custom objects
+*****
 Comparable vs Comparator
 Comparable and Comparator are interfaces that are used for sorting objects, but they serve different purposes and are used in different contexts
  final List<Phone> phoneList = customerDetail.getPhones();
@@ -229,18 +232,19 @@ java based configuration)
 |
 |
 Bean Instansiation
-(After bean defination are loaded the spring container create instanses of bean based on this defination.This involve 
-involving the bean class constructor either the default constructor or specified constructor to create actual 
-instanse of bean)(Student-->name=nul,age=0)
+(After bean defination are loaded the spring  create instanses of bean based on this defination.Spring calls the constructor of the bean class (either the default constructor or a parameterized constructor, depending on the definition).
+At this point, the properties of the bean may not yet be fully initialized; the instance is created but is still in a partially constructed state.
 |
 |
-Bean Initilazation (name="ak",age=11)
+Bean Initilazation (name="ak",age=11): After the bean is instantiated, Spring injects dependencies (if any) and initializes the bean's properties.
+
+
 |
 |
-Bean used
+Bean used:-Once initialized, the bean is ready to be used by the application. The bean can now be accessed from the Spring container and used wherever needed
 |
 |
-Bean Destruction
+Bean Destruction:_ When the Spring container is shutting down (or when a bean is no longer needed), Spring destroys the bean
 
 *********************************
 MicroService Communication
