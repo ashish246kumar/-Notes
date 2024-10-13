@@ -141,3 +141,5 @@ class B extends A {
 
 class C extends A {
     // subclass C
+*************************************
+Abstraction in Java refers to hiding the implementation details of a code and exposing only the necessary information to the user.
