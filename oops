@@ -1,0 +1,5 @@
+Polymorphism
+The word ‘polymorphism’ means ‘having many forms’. considered one of the important features of Object-Oriented Programming.Polymorphism allows us to perform a single action in different ways. In other words, polymorphism allows you to define one interface and have multiple implementations.
+ In simple words, we can define Java Polymorphism as the ability of a message to be displayed in more than one 
+Real-life Illustration of Polymorphism in Java: A person can have different characteristics at the same time. Like a man at the same time is a father, a husband, and an employee.
+
