@@ -108,3 +108,5 @@ Advantages of Encapsulation
 Data Hiding
 
 ****************************************************************************************************************************************
+Inheritence
+ It is the mechanism in Java by which one class is allowed to inherit the features(fields and methods) of another class. It allowing you to create flexible and reusable code.
