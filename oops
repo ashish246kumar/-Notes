@@ -31,4 +31,71 @@ class Helper {
 Runtime Polymorphism in Java
 It is also known as Dynamic Method Dispatch
 This type of polymorphism is achieved by Method Overriding. Method overriding,
+abstract class Employee {
+    private String name;
+    private int employeeId;
+    
+    public Employee(String name, int employeeId) {
+        this.name = name;
+        this.employeeId = employeeId;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getEmployeeId() {
+        return employeeId;
+    }
+    
+    // Abstract method to be overridden by subclasses
+    public abstract double calculateSalary();
+}
+
+// Subclass for full-time employees
+class FullTimeEmployee extends Employee {
+    private double annualSalary;
+    
+    public FullTimeEmployee(String name, int employeeId, double annualSalary) {
+        super(name, employeeId);
+        this.annualSalary = annualSalary;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return annualSalary;
+    }
+}
+class PartTimeEmployee extends Employee {
+    private double hourlyRate;
+    private int hoursWorked;
+    
+    public PartTimeEmployee(String name, int employeeId, double hourlyRate, int hoursWorked) {
+        super(name, employeeId);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return hourlyRate * hoursWorked;
+    }
+}
+class ContractEmployee extends Employee {
+    private double contractAmount;
+    
+    public ContractEmployee(String name, int employeeId, double contractAmount) {
+        super(name, employeeId);
+        this.contractAmount = contractAmount;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return contractAmount;
+    }
+}
 ************************************************************************************************
+why we can not create instance of abstract class?
+Because an abstract class is an incomplete class (incomplete in the sense it contains abstract methods without body and output.) We cannot create an instance or object, the same way you say for an interface.
+If we will create an object of the abstract class and calls the method having no body(as the method is pure virtual) it will give an error.
+******************************************************************************************
