@@ -99,3 +99,12 @@ why we can not create instance of abstract class?
 Because an abstract class is an incomplete class (incomplete in the sense it contains abstract methods without body and output.) We cannot create an instance or object, the same way you say for an interface.
 If we will create an object of the abstract class and calls the method having no body(as the method is pure virtual) it will give an error.
 ******************************************************************************************
+Encapsulation
+In Java, encapsulation is achieved by declaring the instance variables of a class as private, which means they can only be accessed within the class.
+ To allow outside access to the instance variables, public methods called getters and setters are defined.
+Encapsulation is defined as the wrapping up of data under a single unit
+prevents the data from being accessed by the code outside this shield. 
+Advantages of Encapsulation
+Data Hiding
+
+****************************************************************************************************************************************
