@@ -59,6 +59,10 @@ HttpStatus.FORBIDDEN
 always use this in controller
  return ResponseEntity.ok()
 ********************************************************************************
+error generally represent critical issue with the environment or the system
+OutOfMemoryError: Thrown when the Java Virtual Machine (JVM) runs out of memory.
+ThreadDeath: Thrown when a thread is forcibly terminated
+******************************
 Q)what is meaning of threshhold value in context of hashMap
  the threshold value is a value that determines when the HashMap needs to resize itself.
 **
