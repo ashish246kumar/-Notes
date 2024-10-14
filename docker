@@ -108,7 +108,131 @@ data saved inside the container are temproary
 docker run --name basic-container -p 5050:5050 --rm -v <path of the application>:/app basic-app
                                                                           path in the volume
 *************************************************************************************************
+how container in docker ensure they will  there is no versioning issue come?
+Environment Isolation: Each Docker container runs in its own isolated environment, meaning that the application, its dependencies, and specific versions
+ are bundled together in the container. This prevents conflicts with other applications or dependencies on the host machine or other containers.
 
+*********************************************************
+i want to run my application on linux machine as well as window machine did i need to change the docker ?
+***************************************************************************************************************
+how we can create the container?
+For creating container we need a image. images are nothing but a lueprint for the container. so when we run the image we get a container .
+Now the question is how you will create the image for the software
+throgh the docker.
+What are the layer of image?
+there are two type of docker image one is public and one is custom
+for running a java application we need jdk. on the top of the  jdk we have our certain layer that we write in Dockerfile.
+WORKDIR /app :- what ever the command we are going to write it will executed in /app directory
+***************
+FROM ubuntu:${VERSION}
+ARG VERSION=latest
+Versioning: Specify versions of software dependencies to ensure consistent builds.
+The ARG instruction in a Dockerfile defines a variable that users can pass at build-time to the Docker build process.
+# Specify the base image
+FROM python:3.9
 
+# Define an argument with a default value
+ARG APP_NAME=myapp
+*********************************************************************************************************************************
+COPY <source_path> <destination_path>
+The COPY instruction in a Dockerfile is used to copy files and directories from the local filesystem (the build context) into the filesystem of the Docker image
+# Use a base image
+FROM node:14
 
+# Set the working directory
+WORKDIR /usr/src/app
 
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+***************************************
+COPY . . :-> IT Will copy from your current working directory to current working directory.
+what ever you specify in the entry point those command will get executed when your container will run
+*****************************************************************************************************************************************************************
+
+# Use the .NET 6 SDK as the build environment
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
+# Set the working directory for the build stage
+WORKDIR /src
+
+# Copy the project file and restore dependencies
+COPY ["Demo Application/Demo Application.csproj", "Demo Application/"]
+RUN dotnet restore "Demo Application/Demo Application.csproj"
+
+# Copy the rest of the application source code
+COPY . .
+
+# Build the application
+RUN dotnet build "Demo Application/Demo Application.csproj" -c Release -o /app/build
+
+# Publish the application
+FROM build AS publish
+RUN dotnet publish "Demo Application/Demo Application.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Use the .NET 6 runtime as the base for the final image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
+
+# Set the working directory for the runtime environment
+WORKDIR /app
+
+# Copy the published output from the build stage
+COPY --from=publish /app/publish .
+
+# Expose ports 80 and 443
+EXPOSE 80
+EXPOSE 443
+
+# Specify the command to run the application
+ENTRYPOINT ["dotnet", "Demo Application.dll"]
+****************************************************************************************************************************
+Example file 
+# Use the .NET 6 SDK as the build environment
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
+# Set the working directory for the build stage
+WORKDIR /src
+
+# Copy the project file and restore dependencies                               |
+COPY ["Demo Application/Demo Application.csproj", "Demo Application/"]         |
+RUN dotnet restore "Demo Application/Demo Application.csproj"                  |-----> why i specify copy command above and below also?
+                                                                                    suppose you have done some changes on the code but not on the dependency . if you have  not  used first copy command then 
+# Copy the rest of the application source code                                 |    my application will run  from starting it will build dependency file also again if there is no change in it. so above first copy command
+COPY . .                                                                       | will prevent doing the above thing. it will do caching.
+
+# Build the application
+RUN dotnet build "Demo Application/Demo Application.csproj" -c Release -o /app/build
+
+# Publish the application
+FROM build AS publish
+RUN dotnet publish "Demo Application/Demo Application.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Use the .NET 6 runtime as the base for the final image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
+
+# Set the working directory for the runtime environment
+WORKDIR /app
+
+# Copy the published output from the build stage
+COPY --from=publish /app/publish .
+
+# Expose ports 80 and 443
+EXPOSE 80
+EXPOSE 443
+
+# Specify the command to run the application
+ENTRYPOINT ["dotnet", "Demo Application.dll"]
+********************************************************************************************************************************************
+Explanation of COPY and Caching
+Layering and Caching:
+Docker builds images in layers. Each instruction in the Dockerfile creates a new layer. If a layer doesn’t change, Docker can use the cached version of that layer in future builds, which significantly speeds up the build process.
+When you run docker build, Docker checks if the current instruction (like COPY or RUN) and its inputs (files being copied or the command being run) have changed since the last build. If nothing has changed, it reuses the cached layer.
+Separation of Concerns:
+
+In your example, the first COPY command specifically copies the project file (Demo Application.csproj) to the container. This file typically contains the project dependencies.
+The command RUN dotnet restore "Demo Application/Demo Application.csproj" is executed after this copy, which restores the dependencies specified in that project file.
+Efficient Rebuilds:
+
+If you only modify the source code (like .cs files), the project file (Demo Application.csproj) and its dependencies haven’t changed. Because of the way Docker handles caching, the build can skip the dotnet restore step (if it is cached), saving time.
+If the project file had not been copied separately, any change in the source files would trigger a rebuild of all layers, including RUN dotnet restore, even if the dependencies themselves had not changed. This would slow down the build process unnecessarily.
+*****************************************************************************************************************************************************
+docker inspect <imageId>
