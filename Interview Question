@@ -109,7 +109,36 @@ static keyword  in term of memory explain;
 can we overide a static method?
 Are you aware about generic 
 *************
+Interview Experience: Accolite Digital | Java Developer
 
+Sharing my recent experience interviewing for a Java Developer role at Accolite Digital , which consisted of 3 rounds:
+
+1️⃣ Technical Round 1:
+Create a custom immutable class.
+Serialization, deserialization, and externalization.
+Purpose of serialVersionUID.
+Comparable vs Comparator.
+Generics and wildcard in generics.
+Count each character occurrence in a String.
+Difference between Factory and Abstract Factory.
+
+2️⃣ Technical Round 2:
+Create a REST API to fetch data by ID and name.
+How to increase the size of an ArrayList.
+Internal working of ArrayList.
+Synchronized (HashMap) vs ConcurrentHashMap.
+Configuring a Spring Boot application.
+@Component vs @Service annotations.
+Can @Component be used in place of @Service?
+How does @RequestBody convert data into JSON?
+ConcurrentHashMap exceptions.
+What is Persist?
+Persist vs Save.
+wait vs join in multithreading.
+
+💡 Although I didn't make it through the final round, the experience was valuable and a great learning opportunity!
+
+📈 I'm always eager to connect with others in the Java and tech community. Let's grow together, share insights, and help each other on this journey!
 
 
 
