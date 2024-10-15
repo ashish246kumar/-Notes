@@ -253,3 +253,79 @@ while(!st.isEmpty()&& heights[st.peek()]>=heights[i]){
     }
 }
 **********************************************************************************************************************************
+Problem Statement: “Design a data structure that follows the constraints of Least Recently Used (LRU) cache”.
+Implement the LRUCache class:
+LRUCache(int capacity) we need to initialize the LRU cache with positive size capacity.
+int get(int key) returns the value of the key if the key exists, otherwise return -1.
+Void put(int key,int value), Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache.if the number of keys exceeds the capacity from this operation, evict the least recently used key.
+Example:
+Input:
+ ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+       [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output:
+ [null, null, null, 1, null, -1, null, -1, 3, 4]
+Explanation:
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+*************************************************************************************************************
+class LRU_CACHE{
+Node node=new Node(0,0);
+HashMap<Integer,Node> h=new HashMap<>();
+int capacity;
+public LRU_CACHE(int capacity){
+  this.capacity=capacity;
+  head.next=tail;
+  tail.prev=head;
+}
+public int get(int key){
+if(h.containsKey(key)){
+  Node node=h.get(key);
+  remove(node);
+  insertKey(node);
+ return node.value;
+}
+else{
+return -1;
+}
+}
+public void put(int key,int value){
+   if(h.containsKey(h.get(key)){
+      remove(h.get(key));
+}
+else if(h.size()==capacity){
+    remove(tail.prev);
+}
+insert(new Node(key,value));
+}
+public void  removeKey(Node node){
+  h.remove(node.key);
+   node.prev.next=node.next;
+  node.next.prev=node.prev;
+}
+public void insertKey(Node node){
+h.put(node.key,node);
+node.next=head.next;
+node.next.prev=node;
+node.prev=head;
+head.next=node;
+
+}
+
+}
+class Node{
+  Node prev,next;
+  int key, vallue;
+  Node(int key, int value){
+     this.key=key;
+     this.value=value;
+}
+}
+****************************************************************************************************************************************
