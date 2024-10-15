@@ -219,6 +219,7 @@ COPY --from=publish /app/publish .
 EXPOSE 80
 EXPOSE 443
 
+
 # Specify the command to run the application
 ENTRYPOINT ["dotnet", "Demo Application.dll"]
 ********************************************************************************************************************************************
@@ -236,3 +237,8 @@ If you only modify the source code (like .cs files), the project file (Demo Appl
 If the project file had not been copied separately, any change in the source files would trigger a rebuild of all layers, including RUN dotnet restore, even if the dependencies themselves had not changed. This would slow down the build process unnecessarily.
 *****************************************************************************************************************************************************
 docker inspect <imageId>
+docker stop    <imageId>
+*************************************************************
+docker run --rm -p 3002:80  -d ashish/my-sample-api:2
+what it will do if we stop the container through stop command then it will stop as well as delete the container also
+*******************************************************************************
