@@ -175,6 +175,207 @@ load balancer. where it decide whicch pod should handle the request based on the
 kubectl get services
 kubectl get nodes -o wide 
 ********************************************************************************************************************
+deployment.yaml
+********************
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermanagement-system-k8s
+  labels:
+    app: usermanagement-system-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usermanagement-system-k8s
+  template:
+    metadata:
+      labels:
+        app: usermanagement-system-k8s
+    spec:
+      containers:
+        - name: usermanagement-system-k8s
+          image: ashishhkr14791/springbootwithdocker:v6
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://spring-mysql-application:3306/localspringbootdb?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config-map
+                  key: mysql-user-username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass
+                  key: mysql-user-password
+          resources:
+            limits:
+              cpu: 0.2
+              memory: "200Mi"
+      imagePullSecrets:
+        - name: regcred
+*********************************
+mysql-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config-map
+data:
+  mysql-server: spring-mysql-application    # The name of MySQL service
+  mysql-database-name: localspringbootdb     # The name of your Spring Boot application's database
+  mysql-user-username: admin
+*************************
+mysql-deloyment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-mysql-application
+  labels:
+    app: spring-mysql-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-mysql-application
+  template:
+    metadata:
+      labels:
+        app: spring-mysql-application
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0.27
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass
+                  key: mysql-root-password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config-map
+                  key: mysql-database-name
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config-map
+                  key: mysql-user-username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass
+                  key: mysql-user-password
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+
+******************************************************
+mysql-pv-claim.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+**********************************************
+service.yaml
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-pass
+type: Opaque
+data:
+  mysql-root-password: cm9vdA==
+  mysql-user-password: YWRtaW4=
+*******
+apiVersion: v1
+kind: Service
+metadata:
+  name: usermanagement-system-k8s-svc
+spec:
+  selector:
+    app: usermanagement-system-k8s
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+************************************************************************************************************************************************
+Dockerfile
+FROM maven:3.8.5-openjdk-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean install -DskipTests
+FROM openjdk:17-jdk-alpine
+COPY --from=build /app/target/springDocker-0.0.1-SNAPSHOT.jar ./app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+*****
+docker-compose.yaml
+version: "3.8"
+services:
+  app:
+    image: ashishhkr14791/springbootwithdocker:v6
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/localspringbootdb?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0.27
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: localspringbootdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  db_data:
+*******************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
