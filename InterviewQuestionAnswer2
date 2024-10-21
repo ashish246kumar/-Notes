@@ -1,0 +1,73 @@
+Create a custom immutable class.
+**********
+To create a custom immutable class in Java, you need to ensure that the state of the class cannot be modified after the object is created.
+*******
+Mark the class as final to prevent subclassing.
+Make all fields private and final, ensuring they are initialized only once.
+Provide a constructor that sets all the fields.
+Do not provide setters (no methods to modify the state).
+If the class contains mutable fields, ensure they are properly handled (e.g., using defensive copies).
+public final class ImmutablePerson {
+
+    private final String name;
+    private final int age;
+    private final Address address; 
+ public ImmutablePerson(String name, int age, Address address) {
+        this.name = name;
+        this.age = age;
+        this.address = new Address(address.getStreet(), address.getCity());
+    }
+
+    // Getter methods to access the fields
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Address getAddress() {
+        // Return a defensive copy of the mutable field to prevent modification
+        return new Address(address.getStreet(), address.getCity());
+    }
+
+  public static class Address {
+        private final String street;
+        private final String city;
+
+        public Address(String street, String city) {
+            this.street = street;
+            this.city = city;
+        }
+
+        public String getStreet() {
+            return street;
+        }
+
+        public String getCity() {
+            return city;
+        }
+    }
+}
+
+*******************************************************************************************************************************************************************
+Serialization, deserialization, and externalization.
+
+Java provides a built-in mechanism for serialization by implementing the java.io.Serializable interface.
+When an object is serialized, all of its instance variables and references are converted into bytes.
+Fields marked as transient are not serialized.
+The class must have a unique serialVersionUID (automatically generated if not provided). This helps during deserialization to verify that the same class (or compatible version) is used.
+Java uses ObjectInputStream to read the serialized byte stream and converts it back into the original object.
+The class being deserialized must have the same serialVersionUID as when it was serialized,
+*******************
+Deserilization:_
+the process of reconstructing an object from its byte stream back into a fully functional Java object.
+Java uses ObjectInputStream to read the serialized byte stream and converts it back into the original object.
+
+**************************************************
+ Externalization:_Externalization is a more advanced version of serialization where the developer has control over what to serialize and how to serialize it.
+the class must implement the java.io.Externalizable interface, which requires you to override two methods:
+writeExternal(ObjectOutput out): Controls how the object is written to the output stream.
+readExternal(ObjectInput in): Controls how the object is reconstructed from the input stream.
+*******************
