@@ -161,4 +161,21 @@ static boolean isPalindrome(String s, int start, int end) {
 }
 
 }
+*******************************************************************************************
+Subset Sum : Sum of all Subsets
+Class Solutions{
+ static void subsetSumHelper(int idx,int sum, int n, ArrayList<Integger> ans, int[]arr){
+
+    if(idx==n){
+    ans.add(sum);
+ return;
+}
+subsetSumHelper(idx+1,n,sum+ar[i],ans,arr);
+subsetSumHelper(idx+1,n,sum,ans,arr);
+
+}
+}
+}
+
+
 
