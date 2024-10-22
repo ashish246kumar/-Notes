@@ -70,4 +70,132 @@ Java uses ObjectInputStream to read the serialized byte stream and converts it b
 the class must implement the java.io.Externalizable interface, which requires you to override two methods:
 writeExternal(ObjectOutput out): Controls how the object is written to the output stream.
 readExternal(ObjectInput in): Controls how the object is reconstructed from the input stream.
+import java.io.*;
+class Car implements Externalizable {
+    static int age;
+    String name;
+    int year;
+
+    public Car()
+    {
+        System.out.println("Default Constructor called");
+    }
+
+    Car(String n, int y)
+    {
+        this.name = n;
+        this.year = y;
+        age = 10;
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out)
+        throws IOException
+    {
+        out.writeObject(name);
+        out.writeInt(age);
+        out.writeInt(year);
+    }
+
+    @Override
+    public void readExternal(ObjectInput in)
+        throws IOException, ClassNotFoundException
+    {
+        name = (String)in.readObject();
+        year = in.readInt();
+        age = in.readInt();
+    }
+
+    @Override public String toString()
+    {
+        return ("Name: " + name + "\n"
+                + "Year: " + year + "\n"
+                + "Age: " + age);
+    }
+}
+
+public class ExternExample {
+    public static void main(String[] args)
+    {
+        Car car = new Car("Shubham", 1995);
+        Car newcar = null;
+
+        // Serialize the car
+        try {
+            FileOutputStream fo
+                = new FileOutputStream("gfg.txt");
+            ObjectOutputStream so
+                = new ObjectOutputStream(fo);
+            so.writeObject(car);
+            so.flush();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+
+        // Deserialization the car
+        try {
+            FileInputStream fi
+                = new FileInputStream("gfg.txt");
+            ObjectInputStream si
+                = new ObjectInputStream(fi);
+            newcar = (Car)si.readObject();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+
 *******************
+The serialVersionUID is a unique identifier in Java used during the serialization and deserialization process to ensure that a serialized object
+ corresponds exactly to the class definition used to deserialize it.
+When an object is serialized, the serialVersionUID of the class is saved with the object's byte stream
+*****************************************************************************
+generics and wildcards:-
+generics and wildcards are used to define collections that can hold elements of specific or any type.
+Generics  helps catch type mismatches during compilation.
+Wildcards
+A wildcard is a special type argument that can be used in place of a type parameter in a generic class or method. The wildcard is represented by the “?” symbol.
+*****************************************************************
+Generics allow you to define a class or a method that can work with any type, without specifying a particular class until you use it.
+public class Box<T> {
+    private T item;
+
+    public void set(T item) {
+        this.item = item;
+    }
+
+    public T get() {
+        return this.item;
+    }
+}
+Box<Integer> integerBox = new Box<>();
+integerBox.set(10);
+Integer value = integerBox.get();  // Value is safely cast to Integer.
+
+Box<String> stringBox = new Box<>();
+stringBox.set("Hello");
+String str = stringBox.get();  // Safely cast to String.
+
+*********************************
+Types of wild card
+Unbounded Wildcard (<?>):
+public void printBox(Box<?> box) {
+    System.out.println(box.get());  // You can call methods that don't depend on the type.
+}
+****
+Upper Bounded Wildcard:-) is used when you need to get data from a generic structure.
+
+public void addToBox(Box<? extends Number> box) {
+    Number number = box.get();  // Safely retrieves a Number or its subclass (e.g., Integer, Double).
+}
+**************
+Lower Bounded Wildcard (<? super T>):) is used when you need to put data into a generic structure.
+
+public void addNumber(Box<? super Integer> box) {
+    box.set(100);  // Can add an Integer or any of its subclasses.
+}
+************************************************************************************************************************
+
+
+
+
