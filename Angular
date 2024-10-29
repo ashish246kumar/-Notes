@@ -237,7 +237,16 @@ function sum(...numbers) {
 }
 
 console.log(sum(1, 2, 3, 4));  // Output: 10
+function multiply(factor, ...numbers) {
+    return numbers.map(number => number * factor);
+}
 
+function logResults(...results) {
+    console.log("Results:", results);
+}
+
+const scaledNumbers = multiply(2, 1, 2, 3, 4); 
+logResults(...scaledNumbers)
 
 ******************************************************************************
 
