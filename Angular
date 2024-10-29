@@ -205,3 +205,39 @@ Displaying Data in Components
 State changes are handled by pure functions called reducers that take the current state and the latest action to compute a new state.
 Actions describe unique events that are dispatched from components and services.
 State is accessed with the Store, an observable of state and an observer of actions.
+*************************************
+Do you know JavaScript asynchronous or synchronous?
+JavaScript is inherently single-threaded, meaning it executes code in a synchronous, blocking manner by default. However, JavaScript can handle asynchronous operations using several mechanisms. Here's an overview of both synchronous and asynchronous aspects of JavaScript:
+Synchronous
+synchronous JavaScript, code is executed line-by- na and sach operation must be completed before the et any starts. This can lead to blocking behavior where lang-running task (like a complex calculation or wwerk request) prevents subsequent code from ing until it finishes.
+Asynchronous
+To handle long-running tasks without blocking the main execution thread. JavaScript uses asynchronous programming techniques. The most common mechanisms for asynchronous operations in JavaScript are:
+* Callbacks
+* Promises
+*****************
+why we use async await in javascript
+ Non-Blocking Execution
+When you use await, JavaScript can execute other code while waiting for the asynchronous operation to complete.
+Async and await work with promises
+ Avoiding Callback Hell
+Traditional asynchronous programming with callbacks can lead to "callback hell," where nested callbacks create deeply indented and hard-to-read code. With async/await, you avoid nesting by writing asynchronous code in a linear, top-to-bottom style.
+********
+Meaning: A variable that has been declared but not assigned a value is undefined.
+*********
+null is a kind of value. It is a datatype which tell the specific value of the variable is null.
+***********************
+ An undeclared variable is one that has not been declared in the scope. Accessing undeclared variables will throw a ReferenceError.
+console.log(z); // ReferenceError: z is not defined
+*******************************************
+rest operator (...) is used in function parameter definitions to handle an indefinite number of arguments
+ It allows you to capture all remaining arguments passed to a function in an array.
+ The rest operator can be used to capture all extra arguments into a single array parameter.
+function sum(...numbers) {
+    return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+console.log(sum(1, 2, 3, 4));  // Output: 10
+
+
+******************************************************************************
+
