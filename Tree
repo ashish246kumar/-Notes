@@ -136,5 +136,28 @@ class Solution {
     }
 }
 *****************************************************************************************************************************************
+Kth smallest element in bst
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        int[] arr=new int[1];
+        int[]counter=new int[1];
+        traverse(root,k,counter,arr);
+        return arr[0];
 
+    }
+    private void traverse(TreeNode root, int k, int[] counter,int[] arr){
+         if(root==null){
+            return;
+         }
+         traverse(root.left,k,counter,arr);
+         counter[0]++;
+         System.out.println(counter);
+         if(counter[0]==k){
+            arr[0]=root.val;
+            return;
+         }
+        traverse(root.right,k,counter,arr);
+
+    }
+}
 
