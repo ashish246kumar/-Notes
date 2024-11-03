@@ -249,4 +249,12 @@ const scaledNumbers = multiply(2, 1, 2, 3, 4);
 logResults(...scaledNumbers)
 
 ******************************************************************************
+Angular was introduced to create Single Page applications. This framework brings structure and consistency to web applications and provides excellent scalability and maintainability.
+Angular is an open-source JavaScript framework entirely written in TypeScript. It uses HTML syntax to express your application's components clearly.
+**************************************************************
+TypeScript
+It's a superset of JavaScript, meaning it builds on JavaScript by adding new features and tools while being compatible with standard JavaScript syntax.
+**************************************************************************************************************
+
+
 
