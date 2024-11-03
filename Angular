@@ -1,6 +1,9 @@
 
 
 
+
+
+
 observable are used to perform asynchronous operation and handle asynchronous data.
 in asynchronous task all the task are executed parallely.
 observable  emit multiple value ver a period of time.while promise emit a single value at a time.
@@ -257,9 +260,17 @@ It's a superset of JavaScript, meaning it builds on JavaScript by adding new fea
 **************************************************************************************************************
 Data binding is a technique used in web development to synchronize data between the model (application logic) and the view (UI).
 Data binding can be one-way or two-way depending on whether updates flow in a single direction or both directions.
+One-Way Data Binding:
+Interpolation: Uses {{ }} syntax to display data directly in HTML
+<p>{{ title }}</p>
+Property Binding: Binds a component property to an HTML attribute using [ ] syntax.
+<img [src]="imageUrl">
+Event Binding: Captures user interactions by binding events (e.g., (click)) to methods in the component
+<button (click)="onClick()">Click me</button>
 
-
-
+Two-Way Data Binding:
+Angular achieves two-way data binding using [(ngModel)], which is a combination of property and event binding.
+<input [(ngModel)]="username">
 
 
 
