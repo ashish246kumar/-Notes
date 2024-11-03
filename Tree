@@ -210,4 +210,20 @@ class Solution {
         return isValidBinaryST(root.left,min,root.val)&& isValidBinaryST(root.right,root.val,max);
  
 }
-******************************
+*****************************************************************************************************************
+LCA(Lowest cmmon ancestor in a binary search tree)
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        int curr=root.val;
+      if(p.val>curr && q.val>curr){
+          return lowestCommonAncestor(root.right,p,q);
+      }
+      if(p.val<curr && q.val<curr){
+          return lowestCommonAncestor(root.left,p,q);
+      }
+     return root;
+    }
+}
+*****************************************************************************************************
+
+
