@@ -255,6 +255,19 @@ Angular is an open-source JavaScript framework entirely written in TypeScript. I
 TypeScript
 It's a superset of JavaScript, meaning it builds on JavaScript by adding new features and tools while being compatible with standard JavaScript syntax.
 **************************************************************************************************************
+Data binding is a technique used in web development to synchronize data between the model (application logic) and the view (UI).
+Data binding can be one-way or two-way depending on whether updates flow in a single direction or both directions.
 
+
+
+
+
+
+
+
+
+
+
+***************************************************************************
 
 
