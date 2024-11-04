@@ -313,11 +313,32 @@ Property decorators are used to bind properties to input/output data or dependen
 @Output: Marks a property as an output property, allowing it to emit events to a parent component.
 Parameter Decorators
 Parameter decorators are used to inject dependencies into a class constructor. They allow Angular to inject specific dependencies into parameters
+Common example:
+@Inject: Specifies a custom provider for dependency injection in a class constructor.
+@Optional: Marks a dependency as optional, meaning Angular will inject null if the dependency is not found
+
 *******************************************************************************************
-
-
-
-
+Advantage of Angular
+Two-Way Data Binding
+Component-Based Architecture
+Dependency Injection (DI)
+Strong Community and Ecosystem
+Single Page Application (SPA) Capabilities
+*******************
+Angular Templates are written with HTML that contains Angular-specific elements and attributes
+Key Features of Angular Templates
+Interpolation
+Interpolation allows you to bind component properties to the template.
+Directives
+Angular templates can use directives to manipulate the DOM
+<div *ngIf="isLoggedIn">Welcome back!</div>
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+Data Binding
+Angular templates support various forms of data binding to synchronize data between the model and the view:
+Pipes
+Pipes are a way to transform data displayed in templates.
 
 
 ***************************************************************************
