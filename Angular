@@ -272,8 +272,48 @@ Two-Way Data Binding:
 Angular achieves two-way data binding using [(ngModel)], which is a combination of property and event binding.
 <input [(ngModel)]="username">
 **************************************************************************************************************************
+Feature	                  Angular	                          AngularJS
 
+Language	               TypeScript	                     JavaScript
+Architecture	      Component-based	                 MVC (Model-View-Controller)
+Data Binding	    Two-way data binding, but favors     Primarily two-way data binding
+                 one-way by default	
+Mobile Support	Mobile-friendly, with tools             Limited mobile support
+               for native app development	
 
+Routing       @Route configuration is used to        @routeProvider is used to provide routing information
+                define routing information
+*************************************************************************************************************
+6. What are decorators in Angular? 
+Decorators are a design pattern or functions that define how Angular features work. 
+decorators are special functions that attach metadata to classes, methods, properties, or parameters.
+ Angular supports four types of decorators, they are:
+Class Decorators
+Property Decorators
+Method Decorators
+Parameter Decorators
+*********************************************************************************************************************************************************
+Class Decorators
+Class decorators are used to define classes and provide metadata for them.
+Common examples:
+@Component: Defines an Angular component.
+@Directive: Defines an Angular directive.
+@NgModule: Defines an Angular module.
+@Injectable: Marks a class as injectable, allowing it to be used in dependency injection
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent { }
+
+Property Decorators:-
+Property decorators are used to bind properties to input/output data or dependency injection tokens.
+@Input: Marks a property as an input property, allowing it to receive values from a parent component.
+@Output: Marks a property as an output property, allowing it to emit events to a parent component.
+Parameter Decorators
+Parameter decorators are used to inject dependencies into a class constructor. They allow Angular to inject specific dependencies into parameters
+*******************************************************************************************
 
 
 
