@@ -271,6 +271,7 @@ Event Binding: Captures user interactions by binding events (e.g., (click)) to m
 Two-Way Data Binding:
 Angular achieves two-way data binding using [(ngModel)], which is a combination of property and event binding.
 <input [(ngModel)]="username">
+**************************************************************************************************************************
 
 
 
