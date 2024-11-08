@@ -24,6 +24,8 @@ Representational State Transfer (REST)/RESTful web services is an architectural 
 How independent micro-services communicate with each other?
 It depends upon your project needs. However, in most cases, developers use HTTP/REST with JSON or Binary protocol. However, they can use any communication protocol.
 What is the meaning of OAuth?
+OAuth2 is authorization framework that allow third party application to obtain access to user resources without exposing there credential. 
+OAuth2 is widely used for secure authorization and resource access in Spring Boot applications.
 OAuth means open authorization protocol.  It helps you to share resources stored on one site with another site without the need for their credentials.
 Containers are easiest and effective method to manage the microservice based application. It also helps you to develop and deploy individually.
  open-standard authorization protocol 
