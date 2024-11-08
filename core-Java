@@ -123,6 +123,9 @@ ability of a variable function or object to take   multiple form.like water have
 two type-
 compile time (static)
 runtime(dynamic)
+advantage
+Improved Code Flexibility: It enables developers to write code that can work with objects of different types.
+Improved Code Maintainability:
 ***************
 data hiding-the variable is hidden from other classes and can accessed only throgh method of current class
 ***************
