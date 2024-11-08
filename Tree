@@ -224,6 +224,86 @@ class Solution {
      return root;
     }
 }
-*****************************************************************************************************
+***************************************************************************************************************************************************************
+                                                                    Binary Tree
+*******************************************************************************************************************************************************************
+                                  Level order Traversal OR BINARY TREE
+*********************************************************************************************************************************************************
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> q=new LinkedList<>();
+       List<List<Integer>> l=new ArrayList<>();
+       if(root==null){
+          return l;
+       }
+       q.add(root);
+       while(!q.isEmpty()){
+        int n=q.size();
+  List<Integer> l1=new ArrayList<>();
+        for(int i=0;i<n;i++){
+        TreeNode t1=q.poll();
+             l1.add(t1.val);
+             if(t1.left!=null){
+                    q.add(t1.left);
+             }
+             if(t1.right!=null){
+                q.add(t1.right);
+             }
+             
+        
+        }
+        l.add(l1);
+       }
+       return l;       
+    }
+}
+*****************************************
+POST ORDER TRAVERSAL
+***************************************************************************************************************
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> l=new ArrayList<>();
+        performPostOrder(root,l);
+        return l;
+    }
+    public void performPostOrder(TreeNode root,List<Integer>l){
+            if(root==null){
+                return;
+            }
+            performPostOrder(root.left,l);
+            performPostOrder(root.right,l);
+            l.add(root.val);
+    }
 
+}
+**************************************************************************************************************************************************************************
+POST ORDER TRAVERSAL  using two stack
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> l=new ArrayList<>();
+        Stack<TreeNode> st1=new Stack<>();
+                Stack<Integer> st2=new Stack<>();
+          if(root==null){
+            return l;
+          }  
+          st1.push(root);    
+        while(!st1.isEmpty()){
+           TreeNode elem=st1.pop();
+           st2.push(elem.val);
+           if(elem.left!=null){
+               st1.push(elem.left);
+           }
+           if(elem.right!=null){
+              st1.push(elem.right);
+           }
+        }
+        while(!st2.isEmpty()){
+            l.add(st2.pop());
+        }
+        return l;
+    }
+   
 
+}
+********************************************************************************************************************
+ 
