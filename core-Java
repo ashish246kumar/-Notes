@@ -125,7 +125,7 @@ compile time (static)
 runtime(dynamic)
 advantage
 Improved Code Flexibility: It enables developers to write code that can work with objects of different types.
-Improved Code Maintainability:
+Improved Code Maintainability:Changes in the base class or interface automatically propagate to all derived classes, simplifying maintenanc.
 ***************
 data hiding-the variable is hidden from other classes and can accessed only throgh method of current class
 ***************
