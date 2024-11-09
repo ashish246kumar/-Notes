@@ -48,6 +48,8 @@ Explanation:
 - Computer has 1 student, so we do not include it
 
 
+select class from Courses Group by class having count(student)>=5
+
 
 
 
