@@ -395,7 +395,8 @@ public class SchoolManagement {
 }
 
 *************************************************************************************************************************************************
-
+the try-with-resources statement is used for managing resources such as files, streams, or any class that implements AutoCloseable.
+Try-with-resources is used to automatically close the BufferedReader after the block of code is executed. This is the main use case for the try-with-resources statement
 ******************************************************************************************************    
                
                                                                                               
