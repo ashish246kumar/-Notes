@@ -505,3 +505,5 @@ The result format is in the following example.
 
 # Write your MySQL query statement below
 select *,IF(X+Y>Z AND X+Z>Y AND Y+Z>X,"Yes","No") as triangle FROM Triangle;
+*************************************************************************************************************************************************
+
