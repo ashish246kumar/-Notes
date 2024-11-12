@@ -483,3 +483,25 @@ select s.user_id,IFNULL(ROUND(SUM(c.action='confirmed')/count(*),2),0.00) AS con
 FROM Signups s LEFT JOIN Confirmations c ON s.user_id=c.user_id 
 GROUP BY s.user_id;
 ******************************************************************************************************************************************
+TRAINGLE JUDGEMENT
+Table: Triangle
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| x           | int  |
+| y           | int  |
+| z           | int  |
++-------------+------+
+In SQL, (x, y, z) is the primary key column for this table.
+Each row of this table contains the lengths of three line segments.
+ 
+
+Report for every three line segments whether they can form a triangle.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+# Write your MySQL query statement below
+select *,IF(X+Y>Z AND X+Z>Y AND Y+Z>X,"Yes","No") as triangle FROM Triangle;
