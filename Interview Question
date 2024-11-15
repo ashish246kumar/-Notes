@@ -5,7 +5,13 @@ normalization
 delete vs truncate
 tradational vs agile methodology
 design pattern from copy
-
+copy constructor
+how string is intialized in memory
+difference between String str1="abc",Striing s2=new String("cde"), str2="abc" and String s3=new String("cde")
+is it recomnded to overide hascode and equalsMethod  if yes why and if not why.
+whare are the method of object class for multithreading. 
+why does wait method is in the object class?
+**************************************************************************************************************************************
 
 
 
