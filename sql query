@@ -726,7 +726,7 @@ Explanation: The average experience years for the first project is (3 + 2 + 1) /
 
 select p.project_id,ROUND(sum(e.experience_years)/count(*),2) AS average_years FROM Employee e INNER JOIN Project p on e.employee_id=p.employee_id GROUP BY  p.project_id 
 ***************************************************************************************************************************************************************************
-
+Percentage of users attended a contest
 
 Table: Users
 
