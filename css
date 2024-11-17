@@ -132,3 +132,21 @@ window.addEventListner("wheel",function(dets){
 })
 ****************
 use section tag it is seo friendly
+*********************************
+margin: auto is a simple and effective way to center a block-level element horizontally when its width is specified
+      margin: 0 auto; /* Automatically sets equal left and right margins */
+float allows you to align block-level elements to the left or right of their container
+      float: right; /* Aligns element to the right */
+
+    CSS Flexbox provides precise control over the alignment of child elements, including centering them both horizontally and vertically
+.flex-container {
+      display: flex; /* Enables flexbox */
+      justify-content: center; /* Aligns children horizontally */
+      align-items: center; /* Aligns children vertically */
+      height: 200px;
+      background-color: lightgray;
+    }
+
+
+The text-align property aligns inline content (like text or inline elements) inside a block container. It doesn't apply to block-level elements directly.
+
