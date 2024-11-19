@@ -191,3 +191,5 @@ jab hum website design karte hai toh pixel ka use na kare kyuki px dene par fixe
 vw and vh -->screen se value 1leta hai
 10vw->matlab 10 percent of the screen
 ******************************************
+overflow->hidden
+ye hum tab lagaynge jab hum child me vw aur vh use kar rahe hai aur iske parent me px ya percentage use kar rahe hai
