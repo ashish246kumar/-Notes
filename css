@@ -149,4 +149,45 @@ float allows you to align block-level elements to the left or right of their con
 
 
 The text-align property aligns inline content (like text or inline elements) inside a block container. It doesn't apply to block-level elements directly.
+***********************************************************************************************************************************************************
+********************************************************************************************************************************************************
+css boiler plate code
+    
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+    }
+html,body{
+  width:100%;
+  height:100%;
+    }
+    
+link both html and css
+<link rel="stylesheet" href="style.css">
+************************************************************************************************************************************************
+css width and height
+jaha bhi ek se jayda element dikhe waha div hai 
+jaha bhi rectangular shape dikhe waha bhi div hai
+*****************************************************************************
+color:-text color
+ background color-> background color
+**************************************************************************
+units in css
+px,%,vw,vh,em,rem   
+**************************************************************
+ px=1px on screen
+jitna jayda pixel ayange  1 particular area me utna jayda badhiya dikhega photo
+pixel is nothing but square box
 
+***************************************
+jab hum website design karte hai toh pixel ka use na kare kyuki px dene par fixed ho jata hai size.matlab scrren chota kare ya bada kare box ka size whi rehega . . screen chota karne par mera cotent hide ho jayga aur scroller aa jayga
+
+
+********************
+%--> jitna total hai uska hissa
+% humesa parent se value leta hai
+********************
+vw and vh -->screen se value 1leta hai
+10vw->matlab 10 percent of the screen
+******************************************
