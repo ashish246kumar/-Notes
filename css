@@ -193,6 +193,16 @@ vw and vh -->screen se value 1leta hai
 ******************************************
 overflow->hidden
 ye hum tab lagaynge jab hum child me vw aur vh use kar rahe hai aur iske parent me px ya percentage use kar rahe hai. 
-*************************************************************************************************
-
+toh hum parent wale me overflow hidden laga denge
+css->3 video->11-12 minuteoye agar parent ko dete hai toh children par bhi apply hota hai
+************************************
+em depend karta hai element ke font size par aur ye agar parent ko dete hai toh children par bhi apply hota hai
+consider kariye ek element hai jiske pas 16px font size hai toh 1em ki value 16px hogi aur agar font size change kiya toh uske response me em ki value bhi badhegi
+#{
+  font-size:18px
+ width:2em
+height:2em
+}
+  here 2em means-->2*18px=32px
+*************************************************************************
   
