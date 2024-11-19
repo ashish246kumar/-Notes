@@ -198,11 +198,32 @@ css->3 video->11-12 minuteoye agar parent ko dete hai toh children par bhi apply
 ************************************
 em depend karta hai element ke font size par aur ye agar parent ko dete hai toh children par bhi apply hota hai
 consider kariye ek element hai jiske pas 16px font size hai toh 1em ki value 16px hogi aur agar font size change kiya toh uske response me em ki value bhi badhegi
-#{
+#id{
   font-size:18px
  width:2em
 height:2em
 }
   here 2em means-->2*18px=32px
 *************************************************************************
-  
+  rem-->root empherial unit
+jo html tag par fontsize lagi hogi uski ke anusar size lagega
+html
+{
+  font-size:12px
+}
+  div{
+    font-size:18px
+    width:2rem
+    height:3rem
+  }
+2rem:- 12*2 px
+  ********************************************************************
+  max-width
+#test{
+  width:12000px
+  max-width:500px
+  height:200px
+  background-color:red
+}
+
+yaha max-width 500px tak ho sakta hai usse jayda nhi hoga 
