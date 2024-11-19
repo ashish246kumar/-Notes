@@ -194,6 +194,7 @@ vw and vh -->screen se value 1leta hai
 overflow->hidden
 ye hum tab lagaynge jab hum child me vw aur vh use kar rahe hai aur iske parent me px ya percentage use kar rahe hai. 
 toh hum parent wale me overflow hidden laga denge
+*******************
 css->3 video->11-12 minuteoye agar parent ko dete hai toh children par bhi apply hota hai
 ************************************
 em depend karta hai element ke font size par aur ye agar parent ko dete hai toh children par bhi apply hota hai
@@ -225,5 +226,40 @@ html
   height:200px
   background-color:red
 }
+yaha max-width 500px tak ho sakta hai box ka  usse jayda nhi hoga chaye hum 1200 px kar de width. kam chal jayga
+***********************************************************************************************************
+min-width
+#test{
+  width:120px
+  max-width:500px
+    min-width:200px
+  height:200px
+  background-color:red
+}
+yaha min-width 200px tak ho sakta hai box ka usse kam nhi hoga
+***************************************************************************************************************************************
+serif and sant-serif
+google fonts
+font-family
+font-weight- 700-> ye bold kar dega text ko
+text-transform:uppercase|lowercase|capitalize
+text-decoration:-underline|overline
+**************************************************************
+font-size:2vw -->hume vw me dena chaiye
 
-yaha max-width 500px tak ho sakta hai usse jayda nhi hoga 
+*******
+line-height:16px| 1| 1.5|
+0.5 me collapse kar jayga
+*************************************************************************
+text-align:right :-right side se start hogi
+center,left or justify-->justify koi space nhi chodta left me bhi aur right me bhi. aur left se start hoga
+ css->4 part--10 se 11 for understanding justify
+*************************************************************************
+padding-->top->right->bottom->left
+15:20 min-css->4 part
+*******************************************
+
+
+
+
+
