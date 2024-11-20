@@ -257,7 +257,22 @@ center,left or justify-->justify koi space nhi chodta left me bhi aur right me b
 *************************************************************************
 padding-->top->right->bottom->left
 15:20 min-css->4 part
-*******************************************
+******************************************************************************************************************************************************************
+display :-
+block wala element allow nhi karta uske bagal me  koi dusra element aye matlab same line me aye (matlab block wale me row koi dusra nhi ayega) . humesa new element uske niche ayega
+inline ke case me agar jagah hai toh dusra element aa sakta hai
+inline element will not allow you to increase its width and height that is why inline block come
+inline block -> iska hum width aur height de sakte hai
+
+*****************************8****************************
+<p> ->block
+<a> -> inline element
+***********************************************************
+position absolute and position relative
+
+
+
+
 
 
 
