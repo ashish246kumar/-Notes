@@ -269,9 +269,45 @@ inline block -> iska hum width aur height de sakte hai
 <a> -> inline element
 ***********************************************************
 position absolute and position relative
+*******
+css-part-5-10-15 minute ke bich
+*******
+position:absolute
+left
+right
+top:0
 
+*************
+position:relative 
+<div id="box">
+<div id="cube">
+</div>
+</div>
+#box{
+width:300px
+height:300px
+backgroundcolor:red
+}
+#cube{
+position:absolute
+left:40%
+width:30px
+height:30px
+  backgroundcolor:blue
 
+}
+abhi ki situation se ke hisam se  cube wala box jo hai bahar aa jayga bade wale box se jo ki hum nhi chate hai kabhi kabhi
+***************************************
+toh hum agar box ke andAR HI RKHNA chate hai cube ko toh position relative bna dege box ko
 
+#box{
+position:relative
+width:300px
+height:300px
+backgroundcolor:red
+}
+
+**************************
 
 
 
