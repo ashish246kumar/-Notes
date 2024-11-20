@@ -316,7 +316,12 @@ background:url()
 background-position:center|top|bottom;
   
 }
+{
+background:linear-gradient(to right, color1,color2);
+background:linear-gradient(to right bottom, color1,color2);
+  
 
+}
 **********************************************************************************************************************************************************
 
 
