@@ -1234,6 +1234,7 @@ Output:
 select product_id,year as first_year,quantity,price From Sales where (product_id,year) IN
 (select product_id,MIN(year) as year from Sales GROUP BY  product_id);
 **************************************************************************************************************************************************************
+Customer who brought all product
 Table: Customer
 
 +-------------+---------+
