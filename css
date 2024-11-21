@@ -445,4 +445,24 @@ css-grid-part1-20:00 minute
 align-items and justify-items children  ke liye
 align-content, justify-content--> parent ke liye
 *********************************************************************************************
+<div id="nav">
+<h1>shryansh</h1>
+<h2>about</h2>
+<h2>blog</h2>
+<h2>carrer</h2>
+<h2>course</h2>
+<h2> account</h2>
+</div>
+#nav{------>ye hum parent par hai .hum parent se child ko kuch dena chate hai toh align-item and justify-item lagaynge
+  background-color:red;
+  display:grid;
+  grid-template-column:50% 10% 10% 10% 10% 10%
+  align-items:center
+  justify-items:center
+
+}
+#nav h1{---------->hum child par se child ko kuch dena chate hai toh justify-self lagaynge 
+  justify-self:start  
+}
+****************************************************************************************************************************
 
