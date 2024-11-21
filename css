@@ -429,4 +429,15 @@ rgba(200,202,101,1)->here a indicate transparent value it lies between 0 and 1
 GRID KA MAINLY USE HOTA HAI WEBSITE KA LAYER BANANE ME.
 .elem#elem$*3-->3 elem class ki div banegi aur usi me 3 id bhi set hogi elem1,elem2,elem3
 ****************************************************************************************************************************************
+display flex dene par hum ek hi direction me change kar sakte hai ya toh x-axis ya y-axis
+****************************************************************************************************************
+display grid 2 direction me kam kar sakta hai
+***********************************
+{
+display:grid
+grid-template-columns:100px 100px 100px 100px
+  grid-template-rows:100px 100px 100px 100px
+
+}
+**************************************************************************************************************************
 
