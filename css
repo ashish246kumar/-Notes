@@ -465,4 +465,7 @@ align-content, justify-content--> parent ke liye
   justify-self:start  
 }
 ****************************************************************************************************************************
+grid-row-start:1
+grid-row-end:1
+grid-column-start:1
 
