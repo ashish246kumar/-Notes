@@ -497,7 +497,86 @@ pintrest video free download|remix icon|google font
                                                    flex
 flex-wrap:wrap---> ye jab hum browser ke width ko ghatynge toh element ka width ghatenge nhi balki dusre line me aa jyga element
 ye parent me lagate hai jha par hum display:flex lagate hai
-***********************************************************************************************
+*******************************************************************************************************************************************************************
+                                                               ANIMATION
+***************************************************************************************************************************************************************
+Default position=initial position
+Animation is a journey from initial position to final position
+#box{
+  width:400px
+  height:400px
+  background-color:red
+  position:absolute
+ animation-name:anime;
+animation-duration:2s;
+animation-delay:1s;
+animation-fil-mode:forwards
+animation-iteration-count:infinite-->kitni bar chalega animation
+animation-direction:alternate|reverse
+animation-timing-function:ease-out-->start fast ending slow | linear-->na kabhi jayda speed na kabhi fast speed barabar speed rahega|ease-in->start slow end fast
+}
+@keyframes anime{
+  from{   ----------------------------------->initial position
+    left:0;
+       rotate:0
+}
+  to{
+    left:60%
+    rotate:360deg
+}
+  
+  
+}
+********************************************************************************************************************************
+@keyframes anime{
+  0%{
+    left:0;
+    top:0;
+}
+  50%{
+    left:80%;
+    top:0;
+}
+  100%{
+    left:80%;
+    top:50%;
+  }
+  
+}
+***********************************************************************************************************************
+::after
+h1::after{  -->iska matlab content jo hai woh element ke content ke bahar na ki element ke bahar.suppose ek div ke andar h1 hai toh jo contet likh kar ayga after lagane ke bad woh h1 ke content ke bad na ki div ke bahar
+  content:" and dosto"
+}
+*********************************************************
+button{
+  padding:10px 20px;
+  background-color:transparent
+  border:2px solid cyan
+  font-weight:600
+  overflow:hidden
+  position:relative
+  transation:all linear 0.5s;
 
-
+  
+}
+  button::after{
+    content:""
+    height:50px;
+    width:50px;
+    background-color:red
+    positio:absolute
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%)scale(0)
+    transatio:all linear 0.5s;
+    z-index:-1
+    }
+  button:hover::after{
+    transform:translate(-50%,-50%)scale(3)
+  }
+button:hover{
+  color:black
+}
+  
 
