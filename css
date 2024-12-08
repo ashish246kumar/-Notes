@@ -173,8 +173,17 @@ jaha bhi rectangular shape dikhe waha bhi div hai
 color:-text color
  background color-> background color
 **************************************************************************
+                                                   UNITS
+    ********************************************************************************************8
 units in css
 px,%,vw,vh,em,rem   
+ VW-->Agar hum vw me width diye hai element ko  toh    toh hum browser ka width kam karege toh element ka width bhi kam hoga
+vh--> Agar hum vh me width diye hai element ko  toh    toh hum browser ka height kam karege toh element ka width bhi kam hoga
+vmax->view port maximum.   Agar hum vmax me width diye hai element ko  toh  element ka width change hoga jo bada hai uske according . matlab browser ka width agar bada height se
+    toh element ka width change hoga browser ke width according. agar kisi point par height bada hai browser ka width se toh element ka width change hoga browser ke height k according
+    . in a nutsell jo bda hoga uske according width change hoga.
+vmin-->
+    
 **************************************************************
  px=1px on screen
 jitna jayda pixel ayange  1 particular area me utna jayda badhiya dikhega photo
@@ -205,6 +214,18 @@ consider kariye ek element hai jiske pas 16px font size hai toh 1em ki value 16p
 height:2em
 }
   here 2em means-->2*18px=32px
+#parent{
+  font-size:50px
+}
+  h1{
+     font-size:1em-->yaha parent ke andar ye h1 h2 and h3 element hai. toh yaha 1em ka value hoga 50px
+  }
+  h2{
+     font-size:0.5em;  0.5em=25px
+  }
+h3{
+   font-size:3em;
+}
 *************************************************************************
   rem-->root empherial unit
 jo html tag par fontsize lagi hogi uski ke anusar size lagega
