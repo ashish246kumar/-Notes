@@ -1,0 +1,60 @@
+Parking System Design 
+***********
+Requirements
+********************************
+Big parking lots--->10k to 30k
+4 entranses-4 exits
+customer collected the ticket at the entranse
+parking spot should be nearest to the entranse.
+limit-capacity-->30k
+parking spots-->Handi caped,compact, large vehicle, motorcycle
+hourely  rate
+cash and credit cards
+montering system
+**********
+Bottom up approach
+1)  parking lot system
+2)  Entry and Exit terminal-->a) printer b) payment processor  
+3) parking spot 
+4) Ticket 
+5) Database 
+6)Monitoring system 
+******************
+parking spot is my actor 
+enum parking spot{
+handicapped,
+large,
+compact,
+motorcycle
+  } if we chose enum then it is voilating open closed designed principle as  one mroe spot is added it require changes  in more than one place also
+  so better approach will be 
+abstract class:->  Parkingspot -->id,reservespot --> and it has getter and setter method. 
+class-->HandicappedParking Spot, CompactParkingSpot, LargeParkingSpot,MotorCycleParkingSpot  each of the class is extending abstract class parkingSpot
+
+*************************************
+ParkingTicket:- id, parking spot id , parking spot type,issue time
+**************************
+Terminal:->  getId()
+Entry Terminal:-  getTicket(parking spot type)--> below both the class are extending abstract class Terminal or implementing Terminal
+Exit terminal:-acceptTicket(Ticket)
+*************************
+Strategy design pattern is used here
+interface:
+parking Assignment Strategy->getParkingSpot(Terminal terminal), releaseParkingSpot(ParkingSpot parkingSpot) 
+class:ParkingSpotNearEntranceStrategy--> implementing parking Assignment Strategy
+here the question is how we implement the parking Assignment Strategy  in my requirement there are four entranse and 4 exit so we will minheap here 
+*******************
+Strategy design pattern is used here
+Payment Processor Interface:  prices(amount)
+class:CreditCard Payment processor :-> implementing Payment Processor Interface
+class: CashPayment processor 
+
+**************
+
+
+
+
+
+
+
+
