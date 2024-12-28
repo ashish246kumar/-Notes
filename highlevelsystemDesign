@@ -244,11 +244,55 @@ Efficiently assign nearest parking spots.
 Let me know if you'd like further refinements or additional details!
 
 ********************************************************************************************************************************************************
+                                                                Tic tac toe 
+*************************************************************************************************************************************************
+P1-X
+p2-0
+the player is winner when the same element is appear in row or column or diagonal
+what are the objects we have seen in the game 
+Piece-->X,O or in future  $ or <
+Board-->n*m
+Player
+****
+enum PieceType{
+X,
+0
+}
+******
+PlayigPiece{
+PieceType type;
+ PlayingPiece(PieceType pieceType){
+    
+}
+}
 
+PieceX-Extending PlayiengPiece->PieceX(){super(PieceType.X)}-->constructor
+PieceO----> PieceO(PieceType.O)----constructor
 
+****************
+here there is a has a relationship 
+Public class Board{
+int size;
+public playingPiece[] [] board
+public board(int size){
+   this.size=size
+   board=new PlayingPiece[size][size]
+}
+}
+****************************
+here is also a has a relationship
+Player{
+String name
+PlayingPiece playingPiece
+}
 
+***************
+here is also has a relationship
+class Game{
+    List<Player> player
+    Board board
+}
 
+******************************
 
-
-
-
+****************
