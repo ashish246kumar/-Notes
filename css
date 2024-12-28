@@ -614,4 +614,5 @@ we do want to give margin to the parent while giving margin to the child. so we 
 
 *****************************************************************************
 mix-blend-mode:difference
+backdrop-filter:blur(10px)
 ********************
