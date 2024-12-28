@@ -582,4 +582,32 @@ button:hover{
                                                     Extension
                                            color-zila
 *************************************************************************************************************************************************
+                                                              Imp concept
+***********************************************************************
+#main{
+  width:100%
+  height:100%
+  background-color:skyblue
+  position:relative
 
+  }
+#nav{---->here nav is inside the main tag. if we do margin-top:50px to the nav bar  then it will also give margin  to the parent also 
+  margin-top:50px
+  background-color:red
+  
+} 
+we do want to give margin to the parent while giving margin to the child. so we can resolve this bug  by giving the padding of 1px to parent
+  #main{
+  width:100%
+  height:100%
+  background-color:skyblue
+  position:relative
+  padding:1px
+  }
+#nav{
+  margin-top:50px
+  background-color:red
+  
+} 
+
+*****************************************************************************
