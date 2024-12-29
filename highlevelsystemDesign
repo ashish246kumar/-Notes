@@ -289,9 +289,15 @@ PlayingPiece playingPiece
 ***************
 here is also has a relationship
 class Game{
-    List<Player> player
+    Deque<Player> player
     Board board
+   initializeGame()---->2 Methd
+   startGame()
 }
+*********************************************************************************************************************
+DropBox
+
+
 
 ******************************
 
