@@ -304,9 +304,64 @@ History of updates
 scale:-10+million users
 100 milion request per day
 High write and read
-
-
-
+**********************************************************************************************
+Account-->normal user and premium user
+root folder->replicated to all the devices
+files/folder sharing ->user should  be able to share it
+read/write acess
+a user can only share files or folder which he owns| the owner has full access while other user has read
+1gb
+the user should be able to support certain file upto certain limit 
+once the user has reached the file storage limit the system should not allow any other write
+the system should allow multiple version of file and user should be able to recover to previous version
+how the versioning should be performed whether it should be an update from another update or it is daily snapshot of all the update 
+how it affect files and folder which are shared among various user
+if a user with read/write access decided to revert some changes of file how those changes will be replicated to the devices of all the other user
+how will it ffect the capacity of the user
 ******************************
+Here are some subtitles for the video "Google Drive System Design | Dropbox System Design | File Sharing Service System Design" by Think Software:
+Introduction
 
-****************
+System Design Interview Question
+Importance of System Design Interviews
+Requirements Gathering Phase
+Functional Requirements
+
+User Accounts (Free vs. Premium)
+Multi-Device Synchronization
+File Sharing (Read/Write, Read-Only)
+Storage Limits
+Offline Access
+Extended Requirements (Versioning, Analytics, Conflict Resolution)
+Non-Functional Requirements
+
+High Availability and Fault Tolerance
+Scalability
+Minimal Network Bandwidth Usage
+Minimal Latency
+ACID Properties (Atomicity, Consistency, Isolation, Durability)
+Replication Consistency
+Data Security
+APIs
+
+Upload File
+Update File Metadata
+Update File
+Delete File
+List Files
+Share File/Folder
+Stop Sharing
+List Shared Namespaces
+Namespace Concept (Home, Shared, Proxy)
+High-Level Design
+
+Client Application Components (Watcher, Chunker, File Indexer, Synchronizer)
+Dropbox Service Microservices (Gateway, Synchronization, File/Folder Metadata, User/Devices, Notification, Object Storage, Block Service, Billing)
+File Metadata Storage Approaches (Adjacency List, Materialized Path, Nested Sets)
+Synchronization Service Design (App Servers, Distributed Queues)
+Key Takeaways
+
+Importance of Requirements Gathering
+Designing with Microservices
+Trade-offs and Considerations in System Design
+****************************************************************
