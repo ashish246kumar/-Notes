@@ -318,6 +318,25 @@ how the versioning should be performed whether it should be an update from anoth
 how it affect files and folder which are shared among various user
 if a user with read/write access decided to revert some changes of file how those changes will be replicated to the devices of all the other user
 how will it ffect the capacity of the user
+how the versioning should performed
+wheher it is an update to update or daily snapshot
+how will it affect the files and folder which are shared among various user
+if a user with  read write access decide to decide to revert a some changes of file . how those changes will be replicated to devices of all the other user. 
+how will it affect the storage capacity of the user whether the total space consumed by each version or  snapshot is counted toward the total space consumed by the user
+or not what should be done once a user has reached its limit in that case should we start dropping older version or should we just stop creating new version etc.
+so you clarify this type requirement and constraint. Another extended requirement is the system should be able to keep the track of all the anakytics . related to storage 
+and network consumption. Also one of the exchange requirement is which actually come into picture when you start allowing sharing of files and folder among user 
+that what will happen if two users try to update a same file and if the conflict arises because of that how will that resolve conflict another important requirement 
+data security . the risk of data read during transmission can be mitigated throgh encryption technology .encryption in transient protect data as it being transmitted
+to and from device to cloud or vice versa encryption at rest protect data that is stored in the cloud service. another requirement is to provide such a facility so that 
+user can actually able to go and search file and folder. so these are the different functional requirement.
+*******************************
+Non functional requirement
+The system need to be highly availavble and folt tolrent. the second non functional requirement is system should be highly scalable and it should inc with increasing load 
+or increasing users and data the third requirement is the file synchronization should use minimal network bandwidth. the fourth non functional requirement is 
+file transfer should happen with minimum latency. these two non functional requirement about the file simulation require 
+
+
 ******************************
 Here are some subtitles for the video "Google Drive System Design | Dropbox System Design | File Sharing Service System Design" by Think Software:
 Introduction
