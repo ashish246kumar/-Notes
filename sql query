@@ -316,6 +316,7 @@ UNION ALL
 WHERE MONTH(created_at)='02' AND YEAR(created_at)='2020'
 GROUP BY movie_id ORDER BY AVG(rating) DESC,title LIMIT 1)
 ************************************************************************************************************************************************************************************************************
+6
 Employee Whose Manager left the Company
 le: Employees
 
@@ -342,6 +343,7 @@ select employee_id  from Employees where salary<30000 AND manager_id NOT IN (
     select employee_id from Employees
 ) ORDER BY employee_id;
 *****************************************************************************************************************************************
+7
 Table: Insurance
 INVESMENT IN 2016
 +-------------+-------+
@@ -401,6 +403,7 @@ select ROUND(SUM(tiv_2016),2) AS tiv_2016 FROM Insurance where tiv_2015 IN
 AND (lat,lon) IN
 (SELECT lat,lon FROM Insurance GROUP BY lat,lon HAVING COUNT(*)=1)
 ********************************************************************************************************************************
+8
 MANAGER with atleast five direct report
 Table: Employee
 
@@ -449,6 +452,7 @@ Output:
 select name FROM Employee where
 id IN (select managerId FROM Employee GROUP BY managerId having count(*)>=5)
 ***************************************************************************************************************************************************************
+9
 Table: Signups
 
 +----------------+----------+
