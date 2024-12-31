@@ -1,5 +1,6 @@
 select tweet_id FROM Tweets WHERE LENGTH(content)>15;--->LENGTH()
 ***************************************************************************************************
+1
 Courses
 
 +-------------+---------+
@@ -52,6 +53,7 @@ Explanation:
 
 select class from Courses Group by class having count(student)>=5
 ***************************************************(*******************************************
+2
 FIND CUSTOMER REFREE
 Table: Customer
 
@@ -108,6 +110,7 @@ select name from Customer where referee_id !=2 or referee_id is Null;
 
 
 ***************************************************************************************************************************************************
+3
 Tble: transactions
 
 +------------------+------+
@@ -153,6 +156,7 @@ From transactions
 GROUP BY transaction_date
 ORDER BY transaction_date;
 ****************************************************************************************************************
+4
 RESTURANT GROWTH
 Customer
 
@@ -214,6 +218,7 @@ ROUND((SELECT sum(amount)/7 From Customer where visited_on BETWEEN DATE_SUB(c.vi
 From Customer c where visited_on>=(Select DATE_ADD(MIN(visited_on),INTERVAL 6 DAY)From Customer) GROUP BY visited_on ORDER BY visited_on;
 
 ******************************************************************************************************************************************
+5
 MOVIES RATING
 Movies
 
