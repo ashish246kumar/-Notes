@@ -335,7 +335,9 @@ Non functional requirement
 The system need to be highly availavble and folt tolrent. the second non functional requirement is system should be highly scalable and it should inc with increasing load 
 or increasing users and data the third requirement is the file synchronization should use minimal network bandwidth. the fourth non functional requirement is 
 file transfer should happen with minimum latency. these two non functional requirement about the file simulation require 
-
+the drop service gurantee acid requirement for the files that are stored with dropbox service .
+let suppose in one of the device a file was changed from one version to another and those changes get replicated to all the other devices so now if you go to the second
+devices the file was changed in 
 
 ******************************
 Here are some subtitles for the video "Google Drive System Design | Dropbox System Design | File Sharing Service System Design" by Think Software:
