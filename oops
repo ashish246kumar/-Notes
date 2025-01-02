@@ -9,6 +9,8 @@ Compile-time Polymorphism
 Runtime Polymorphism
 Compile-Time Polymorphism in Java
 It is also known as static polymorphism. This type of polymorphism is achieved by function overloading
+Compile-time polymorphism is known as static polymorphism because the method binding (or decision about which method to call) is resolved at compile time rather than at runtime.
+
 Method Overloading
 When there are multiple functions with the same name but different parameters then these functions are said to be overloaded.by changes in the number of arguments or/and a change in the type of arguments.
 class Helper {
