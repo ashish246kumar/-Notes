@@ -1434,6 +1434,24 @@ To solve this problem first try to understand this inner join like this   :-> se
 
 select e1.employee_id,e1.name,count(e2.employee_id) AS reports_count,ROUND(avg(e2.age)) as average_age from Employees e1 INNER JOIN Employees E2 on e1.employee_id=e2.reports_to GROUP BY e1.employee_id
 ORDER BY employee_id
+or 
+SELECT 
+    e.employee_id, 
+    e.name, 
+    sub.reports_count, 
+    sub.average_age
+FROM Employees e
+JOIN (
+    SELECT 
+        reports_to AS manager_id, 
+        ROUND(AVG(age)) AS average_age, 
+        COUNT(*) AS reports_count
+    FROM Employees
+    WHERE reports_to IS NOT NULL
+    GROUP BY reports_to
+) sub
+ON e.employee_id = sub.manager_id
+ORDER BY e.employee_id;
 
 **********************************************************************************************************************************************************
 PRIMARY DEPARTMENT FOR EACH EMPLOYEE
