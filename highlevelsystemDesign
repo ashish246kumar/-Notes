@@ -387,6 +387,151 @@ Designing with Microservices
 Trade-offs and Considerations in System Design
 ****************************************************************
 URL SHORTNER
+********
+1. Requirements Gathering
+Functional Requirements:
+Generate a unique short URL for a long URL.
+Redirect to the original URL when the short URL is accessed.
+Support custom short URLs (optional).
+Enable link expiration after a certain period (optional).
+Provide link usage analytics (optional).
+**
+Non-Functional Requirements:
+High availability (99.9% uptime).
+Low latency (shortening and redirects in milliseconds).
+Scalability (handle millions of requests daily).
+Durability (shortened URLs should last for years).
+Security to prevent malicious activities like phishing.
+**
+2. Capacity Estimation
+Traffic:
+Daily Requests: 1 million URL creation requests.
+Read:Write Ratio: 100:1 (100 redirects for every short URL creation).
+Peak Traffic: 10x average load.
+
+Storage:
+Per URL Storage: 127 bytes (short URL, original URL, timestamps, click count).
+Yearly Storage: ~46.4 GB (365M URLs/year).
+
+Bandwidth:
+Daily Read Bandwidth: 50 GB/day (100M redirects × 500 bytes).
+Peak Bandwidth: 6 MB/s (12K RPS × 500 bytes).
+
+Cache:
+Cache 20% of hot URLs (25.4 MB/day).
+Cache hit ratio: 90%, reducing DB read load to ~120 RPS.
+
+Infrastructure:
+API Servers: 4-6 instances, each handling 200-300 RPS.
+Database: Distributed database with 10-20 nodes.
+
+Cache Layer: 3-4 distributed cache node
+**
+ High-Level Design Components
+Load Balancer: Distributes incoming requests across application servers.
+Application Servers: Handle URL shortening and redirection logic.
+URL Generation Service: Generates unique short URLs, handles custom aliases and link expirations.
+Redirection Service: Redirects users to the original URL.
+Database: Stores mappings between short and long URLs.
+Cache: Stores frequently accessed URL mappings for faster response times.
+Analytics Service (Optional): Tracks usage statistics like clicks, geolocation, etc
+**
+4. Database Design
+Database Choice:
+NoSQL: DynamoDB or Cassandra for scalability, high throughput, and low-latency key-value lookups.
+Schema Design:
+URL Mapping Table:
+
+Short URL Key: Primary key (unique identifier for the short URL).
+Original URL: Mapped long URL.
+Creation Date: Timestamp of creation.
+Expiration Date: Timestamp when the URL expires (if applicable).
+Click Count: Tracks the number of redirects.
+User Table (Optional):
+
+Stores user-related information for tracking, analytics, or customization.
+**
+
+Here’s a summarized version of the URL shortener system design that you can use for your LLD round:
+
+1. Requirements Gathering
+Functional Requirements:
+Generate a unique short URL for a long URL.
+Redirect to the original URL when the short URL is accessed.
+Support custom short URLs (optional).
+Enable link expiration after a certain period (optional).
+Provide link usage analytics (optional).
+Non-Functional Requirements:
+High availability (99.9% uptime).
+Low latency (shortening and redirects in milliseconds).
+Scalability (handle millions of requests daily).
+Durability (shortened URLs should last for years).
+Security to prevent malicious activities like phishing.
+2. Capacity Estimation
+Traffic:
+Daily Requests: 1 million URL creation requests.
+Read:Write Ratio: 100:1 (100 redirects for every short URL creation).
+Peak Traffic: 10x average load.
+Storage:
+Per URL Storage: 127 bytes (short URL, original URL, timestamps, click count).
+Yearly Storage: ~46.4 GB (365M URLs/year).
+Bandwidth:
+Daily Read Bandwidth: 50 GB/day (100M redirects × 500 bytes).
+Peak Bandwidth: 6 MB/s (12K RPS × 500 bytes).
+Cache:
+Cache 20% of hot URLs (25.4 MB/day).
+Cache hit ratio: 90%, reducing DB read load to ~120 RPS.
+Infrastructure:
+API Servers: 4-6 instances, each handling 200-300 RPS.
+Database: Distributed database with 10-20 nodes.
+Cache Layer: 3-4 distributed cache nodes.
+3. High-Level Design Components
+Load Balancer: Distributes incoming requests across application servers.
+Application Servers: Handle URL shortening and redirection logic.
+URL Generation Service: Generates unique short URLs, handles custom aliases and link expirations.
+Redirection Service: Redirects users to the original URL.
+Database: Stores mappings between short and long URLs.
+Cache: Stores frequently accessed URL mappings for faster response times.
+Analytics Service (Optional): Tracks usage statistics like clicks, geolocation, etc.
+4. Database Design
+Database Choice:
+NoSQL: DynamoDB or Cassandra for scalability, high throughput, and low-latency key-value lookups.
+Schema Design:
+URL Mapping Table:
+
+Short URL Key: Primary key (unique identifier for the short URL).
+Original URL: Mapped long URL.
+Creation Date: Timestamp of creation.
+Expiration Date: Timestamp when the URL expires (if applicable).
+Click Count: Tracks the number of redirects.
+User Table (Optional):
+
+Stores user-related information for tracking, analytics, or customization.
+***
+5. System API Design
+1. URL Shortening API
+Endpoint: POST /api/v1/shorten
+{
+  "long_url": "https://example.com/very/long/url",
+  "custom_alias": "custom123" // optional,
+  "expiration_date": "2025-12-31" // optional
+}
+2
+{
+  "short_url": "https://short.ly/custom123"
+}
+URL Redirection API
+Endpoint: GET /{short_url_key}
+HTTP/1.1 301 Moved Permanently
+Location: https://example.com/very/long/url
+*******
+6. Optimization
+Caching: Use distributed caching (e.g., Redis) to reduce latency and database hits for frequently accessed URLs.
+Base62 Encoding: Use Base62 to generate short URLs (alphanumeric with lowercase and uppercase characters).
+Shard Keys: Distribute data across database partitions to prevent hotspots.
+Rate Limiting: Prevent abuse by limiting the number of URL generation requests per user/IP.
+**
+
 https://blog.algomaster.io/p/design-a-url-shortener
 ***********************************************************
 Notification Service
