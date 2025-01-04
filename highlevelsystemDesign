@@ -530,9 +530,68 @@ Caching: Use distributed caching (e.g., Redis) to reduce latency and database hi
 Base62 Encoding: Use Base62 to generate short URLs (alphanumeric with lowercase and uppercase characters).
 Shard Keys: Distribute data across database partitions to prevent hotspots.
 Rate Limiting: Prevent abuse by limiting the number of URL generation requests per user/IP.
-**
+******************
+Feedback on URL Shortener Design
+1. Core Design Approaches
+Hashing and Encoding:
+
+Using MD5/SHA and Base62 encoding is a good choice for dense representation.
+Rehashing or incremental suffix strategies for collision resolution are practical.
+Consider emphasizing how to ensure randomness while keeping deterministic behavior for the same URL input.
+Unique ID Generation:
+
+This approach guarantees uniqueness and is simpler to implement, but predictability can be mitigated with obfuscation or salting.
+Twitter’s Snowflake or UUID generation might further enhance scalability and uniqueness in distributed systems.
+2. Custom Aliasing
+You've covered validation (uniqueness, reserved words, character restrictions) well.
+Consider an additional fallback suggestion mechanism for unavailable aliases (e.g., appending numeric suffixes).
+3. Link Expiration
+Well-defined handling of expiration at creation and retrieval levels.
+The background job idea for cleaning expired links is effective but could also benefit from lazy expiration (checking on access).
+4. Redirection Service
+Database lookup and caching with Redis are excellent choices for ensuring performance.
+Ensure the chosen HTTP status code (301 vs. 302) aligns with the desired user behavior (permanent vs. temporary redirects).
+5. Analytics Service
+Kafka-based event logging is scalable and future-proof.
+It might be helpful to elaborate on what types of analytics data will be logged (e.g., timestamp, geolocation, device info) and ensure compliance with privacy regulations.
+Addressing Key Issues
+1. Scalability
+API Layer:
+Load balancing is essential; consider horizontal scaling and auto-scaling mechanisms.
+Sharding:
+You've listed limitations of range-based sharding well. Hash-based sharding with consistent hashing will provide better scalability for dynamic scaling.
+2. Availability
+Database replication and geo-distributed deployments are essential for high availability.
+A disaster recovery plan for failures in the primary region would strengthen the design.
+3. Handling Edge Cases
+Expired URLs: HTTP 410 is the right choice.
+Non-existent URLs: Graceful handling with HTTP 404 enhances user experience.
+4. Security
+Rate Limiting:
+Throttling abusive users with tools like Redis-based rate limiting or APIs like AWS WAF is a good choice.
+Input Validation:
+Consider blacklisting/whitelisting domains if the service should avoid phishing or malicious sites.
+HTTPS:
+Mandate HTTPS for all client and service communication to maintain trust and integrity.
+5. Monitoring
+Setting up dashboards for URL creation and redirection requests in Grafana or similar tools can help detect anomalies.
+Alerts for excessive requests or suspicious patterns strengthen defense mechanisms.
+Additional Suggestions
+Database Choice:
+
+The document doesn't specify the database (relational or NoSQL). A relational DB like MySQL/PostgreSQL works well for simplicity, but NoSQL (e.g., DynamoDB, MongoDB) offers better scalability for billions of URLs.
+Cache Expiry:
+
+Cached mappings should align with link expiration policies to avoid stale redirects.
+SEO Considerations:
+
+Using canonical tags for generated short URLs can prevent duplicate content penalties for shared long URLs.
+Batch Processing for Expiration:
+
+**********************************
 
 https://blog.algomaster.io/p/design-a-url-shortener
+
 ***********************************************************
 Notification Service
 https://blog.algomaster.io/p/design-a-scalable-notification-service
