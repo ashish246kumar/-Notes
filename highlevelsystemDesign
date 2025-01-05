@@ -461,12 +461,14 @@ Redirect to the original URL when the short URL is accessed.
 Support custom short URLs (optional).
 Enable link expiration after a certain period (optional).
 Provide link usage analytics (optional).
+
 Non-Functional Requirements:
 High availability (99.9% uptime).
 Low latency (shortening and redirects in milliseconds).
 Scalability (handle millions of requests daily).
 Durability (shortened URLs should last for years).
 Security to prevent malicious activities like phishing.
+****
 2. Capacity Estimation
 Traffic:
 Daily Requests: 1 million URL creation requests.
