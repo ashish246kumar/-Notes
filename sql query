@@ -1064,7 +1064,6 @@ Note that each session belongs to exactly one user.
  
 
 Write a solution to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on someday if they made at least one activity on that day.
-
 Return the result table in any order.
 
 The result format is in the following example.
@@ -1104,7 +1103,9 @@ select activity_date as day,count(DISTINCT user_id) AS active_users FROM Activit
 where activity_date>='2019-06-28' AND activity_date<='2019-07-27'
 GROUP BY activity_date
 ************************************************************************************************************************************************************************
-ble: MyNumbers
+Biggest Single Number
+
+Table: MyNumbers
 
 +-------------+------+
 | Column Name | Type |
