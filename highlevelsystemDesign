@@ -596,4 +596,39 @@ https://blog.algomaster.io/p/design-a-url-shortener
 
 ***********************************************************
 Notification Service
+
+Functional Requirements:-
+Multi-channel Support: Notifications via email, SMS, push notifications, and in-app messages.
+Multiple Notification Types:
+Transactional (e.g., order confirmation).
+Promotional (e.g., discount offers).
+System-generated alerts (e.g., password reset).
+Scheduled Delivery: Support future-dated notification scheduling.
+Rate Limiting: Prevent spamming by capping promotional messages per user per day.
+Retry Mechanism: Automatic retries for failed deliveries (e.g., failed SMS or email).
+
+Non-Functional Requirements
+Scalability: Handle millions of notifications per minute and support millions of concurrent users.
+High Availability: Ensure minimal downtime and delivery even during failures.
+Reliability:
+At-least-once delivery for all notifications.
+Exactly-once delivery for critical notifications.
+Low Latency: Ensure timely delivery, especially for transactional messages.
+
+Scale Estimation
+Users: 50 million daily active users.
+Notifications:
+Average: 5 notifications/user/day.
+Total: 250 million notifications/day.
+Peak Load: ~1 million notifications in 1 minute (~17,000 notifications/second).
+Storage Requirements:
+User data: 50 million users × 1 KB = 50 GB.
+Daily notifications: 250 million × 1 KB = 250 GB/day.
+
+
+
+Scheduled Delivery: Support future-dated notification scheduling.
+Rate Limiting: Prevent spamming by capping promotional messages per user per day.
+
+
 https://blog.algomaster.io/p/design-a-scalable-notification-service
