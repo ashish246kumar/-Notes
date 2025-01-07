@@ -1010,6 +1010,7 @@ Hence, half the customers have immediate first orders.
 select ROUND(SUM(IF(order_date=customer_pref_delivery_date, 1,0))*100/count(DISTINCT customer_id),2) AS immediate_percentage FROM Delivery WHERE (customer_id,order_date)
 IN (select customer_id,MIN(order_date) FROM delivery GROUP BY customer_id )
 ***********************************************************************************************************************************
+19
 GAME PLAY ANALYSIS IV
 Table: Activity
 
@@ -1187,6 +1188,7 @@ Explanation: There are no single numbers in the input table so we return null.
 # Write your MySQL query statement below
 select MAX(num) as num from MyNumbers WHERE num in(select num from MyNumbers GROUP BY num HAVING count(num)=1)
 *****************************************************************************************************************************************************************
+22
 PRODUCT SALES ANALYSIS 3
 Table: Sales
 
@@ -1218,13 +1220,8 @@ Each row of this table indicates the product name of each product.
  
 
 Write a solution to select the product id, year, quantity, and price for the first year of every product sold.
-
 Return the resulting table in any order.
-
 The result format is in the following example.
-
- 
-
 Example 1:
 
 Input: 
@@ -1875,4 +1872,14 @@ AND sub.subject_name=e.subject_name
 GROUP BY s.student_id,sub.subject_name
 ORDER BY s.student_id,sub.subject_name
 ******************************************************************************************************************************************************
+                                                      IMP CONCEPT
+select Max(num) from MyNumbers  GROUP BY num Having count(*)=1
+yaha galat ye hai ki group by table ke name se phele koi operation perform nhi karta hai .jaise ki yaha hum dekh rahe hai Max operation perform ho raha hai but ye 
+max operation perform nhi karega.  ye wah sabhi number la kar de dega jiska count 1 hai
+toh hum max kaise find karenge?
+phele hum number find kar lenge jiska count 1 hai then max find kar lenge
+select MAX(num) as num from MyNumbers WHERE num in(select num from MyNumbers GROUP BY num HAVING count(num)=1)
+**************************************************************************************************************************************
+
+
 
