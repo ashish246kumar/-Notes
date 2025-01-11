@@ -632,3 +632,57 @@ Rate Limiting: Prevent spamming by capping promotional messages per user per day
 
 
 https://blog.algomaster.io/p/design-a-scalable-notification-service
+******************************************************************
+chat application:-
+*************************************************************
+Functional Requirements:
+Support 1:1 real-time messaging between users.
+Display online/offline status and last seen time for users.
+Show message delivery status (sent, delivered, read).
+Allow users to share multimedia (images, videos, audio clips).
+Support group conversations with up to 100 members.
+Send push notifications for new messages when the receiver is offline.
+Store and retrieve chat history for each user.
+
+Non-Functional Requirements:
+Scalability: Handle millions of concurrent users.
+High Availability: Ensure minimal downtime with resilience to server failures.
+Low Latency: Deliver messages in real-time with minimal delay.
+Reliability: Ensure no messages are lost, even during failures.
+
+Capacity Estimation
+Capacity planning was critical to determine the scale of the system. Here are the assumptions I made:
+User Base:
+Total Users: 1 billion registered users.
+Daily Active Users (DAU): 500 million active users daily.
+Peak Concurrent Connections: Around 50 million users connected at peak times.
+
+Messaging Traffic:
+Average Messages per Day: Each active user sends 10 messages daily, resulting in 5 billion messages per day.
+Storage Requirements:
+Assuming 1 KB per message, the required storage is:
+Daily Storage: 
+1KB × 5 Billion messages =5TB
+1KB×5Billion messages=5TB
+Annual Storage: 365×5TB≈1.8PB
+Bandwidth Estimation:
+For real-time communication during peak usage:
+10 million users connected simultaneously.
+Average Bandwidth per Connection: 10KB/s
+Total Bandwidth: 10 million users × 10 KB/s =100 GB/s
+10million users×10KB/s=100GB/s
+
+https://blog.algomaster.io/p/design-a-chat-application-like-whatsapp
+*********************************************
+Leaderboard System Design
+
+A leaderboard is a feature in games or apps that shows the rankings of players based on their scores.
+ It’s commonly used in competitive activities, such as online games, fitness apps, or 
+learning platforms. Players are ranked from the highest score to the lowest, with the top players displayed prominently.
+Why have a leaderboard?
+
+It makes the game more social and competitive.
+It motivates players to stay active and improve their scores.
+
+https://systemdesign.one/leaderboard-system-design/
+***************
