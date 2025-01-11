@@ -1,5 +1,5 @@
-Parking System Design 
-***********
+ 1                                                          Parking System Design 
+*********************************************************************************************************************************************
 Requirements
 ********************************
 Big parking lots--->10k to 30k
@@ -244,7 +244,7 @@ Efficiently assign nearest parking spots.
 Let me know if you'd like further refinements or additional details!
 
 ********************************************************************************************************************************************************
-                                                                Tic tac toe 
+  2)                                                              Tic tac toe 
 *************************************************************************************************************************************************
 P1-X
 p2-0
@@ -294,8 +294,9 @@ class Game{
    initializeGame()---->2 Methd
    startGame()
 }
-*********************************************************************************************************************
-DropBox
+*********************************************************************************************************************************************************
+                                                            3)  DropBox
+**************************************************************************************************************************************************************
 Features
 upload/download the files
 Sync folder
@@ -594,8 +595,9 @@ Batch Processing for Expiration:
 
 https://blog.algomaster.io/p/design-a-url-shortener
 
-***********************************************************
-Notification Service
+******************************************************************************************************************************************************************
+  4)                                                                     Notification Service
+*****************************************************************************************************************************************************************
 
 Functional Requirements:-
 Multi-channel Support: Notifications via email, SMS, push notifications, and in-app messages.
@@ -632,9 +634,9 @@ Rate Limiting: Prevent spamming by capping promotional messages per user per day
 
 
 https://blog.algomaster.io/p/design-a-scalable-notification-service
-******************************************************************
-chat application:-
-*************************************************************
+*************************************************************************************************************************************************************
+5)                                                                         chat application:-
+***********************************************************************************************************************************************************
 Functional Requirements:
 Support 1:1 real-time messaging between users.
 Display online/offline status and last seen time for users.
@@ -674,8 +676,8 @@ Total Bandwidth: 10 million users × 10 KB/s =100 GB/s
 
 https://blog.algomaster.io/p/design-a-chat-application-like-whatsapp
 **********************************************************************************************************************************************************
-Leaderboard System Design
-
+                                                               6)Leaderboard System Design
+****************************************************************************************************************************************************
 A leaderboard is a feature in games or apps that shows the rankings of players based on their scores.
  It’s commonly used in competitive activities, such as online games, fitness apps, or 
 learning platforms. Players are ranked from the highest score to the lowest, with the top players displayed prominently.
