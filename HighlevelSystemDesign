@@ -1,2 +1,50 @@
                                                                                                 DESIGN SPOTIFY
 
+Functional Requirements:
+Search: Users can search for songs, artists, albums, and playlists.
+Music Streaming: Users can stream songs in real time.
+Playlists: Users can create, share, and modify playlists.
+Music Recommendations: Users receive song recommendations based on their listening history and preferences.
+Ad-Supported Model: Free-tier users will encounter ads after a few songs.
+
+Non-Functional Requirements:
+Scalability: The system should handle 100s of millions of users globally and the ability to stream millions of songs concurrently.
+Low Latency: Real-time streaming must have low latency for a seamless user experience.
+High Availability: The system must be available at all times with minimal downtime.
+Global Reach: Support users from different geographic regions, potentially leveraging CDNs to serve audio files faster
+
+Capacity Estimation Summary
+User Base
+Total active users: 500 million
+Daily active users: 100 million
+Average streams per user per day: 10
+Song catalog size: 100 million songs
+
+Network Bandwidth Estimation
+Daily song streams:
+100 million users × 10 songs = 1 billion streams/day
+
+Daily data transfer:
+1 billion × 5 MB/song = 5 petabytes/day
+
+Data transfer per second:
+5 PB / 86,400 seconds = 58 GB/second
+
+Storage Estimation
+Total storage for music:
+100 million songs × 5 MB/song = 500 TB
+
+Song metadata storage:
+100 million songs × 2 KB/song = 200 GB
+
+User data storage:
+500 million users × 10 KB/user = 5 TB
+
+Caching Estimation
+Top 20% of songs contribute to 80% of requests (Pareto principle).
+Top 20% songs = 20 million songs.
+
+Cache size for top songs:
+20 million songs × 2 KB/song = 40 GB
+****************************************************************************************************
+
