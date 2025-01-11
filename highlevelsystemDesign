@@ -673,7 +673,7 @@ Total Bandwidth: 10 million users × 10 KB/s =100 GB/s
 10million users×10KB/s=100GB/s
 
 https://blog.algomaster.io/p/design-a-chat-application-like-whatsapp
-*********************************************
+**********************************************************************************************************************************************************
 Leaderboard System Design
 
 A leaderboard is a feature in games or apps that shows the rankings of players based on their scores.
@@ -683,6 +683,86 @@ Why have a leaderboard?
 
 It makes the game more social and competitive.
 It motivates players to stay active and improve their scores.
+Leaderboards aren't just for games! They're also used in fitness apps, education platforms, 
+loyalty programs, and online communities to track progress and motivate users.
 
+Types of Leaderboards
+Absolute Leaderboard:
+
+Shows the overall ranking of all players globally.
+Usually displays the top players, like the top 10.
+Example: "Top 10 players in the world."
+
+Relative Leaderboard:
+Focuses on showing rankings around a specific player.
+Example: "Your rank is 57. Here are the players ranked 55–60."
+
+
+******************************************************************************************
+What is a Leaderboard?
+A leaderboard is a feature in games or apps that shows the rankings of players based on their scores. It’s commonly used in competitive activities, such as online games, fitness apps, or learning platforms. Players are ranked from the highest score to the lowest, with the top players displayed prominently.
+
+Why have a leaderboard?
+It makes the game more social and competitive.
+It motivates players to stay active and improve their scores.
+Types of Leaderboards
+Absolute Leaderboard:
+
+Ranks all players globally.
+Example: Showing the top 10 players in the world.
+Relative Leaderboard:
+
+Ranks players in smaller groups based on certain criteria.
+Example: Showing the rank of a player and the ranks of others near them (e.g., players ranked just above or below them).
+
+How does a Leaderboard work?
+
+The score of each player is stored and managed in real-time.
+Redis Sorted Sets:
+A special in-memory data structure that allows for ranking players by their scores quickly.
+It works efficiently, even if millions of players are active.
+It can fetch a player’s rank, score, or top players in almost no time.
+Persistent Storage:
+Scores are also stored in a database (like MySQL) for long-term storage and to support features like historical rankings.
+Push Notifications:
+Players get notified immediately if their rank or score changes.
+******
+Functional Requirements (What it needs to do)
+
+View the leaderboard:
+Players should be able to see the top 10 players in real-time.
+
+Check personal rank:
+A player can check their own rank and score.
+
+Relative rank view:
+Players can see their rank along with the ranks of nearby players.
+
+Score updates:
+Players should get notifications whenever their score changes.
+
+Global, regional, and friend leaderboards:
+The leaderboard can be customized to show rankings for:
+Everyone in the world (global).
+Players in a specific region (regional).
+Friends (friend circle)
+
+
+Non-Functional Requirements (What it needs to ensure)
+High Availability:
+The leaderboard should always be accessible, even during server issues.
+Low Latency:
+Players should see updates and ranks instantly, with no delays.
+Scalability:
+It should handle millions of players and scores without slowing down.
+Reliability:
+Scores should not be lost, even if something goes wrong.
+Minimal Maintenance:
+The system should run smoothly with little operational effort.
+
+*************
 https://systemdesign.one/leaderboard-system-design/
-***************
+***************************************************************
+
+
+
