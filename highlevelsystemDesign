@@ -386,9 +386,9 @@ Key Takeaways
 Importance of Requirements Gathering
 Designing with Microservices
 Trade-offs and Considerations in System Design
-****************************************************************
-URL SHORTNER
-********
+********************************************************************************************************************************************************************************
+                                                                                           URL SHORTNER
+**********************************************************************************************************************************************************************************
 1. Requirements Gathering
 Functional Requirements:
 Generate a unique short URL for a long URL.
