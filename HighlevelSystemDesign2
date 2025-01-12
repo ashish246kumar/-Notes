@@ -69,13 +69,80 @@ Job prioritization: The system should support scheduling based on job priority.
 Job dependencies: The system should handle jobs with dependencies.
 
 https://blog.algomaster.io/p/design-a-distributed-job-scheduler
-*************************************************************************************
+*************************************************************************************************************************************************************************
+                                                                           Rate Limiter
+***********************************************************************************************************************************************************************
+Functional Requirements
 
+Accurately limit excessive requests based on predefined rules.
+Support flexible throttle rules (e.g., per user, per IP, per API).
+Handle distributed systems with multiple servers.
+Notify clients when their requests are throttled using clear HTTP error codes (e.g., HTTP 429).
+Provide details to the client:
+Remaining requests (e.g., X-Ratelimit-Remaining).
+Retry wait time (X-Ratelimit-Retry-After).
 
+Non-Functional Requirements
 
+Low Latency: Ensure the rate limiter does not impact API response time significantly.
+Fault Tolerance: Continue to handle requests gracefully in case of partial failures (e.g., cache server outage).
+Resource Efficiency: Optimize memory and compute usage.
+Scalability: Handle a high volume of concurrent requests.
+Monitoring: Provide analytics to fine-tune rate-limiting rules and check system effectiveness
+*********
+Designing a rate limiter involves several key considerations to ensure it effectively controls the rate of client requests while maintaining system performance and reliability. Here's a structured breakdown to help you articulate this in an interview setting:
 
+**Functional Requirements:**
 
+- **Request Limiting:** Restrict the number of API requests a client can make within a specified time frame.
+ **Flexible Throttling Rules:** Support various criteria for rate limiting, such as IP address, user ID, or API key.
+- **User Notifications:** Inform clients when they have exceeded the rate limit, typically through HTTP status codes like 429 (Too Many Requests) and relevant headers.
+- **Logging:** Record instances of rate limiting for monitoring and analysis purposes.
 
+**Non-Functional Requirements:**
+- **Performance:** Introduce minimal latency to ensure swift API responses.
+- **Scalability:** Handle a large volume of requests and scale horizontally to accommodate growth.
+- **Reliability:** Consistently enforce rate limits without errors, ensuring high availability and fault tolerance.
+- **Consistency:** Maintain uniform rate limiting across distributed systems to prevent discrepancies.
+- **Security:** Prevent circumvention of rate limits through measures like IP spoofing or token manipulation.
+
+**Capacity Estimation:**
+- **User Base:** Estimate the number of active users (e.g., 10 million daily active users).
+- **Request Rate:** Determine average and peak requests per second (RPS) per user tier (e.g., free-tier users: 1 RPS; paid-tier users: 5 RPS).
+- **Data Storage:** Calculate storage needs for tracking request counts and timestamps, considering the retention period and data structure overhead.
+
+**High-Level Design:**
+**Placement:** Implement the rate limiter as a middleware component or within an API gateway to intercept and evaluate requests before they reach the server.
+**Algorithm Selection:** Choose an appropriate rate limiting algorithm based on requirements:
+- **Token Bucket:** Allows for burst traffic and smooths out request rates.
+ **Leaky Bucket:** Processes requests at a constant rate, suitable for steady request flows.
+**Fixed Window Counter:** Counts requests in fixed time windows; simpler but can lead to spikes at window boundaries.
+**Sliding Window Log:** Maintains a log of request timestamps for precise rate limiting; more accurate but resource-intensive.
+**Sliding Window Counter:** Balances accuracy and performance by approximating request rates over a sliding time window.
+
+3 **Data Storage:** Utilize in-memory data stores like Redis for fast access to request counters and timestamps, leveraging features like key expiration for efficient time-based tracking.
+
+**Database Design:**
+- **Schema:** Design data structures to store client identifiers, request counts, and timestamps.
+- **Storage Medium:** Opt for in-memory databases (e.g., Redis) to ensure low-latency access and updates.
+ **Data Expiry:** Implement automatic expiration of data entries to manage memory usage and align with the rate limiting time windows.
+
+**API Design:**
+
+- **Response Headers:** Include rate limit information in API responses to inform clients of their current status:
+- `X-RateLimit-Limit`: Maximum number of requests allowed.
+- `X-RateLimit-Remaining`: Number of requests remaining in the current window.
+- `X-RateLimit-Reset`: Time until the rate limit resets.
+- **Status Codes:** Return appropriate HTTP status codes (e.g., 429) when rate limits are exceeded.
+
+**Key Components:**
+- **Request Counter:** Tracks the number of requests per client within the defined time window.
+- **Time Window Tracker:** Monitors the time frame for rate limiting, resetting counters as windows elapse.
+- **Storage System:** Efficiently stores and retrieves rate limiting data, ensuring quick access and updates.
+- **Notification System:** Communicates rate limit statuses and violations to clients through responses.
+
+https://github.com/Salah856/System-Design/blob/main/Design%20Rate%20Limiter.md
+*************************
 
 
 
