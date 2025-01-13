@@ -1879,7 +1879,71 @@ max operation perform nhi karega.  ye wah sabhi number la kar de dega jiska coun
 toh hum max kaise find karenge?
 phele hum number find kar lenge jiska count 1 hai then max find kar lenge
 select MAX(num) as num from MyNumbers WHERE num in(select num from MyNumbers GROUP BY num HAVING count(num)=1)
+*****
+GROUP BY  s.student_id,sub.subject_name ----> multiple column me group by ek sath laga sakte hai
+ORDER BY  s.student_id,sub.subject_name----> multiple column me order by ek sath laga sakte hai
+LEFT JOIN Examinations e on s.student_id=e.student_id AND sub.subject_name=e.subject_name  ---> left join ek sath 3 table me laga sakte hai
+COUNT(if(income>=20000 and income<=50000,1,null))----> count on the basis of some condition 
+FROM (select person_name,turn,sum(weight)OVER(ORDER BY turn)as cum FROM Queue) p---->]
+
 **************************************************************************************************************************************
+window function are similar to group by but it slighly different . it is an analytical fuction that perform calculations across a set of rows that are 
+related to current row called a window. 
 
+select branch,avg(mark) from marks group by branch
 
+select * ,avg(mark) , over(partition by branch) frm marks
+difference here is  in how output is coming 
+window function return result row by row it does not aggregate rows . in group by we are seeing the result per group wise.where in window we are seeing the result per row 
+wise
+*************************************************************************************************
+select avg(mark) from student-->it give sigle result
+select avg(mark) over() from student -->it  give the all the row in the table with extra added column  avg and it have same avg value for all the rows
+*****
+ SELECT *, RANK() OVER(ORDER BY marks DESC)  FROM marks----->RANK() function assigns a rank to each row based on the marks column in descending order.
+SELECT *, RANK() OVER (PARTITION BY branch ORDER BY  marks DESC)  FROM marks;  :->  RANK() function along with the PARTITION BY clause to rank rows within each branch based on the mark
+SELECT *, DENSE_RANK() OVER (ORDER BY marks DESC) FROM marks; :->Use DENSE_RANK() when you want continuous ranks even with ties.
+
+rank   dense_rank
+1         1
+1         1
+3         2
+**************************************************************************
+SELECT *, ROW_NUMBER() OVER (PARTITION BY branch)   
+FROM marks;
+*******************
+ ranking users based on their total spending (amount) within each month
+SELECT 
+    MONTHNAME(date) AS month, 
+    user_id, 
+    SUM(amount) AS total_amount, 
+    RANK() OVER (PARTITION BY MONTHNAME(date) ORDER BY SUM(amount) DESC) AS rank
+FROM 
+    orders
+GROUP BY 
+    MONTHNAME(date), 
+    user_id
+ORDER BY 
+    MONTH(date), 
+    rank;
+*************************************
+The query provided addresses a real-world problem of filtering and ranking top users by their spending within each month, and then presenting this data in a descending order of months.
+
+SELECT *
+FROM (
+    SELECT 
+        MONTHNAME(date) AS month, 
+        user_id, 
+        SUM(amount) AS total, 
+        RANK() OVER (PARTITION BY MONTHNAME(date) ORDER BY SUM(amount) DESC) AS month_rank
+    FROM 
+        orders
+    GROUP BY 
+        MONTHNAME(date), user_id
+    ORDER BY 
+        MONTH(date)
+) t
+WHERE t.month_rank < 3
+ORDER BY month DESC, month_rank ASC;
+*****************************************************************
 
