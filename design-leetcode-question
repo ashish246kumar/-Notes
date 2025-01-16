@@ -1,0 +1,101 @@
+
+2043) simple-bank-system
+  ****
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class Bank {
+
+    private static final class Account {
+        private Long balance;
+        private final Lock lock = new ReentrantLock(true);
+
+        public Account(Long balance) {
+            this.balance = balance;
+        }
+
+        public boolean deposit(long amount) {
+            lock.lock();
+            try {
+                balance += amount;
+            } finally {
+                lock.unlock();
+            }
+
+            return true;
+        }
+
+        public boolean withdraw(long amount) {
+            lock.lock();
+            try {
+                if (balance < amount) return false;
+                balance -= amount;
+            } finally {
+                lock.unlock();
+            }
+
+            return true;
+        }
+    }
+
+    private final Map<Integer, Account> accounts = new ConcurrentHashMap<>();
+
+    public Bank(long[] balance) {
+
+        for (int i = 0; i < balance.length; i++) {
+            accounts.put(i, new Account(balance[i]));
+        }
+    }
+
+    public boolean transfer(int account1, int account2, long money) {
+        if (!validateAccount(account1) || !(validateAccount(account2)) || money < 0) return false;
+
+        var acc1 = getAccount(account1);
+        var acc2 = getAccount(account2);
+
+        acc1.lock.lock();
+        try {
+            acc2.lock.lock();
+            try {
+                if (acc1.withdraw(money)) {
+                    acc2.deposit(money);
+                } else {
+                    return false;
+                }
+            } finally {
+                acc2.lock.unlock();
+            }
+        } finally {
+            acc1.lock.unlock();
+        }
+
+        return true;
+    }
+
+    public boolean deposit(int account, long money) {
+        if (!validateAccount(account)) return false;
+        return getAccount(account).deposit(money);
+    }
+
+
+    public boolean withdraw(int account, long money) {
+        if (!validateAccount(account)) return false;
+        return getAccount(account).withdraw(money);
+    }
+
+    private boolean validateAccount(int account) {
+        return account >= 0 && account <= accounts.size();
+    }
+
+    private Account getAccount(int account) {
+        var acc = accounts.get(account - 1);
+        if (acc == null)
+            throw new IllegalStateException("invalid account definition " + account + " " + accounts.size());
+
+        return acc;
+    }
+}
+**********************
+
