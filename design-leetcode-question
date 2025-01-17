@@ -158,4 +158,39 @@ class ATM {
  * obj.deposit(banknotesCount);
  * int[] param_2 = obj.withdraw(amount);
  */
+***************************************************************************************************************************************************
+535) encode-and-decode-tinyurl
+
+public class Codec {
+
+      Map<String,String> longUrlKey=new HashMap<>();
+      Map<String,String> shortUrlKey=new HashMap<>();
+          static final String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    public String getCode(){
+         char[] ch=new char[6];
+        for(int i=0;i<6;i++){
+            ch[i]=chars.charAt((int)(Math.random()*62));
+        }
+        return  "http://tinyurl.com/"+String.valueOf(ch);
+    }
+    // Encodes a URL to a shortened URL.
+    public String encode(String longUrl) {
+       if(longUrlKey.containsKey(longUrl)){
+          return longUrlKey.get(longUrl);
+       }
+       String code=getCode();
+       while(shortUrlKey.containsKey(code)){
+         code=getCode();
+       }
+        longUrlKey.put(longUrl,code);
+        shortUrlKey.put(code,longUrl);
+         return code;
+    }
+
+    public String decode(String shortUrl) {
+        return shortUrlKey.get(shortUrl);
+    }
+}
+****************************************************************
+
 
