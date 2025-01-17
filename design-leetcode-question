@@ -192,5 +192,34 @@ public class Codec {
     }
 }
 ****************************************************************
+1845
+seat-reservation-manager
+class SeatManager {
+    private PriorityQueue<Integer> seats; 
+    public SeatManager(int n) {
+        seats=new PriorityQueue<>();
+        for(int i=1;i<=n;i++){
+           seats.offer(i);
+        }
+    }
+    
+    public int reserve() {
+       
+            if(!seats.isEmpty()){
+                int a=seats.poll();
+                
+                return a;
+            }
+        
+        return -1;
+    }
+    
+    public void unreserve(int seatNumber) {
+        seats.offer(seatNumber);
+    }
+}
+****************************************************************************
+
+
 
 
