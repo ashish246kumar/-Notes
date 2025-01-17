@@ -97,5 +97,65 @@ class Bank {
         return acc;
     }
 }
-**********************
+***************************************************************************
+2241 Design ATM machine
+
+class ATM {
+    private int[] banknotesStore;
+    private int[] noteTypes;
+    public ATM() {
+        banknotesStore=new int[5];
+        noteTypes=new int[5];
+        noteTypes[0]=20;
+        noteTypes[1]=50;
+        noteTypes[2]=100;
+        noteTypes[3]=200;
+        noteTypes[4]=500;
+
+
+
+
+    }
+    
+    public void deposit(int[] banknotesCount) {
+        for(int i=0;i<5;i++){
+            banknotesStore[i]+=banknotesCount[i];
+        }
+    }
+    
+    public int[] withdraw(int amount) {
+        int[] ans=new int[5];
+        for(int i=4;i>=0;i--){
+           if(amount>=noteTypes[i]){
+                int c=amount/noteTypes[i];
+                if(c>banknotesStore[i]){
+                    c=banknotesStore[i];
+                }
+                banknotesStore[i]=banknotesStore[i]-c;
+                amount=amount-(c*noteTypes[i]);
+                ans[i]+=c;
+
+           }
+         
+        }
+        if(amount==0){
+            return ans;
+        }
+        else{
+            for(int i=0;i<=4;i++){
+                banknotesStore[i]+=ans[i];
+               
+            }
+
+            return new int[]{-1};
+        }
+    }
+}
+
+/**
+ * Your ATM object will be instantiated and called as such:
+ * ATM obj = new ATM();
+ * obj.deposit(banknotesCount);
+ * int[] param_2 = obj.withdraw(amount);
+ */
 
