@@ -219,7 +219,46 @@ class SeatManager {
     }
 }
 ****************************************************************************
+1472
+Design BrowserHistory
 
+class BrowserHistory {
+   private List<String> al;
+   private int cursor=0;
+    public BrowserHistory(String homepage) {
+        al=new ArrayList<>();
+       al.add(homepage);
+    }
+    
+    public void visit(String url) {
+        while(al.size()>cursor+1){
+            al.remove(al.size()-1);
+        }
+        al.add(url);
+        cursor+=1;
+    }
+    
+    public String back(int steps) {
+        if(cursor-steps<0){
+            cursor=0;
+            return al.get(cursor);
 
+        }
+        else{
+            cursor=cursor-steps;
+            return al.get(cursor);
+        }
+    }
+    
+    public String forward(int steps) {
+        if(cursor+steps>=al.size()){
+           cursor=al.size()-1;
+           return al.get(cursor);
+        }
+        cursor=cursor+steps;
+        return al.get(cursor);
 
+    }
+}
+*******************************************************************************************************
 
