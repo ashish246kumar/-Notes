@@ -382,5 +382,151 @@ class MyCircularQueue {
     }
 }
 *************************************************************************************************************************************************
+1670
+design-front-middle-back-queue
+class Node{
+     int val;
+    Node next;
+    public Node(int val){
+        this.next=null;
+        this.val=val;
+    }
+}
 
+
+class FrontMiddleBackQueue {
+   private int size;
+   Node head;
+    public FrontMiddleBackQueue() {
+        head=null;
+        this.size=0;
+    }
+    
+    public void pushFront(int val) {
+        Node newNode=new Node(val);
+        if(head==null){
+            head=newNode;
+            size++;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+        size++;
+    }
+    
+    public void pushMiddle(int val) {
+        Node newNode=new Node(val);
+          if(head==null){
+            head=newNode;
+            size++;
+            return;
+        }
+        if(head.next==null){
+           newNode.next=head;
+           head=newNode;
+           size++;
+           return;
+        }
+        Node temp=head,prev=null;
+       
+        int mid=size/2;
+        for(int i=0;i<mid;i++){
+            prev=temp;
+            temp=temp.next;
+        }
+        
+        prev.next=newNode;
+        newNode.next=temp;
+         size++;
+    }
+    
+    public void pushBack(int val) {
+        Node newNode=new Node(val);
+          if(head==null){
+            head=newNode;
+            size++;
+            return;
+        }
+        if(head.next==null){
+           head.next=newNode;
+           size++;
+           return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+        size++;
+
+    }
+    
+    public int popFront() {
+        if(head==null){
+            return -1;
+        }
+        if(head.next==null){
+          int val=head.val;
+          head=null;
+          size--;
+          return val;
+        }
+        int val=head.val;
+        head=head.next;
+        size--;
+        return val;
+    }
+    
+    public int popMiddle() {
+        if(head==null){
+            return -1;
+        }
+         if(head.next==null){
+          int val=head.val;
+          head=null;
+          size--;
+          return val;
+        }
+         if(size == 2){
+            int val = head.val;
+            head = head.next;
+            size--;
+            
+            return val;
+        }
+
+        int mid=(size-1)/2;
+        Node temp=head;
+        Node prev=null;
+        for(int i=0;i<mid;i++){
+            prev=temp;
+            temp=temp.next;
+        }
+        int val=temp.val;
+        prev.next=temp.next;
+        size--;
+        return val;
+    }
+    
+    public int popBack() {
+        if(head==null){
+            return -1;
+        }
+        if(head.next==null){
+            int val=head.val;
+            head=null;
+            size--;
+            return val;
+        }
+         Node temp=head;
+         while(temp.next.next!=null){
+            temp=temp.next;
+         }
+         int val=temp.next.val;
+         temp.next=null;
+        size--;
+        return val;
+    }
+}
+***********************************************************************************************************************************************
 
