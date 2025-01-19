@@ -529,4 +529,242 @@ class FrontMiddleBackQueue {
     }
 }
 ***********************************************************************************************************************************************
+707
+Design LinkedList
+**********************************************
+class Node{
+    Node next;
+    int val;
+    Node(int val){
+        this.next=null;
+        this.val=val;
+    }
+}
 
+
+
+class MyLinkedList {
+   Node head;
+   int size;
+    public MyLinkedList() {
+        head=null;
+        this.size=0;
+    }
+    
+    public int get(int index) {
+        if(head==null){
+            return -1;
+        }
+        if(index>=size){
+            return -1;
+        }
+        Node temp=head;
+        int count=0;
+        while(temp!=null){
+            if(count==index){
+                return temp.val;
+            }
+            temp=temp.next;
+            count++;
+            
+        }
+        return -1;
+    }
+    
+    public void addAtHead(int val) {
+        Node newNode=new Node(val);
+        
+       
+            newNode.next=head;
+            head=newNode;
+        
+        size++;
+    }
+    
+    public void addAtTail(int val) {
+        Node newNode=new Node(val);
+        Node temp=head;
+        if(head==null){
+            head=newNode;
+
+        }
+        
+        else{
+            while(temp.next!=null){
+                temp=temp.next;
+            }
+            temp.next=newNode;
+        }
+        size++;
+
+    }
+    
+    public void addAtIndex(int index, int val) {
+        if(index<0 || index>(size)){
+            return;
+        }
+        Node newNode=new Node(val);
+
+        if(index==0){
+            newNode.next=head;
+            head=newNode;
+        }
+        else{
+            int count=0;
+            Node temp=head,prev=null;
+            while(temp!=null){
+                if(count==index-1){
+
+                    newNode.next=temp.next;
+                    temp.next=newNode;
+                    break;
+                }
+                
+                temp=temp.next;
+                count++;
+            }
+        }
+        size++;
+    }
+    
+    public void deleteAtIndex(int index) {
+        if(index<0 || index>=size){
+            return;
+        }
+        if(head==null){
+            return;
+        }
+        if(index==0){
+            head=head.next;
+
+        }
+        else{
+            int count=0;
+            Node temp=head,prev=null;
+            while(temp!=null){
+                if(count==index){
+                    prev.next=temp.next;
+                    break;
+                }
+                prev=temp;
+                temp=temp.next;
+                count++;
+            }
+
+        }
+        size--;
+        
+    }
+}
+******************************************************************************************
+
+355
+Design Twiteer
+*********
+class Twitter {
+
+   private static int timeStamp=0;
+   private Map<Integer,User> userMap;
+   private class Tweet{
+    public int id;
+    public int time;
+    public Tweet next;
+      Tweet(int tweetId){
+        time=timeStamp++;
+       id=tweetId;
+        next=null;
+      }
+
+   }
+   public class User{
+    public int id;
+    public Set<Integer> follwed;
+    public Tweet head;
+       public User(int id){
+          this.id=id;
+          follwed=new HashSet<>();
+          follow(id);
+          head=null;
+       }
+      public void follow(int id){
+         follwed.add(id);
+      }
+      public void unfollow(int id){
+         follwed.remove(id);
+      }
+      public void post(int id){
+        Tweet t=new Tweet(id);
+        t.next=head;
+        head=t;
+      }
+   }
+    public Twitter() {
+        userMap=new HashMap<>();
+
+    }
+    
+    public void postTweet(int userId, int tweetId) {
+        if(!userMap.containsKey(userId)){
+            User u=new User(userId);
+            userMap.put(userId,u);
+        }
+        userMap.get(userId).post(tweetId);
+
+    }
+    
+    public List<Integer> getNewsFeed(int userId) {
+        List<Integer> l=new LinkedList<>();
+        if(!userMap.containsKey(userId)){
+            return l;
+        }
+        Set<Integer> users=userMap.get(userId).follwed;
+        PriorityQueue<Tweet>pq=new PriorityQueue<>( (a, b) -> Integer.compare(b.time, a.time));
+
+        for(int user:users){
+            Tweet t=userMap.get(user).head;
+            if(t!=null){
+                pq.add(t);
+            }
+        }
+        int n=0;
+        while(!pq.isEmpty() && n<10){
+            Tweet t1=pq.poll();
+             l.add(t1.id);
+             n++;
+             if(t1.next!=null){
+                pq.add(t1.next);
+             }
+        }
+        return l;
+    }
+    
+    public void follow(int followerId, int followeeId) {
+        if(!userMap.containsKey(followerId)){
+            User u=new User(followerId);
+            userMap.put(followerId,u);
+        }
+        if(!userMap.containsKey(followeeId)){
+            User u=new User(followeeId);
+            userMap.put(followeeId,u);
+        }
+        userMap.get(followerId).follow(followeeId);
+      
+    }
+    
+    public void unfollow(int followerId, int followeeId) {
+          if(!userMap.containsKey(followerId)||!userMap.containsKey(followeeId)||followerId==followeeId){
+            return;
+        }
+        userMap.get(followerId).unfollow(followeeId);
+
+    }
+}
+
+/**
+ * Your Twitter object will be instantiated and called as such:
+ * Twitter obj = new Twitter();
+ * obj.postTweet(userId,tweetId);
+ * List<Integer> param_2 = obj.getNewsFeed(userId);
+ * obj.follow(followerId,followeeId);
+ * obj.unfollow(followerId,followeeId);
+ */
