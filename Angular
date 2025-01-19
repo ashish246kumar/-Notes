@@ -1,14 +1,49 @@
-
-
-
-
-
-
 observable are used to perform asynchronous operation and handle asynchronous data.
 in asynchronous task all the task are executed parallely.
 observable  emit multiple value ver a period of time.while promise emit a single value at a time.
 observable are lazy and they are not executed untill we subscribe them using subscribe method.
 promises are not lazy
+Reference example
+https://medium.com/@lquocnam/a-comprehensive-guide-to-angular-observables-bde5542346fc
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  private apiUrl = '<https://jsonplaceholder.typicode.com/posts>';
+  constructor(private http: HttpClient) {}
+  getPosts(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+}
+
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Posts</h1>
+    <ul>
+      <li *ngFor="let post of posts">{{ post.title }}</li>
+    </ul>
+  `
+})
+export class AppComponent {
+  posts: any[];
+  constructor(private dataService: DataService) {}
+  ngOnInit() {
+    this.dataService.getPosts().subscribe(
+      data => this.posts = data,
+      error => console.error(error),
+      () => console.log('Posts loaded')
+    );
+  }
+}
 **********************
 Rxjs(Reactive extension for javascript)-javascript libraary-allow us to work with asynchronous data stream  with the help of observable.
 *****************
