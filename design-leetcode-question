@@ -802,5 +802,57 @@ class LRUCache {
         }
     }
 }
-****************
+******************************************************************************************************************************************
+class Food{
+    int rating;
+    String cusine,name;
+    public Food(int rating,String cusine,String name){
+            this.rating=rating;
+            this.cusine=cusine;
+            this.name=name;
+    }
+}
+
+class FoodRatings {
+
+    HashMap<String,Food> menu=new HashMap<>();
+    HashMap<String,PriorityQueue<Food>> x=new HashMap<>();
+    public FoodRatings(String[] foods, String[] cuisines, int[] ratings) {
+      for(int i=0;i<foods.length;i++){
+        Food food1=new Food(ratings[i],cuisines[i],foods[i]);
+        x.putIfAbsent(cuisines[i],new PriorityQueue<>((a,b)->b.rating==a.rating?a.name.compareTo(b.name):b.rating-a.rating)
+
+        );
+        PriorityQueue<Food> pq=x.get(cuisines[i]);
+        pq.add(food1);
+        menu.put(foods[i],food1);
+
+      } 
+        
+    }
+    
+    public void changeRating(String food, int newRating) {
+        Food food1=menu.get(food);
+         PriorityQueue<Food> pq=x.get(food1.cusine);
+         pq.remove(food1);
+         food1.rating=newRating;
+         pq.add(food1);
+
+    }
+    
+    public String highestRated(String cuisine) {
+        return x.get(cuisine).peek().name;
+    }
+}
+
+***************************************************************************************************************************************************************
+
+
+    
+
+
+
+
+
+
 
