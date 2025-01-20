@@ -124,6 +124,52 @@ constructor-called before any lifecycle hook
 A service is a typeScript class and reusable code which can be used in multiple component.
 A provider is a object declared inside decorator which inform angular that particular service is avilable for inecting inside the component.
 ********************
+Dependency Injection (DI) is a design pattern that helps to create loosely coupled components in Angular applications.
+It allows developers to define the dependencies of a component or service at a single place and reuse them across the application.
+
+
+import { Injectable } from '@angular/core'; 
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+}) 
+export class UserService {
+
+  constructor(private _http: HttpClient) { }
+  
+  getUsers() { 
+    return this._http.get('https://jsonplaceholder.typicode.com/users'); 
+  }
+}
+we have created a service called ‘UserService’ which is annotated with ‘@Injectable’ decorator. 
+The ‘@Injectable’ decorator tells Angular that this service can be injected into other components or services
+*****
+we need to register the ‘UserService’ in the AppModule so that it can be injected into our components. 
+We can do this by adding the ‘UserService’ to the ‘providers’ array of the AppModule
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { UserComponent } from './user/user.component';
+import { UserService } from './services/user.service';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [UserService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+***************
+
+
  with @Injectale decorator one service can be used by another service
 ****************************
 Static form-validation rules are defined directly in the HTML template using directives such as ngModel, ngForm, and ngSubmit.
