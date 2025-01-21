@@ -195,7 +195,52 @@ public void addNumber(Box<? super Integer> box) {
     box.set(100);  // Can add an Integer or any of its subclasses.
 }
 ************************************************************************************************************************
+how the string object are store in memory in java?
+string objects are stored in the heap memory. 
+When you create a string literal (using double quotes), Java first checks if an identical string already exists in the String Pool, a special area within the heap.
+If the string exists, a reference to that existing string is returned, saving memory.
+If the string doesn't exist, a new string object is created in the String Pool, and a reference to it is returned.
 
+String str1 = "Hello";
+String str2 = "Hello";
 
+// str1 and str2 will refer to the same object in the String Pool
 
+String str1 = new String("Hello");
+String str2 = new String("Hello");
 
+// str1 and str2 are two different objects in the heap
+********************************************************************************************************************
+toString() is the built-in method of java.lang which return itself a string.
+ Since toString() method simply returns the current string without any changes, there is no need to call the string explicitly, it is usually called implicitly.
+public class Geeks { 
+  
+    public static void main(String args[]) 
+    { 
+        String Strobj = new String("Welcome to the world of geeks."); 
+        System.out.print("Output String Value :"); 
+        System.out.println(Strobj.toString()); 
+  
+        String Strobj2 = new String("Let's make it simple for you."); 
+        System.out.print("Output String Value :"); 
+        System.out.println(Strobj2.toString()); 
+    } 
+} 
+************************************************************************************************************************************
+If a class does not extend any other class then it is a direct child class of Object
+ toString() method to get the string representation of an object
+The toString() method is present in the Object class. Since every class in Java implicitly extends the Object class (except Object itself), all classes inherit the toString() method by default.
+The Object class is part of the java.lang package.
+toString() in the Object class provides the default implementation.
+
+ @Override
+    public String toString() {
+        return "Best_Friend{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", college='" + college + '\'' +
+                ", course='" + course + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+**********************************************************************************************************************************************
