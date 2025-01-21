@@ -7,6 +7,12 @@ Can you explain a complex project you have worked on as a Back End Developer, de
 First chalanges i have faced when i joined the project was to understand large project nd there flow. the second thing i can say to undersand the flow of kafka . basically i need to consume the message which were coming  so for this i need to understansd what are the thing coming in the message
 so for understanding this i   need to talk to cross functional team  which is is producing  whether all the field which are needed for my service they are sending or not.
 *****************************************************
+How have you contributed to improving the performance and scalability of the applications you have worked on?
+i have utilized redis for the caching technique. and also i have configured grafana for monoring the performance of the api.
+**************************************************************
+How do you stay updated with the latest trends and technologies in the field of Back End Development? Can you provide examples of how you have applied this knowledge in your work?
+i am basically reading the medium blog or dev community blog of new technolgy to get the insight of the technology
+****************************
 
 
 
