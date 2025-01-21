@@ -1,0 +1,67 @@
+public class Test {
+    public static void main(String[] args) {
+        try {
+            m1();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void m1() throws Exception {
+        System.out.println("Test.m1()");
+        m2();
+    }
+
+    public static void m2() throws Exception {
+        System.out.println("Test.m2()");
+        m3();
+    }
+
+    public static void m3() throws Exception {
+        System.out.println("Test.m3()");
+        throw new Exception("Exception from Test.m3()");
+    }
+}
+****************************************************************************************************************************************************
+// Custom Exception Class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String msg) {
+        super(msg);
+    }
+}
+
+// Person Class
+class Person {
+    private int age;
+    private String name;
+
+    public Person(int age, String name) throws InvalidAgeException {
+        if (age < 0) {
+            throw new InvalidAgeException("Age cannot be negative: " + age);
+        }
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
+}
+
+// Test Class
+public class Test {
+    public static void main(String[] args) {
+        try {
+            Person p1 = new Person(21, "Sam");
+            System.out.println(p1);
+
+            // This will throw InvalidAgeException
+            Person p2 = new Person(-1, "John");
+            System.out.println(p2);
+        } catch (InvalidAgeException e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+}
+*************************************************************************************************************************************
