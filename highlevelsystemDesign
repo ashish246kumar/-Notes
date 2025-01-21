@@ -174,7 +174,6 @@ class ParkingSpotNearEntranceStrategy implements ParkingAssignmentStrategy {
 
     @Override
     public void releaseParkingSpot(ParkingSpot parkingSpot) {
-        // Mark the spot as available
     }
 }
 ***************
@@ -201,7 +200,6 @@ class CreditCardPaymentProcessor implements PaymentProcessor {
 class CashPaymentProcessor implements PaymentProcessor {
     @Override
     public void processPayment(double amount) {
-        // Cash payment logic
     }
 }
 ****
