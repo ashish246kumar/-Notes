@@ -95,9 +95,96 @@ const person = {
 };
 person.greet();
 ****************************************************************************************************************
+What's the difference between a JavaScript variable that is: null, undefined or undeclared?
+
+undefined
+Meaning:
+
+A variable is undefined when it has been declared but not assigned a value.
+It is also the default return value of functions that do not explicitly return anything.
+Type:
+typeof undefined returns 'undefined'.
+Equality Comparison:
+undefined == null is true (due to type coercion).
+undefined === null is false (strict equality checks both value and type
 
 
+ null
+Meaning:
+null is a value that is explicitly set by the developer to indicate that a variable has no value or no object.
+Type:
+typeof null returns 'object' (this is a historical bug in JavaScript).
+Equality Comparison:
+null == undefined is true (due to type coercion).
+null === undefined is false (strict equality checks both value and type).
 
-******************
+
+undeclared
+Meaning:
+A variable is undeclared if it has not been declared at all using var, let, or const.
+Type:
+Accessing an undeclared variable throws a ReferenceError.
+typeof on an undeclared variable returns 'undefined' (this is a special behavior of typeof).
+Equality Comparison:
+Trying to compare or access an undeclared variable throws a ReferenceError.
+************************************************************************************************
+What advantage is there for using the JavaScript arrow syntax for a method in a constructor?
+
+When you use the arrow syntax (=>) for a method inside a constructor in JavaScript, it makes sure that the method always remembers which object it belongs to.
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const p = new Person("Ashish");
+const greetFn = p.greet; // Assigning method to a variable
+greetFn(); // ❌ This gives "Hello, my name is undefined" because 'this' is lost
+**********
+class Person {
+  constructor(name) {
+    this.name = name;
+    this.greet = () => {
+      console.log(`Hello, my name is ${this.name}`);
+    };
+  }
+}
+
+const p = new Person("Ashish");
+const greetFn = p.greet;
+greetFn(); // ✅ Works fine! Prints "Hello, my name is Ashish"
+***********************************************************************************
+What's the difference between .call and .apply in JavaScript?
+
+.call and .apply are both used to invoke functions with a specific this context and arguments. The primary difference lies in how they accept arguments:
+.call(thisArg, arg1, arg2, ...): Takes arguments individually.
+.apply(thisArg, [argsArray]): Takes arguments as an array.
+
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add.call(null, 1, 2)); // 3
+console.log(add.apply(null, [1, 2])); // 3
+**********
+Explain Function.prototype.bind in JavaScript  
+********
+.bind() locks a function to a specific object so that when the function runs, the this keyword inside it always refers to that object, no matter how or where the function is called.
+const person = {
+  name: "Ashish",
+  greet: function () {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+};
+
+const greetFn = person.greet; // Copying the method
+greetFn(); // ❌ This gives "Hello, my name is undefined"
+const greetFnBound = person.greet.bind(person);
+greetFnBound(); // ✅ Works! Prints "Hello, my name is Ashish"
+****************************************************************************************************************************
 
 
