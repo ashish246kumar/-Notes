@@ -186,5 +186,118 @@ greetFn(); // ❌ This gives "Hello, my name is undefined"
 const greetFnBound = person.greet.bind(person);
 greetFnBound(); // ✅ Works! Prints "Hello, my name is Ashish"
 ****************************************************************************************************************************
+What are Proxies in JavaScript?
+
+A Proxy in JavaScript is like a middleman that sits between an object and the code that interacts with it. 
+It allows you to control or modify how the object behaves when someone tries to access or change its properties.
+const person = {
+  name: "Ashish",
+  age: 25
+};
+
+const proxyPerson = new Proxy(person, {
+  set(target, property, value) {
+    if (property === "age" && value < 0) {
+      console.log("❌ Age cannot be negative!");
+      return false; // Prevent the change
+    }
+    target[property] = value; // Allow the change
+    return true;
+  }
+});
+
+proxyPerson.age = 30;  // ✅ Works fine
+proxyPerson.age = -5;  // ❌ "Age cannot be negative!"
+console.log(proxyPerson.age); // 30 (remains unchanged)
+✅ When you need data validation (e.g., ensuring correct inputs).
+✅ When you want to automatically handle missing values.
+
+****************************************************
+What are JavaScript object getters and setters for?
+
+JavaScript object getters and setters are used to control access to an object's properties.
+They provide a way to encapsulate the implementation details of a property and define custom behavior when getting or setting its value.
+Getters and setters are defined using the get and set keyword.
+const person = {
+  _name: 'John Doe', // Private property
+
+  get name() {
+    // Getter
+    return this._name;
+  },
+  set name(newName) {
+    // Setter
+    if (newName.trim().length > 0) {
+      this._name = newName;
+    } else {
+      console.log('Invalid name');
+    }
+  },
+};
+// Accessing the name property using the getter
+console.log(person.name); // Output: 'John Doe'
+// Setting the name property using the setter
+person.name = 'Jane Smith'; // Setter is called
+console.log(person.name); // Output: 'Jane Smith'
+person.name = ''; // Setter is called, but the value is not set due to validation
+console.log(person.name); // Output: 'Jane Smith'
+*******************************************************************************************************************
+Explain the difference between mutable and immutable objects in JavaScript
+
+Mutable objects allow for modification of properties and values after creation, which is the default behavior for most objects.
+const mutableObject = {
+  name: 'John',
+  age: 30,
+};
+
+// Modify the object
+mutableObject.name = 'Jane';
+
+// The object has been modified
+console.log(mutableObject); // Output: { name: 'Jane', age: 30 }
+
+Immutable objects cannot be directly modified after creation. Its content cannot be changed without creating an entirely new value.
+const immutableObject = Object.freeze({
+  name: 'John',
+  age: 30,
+});
+
+// Attempt to modify the object
+immutableObject.name = 'Jane';
+
+// The object remains unchanged
+console.log(immutableObject); // Output: { name: 'John', age: 30 }
+***********************************************************************************************************************
+Feature          	Map Object	                                                       Plain Object {}
+Key Types   	Can have any type (objects, functions, numbers, etc.)	       Keys are always converted to strings (except symbols)
+Key Order     	Maintains insertion order                                	No guaranteed order
+Performance	 Optimized for frequent additions/removals	                   Slower for large-scale operations
+Size Property	.size (built-in property)	                               Object.keys(obj).length (manual calculation)
+Iteration	Directly iterable with .forEach() or                        for...of	Requires Object.keys(), Object.values(), or Object.entries()
+Prototype Pollution Risk	No prototype by default (safe)	                 Can be accidentally modified (obj.__proto__)
+Serialization  	Not converted to JSON easily	                          Works well with JSON.stringify()
+***********************************************************
+What are the benefits of using spread syntax in JavaScript and how is it different from rest syntax?
+Spread syntax (...) allows an iterable (like an array or string) to be expanded into individual elements
+Array coloning
+[...arr]
+Array Merging
+[...arr1, ...arr2]
+object cloning 
+{ ...obj }
+object merging
+{ ...obj1, ...obj2 }
+or
+Rest syntax is the opposite of what spread syntax does. 
+It collects a variable number of arguments into an array. This is often used in function parameters to handle a dynamic number of arguments
+// Using rest syntax in a function
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3)); // Output: 6
+*********************************************
+
+
 
 
