@@ -65,6 +65,38 @@ function handleItemClick(event) {
   }
 }
 ****************************************************************************************************
+Describe the difference between a cookie, sessionStorage and localStorage in browser?
+Cookies: Suitable for server-client communication, small storage capacity, can be persistent or session-based, domain-specific. Sent to the server on every request.
+localStorage: Suitable for long-term storage, data persists even after the browser is closed, accessible across all tabs and windows of the same origin, highest storage capacity among the three.
+sessionStorage: Suitable for temporary data within a single page session, data is cleared when the tab or window is closed, has a higher storage capacity compared to cookies.
+*************************
+Explain how this keyword works in JavaScript ?
+
+*******************
+When this is used inside an object method, it refers to that object.
+
+const person = {
+    name: "Ashish",
+    greet: function () {
+        console.log(this.name); // "Ashish"
+    }
+};
+person.greet();
+******
+When this is used in the global scope (outside any function), it refers to the global object:
+
+In browser, the global object is window.
+Arrow functions do not have their own this. Instead, they inherit this from their surrounding (lexical) scope.
+const person = {
+    name: "Ashish",
+    greet: () => {
+        console.log(this.name); // undefined (because arrow function doesn't bind `this`)
+    }
+};
+person.greet();
+****************************************************************************************************************
+
+
 
 ******************
 
