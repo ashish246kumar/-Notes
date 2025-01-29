@@ -297,6 +297,23 @@ function sum(...numbers) {
 
 console.log(sum(1, 2, 3)); // Output: 6
 *********************************************
+What are the various data types in JavaScript?
+In JavaScript, data types can be categorized into primitive and non-primitive types:
+
+Primitive data types
+Number: Represents both integers and floating-point numbers.
+String: Represents sequences of characters.
+Boolean: Represents true or false values.
+Undefined: A variable that has been declared but not assigned a value.
+
+or
+Non-primitive (Reference) data types
+
+Object: Used to store collections of data.
+Array: An ordered collection of data.
+Function: A callable object.
+Date: Represents dates and times
+*****************************************************************
 
 
 
