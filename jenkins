@@ -1,0 +1,82 @@
+docker start Jenkins
+This command starts the Docker container named jenkins.
+The output jenkins confirms that the container has been started.
+
+2. Checking Running Containers
+   docker ps
+  This lists all running Docker containers.
+  The output shows that the jenkins container is running and is mapped to port 8080 on the host.
+
+4. Stopping the Jenkins Container
+
+docker stop jenkins
+This stops the running jenkins container.
+
+5. Reattempting to Run a New Jenkins Container
+
+6. Starting the Jenkins Container Again
+docker start Jenkins
+This restarts the existing jenkins container.
+
+7. Checking Docker Images
+docker images
+This lists all Docker images available on your system.
+The output shows various images, including jenkins/jenkins:latest and others related to springbootwithdocker.
+
+9. Adding Jenkins User to Docker Group
+sudo usermod -aG docker Jenkins
+This command attempts to add the jenkins user to the docker group.
+The error usermod: user 'jenkins' does not exist occurs because the jenkins user does not exist on the host system. The jenkins user exists only inside the Docker container
+
+10. Checking Jenkins User on Host
+cat /etc/passwd | grep Jenkins
+This checks if the jenkins user exists on the host system.
+The output is empty, confirming that the jenkins user does not exist on the host.
+
+11. Checking Jenkins Service Status
+systemctl status jenkins
+This checks if the Jenkins service is running on the host.
+The error Unit jenkins.service could not be found occurs because Jenkins is running inside a Docker container, not as a system service on the host.
+
+12. Accessing the Jenkins Container Shell
+docker exec -it jenkins /bin/bash
+This opens an interactive shell inside the jenkins container.
+The groups jenkins command inside the container shows that the jenkins user belongs to the jenkins group.
+
+13. Attempting to Modify Jenkins User Inside the Container
+usermod -aG docker jenkins
+This command tries to add the jenkins user to the docker group inside the container.
+The error usermod: Permission denied occurs because the jenkins user does not have sufficient permissions to modify system files inside the container
+
+docker exec -u root -it jenkins /bin/bash
+This opens an interactive shell inside the jenkins container as the root user.
+The usermod -aG docker jenkins command successfully adds the jenkins user to the docker group.
+
+docker restart jenkins
+This restarts the jenkins container to apply the changes made to the jenkins user.
+
+sudo chmod 666 /var/run/docker.sock
+This changes the permissions of the Docker socket to allow non-root users to access it.
+After this, the jenkins user inside the container can interact with the Docker daemon.
+
+
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins jenkins/jenkins:latest
+docker run → Runs a new container from an image.
+-d → Runs the container in detached mode (in the background).
+-p 8080:8080 → Maps port 8080 on your host machine to port 8080 inside the container.
+Jenkins UI runs on port 8080.
+-p 50000:50000 → Maps port 50000 on your host machine to port 50000 inside the container.
+Jenkins uses port 50000 for communication with agents.
+--name jenkins → Assigns the container the name jenkins, so you can refer to it easily.
+jenkins/jenkins:latest → Pulls the latest Jenkins image from Docker Hub and runs it.
+
+
+The first 8080 (before :) is the port on the host machine (your computer).
+The second 8080 (after :) is the port inside the Docker container where Jenkins is running.
+
+
+
+
+
+
+
