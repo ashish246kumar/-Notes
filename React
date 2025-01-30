@@ -19,8 +19,8 @@ const container = (
 ReactDOM.render(container,rootElement)
 **************************************************
 Functional components promote a more functional programming style
- Class components encapsulate state and behavior within a single class instance.
-Functional components  more lightweight and have better performance
+ Class components encapsulate state and behavior within a single class instance.|more boilerplate code|no hooks
+Functional components  more lightweight and have better performance| use hooks| less biolerplatecode|moderreact performance
 class component has higher overhead due to the instantiation of class instances
 Functional components are JavaScript functions that accept props as arguments and return React elements to describe what should appear on the screen.
 class component use a render() method to return React elements.
@@ -212,10 +212,24 @@ return (
 to pass a data between two component
 **********************
 What are the different phases of the component lifecycle?
+
 Initialization:During this phase by setting up the default props and initial state for the upcoming tough journey.
-Mounting: Mounting refers to putting the elements into the browser DOM.
+Mounting: Mounting refers to putting the elements into the browser DOM. The key lifecycle methods in this phase are:
+constructor() → Initializes state and binds methods.
+render() → Returns JSX (UI of the component).
+componentDidMount() → Runs after the component is added to the DOM. Used for API calls, subscriptions, etc.
+
+
 Updating: In this phase, a component will be updated when there is a change in the state or props of a component.
+static getDerivedStateFromProps(props, state) → Same as in mounting, updates state before re-render.
+shouldComponentUpdate(nextProps, nextState) → Determines whether the component should re-render or not (optimization).
+render() → Updates the UI based on new state or props
+
 Unmounting: In this last phase of the component lifecycle, the component will be removed from the DOM.
+componentWillUnmount() → Used for cleanup, like removing event listeners, aborting API calls, etc.
+
+ErrorHandling
+static getDerivedStateFromError(error) → Updates the state when an error occurs.
 ******************************
 React Router is a popular library for handling routing in React applications.
 npm install react-router-dom
@@ -252,4 +266,5 @@ function App() {
 				React                Angular
 Data Binding	Uni-directional (One-way)	Bi-directional (Two-way)
 		Regular dom				virtual-dom
+*****************************
 
