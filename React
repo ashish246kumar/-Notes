@@ -266,5 +266,43 @@ function App() {
 				React                Angular
 Data Binding	Uni-directional (One-way)	Bi-directional (Two-way)
 		Regular dom				virtual-dom
-*****************************
+********************************************************************************
+             How to create a component in react ?
+*************************************************************
+ you can create a component in two ways:
+Functional Component (Recommended)
+Class Component
+*****
+Function Component
+**********
+npx create-react-app my-app
+cd my-app
+npm start
+
+import React from "react";
+
+const MyComponent = () => {
+  return (
+    <div>
+      <h1>Hello, this is MyComponent!</h1>
+    </div>
+  );
+};
+
+export default MyComponent;
+
+
+import React from "react";
+import MyComponent from "./MyComponent";
+
+const App = () => {
+  return (
+    <div>
+      <MyComponent />
+    </div>
+  );
+};
+
+export default App;
+***************************************************************************************************************
 
