@@ -396,5 +396,30 @@ const ParentComponent = () => {
   );
 };
 *************************************************************
+What is the difference between state and props?
+both state and props are plain JavaScript objects and used to manage the data of a component
+The state entity is managed by the component itself and can be updated using the setter(setState() for class components) function
+
+props (short for "properties") are passed to a component by its parent component and are read-only, meaning that they cannot be modified by the own component itself. 
+i.e, props acts as arguments for a function.
+
+*******************************************************
+What are inline conditional expressions?
+
+***********************
+<h1>Hello!</h1>;
+{
+  messages.length > 0 && !isLogin ? (
+    <h2>You have {messages.length} unread messages.</h2>
+  ) : (
+    <h2>You don't have unread messages.</h2>
+  );
+}
 
 ***********************************************************************
+What is Virtual DOM?
+
+The Virtual DOM (VDOM) is an in-memory representation of Real DOM. The representation of a UI is kept in memory and synced with the "real" DOM.
+It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called reconciliation.
+
+********************************************************
