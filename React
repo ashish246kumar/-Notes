@@ -305,4 +305,43 @@ const App = () => {
 
 export default App;
 ***************************************************************************************************************
+what are pure Cmponent?
+***********************************************
+A Pure Component in React is a special type of component that only re-renders when its state or props change.
+ It helps optimize performance by preventing unnecessary re-renders
+
+Using React.memo() for Functional Components
+🔹 React.memo() wraps the functional component and prevents re-rendering unless props change.
+*********
+import React from "react";
+
+const MyFunctionalComponent = React.memo(({ name }) => {
+  console.log("Rendered!");
+  return <h1>Hello, {name}!</h1>;
+});
+
+export default MyFunctionalComponent;
+*********
+import React, { useState } from "react";
+import MyFunctionalComponent from "./MyFunctionalComponent";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <MyFunctionalComponent name="Ashish" />
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+
+export default App;
+*************************************
+When to Use Pure Components?
+✅ When dealing with components that receive the same props most of the time
+✅ When optimizing performance in large applications
+✅ When working with stateless functional components (use React.memo)
+********************
 
