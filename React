@@ -366,3 +366,35 @@ const Counter = () => {
 
 export default Counter;
 🔹 Here, count is the state variable, and setCount updates its value.
+**********************************
+What are props in React?
+
+Props are inputs to components. They are single values or objects containing a set of values that are passed to components on creation similar to HTML-tag attributes.
+Here, the data is passed down from a parent component to a child component.
+
+The primary purpose of props in React is to provide following component functionality:
+Pass custom data to your component.
+Trigger state changes.
+
+const ChildComponent = ({ name, age, gender = "male" }) => {
+  return (
+    <div>
+      <p>{name}</p>
+      <p>{age}</p>
+      <p>{gender}</p>
+    </div>
+  );
+};
+
+***********
+const ParentComponent = () => {
+  return (
+    <div>
+      <ChildComponent name="John" age="30" gender="male" />
+      <ChildComponent name="Mary" age="25" geneder="female" />
+    </div>
+  );
+};
+*************************************************************
+
+***********************************************************************
