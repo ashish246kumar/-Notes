@@ -343,5 +343,26 @@ When to Use Pure Components?
 ✅ When dealing with components that receive the same props most of the time
 ✅ When optimizing performance in large applications
 ✅ When working with stateless functional components (use React.memo)
-********************
+*******************************************************************************************************************************************************
+What is state in React?
+State of a component is an object that holds some information that may change over the lifetime of the component.
+The important point is whenever the state object changes, the component re-renders. 
+It is always recommended to make our state as simple as possible and minimize the number of stateful components
 
+In functional components, state is managed using the useState hook.
+
+import React, { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0); // Initial state = 0
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+🔹 Here, count is the state variable, and setCount updates its value.
