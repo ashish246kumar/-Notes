@@ -1,3 +1,20 @@
+Jenkins is the most popular open source CI/CD tool
+
+Jenkins is used to build and test your product continuously, so developers can continuously integrate changes into the build.
+
+Docker is essentially a toolkit that enables developers to build, deploy, run, update, and stop containers using simple commands and work-saving automation through a single API
+
+Docker container is a box or process that contains all the resources require for any Operating System.
+we can use Docker Container to deploy our APP . 
+
+A Docker image contains application code, libraries, tools, dependencies and other files needed to make an application run
+
+Dockerfile is a file where we define all the requirements which we want in the docker image. 
+It has keywords like FROM, RUN, COPY, CMD etc. We can use this Dockerfile to build the image by using docker build command
+
+Docker Compose is a tool that helps us easily handle multiple containers at once. Docker Compose works by applying many rules declared within a single docker-compose.yml configuration file.
+
+*********************************************************************************************************************************
 docker start Jenkins
 This command starts the Docker container named jenkins.
 The output jenkins confirms that the container has been started.
