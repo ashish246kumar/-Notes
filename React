@@ -474,3 +474,113 @@ const App = () => {
 export default App;
 
 *******************************************************************************************************
+What Are Higher-Order Components (HOCs) in React?
+
+A Higher-Order Component (HOC) is a function that takes a component as an argument and returns a new enhanced component with additional props or behaviors.
+
+const withLogger = (WrappedComponent) => {
+  return (props) => {
+    console.log("Component rendered with props:", props);
+    return <WrappedComponent {...props} />;
+  };
+};
+ Why Use Higher-Order Components?
+HOCs help with:
+✅ Code Reusability – Extract common logic to be reused across components.
+✅ Separation of Concerns – Keeps components focused on their main functionality.
+✅ Enhancing Components – Add behavior like authentication, logging, styling, etc
+**********************************
+What is the children Prop in React?
+
+the children prop is a special prop that allows components to wrap and render other components or elements inside them.
+It enables component composition, making components more reusable and flexible.
+
+const Wrapper = (props) => {
+  return <div className="box">{props.children}</div>;
+};
+
+function App() {
+  return (
+    <Wrapper>
+      <h2>Hello, World!</h2>
+      <p>This is inside the Wrapper component.</p>
+    </Wrapper>
+  );
+}
+
+*****
+const Card = ({ children }) => {
+  return <div className="card">{children}</div>;
+};
+
+function App() {
+  return (
+    <Card>
+      <h3>Product Name</h3>
+      <p>Price: $100</p>
+    </Card>
+  );
+}
+*****************************
+Why React uses className over class attribute?
+
+The attribute names written in JSX turned into keys of JavaScript objects and the JavaScript names cannot contain dashes or reserved words,
+it is recommended to use camelCase wherever applicable in JSX code. The attribute class is a keyword in JavaScript, and JSX is an extension of JavaScript. 
+That's the principle reason why React uses className instead of class. Pass a string as the className prop.
+***********************************************************************************************************************
+1️⃣ Single-Line Comments in JSX
+{/* This is a JSX comment */}
+2️⃣ Multi-Line Comments in JSX
+ {/*
+        This is a multi-line comment
+        in JSX
+      */}
+👉 Use // for single-line comments and /* ... */ for multi-line comments.
+
+  /*
+    This is a multi-line
+    JavaScript comment
+  */
+*****************************************************************************************************
+What are fragments?
+A Fragment in React is a lightweight wrapper that allows you to group multiple elements without adding extra nodes to the DOM.
+By default, React components must return a single parent element. If you try to return multiple elements without wrapping them, you’ll get an error
+
+5️⃣ When to Use Fragments?
+✔ When returning multiple elements inside a component.
+✔ When avoiding extra <div> wrappers that clutter the DOM.
+✔ When rendering lists with .map() and needing a key prop.
+**********************************************************************************************************************************
+What are stateless components?
+
+
+A stateless component (also called a functional component) is a component that:
+✔ Does not have its own state (useState)
+✔ Does not use lifecycle methods (useEffect, componentDidMount, etc.)
+✔ Only depends on props to render UI
+
+Example of a Stateless Component
+✅ Functional (Stateless) Component
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+// Usage
+<Greeting name="Ashish" />
+
+3️⃣ When to Use Stateless Components?
+✔ When the component only renders UI
+✔ When using props to display dynamic content
+✔ When you want better performance & reusability
+******************************************************************************************************************
+what is Stateful Component
+
+
+A stateful component is a React component that manages its own state using either:
+✔ Class component with this.state
+✔ Functional component with useState or other state management hooks
+***************************************************************************************************************
+
+
+
+
