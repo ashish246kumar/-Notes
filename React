@@ -580,6 +580,96 @@ A stateful component is a React component that manages its own state using eithe
 ✔ Class component with this.state
 ✔ Functional component with useState or other state management hooks
 ***************************************************************************************************************
+How to Apply Validation on Props in React? 🚀
+In React, you can validate props using PropTypes, which helps catch errors and improve code maintainability.
+npm install prop-types
+
+Use PropTypes in your component to specify the expected data types for props.
+
+import React from "react";
+import PropTypes from "prop-types"; // Import PropTypes
+
+function UserProfile({ name, age, isAdmin }) {
+  return (
+    <div>
+      <h2>Name: {name}</h2>
+      <p>Age: {age}</p>
+      <p>Admin: {isAdmin ? "Yes" : "No"}</p>
+    </div>
+  );
+}
+
+// ✅ Applying prop validation
+UserProfile.propTypes = {
+  name: PropTypes.string.isRequired,  // Required string
+  age: PropTypes.number,              // Optional number
+  isAdmin: PropTypes.bool             // Boolean
+};
+
+// Default props (optional)
+UserProfile.defaultProps = {
+  age: 18,
+  isAdmin: false
+};
+
+export default UserProfile;
+****************************************************************
+How to use styles in React?
+
+
+You can apply styles directly using the style attribute, which takes an object with camelCase property names
+<div style={{ backgroundColor: "lightblue", padding: "20px", borderRadius: "10px" }}>
+      <h2 style={{ color: "darkblue", textAlign: "center" }}>Hello, React!</h2>
+    </div>
+****
+const divStyle = {
+  color: "blue",
+  backgroundImage: "url(" + imgUrl + ")",
+};
+
+function HelloWorldComponent() {
+  return <div style={divStyle}>Hello World!</div>;
+}
+*************************************************************************
+How Events Are Different in React? 🔥🚀
+
+Unlike vanilla JavaScript where events use lowercase (onclick, onmouseover), React uses camelCase (onClick, onMouseOver).
+**********************
+How do you conditionally render components?
+
+
+function Greeting(props) {
+  return (
+    <h1>{props.isLoggedIn ? "Welcome Back!" : "Please Log In"}</h1>
+  );
+}
+
+export default Greeting;
+****
+<div>
+      {props.isLoggedIn && <h1>Welcome Back!</h1>}
+    </div>
+******
+function Greeting(props) {
+  const renderMessage = () => {
+    if (props.isLoggedIn) {
+      return <h1>Welcome Back!</h1>;
+    } else {
+      return <h1>Please Log In</h1>;
+    }
+  };
+
+  return (
+    <div>
+      {renderMessage()}
+    </div>
+  );
+}
+
+export default Greeting;
+******************************************************************************
+
+
 
 
 
