@@ -30,11 +30,24 @@ class component use a render() method to return React elements.
  the Virtual DOM is a lightweight representation of the actual DOM maintained by React in memory. React utilizes the Virtual DOM to optimize the process of updating the UI by efficiently.
 ****************************
 useEffect-perform side effects in function components.Side effects can include things like fetching data, subscribing to external events
+useEffect(()->{
+console.log("abc");
+});
+Runs on every render.
+No dependency array means it runs after every state change or re-render.
+******
+useEffect with an Empty Dependency Array (Runs Once)
+
+
+useEffect(() => {
+    console.log("Runs only once on mount");
+},[]);
+
 useEffect(() => {
     // Update the document title with the current count
     document.title = `You clicked ${count} times`;
   }, [count]);
-The function will be executed after every render by default.
+Runs When count Changes
 You can also pass a second argument, an array of dependencie
 ******************************************************************
 propdrelling-
