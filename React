@@ -5,6 +5,8 @@ make use of the virtual DOM rather than real DOM
 follows unidirectional data binding 
 React uses virtual DOM to render the view. As the name suggests, virtual DOM is a virtual representation of the real DOM. Each time the data changes in a react app, a new virtual DOM gets created. Creating a virtual DOM is much faster than rendering the UI inside the browser.
 **************************
+Hook-->useState,useEffect,useContext,useReducer,useMemo,useRef,useCallBack
+
 const [count, setCounter] = useState(0);
 useState() is a hook provided by the React library that allows functional components to manage state
 keys are special attributes that provide a way to identify unique virtual DOM elements 
@@ -101,7 +103,7 @@ Memoizes the result of a function so that it's only recomputed when its dependen
 HOCs are functions that take a component as an argument and return a new component with enhanced functionality.
 Use HOCs when you have logic that needs to be shared across multiple components. Instead of duplicating code in multiple places, you can create an HOC to encapsulate the shared logic.
 *********************************************
-lifecycle is managed by a set of lifecycle methods 
+lifecycle is managed by a set of lifecycle methods (life cycle method of component)
 Main Lifecycle Phases:
 
 Mounting:constructor() (optional): Set up initial state and bind methods.
@@ -474,7 +476,7 @@ const App = () => {
 export default App;
 
 *******************************************************************************************************
-What Are Higher-Order Components (HOCs) in React?
+What Are Higher-Order Components (HOCs) in React?(what,when,how,whom)
 
 A Higher-Order Component (HOC) is a function that takes a component as an argument and returns a new enhanced component with additional props or behaviors.
 
@@ -668,4 +670,36 @@ function Greeting(props) {
 
 export default Greeting;
 ******************************************************************************
+Redux:->how redux work| why we need a redux|when do we need a redux
+redux tool kit
+**********
+custom hook--->when to use it |how to use it|
+******
+lazy loading|code splitting| suspense
+************
+why should we use react?-->becuse it uses virtual dom
+********
+reconciliation
+react fibre
+*****
+how render work?
+**********
+ssr vs csr(server side rendering)
+********
+seo of your application
+**********
+roting and role based access
+****
+react.routes and protected routes
+********
+Async task and api calls---->setTimeOut
+***********
+fetch and axios
+*********
+promises
+********
+Readable
+*********
+performance
+******************************
 
