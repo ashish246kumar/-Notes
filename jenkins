@@ -1,3 +1,14 @@
+
+sudo apt update---->sudo-->as a super user permission|apt--> applicattion package manager|
+it will update your application
+sudo wget -0 :->wget:--> bring something from internet: -0 --->path
+echo-->means print karo
+sudo apt-get install jenkins
+systemctl status jenkins:-systemctl:status batata hai |aur start stop kar sakta hai jenkin ko
+sudo systemctl enable jenkins:-it will automatically start jenkin when system  start
+job-->aapko apna code clone karna hai . this is kind of job
+
+*******************************************************************************8888
 Jenkins is the most popular open source CI/CD tool
 
 Jenkins is used to build and test your product continuously, so developers can continuously integrate changes into the build.
