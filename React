@@ -50,8 +50,12 @@ useEffect(() => {
 Runs When count Changes
 You can also pass a second argument, an array of dependencie
 ******************************************************************
+props are passing data from one component to another component
 propdrelling-
 parent->childA->childB->childC
+Prop drilling occurs when you pass props from a parent component to a deeply nested child component, even if intermediate components don't use those props.
+
+
 when  we want to send data from parent to childC at lower hierchy we can achieve this throgh with the help of useContext with sending to each and every 
 child.
 //create provider useContext
