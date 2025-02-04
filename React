@@ -54,7 +54,25 @@ props are passing data from one component to another component
 propdrelling-
 parent->childA->childB->childC
 Prop drilling occurs when you pass props from a parent component to a deeply nested child component, even if intermediate components don't use those props.
+import React from 'react'
 
+const parent=()=>{
+   const message="abc"
+   return <ChildA message={message}/>;
+} ;  
+const childA=()=>{
+   return <ChildB message={message}/>;
+
+};
+const childB=({message})=>{
+   return <ChildC message={message}/>;
+
+};
+const childC=({message})=>{
+   
+ return <h1>{message}</h1>
+};
+****************************************************
 
 when  we want to send data from parent to childC at lower hierchy we can achieve this throgh with the help of useContext with sending to each and every 
 child.
