@@ -7,6 +7,29 @@ sudo apt-get install jenkins
 systemctl status jenkins:-systemctl:status batata hai |aur start stop kar sakta hai jenkin ko
 sudo systemctl enable jenkins:-it will automatically start jenkin when system  start
 job-->aapko apna code clone karna hai . this is kind of job
+aap ek computer se dusre computer me connect kar sakte ho through ssh. through public or private key
+a ko agar b se connect karna hai toh a ke pas private key hoga aur b ke pas public key
+****************************************************************************************
+pipeline {
+    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                echo "Hello Dosto"
+            }
+        }
+        stage('Create Folder') {
+            steps {
+                sh "mkdir -p devops"
+            }
+        }
+    }
+}
+agar phele stage fail hogya toh dusra stage me nhi jayga
+code->build-->Test->deploy
+
+
+
 
 *******************************************************************************8888
 Jenkins is the most popular open source CI/CD tool
