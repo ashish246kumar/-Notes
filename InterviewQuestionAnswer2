@@ -244,3 +244,76 @@ toString() in the Object class provides the default implementation.
                 '}';
     }
 **********************************************************************************************************************************************
+PUT VS PATCH
+Spring Boot, PUT and PATCH are both HTTP methods used to update resources, but they differ in how they handle the update process
+Purpose: PUT is used to replace an entire resource with the new data provided in the request.
+
+Purpose: PATCH is used to partially update a resource. Only the fields provided in the request are updated, and the rest of the resource remains unchanged.
+Use Case	Complete replacement of a resource	Partial updates to a resource
+
+*********************
+Using POST for an update operation is not RESTful and goes against standard HTTP semantics
+Yes, you can technically perform a GET operation using a POST request, but it is not recommended because it violates HTTP semantics
+**********************************
+2. What are the Spring Boot key components?
+key components
+1️⃣ Spring Boot Starter
+spring-boot-starter-web → For building web applications.
+spring-boot-starter-data-jpa → For working with JPA & Hibernate.
+spring-boot-starter-security → For authentication & authorization.
+
+ Spring Boot Auto-Configuration
+Automatically configures Spring Beans based on the dependencies present in the classpath
+
+Spring Boot Embedded Server
+Spring Boot includes an embedded web server, eliminating the need to deploy a WAR file.
+Default: Tomcat (can be replaced with Jetty or Undertow).
+
+Spring Boot Profiles
+Supports multiple environments (e.g., dev, prod)
+
+Spring Boot Logging
+Uses SLF4J with Logback by default
+
+🔟 Spring Boot Testing
+Supports JUnit, Mockito, and Spring Boot Test.
+
+Built-in support for Microservices
+
+Comes with Spring Boot Actuator for monitoring
+✅ Less Code, Less Configuration
+
+**************************************************************************
+How Spring Boot Works
+
+Every Spring Boot app starts with the main() method containing SpringApplication.run().
+This method initializes the Spring Boot framework, scans for beans, and sets up the application.
+@SpringBootApplication enables component scanning, auto-configuration, and Spring Boot configurations.
+Spring Boot scans packages for @Component, @Service, @Repository, etc.
+
+***********
+✅ Initializes with SpringApplication.run()
+✅ Auto-configures dependencies (No XML, No manual setup)
+✅ Starts an embedded server (Tomcat by default)
+✅ Manages beans with Dependency Injection
+✅ Provides pre-configured Starters (Web, JPA, Security, etc.)
+✅ Includes Actuator for monitoring & health checks
+*********************************************************************************************
+Summary of Key Spring Boot CLI Commands
+Command	Description
+spring --version	  Check Spring Boot version
+spring init myapp	  Create a new Spring Boot project
+spring run app.groovy Run a Spring Boot Groovy script
+mvn spring-boot:run	  Run a Spring Boot Java application
+spring init --list	  List available dependencies
+mvn clean package	  Package the app as a JAR
+java -jar myapp.jar	  Run an executable JAR
+mvn spring-boot:run -Ddebug	Enable debug mode
+**********************************************************************
+Spring Boot CLI (Command Line Interface) is a powerful tool that allows you to run Spring Boot applications without needing an IDE
+*********
+Spring Initializr is a web-based tool that helps developers quickly generate Spring Boot project templates with the required dependencies
+*****************************************************************************************************
+
+15. Can we create a non-web application in Spring Boot?
+Yes, you can create a non-web application in Spring Boot! While Spring Boot is widely used for building web applications, it can also be used to develop console-based, batch processing, or background task applications
