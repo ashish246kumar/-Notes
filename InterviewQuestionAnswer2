@@ -1,3 +1,8 @@
+
+Equals method has hashcode | 
+overloaded method 
+hashcode
+***********************de**************************
 Create a custom immutable class.
 **********
 To create a custom immutable class in Java, you need to ensure that the state of the class cannot be modified after the object is created.
