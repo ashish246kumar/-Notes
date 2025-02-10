@@ -352,7 +352,50 @@ class Solution {
     }
 }
 **********************************************************************************************************
-
+3 sum
 *********************************************************************************************************
+class Solution {
+     private void twosum(int[] nums,int start,int end, List<List<Integer>> result,int target){
+        while(start<end){
+        if(nums[start]+nums[end]>target){
+            end--;
+        }
+        else if(nums[start]+nums[end]<target){
+            start++;
+        }
+        else{
+            List<Integer> triplet = new ArrayList<>();
+            triplet.add(-target);
+            triplet.add(nums[start]);
+            triplet.add(nums[end]);
+            result.add(triplet);
+            while(start<end && nums[start]==nums[start+1]){
+                start++;
+            }
+            while(start<end && nums[end]==nums[end-1]){
+                end--;
+            }
+            start++;
+            end--;
 
+        }
+        }
 
+    }
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> l1=new ArrayList<>();
+        Arrays.sort(nums);
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+            if(i>0 && nums[i]==nums[i-1]){
+                continue;
+            }
+            int target=-nums[i];
+            twosum(nums,i+1,n-1,l1,target);
+        }
+        return l1;
+
+    }
+   
+}
+************
