@@ -2,6 +2,24 @@
 Equals method has hashcode | 
 overloaded method 
 hashcode
+use the concept of multithreading-one thread will print even and one will odd
+hashcode->Linkedlist<>
+ashish :delhi
+ashish1:mumbai
+if at the time of getting the value how we can fetch. if the hascode of bth the value same
+what is hashing
+can we overload private method?
+can we overload static method?
+same with overiding
+ write the example that will produce one value and one will consume that value
+if in parent class there is no  exception and in child class there is uncheked exception can we overide
+if in parent class there is no  exception and in child class there is cheked exception can we overide
+if in parent class there is exception and in child class there is no can we overide it.
+what is the benefit of stram api 
+public static void main(String[] args)-> isko explain karo. 
+difference between hashcode and equals method
+
+
 ***********************de**************************
 Create a custom immutable class.
 **********
