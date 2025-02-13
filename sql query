@@ -27,6 +27,9 @@ joinig_date: DATE
 )
 ***********************************
 
+
+
+
 TCL commands ka use database transactions ko control karne ke liye hota hai. 
 Transactions wo operations hote hain jo ya toh poore execute hone chahiye ya koi bhi change apply nahi hona chahiye
 ***************************
@@ -84,6 +87,137 @@ salary decimal(10,2),
 joinig_date: DATE
 )
 ***********************************
+ table ke data ko update karne ke liye UPDATE statement ka use hota hai. Ye command table ke kisi bhi record ko modify karne ke liye use hoti hai bina table ki structure ko change kiye.
+**********
+UPDATE EMP
+SET SALARY =6000
+WHERE ID=1
+*********************************
+UPDATE table_name  
+SET column1 = value1, column2 = value2, ...  
+WHERE condition;
+*******
+Sabhi Employees ki Salary 10% Badhana
+
+UPDATE Employees  
+SET salary = salary * 1.10;
+************
+WHERE Clause Ka Dhyan Dein!
+
+Agar WHERE clause nahi diya, to saare records update ho jayenge, jo galat ho sakta hai.
+Data loss se bachne ke liye hamesha WHERE clause check karein
+***********
+Scenario 5️⃣: Email Address ka Domain Change Karna
+UPDATE Users  
+SET email = REPLACE(email, '@oldcompany.com', '@newcompany.com')  
+WHERE email LIKE '%@oldcompany.com';
+**********
+delete a table from a database
+*****
+DROP TABLE table_name;
+******
+SELECT COUNT(*) FROM Employees WHERE salary > 50000;
+Unique Values Ka Count
+Agar kisi specific column me unique values ka count chahiye
+SELECT COUNT(DISTINCT department) FROM Employees;
+********
+COUNT(*) aur COUNT(column_name) me farak hai:
+COUNT(*) → Saare rows ka count karega (chahe columns NULL ho ya nahi).
+COUNT(column_name) → Sirf us column me NULL nahi hain unka count karega.
+************
+SQL me records ko sort karne ke liye hum ORDER BY clause ka use karte hain
+SELECT * from emp order by salary desc
+Sorting karte waqt, agar same values ho to unko second column ke basis par sort kiya ja sakta hai.
+**********
+select emp.name,dept.name from Employees emp InnerJoin Department dept on emp.deptId=dept.deptId
+**********
+SQL Function ek aisa block hota hai jo kisi specific task ko perform karta hai aur ek result return karta hai
+Aggregate Functions: COUNT(), SUM(), AVG(), MAX(), MIN()
+String Functions: UPPER(), LOWER(), CONCAT(), SUBSTRING()
+Mathematical Functions: ROUND(), FLOOR(), CEIL(), ABS()
+Date and Time Functions: NOW(), CURDATE(), DATE_ADD(), DATE_SUB()
+******
+SELECT CONCAT(UPPER('hello'), ' ', LOWER('WORLD'));
+*********
+SELECT LOWER(email) FROM users;
+******
+Normalization ka Main Goal:
+Data Duplication ko Reduce Karna: Ek hi data multiple jagah par repeat nahi hona chahiye.
+Data Integrity ko Ensure Karna: Data ko logically organize karke errors ya inconsistencies ko minimize karna.
+Database Design ko Simplify Karna: Efficient queries aur operations ke liye database structure ko optimize karna.
+***********
+1. First Normal Form (1NF):
+har column ke values atomic hone chahiye,
+matlab unko further divide na kiya ja sake
+
+1NF ka Example:
+Student_ID	Name	Subjects
+1	John	Math, Science
+2	Alice	History, English
+Student_ID	Name	Subjects
+1	John	Math, Science
+2	Alice	History, English
+
+Yeh 1NF mein nahi hai, kyunki Subjects column mein multiple values hain. Isse normalize karke 1NF banaya ja sakta hai.
+Student_ID	Name	Subject
+1	John	Math
+1	John	Science
+2	Alice	History
+2	Alice	English
+**********
+Condition:
+2NF mein hone ke liye, table ko First Normal Form (1NF) mein hona chahiye 
+Iske alawa, partial dependency ko eliminate karna hota hai.
+Partial dependency ka matlab hai ki kisi non-prime attribute (non-key column) ka value primary key ke kuch part par dependent hai
+
+Student_ID	Subject	Teacher
+1	Math	Mr. Sharma
+1	Science	Mrs. Gupta
+2	History	Mr. Yadav
+2	English	Mrs. Kapoor
+Primary Key: Student_ID + Subject
+
+Yahan pe, Teacher column ka value Subject par dependent hai. Matlab, kisi bhi subject ka teacher fix hai, chahe woh student 1 ho ya 2.
+Iska matlab hai ki teacher ka data sirf subject pe depend hai, na ki poori primary key (Student_ID + Subject) par.
+Yeh partial dependency hai, aur isko solve karne ke liye, hum 2NF mein convert karenge.
+
+2NF mein kaise convert karein?
+
+Students Table:
+
+Student_ID	Subject
+1	Math
+1	Science
+2	History
+2	English
+Teachers Table:
+
+Subject	Teacher
+Math	Mr. Sharma
+Science	Mrs. Gupta
+History	Mr. Yadav
+English	Mrs. Kapoor
+************************************
+2. Third Normal Form (3NF)
+Condition:
+3NF mein hone ke liye, table ko 2NF mein hona chahiye.
+Iske alawa, transitive dependency ko bhi eliminate karna hota hai.
+Transitive dependency ka matlab hai ki ek non-prime attribute (non-key column) kisi dusre non-prime attribute par dependent hai, jo phir primary key par depend karta hai.
+Maan lijiye ek table hai:
+
+Student_ID	Subject	Teacher	Dept_ID	Dept_Name
+1	Math	Mr. Sharma	101	HR
+1	Science	Mrs. Gupta	102	IT
+2	History	Mr. Yadav	101	HR
+2	English	Mrs. Kapoor	102	IT
+Primary Key: Student_ID + Subject
+
+Yahan pe, Dept_Name (department ka naam) ka value Dept_ID par dependent hai, aur Dept_ID ka value primary key par dependent hai.
+Is transitive dependency ko eliminate karne ke liye, hum 3NF mein convert karte hain.
+*****************
+2NF aur 3NF data redundancy ko eliminate karte hain aur data consistency ko ensure karte hain.
+************
+
 
 ************************************************************************************************************************
 select tweet_id FROM Tweets WHERE LENGTH(content)>15;--->LENGTH()
