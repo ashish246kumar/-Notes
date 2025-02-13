@@ -1,3 +1,48 @@
+DDL commands ka use database, tables, schema, aur constraints create ya modify karne ke liye hota hai. 
+Yeh commands permanent changes karti hain jo automatically commit ho jaati hain.
+*********
+CREATE – Naya database ya table banane ke liye
+ALTER – Existing table ke structure ko modify karne ke liye
+DROP – Table ya database ko permanently delete karne ke liye
+TRUNCATE – Table ke saare records delete karne ke liye (lekin structure same rehta hai)
+********
+DML commands ka use database ke andar data ko insert, update aur delete karne ke liye hota hai
+********
+INSERT – Table me naye records add karne ke liye
+UPDATE – Existing records ko modify karne ke liye
+DELETE – Table se specific records delete karne ke liye
+**********
+DCL commands ka use database me user permissions aur access rights manage karne ke liye hota hai.
+
+✍ Common DCL Commands:
+
+GRANT – Kisi user ko specific access dene ke liye
+REVOKE – Pehle diye gaye access ko wapas lene ke liye
+************
+TCL commands ka use database transactions ko control karne ke liye hota hai. 
+Transactions wo operations hote hain jo ya toh poore execute hone chahiye ya koi bhi change apply nahi hona chahiye
+***************************
+Common TCL Commands:
+
+COMMIT – Transactions ko permanently save karne ke liye
+ROLLBACK – Transactions ko undo karne ke liye
+*********************
+Data Query Language (DQL) - Data retrieve karne ke liye
+DQL ka sirf ek major command hota hai jo database se data fetch karne ke kaam aata hai.
+
+✍ Common DQL Command:
+
+SELECT – Table se specific ya saare records retrieve karne ke liye
+**************************************************************************
+
+
+
+
+
+
+
+
+************************************************************************************************************************
 select tweet_id FROM Tweets WHERE LENGTH(content)>15;--->LENGTH()
 ***************************************************************************************************
 1
