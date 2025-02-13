@@ -34,10 +34,23 @@ DQL ka sirf ek major command hota hai jo database se data fetch karne ke kaam aa
 
 SELECT – Table se specific ya saare records retrieve karne ke liye
 **************************************************************************
-
-
-
-
+conditions defining the type of data that can be input into each column of a table.
+What SQL constraints do you know?
+DEFAULT – provides a default value for a column.
+UNIQUE – allows only unique values.
+NOT NULL – allows only non-null values.
+PRIMARY KEY – allows only unique and strictly non-null values (NOT NULL and UNIQUE).
+FOREIGN KEY – provides shared keys between two or more tables.
+*********
+DBMS ka full form Database Management System hota hai. Ye ek software hai jo data ko store, manage, retrieve aur manipulate karne ke liye use hota hai
+Types of DBMS
+Hierarchical DBMS (हायरार्किकल डेटाबेस)
+Is DBMS me data ek tree structure ya hierarchy me store hota hai.
+ Network DBMS (नेटवर्क डेटाबेस)
+Ye bhi hierarchical DBMS ki tarah hota hai, lekin isme ek child ke multiple parents ho sakte hain.
+3. Relational DBMS (RDBMS - रिलेशनल डेटाबेस)
+Data tables (rows & columns) me store hota hai aur relations (foreign keys) ke through connect hota hai.
+************
 
 
 
