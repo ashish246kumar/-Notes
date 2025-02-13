@@ -217,6 +217,73 @@ Is transitive dependency ko eliminate karne ke liye, hum 3NF mein convert karte 
 *****************
 2NF aur 3NF data redundancy ko eliminate karte hain aur data consistency ko ensure karte hain.
 ************
+3. Write a SQL query to print the first 3 characters of FIRST_NAME from Student table.
+
+SELECT SUBSTRING(FIRST_NAME, 1, 3)  FROM Student;
+**********
+5. Write a SQL query that fetches the unique values of MAJOR Subjects from Student table and print its length.
+
+SELECT MAJOR,LENGTH(MAJOR) FROM Student GROUP BY(MAJOR);                                                         
+******
+28. Write an SQL query to fetch the first 50% records from a table.
+
+select * from student LIMIT(select count(*) from student)/2
+****
+16. Write an SQL query to fetch the no. of Students for each MAJOR subject in the descending order.
+
+SELECT MAJOR, COUNT(MAJOR) from Student group by MAJOR order by COUNT(MAJOR) DESC;
+********************************\
+Write an SQL query to print details of the Students whose FIRST_NAME ends with ‘a’ and contains five alphabets.
+Query:
+
+SELECT * FROM Student WHERE FIRST_NAME LIKE '_____a';
+Write a SQL query to print details of the Students whose FIRST_NAME ends with 'a'.
+Query:
+
+SELECT * FROM Student WHERE FIRST_NAME LIKE '%a'
+***********
+10. Write a SQL query to print details of the Students excluding FIRST_NAME as 'Prem' and 'Shivansh' from Student table.
+Query:
+
+SELECT * from Student WHERE FIRST_NAME NOT IN ('Prem', 'Shivansh');
+***********
+18. Write an SQL query to show only odd rows from Student table.
+Query:
+
+SELECT * FROM Student WHERE student_id % 2 != 0;
+************************************************************
+Self Join ka use tab kiya jata hai jab hume kisi ek table ke do alag instances ko ek dusre ke saath compare ya join karna ho. Yeh tab kaafi useful hota hai jab kisi table mein kisi ek record ko doosre record se compare karna ho.
+Jab Self Join Ka Use Karte Hain:
+Same Table Mein Comparison: Jab hume ek hi table mein kisi field ko doosri fields ke saath compare karna ho, toh hum self join ka use karte hain.
+
+Example: Agar ek employee table hai jisme employees ka data hai, aur hum chahte hain ki ek employee ka salary doosre employee ke salary se compare ho, toh hum self join ka use karenge.
+SELECT s1.* FROM Student s1, Student s2 WHERE s1.GPA = s2.GPA AND s1.Student_id != s2.Student_id;
+********
+Write an SQL query to show the second highest GPA from a Student table
+
+SELECT DISTINCT GPA 
+FROM Student 
+ORDER BY GPA DESC 
+LIMIT 1 OFFSET 1;
+
+or
+SELECT MAX(GPA) FROM Student
+WHERE GPA NOT IN(SELECT MAX(GPA) FROM Student);
+*********
+. Write an SQL query to list STUDENT_ID who does not get Scholarship.
+STUDENT and Scholarship both are different   table
+
+SELECT s.STUDENT_ID 
+FROM Student s
+LEFT JOIN Scholarship sc ON s.STUDENT_ID = sc.STUDENT_ID
+WHERE sc.STUDENT_ID IS NULL;
+**********
+Write an SQL query to fetch the first row of a table.
+Query:
+SELECT * FROM Student WHERE STUDENT_ID = (SELECT MIN(STUDENT_ID) FROM Student);
+*********
+
+
 
 
 ************************************************************************************************************************
