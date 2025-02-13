@@ -19,6 +19,14 @@ DCL commands ka use database me user permissions aur access rights manage karne 
 GRANT – Kisi user ko specific access dene ke liye
 REVOKE – Pehle diye gaye access ko wapas lene ke liye
 ************
+create table emp (id int PRIMARY KEY,
+name VARCHAR(100),
+age int,
+salary decimal(10,2),
+joinig_date: DATE
+)
+***********************************
+
 TCL commands ka use database transactions ko control karne ke liye hota hai. 
 Transactions wo operations hote hain jo ya toh poore execute hone chahiye ya koi bhi change apply nahi hona chahiye
 ***************************
@@ -51,9 +59,31 @@ Ye bhi hierarchical DBMS ki tarah hota hai, lekin isme ek child ke multiple pare
 3. Relational DBMS (RDBMS - रिलेशनल डेटाबेस)
 Data tables (rows & columns) me store hota hai aur relations (foreign keys) ke through connect hota hai.
 ************
+ types of SQL operators
+Arithmetic (+, -, *, /, etc.)
+Comparison (>, <, =, >=, etc.)
+Compound (+=, -=, *=, /=, etc.)
+Logical (AND, OR, NOT, BETWEEN, etc.)
+*****"
+What is an alias
+ temporary name given to a table (or a column in a table) while executing a certain SQL query
+**********
+Clauses ka main kaam hota hai:
 
-
-
+Data ko filter karna
+Query ke result ko limit ya modify karna
+Data ko sorting ya grouping karna
+1. WHERE Clause – Data ko filter karne ke liye
+2. HAVING Clause – Aggregated data ko filter karne ke liye
+*************************
+************
+create table emp (id int PRIMARY KEY,
+name VARCHAR(100),
+age int,
+salary decimal(10,2),
+joinig_date: DATE
+)
+***********************************
 
 ************************************************************************************************************************
 select tweet_id FROM Tweets WHERE LENGTH(content)>15;--->LENGTH()
