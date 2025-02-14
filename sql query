@@ -1,3 +1,63 @@
+
+
+7. What are the main differences between SQL and NoSQL databases?
+ 1)SQL aur NoSQL databases data storage, structure, scalability, aur use cases ke basis par alag-alag hain.
+SQL (Relational Database): Structured tables me rows aur columns ka format follow karta hai. 
+🔹 NoSQL (Non-Relational Database): Flexible structure hota hai, aur different formats me store ho sakta hai:
+✅ Document-based (MongoDB, CouchDB) – JSON-like format
+✅ Key-Value (Redis, DynamoDB) – Key-value pairs
+
+SQL: Vertically Scalable (Large server ya RAM badhakar scale karna hota hai).
+🔹 NoSQL: Horizontally Scalable (Multiple servers add karke easily scale hota hai – distributed
+ SQL: Structured Query Language (SQL) use karta hai – SELECT, INSERT, UPDATE, DELETE.
+🔹 NoSQL: Standardized query language nahi hota, different databases ka apna query syntax hota hai
+
+Use Cases
+Factor	SQL Databases	NoSQL Databases
+Best for	Structured, transactional data	Unstructured, semi-structured, real-time data
+Examples	MySQL, PostgreSQL, Oracle, MS SQL Server	MongoDB, Cassandra, Redis, Neo4j
+Use Cases	Banking, ERP, CRM, E-commerce orders	Social media, IoT, Big Data, Real-time apps
+********
+Fixed Schema (Less Flexibility)-> in sql
+Fixed Schema (Less Flexibility)
+Strict Schema Design hota hai, iska matlab table ka structure pehle define karna padta hai aur dynamic changes difficult hote hain
+Complex Joins hone par performance slow ho jata hai, specially millions of records hone par.
+Disadvantages of NoSQL Databases
+🔹 1. Lack of Standard Query Language (No Standardization)
+NoSQL databases eventual consistency follow karte hain, jo real-time applications ke liye fast hai, lekin banking jaise applications ke liye risk ho sakta hai.
+NoSQL me denormalization hoti hai, iska matlab data duplicate store hota hai, jo zyada storage consume karta hai
+**********************
+Indexing
+Database indexing ek optimization technique hai jo queries ki speed increase karne ke liye use hoti hai
+Agar ek book ke index ka example lein, to usme topics aur page numbers diye hote hain. Isse aap direct page tak pahunch sakte hain bina pura book padhe. Database indexing bhi exactly aise hi kaam karti hai!
+
+Types of Indexing in SQL
+1️⃣ Primary Index – Primary Key ke basis par automatically banta hai.
+2️⃣ Unique Index – Unique columns ke liye use hota hai.
+3️⃣ Composite Index – Multiple columns ko ek saath index karta hai.
+
+✅ Best Practice: Sirf un columns par indexing lagaye jo frequently search hote hain.
+
+Disadvantage of Indexing
+More Storage Required (Index bhi space consume karta hai).
+Insert/Update/Delete Operations Slow Ho Sakte Hain (Index ko update karna padta hai)
+*********
+Stored Procedure
+A Stored Procedure ek predefined SQL code ka collection hota hai jo database me store hota hai aur multiple times execute kiya ja sakta hai.
+Why Use Stored Procedures?
+✅ Code Reusability – Same SQL queries ko baar-baar likhne ki zaroorat nahi hoti.
+✅ Better Performance – Precompiled hoti hain, isliye queries faster execute hoti hain.
+✅ Security – Direct SQL queries ki jagah stored procedures use karne se SQL Injection ka risk kam hota hai.
+✅ Modularity – Alag-alag operations ko procedures me rakh kar code organized kiya ja sakta hai
+*******
+CREATE PROCEDURE GetStudentDetails()
+AS
+BEGIN
+    SELECT * FROM Students;
+END;
+********************
+
+*********************************
 DDL commands ka use database, tables, schema, aur constraints create ya modify karne ke liye hota hai. 
 Yeh commands permanent changes karti hain jo automatically commit ho jaati hain.
 *********
