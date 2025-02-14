@@ -1,5 +1,12 @@
+Trigger ek special stored procedure hota hai jo automatically execute hota hai jab koi specific event (INSERT, UPDATE, DELETE) kisi table pe hota hai. 
+Ye database level pe automation provide karta hai.
+********
 
 
+
+
+
+***************************************************
 7. What are the main differences between SQL and NoSQL databases?
  1)SQL aur NoSQL databases data storage, structure, scalability, aur use cases ke basis par alag-alag hain.
 SQL (Relational Database): Structured tables me rows aur columns ka format follow karta hai. 
