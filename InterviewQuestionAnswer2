@@ -18,7 +18,7 @@ if in parent class there is exception and in child class there is no can we over
 what is the benefit of stram api 
 public static void main(String[] args)-> isko explain karo. 
 difference between hashcode and equals method
-
+Do you have working experience on Exception Handling , Multithreading , Concurrency Control
 
 ***********************de**************************
 Create a custom immutable class.
