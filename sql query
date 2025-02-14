@@ -1,6 +1,32 @@
 Trigger ek special stored procedure hota hai jo automatically execute hota hai jab koi specific event (INSERT, UPDATE, DELETE) kisi table pe hota hai. 
 Ye database level pe automation provide karta hai.
+Trigger ke Types:
+AFTER Trigger – Jab koi operation (INSERT/UPDATE/DELETE) successfully complete ho jata hai, tab ye trigger execute hota hai.
+BEFORE Trigger – Operation hone se pehle ye trigger execute hota hai.
+
 ********
+Trigger ek special stored procedure hota hai jo automatically execute hota hai jab koi specific event (INSERT, UPDATE, DELETE) kisi table pe hota hai. Ye database level pe automation provide karta hai.
+
+Trigger ke Types:
+AFTER Trigger – Jab koi operation (INSERT/UPDATE/DELETE) successfully complete ho jata hai, tab ye trigger execute hota hai.
+BEFORE Trigger – Operation hone se pehle ye trigger execute hota hai.
+INSTEAD OF Trigger – Ye kisi operation ko replace karne ke liye use hota hai, yani actual operation perform hone ke bajay trigger execute hoga.
+Example:
+Maan lo ek EMPLOYEE table hai aur hume ek aur table AUDIT_LOG maintain karni hai jo track kare ki kab koi employee delete hua.
+CREATE TRIGGER after_employee_delete  
+AFTER DELETE ON EMPLOYEE  
+FOR EACH ROW  
+INSERT INTO AUDIT_LOG(emp_id, action, action_time)  
+VALUES (OLD.emp_id, 'DELETED', NOW());
+Explanation:
+
+Jab bhi EMPLOYEE table se koi row delete hogi, tab AUDIT_LOG table me ek entry insert ho jayegi jo delete ka record maintain karegi.
+Trigger ka Use:
+✅ Automatic Validation – Kisi column ki value update hone se pehle validation kar sakte hain.
+✅ Audit Logging – Data changes ka history maintain karne ke liye use hota hai.
+✅ Data Synchronization – Multiple tables me consistency maintain karne ke liye useful hai.
+*********************************************************
+
 
 
 
