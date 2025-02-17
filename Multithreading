@@ -1,0 +1,141 @@
+1. Write a Python program to create multiple threads and print their names.
+
+******************************************************************************************************
+package Multithreading;
+
+public class MyThread extends  Thread{
+    MyThread(String name){
+        super(name);
+    }
+    @Override
+    public void  run(){
+       System.out.println(Thread.currentThread().getName());
+    }
+
+}
+package Multithreading;
+
+public class Main {
+
+    public static void main(String[] args){
+        MyThread t1=new MyThread("Thread1");
+        MyThread t2=new MyThread("Thread2");
+        MyThread t3=new MyThread("Thread3");
+        t1.start();
+        t2.start();
+        t3.start();
+
+    }
+}
+**********************************************************************************************
+3. Write a Python program that creates two threads to find and print even and odd numbers from 30 to 50.
+
+package Multithreading;
+
+import java.util.concurrent.TimeUnit;
+
+public class Main {
+
+    public static void main(String[] args){
+      Thread evenThread=new Thread(
+              ()->{
+                for(int i=30;i<=50;i+=2){
+                    System.out.println(i);
+                    try{
+                        TimeUnit.SECONDS.sleep(20);
+                    }
+                    catch (InterruptedException e){
+                        e.printStackTrace();
+
+                    }
+                }
+              }
+      );
+      Thread oddThread=new Thread(
+                ()->{
+                    for(int i=31;i<=50;i+=2){
+                        System.out.println(i);
+                        try{
+                            TimeUnit.SECONDS.sleep(20);
+                        }
+                        catch (InterruptedException e){
+                             e.printStackTrace();
+                        }
+                    }
+                }
+        );
+      evenThread.start();
+      oddThread.start();
+
+
+    }
+}
+********************
+or 
+
+package Multithreading;
+import  java.util.*;
+public class MyThread{
+    int counter=30;
+
+   public synchronized void printEven(){
+        while (counter<=50){
+            if(counter%2==0){
+                System.out.print("EvenThread");
+
+                System.out.println(counter);
+                counter++;
+                notify();
+            }
+           else{
+               try{
+                   wait();
+               }
+              catch (InterruptedException e){
+                    e.printStackTrace();
+              }
+            }
+
+        }
+   }
+    public synchronized void printOdd(){
+        while (counter<=50){
+            if(counter%2!=0){
+                System.out.print("oddThread");
+
+                System.out.println(counter);
+                counter++;
+                notify();
+            }
+            else{
+                try{
+                    wait();
+                }
+                catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+}
+package Multithreading;
+
+import java.util.concurrent.TimeUnit;
+
+public class Main {
+
+    public static void main(String[] args){
+     MyThread my=new MyThread();
+      Thread t1=new Thread(()->my.printEven());
+      Thread t2=new Thread(()->my.printOdd());
+      t1.start();
+      t2.start();
+
+
+    }
+}
+**************************************************************************************************************************
+
+
