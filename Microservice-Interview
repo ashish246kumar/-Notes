@@ -21,3 +21,30 @@ Advantage
 Scalability: Jab services scale hoti hain, naye instances register hote hain aur purane instances remove ho jaate hain, bina kisi manual intervention ke.
 Dynamic Communication: Agar services ka IP ya location change hota hai, toh koi manual configuration ki zarurat nahi hoti. Service Registry automatic update ho jata hai.
 ********
+API Gateway ek bahut hi important component hota hai microservices architecture mein. Yeh ek "single entry point"
+ki tarah kaam karta hai jahan se sabhi incoming requests pass hoti hain, aur phir yeh requests ko appropriate microservices tak route karta hai. Iske alawa,
+API Gateway kuch aur important tasks bhi perform karta hai, jaise authentication, load balancing, response aggregation, et
+*******************
+Tools for API Gateway:
+Zuul (by Netflix): Netflix ka API Gateway solution hai. Yeh request routing, load balancing, aur security features provide karta hai.
+Spring Cloud Gateway: Yeh Spring Boot applications ke liye ek powerful API Gateway hai, jo route requests, authentication, aur other filters handle karta hai
+*************
+Authentication & Authorization:
+
+API Gateway authentication aur authorization ke tasks bhi perform kar sakta hai. Jab client request bhejta hai, toh API Gateway sabse pehle check karta hai ki user authenticated hai ya nahi.
+Agar nahi, toh woh error return kar sakta hai ya client ko login karne ke liye redirect kar sakta hai.
+Isse service layer pe security ka burden kam hota hai, aur central location se security manage ki ja sakti hai.
+*************
+Load Balancing:
+API Gateway load balancing bhi kar sakta hai. Maan lijiye, kisi microservice ke multiple instances hain (horizontal scaling). 
+Toh API Gateway requests ko in instances ke beech distribute karta hai taaki koi ek instance pe zyada load na ho aur system evenly scale ho.
+***********
+Rate Limiting and Throttling:
+API Gateway request rate limiting aur throttling bhi implement kar sakta hai. Iska matlab hai ki agar kisi client se ek specific time frame mein zyada requests aa rahi hain, 
+toh API Gateway unhe limit kar sakta hai, taaki system overload na ho.
+*****
+Fayde of Using API Gateway:
+Centralized Management: Sabhi requests ek hi entry point se handle hote hain, jo management ko easy banata hai.
+Security: Authentication aur authorization API Gateway level par handle hoti hai, jo security ko centralized banata hai.
+********************************************************
+
