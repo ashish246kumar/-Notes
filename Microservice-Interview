@@ -1,0 +1,19 @@
+Service Registry:
+Jab multiple services hoti hain ek system mein, unko apne locations (URLs, IP addresses) ko track karna padta hai. 
+Service Registry ek centralized database ki tarah kaam karta hai jahan sabhi services apne details register karte hain. Matlab, har service apna presence 
+aur location (jaise IP address aur port) Service Registry mein register kar deti hai.
+
+
+Service Discovery:
+Service Discovery ka matlab hai ki ek service apni required service ko dynamically find kar sakti hai bina uske fixed IP ya hostname ke. 
+Service Registry se service apne required services ki location retrieve kar sakti hai.
+
+
+Eureka: Yeh ek Service Registry and Discovery tool hai jo Netflix ne develop kiya tha.
+Services apne aap ko Eureka server mein register karti hain aur doosri services ko Eureka ke through discover kar sakti hain.
+
+*****************************
+Jab koi service start hoti hai, wo apne aap ko Service Registry mein register kar deti hai.
+Jab kisi service ko doosri service ki zarurat hoti hai, wo Service Registry se us service ki details fetch kar leti hai.
+Agar koi service down ho jati hai, toh Service Registry ko pata chal jata hai aur wo automatically update ho jata hai, taaki koi bhi service outdated information pe rely na kare
+**********
