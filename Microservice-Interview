@@ -17,3 +17,7 @@ Jab koi service start hoti hai, wo apne aap ko Service Registry mein register ka
 Jab kisi service ko doosri service ki zarurat hoti hai, wo Service Registry se us service ki details fetch kar leti hai.
 Agar koi service down ho jati hai, toh Service Registry ko pata chal jata hai aur wo automatically update ho jata hai, taaki koi bhi service outdated information pe rely na kare
 **********
+Advantage
+Scalability: Jab services scale hoti hain, naye instances register hote hain aur purane instances remove ho jaate hain, bina kisi manual intervention ke.
+Dynamic Communication: Agar services ka IP ya location change hota hai, toh koi manual configuration ki zarurat nahi hoti. Service Registry automatic update ho jata hai.
+********
