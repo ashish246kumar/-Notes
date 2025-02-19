@@ -411,4 +411,16 @@ Wildcard	Explanation	Example
 .hasAnyAuthority("PERMISSION1", "PERMISSION2")	Multiple authorities allow karna
 .authenticated()	Koi bhi authenticated user access kar sakta hai
 ********************
+Spring Security me logged-in user ka naam fetch karne ke liye Principal interface ka use hota hai.
+Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+String userName = principal.getName();
+public String helloGfg(Principal principal, Authentication auth, Model model) {
+    // 🟢 Current Logged-in User ka Username
+    String userName = principal.getName();
+    System.out.println("Current Logged-in User is: " + userName);
+
+    // 🟢 Current Logged-in User ki Roles/Authorities
+    Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+******************************
+
 
