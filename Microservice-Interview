@@ -373,6 +373,8 @@ UsernamePasswordAuthenticationFilter	Username/Password authentication handle kar
 CsrfFilter	CSRF attacks se protect karta hai
 CorsFilter	CORS (Cross-Origin Requests) allow ya block karta hai
 ***************************
+Custom Filter Add Karna
+Agar apne custom logic add karna hai, to khud ka filter create kar sakte ho aur usko filter chain me add kar sakte ho.
 @Component
 public class CustomFilter extends OncePerRequestFilter {
     @Override
@@ -382,9 +384,31 @@ public class CustomFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response); // Next filter execute hoga
     }
 }
+✔️ Isko security configuration me add karne ke liye:
+
+
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     http
         .addFilterBefore(new CustomFilter(), UsernamePasswordAuthenticationFilter.class);
 }
 ******************************************
+ Spring Security antMatchers() – HinEnglish Explanation
+Jab hum Spring Security me kisi URL ko secure ya allow karna chahte hain, tab hum antMatchers() ka use karte hain.
+
+👉 Yeh decide karta hai ki kaunse URL kis user role ya authority ke liye accessible hain.
+👉 Isme wildcard characters (?, *, **) ka use hota hai taaki flexible URL patterns define kiye jaye
+***********
+Wildcard Characters in antMatchers()
+Wildcard	Explanation	Example
+?	Ek single character match karega	/user/ab? -> /user/abc valid, but /user/abcd invalid
+*	Koi bhi ek word ya set of characters match karega	/user/* -> /user/profile, /user/settings valid but /user/details/info invalid
+**	Multiple directories match karega	/admin/** -> /admin/dashboard, /admin/settings/info sab valid
+*********
+.hasRole("ROLE")	Sirf specified ROLE wale users ko access dena
+.hasAnyRole("ROLE1", "ROLE2")	Multiple ROLEs allow karna
+.hasAuthority("PERMISSION")	Sirf specified authority wale users ko access dena
+.hasAnyAuthority("PERMISSION1", "PERMISSION2")	Multiple authorities allow karna
+.authenticated()	Koi bhi authenticated user access kar sakta hai
+********************
+
