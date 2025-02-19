@@ -305,4 +305,34 @@ public class MySecurityAppConfig {
     }
 }
 *********************
+What are the essential configurations required for Spring Security?
+
+SecurityContextHolder
+Yeh ek thread-local storage hota hai jo current authenticated user ki details store karta hai. Jab bhi ek request aati hai, Spring Security SecurityContextHolder se authentication details fetch karta hai.
+💡 Example:
+Jab koi user login karta hai, uska authentication object SecurityContextHolder me store ho jata hai, jisse baad me authorization checks me use kiya jata hai
+********
+. AuthenticationManager
+Yeh authentication process ko handle karta hai. Jab user login karta hai, AuthenticationManager verify karta hai ki credentials sahi hain ya nahi. Ye multiple authentication providers ko support karta hai, 
+jaise in-memory, database, OAuth, JWT, etc
+Agar aap database-based authentication use kar rahe hain, toh AuthenticationManager user credentials ko DB ke against validate karega.
+*********
+4. UserDetailsService (Custom Authentication)
+Agar aap custom user authentication chahte hain, toh UserDetailsService implement karni padti hai. Ye user details ko database ya kisi external 
+source se load karne ke liye use hoti hai.
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+    @Autowired
+    private UserRepository userRepository;  // Database access
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return new User(user.getUsername(), user.getPassword(), user.getRoles());
+    }
+}
+
+***********
+
 
