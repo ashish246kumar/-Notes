@@ -144,3 +144,83 @@ Choreography Best Hai Jab:
 Microservices highly decentralized hain.
 System event-driven architecture follow karta hai.
 ****************************************************************
+2. What are the key features of Spring Security?
+Spring Security ek powerful authentication aur authorization framework hai jo Spring-based applications ko secure karta hai.
+
+🔹 Authentication (Login/Identity Verify Karna) – User valid hai ya nahi?
+🔹 Authorization (Access Control) – User kya access kar sakta hai?
+
+Authentication – User Ka Verification
+Authentication ka matlab yeh check karna ki user kaun hai.
+Spring Security different authentication methods support karta hai, jaise:
+✅ Username & Password Based Login
+✅ OAuth2 / Social Login (Google, Facebook)
+✅ JWT (JSON Web Token)
+✅ LDAP (Lightweight Directory Access Protocol)
+
+ Authorization – Kis User Ko Kya Access Milega?
+Authorization ka matlab yeh decide karna ki authenticated user kya access kar sakta hai.
+
+🔹 Role-Based Access Control (RBAC) – Different users ke alag-alag roles hote hain, jaise:
+**********
+Spring Security Features
+✅ Built-in Login Page – Default login form milta hai jo hum customize bhi kar sakte hain.
+✅ Password Encoding – Secure password storage ke liye BCrypt jaisa hashing algorithm use hota hai.
+✅ CSRF Protection – Cross-Site Request Forgery se protection milti hai.
+✅ OAuth2 & JWT Support – Token-based authentication ke liye best solution.
+*****************
+Spring Security Implementation Example (Basic Authentication)
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+🔹 Step 2: Create Security Configuration Class
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/admin").hasRole("ADMIN")
+                .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
+                .anyRequest().authenticated()
+            )
+            .formLogin(withDefaults()); // Default login page use karega
+        return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User.withDefaultPasswordEncoder()
+            .username("user")
+            .password("password")
+            .roles("USER")
+            .build();
+        
+        UserDetails admin = User.withDefaultPasswordEncoder()
+            .username("admin")
+            .password("admin123")
+            .roles("ADMIN")
+            .build();
+
+        return new InMemoryUserDetailsManager(user, admin);
+    }
+}
+******************
+5️⃣ Spring Security with JWT Authentication (Token-Based Login)
+Agar tum session-based login se bachna chahte ho aur stateless authentication chahte ho, toh JWT (JSON Web Token) use kar sakte ho.
+JWT ke andar user ki details hoti hain, jo har request ke sath bheji jati hai.
+
+✅ JWT ka Flow:
+1️⃣ User login karega aur username-password bhejega.
+2️⃣ Server JWT generate karke user ko return karega.
+3️⃣ Har request ke sath user JWT token bhejega (Authorization Header me).
+4️⃣ Server token verify karega aur user ko access dega.
+*******************************************************
+
+
+
+
+
