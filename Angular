@@ -423,7 +423,8 @@ Pipes are a way to transform data displayed in templates.
 
 
 ****************************************************************************************************************************************************************************
-Advantages of AngComponent-Based Architecture –
+Advantages of Ang
+Component-Based Architecture –
 Angular me components ka use hota hai, jisme har component ek independent unit hota haiular:
 Two-Way Data Binding – Isme model aur UI dono sync rehte hain. Agar aap UI me kuch change karte ho to backend model bhi update ho jata hai, 
 aur agar model me kuch change hota hai to UI me bhi automatically reflect hota hai
@@ -512,6 +513,19 @@ Ye decorators class ke constructor ke parameters pe lagakar dependencies inject 
 ✅ @Inject – Ek custom provider inject karne ke liye use hota hai.
 ✅ @Optional – Agar dependency available nahi hai to Angular null inject karega.
 *****************************
+Data Binding ek technique hai jo model (application logic) aur view (UI) ke beech data synchronize karne ke liye use hoti hai.
+👉 Data binding ke 2 types hote hain:
+1️⃣ One-Way Data Binding (Sirf ek direction me data flow hota hai)
+2️⃣ Two-Way Data Binding (Data dono directions me flow hota hai)
+ One-Way Data Binding
+One-way data binding ka matlab hai ki data sirf ek direction me flow karega, ya to model → view ya view → model.
+ (i) Interpolation ({{ }})
+<p>{{ title }}</p>
 
+ii) Property Binding ([ ])
 
+<img [src]="imageUrl">
+Event Binding (( ))
+<button (click)="onClick()">Click me</button>
+***************************************************************
 
