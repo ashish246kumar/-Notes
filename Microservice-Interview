@@ -422,5 +422,12 @@ public String helloGfg(Principal principal, Authentication auth, Model model) {
     // 🟢 Current Logged-in User ki Roles/Authorities
     Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
 ******************************
-
+ Alternative Way: SecurityContextHolder Ka Use
+Agar Principal ya Authentication inject nahi ho raha hai, to aap SecurityContextHolder ka use kar sakte hain:
+Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+String userName = authentication.getName();
+Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+System.out.println("User: " + userName);
+System.out.println("Roles: " + authorities);
+************************************
 
