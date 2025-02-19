@@ -430,4 +430,22 @@ Collection<? extends GrantedAuthority> authorities = authentication.getAuthoriti
 System.out.println("User: " + userName);
 System.out.println("Roles: " + authorities);
 ************************************
+🔹 Spring Security Password Encoder 
+Spring Security me passwords ko securely store aur validate karne ke liye PasswordEncoder ka use hota hai. Yeh ensure karta 
+hai ki hum plain text password ko directly store na karein, balki usko hash + encode karke securely rakhein.
+
+***********
+Hume Spring Security ka BCryptPasswordEncoder use karke password hash karna hai, to uske liye ek @Bean define karna hoga:
+@Configuration
+@EnableWebMvc
+@ComponentScan("com")
+public class MySecurityAppConfig {
+
+    @Bean 
+    PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder(); // 🛡️ Passwords ko securely encode karega
+    }
+}
+
+******************************
 
