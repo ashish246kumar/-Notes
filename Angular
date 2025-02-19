@@ -422,6 +422,96 @@ Pipes
 Pipes are a way to transform data displayed in templates.
 
 
-***************************************************************************
+****************************************************************************************************************************************************************************
+Advantages of AngComponent-Based Architecture –
+Angular me components ka use hota hai, jisme har component ek independent unit hota haiular:
+Two-Way Data Binding – Isme model aur UI dono sync rehte hain. Agar aap UI me kuch change karte ho to backend model bhi update ho jata hai, 
+aur agar model me kuch change hota hai to UI me bhi automatically reflect hota hai
+Strong Community and Ecosystem – Angular Google ka supported framework hai, isliye iska community support strong hai
+Dependency Injection (DI) – Is feature se aap code loosely coupled bana sakte ho. Matlab, aap services ko easily inject kar sakte ho bina objects manually create kiye.. Yeh code reusability aur testability improve karta hai.
+Single Page Application (SPA) Capabilities
+************************************
+Angular Templates Explained in HinEnglish
+Angular templates HTML se likhe jaate hain, jisme Angular-specific elements aur attributes hote hain.
+Ye templates dynamic hote hain, jo data ko UI se bind karne me help karte hain.
+Key Features of Angular Templates
+1️⃣ Interpolation ({{ }})
+Iska use component properties ko template se bind karne ke liye hota hai. Matlab agar aap component me ek variable define karte ho,
+to aap uska value template me directly display kar sakte ho.
+<h1>Welcome, {{ username }}!</h1>
+****************************
+Directives
+Directives ka use DOM manipulate karne ke liye hota hai. Angular me do tareeke ki directives hoti hain:
+✅ Structural Directives – DOM me elements ko add/remove karti hain (*ngIf, *ngFor)
+✅ Attribute Directives – Elements ka look & behavior change karti hain (ngClass, ngStyle)
+<div *ngIf="isLoggedIn">Welcome back!</div>
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+******************
+Pipes
+Pipes ka use data ko transform karne ke liye hota hai, jaise ki uppercase, lowercase, date formatting, currency formatting etc.
+<p>{{ username | uppercase }}</p>   <!-- Name ko uppercase karega -->
+<p>{{ price | currency:'INR' }}</p>  <!-- Price ko Indian Rupees format me show karega -->
+<p>{{ today | date:'fullDate' }}</p>  <!-- Date
+**********
+Data Binding
+Angular me data binding ke different forms hote hain jo model aur view ke beech synchronization maintain karte hain:
+✅ Interpolation ({{ }}) – Component property ko display karta hai
+✅ Property Binding ([ ]) – HTML attributes ko component data se bind karta hai
+✅ Event Binding (( )) – User actions ko handle karta hai
+✅ Two-Way Binding ([( )]) – Model aur view dono sync rehte hain
+**********************************************
+Angular me decorators special functions hote hain, jo classes, properties, aur methods pe lagakar unko extra functionality dete hain. 
+TypeScript ke features hain aur Angular me metadata provide karne ke liye use hote hain.
+
+ Class Decorators
+Ye decorators class ko define karne aur uska metadata provide karne ke liye use hote hain.
+
+Common Class Decorators:
+✅ @Component – Ek Angular component define karta hai.
+✅ @Directive – Ek directive banane ke liye use hota hai.
+✅ @NgModule – Ek Angular module define karta hai.
+✅ @Injectable – Isko use karne se class DI (Dependency Injection) ke through inject ho sakti hai.
+
+**********************************
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent { }
+🔹 Yahan @Component decorator AppComponent ko Angular component banata hai.
+
+*********************
+ Property Decorators
+Ye decorators component properties ko bind karne ke liye use hote hain.
+
+✅ @Input – Parent component se child component ko data pass karne ke liye use hota hai.
+✅ @Output – Child component se parent component ko event send karne ke liye use hota hai.
+
+export class ChildComponent {
+  @Input() message!: string;  // Parent se data lega
+
+  @Output() notify = new EventEmitter<string>(); // Parent ko event bhejega
+
+  sendNotification() {
+    this.notify.emit("Hello Parent!");
+  }
+}
+********
+ Parameter Decorators
+Ye decorators class ke constructor ke parameters pe lagakar dependencies inject karne ke liye use hote hain.
+
+✅ @Inject – Ek custom provider inject karne ke liye use hota hai.
+✅ @Optional – Agar dependency available nahi hai to Angular null inject karega.
+
+Parameter Decorators
+Ye decorators class ke constructor ke parameters pe lagakar dependencies inject karne ke liye use hote hain.
+
+✅ @Inject – Ek custom provider inject karne ke liye use hota hai.
+✅ @Optional – Agar dependency available nahi hai to Angular null inject karega.
+*****************************
+
 
 
