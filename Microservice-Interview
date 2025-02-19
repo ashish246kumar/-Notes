@@ -219,8 +219,172 @@ JWT ke andar user ki details hoti hain, jo har request ke sath bheji jati hai.
 3️⃣ Har request ke sath user JWT token bhejega (Authorization Header me).
 4️⃣ Server token verify karega aur user ko access dega.
 *******************************************************
+Spring Security Ke Key Features 
+
+Authentication ka matlab hota hai ye check karna ki user kaun hai.
+🔹 Jab koi user application me login karne ki koshish karta hai, toh uska username & password verify kiya jata hai.
+*********
+Authorization – Kis User Ko Kya Access Hai?
+Spring Security me tum easily roles & permissions define kar sakte ho, jaise:
+.requestMatchers("/admin").hasRole("ADMIN")
+.requestMatchers("/user").hasAnyRole("USER", "ADMIN")
 
 
+*********************
+3️⃣ Principal – Kaun Login Hai?
+🔹 Principal ka matlab hai jo user abhi application me logged-in hai.
+🔹 Jab ek user successfully authenticate ho jata hai, toh uska data session me store hota hai.
+🔹 Principal se tum current user ka username ya roles access kar sakte ho.
 
+Spring Security me tum principal ko access kar sakte ho:
+Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+String username = authentication.getName(); 
+************
+Protection – Security Threats Se Bachav
 
+✅ Cross-Site Scripting (XSS) – Malicious scripts ko block karta hai.
+✅ SQL Injection – Database hacking attempts se bachata hai.
+✅ CSRF (Cross-Site Request Forgery) – Fake requests ko block karta hai.
+**************
+ Granted Authority – Kis User Ke Pass Kya Permission Hai?
+🔹 Granted Authorities wo permissions hain jo kisi user ke pass hoti hain.
+🔹 Kisi bhi user ke pass multiple authorities ho sakti hain.
+*************
+Agar tum current user ke authorities check karna chahte ho, toh:
+Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+***********************
+Spring Security Me Authentication Configure Karna (Custom Authentication) 🚀
+Agar tum Spring Security me authentication configure karna chahte ho (basic authentication ke bina), toh tumhe khud ka authentication manager create karna padega.
+Iske liye hum ek custom class banayenge jo WebSecurityConfigurerAdapter ko extend karegi, aur custom authentication logic define karenge
+*************
+ Iss class me Spring Security ka configuration likhna hoga.
+🔹 @EnableWebSecurity annotation lagana zaroori hai, jo batayega ki ye security configuration class  hai
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+}
 
+********
+configure(AuthenticationManagerBuilder) Method Override Karo
+🔹 AuthenticationManagerBuilder ka use karke authentication configure karni hoti hai.
+🔹 Isme hum user, password, aur roles define karenge.
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.inMemoryAuthentication()
+        .withUser("ashish")
+        .password("{noop}password") // {noop} ka matlab plain text password hai
+        .roles("USER")
+        .and()
+        .withUser("admin")
+        .password("{noop}admin123")
+        .roles("ADMIN");
+}
+***********************************
+3️⃣ Authentication Manager Ko Bean Ke Taur Par Define Karo
+🔹 Ab hume custom Authentication Manager ko expose karna hoga taaki baaki system use kar sake.
+@Bean
+@Override
+public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+}
+
+************************
+Spring Security Ka HTTP Configuration Set Karo
+🔹 Kaunse URLs secure honge aur kaunse open rahenge, ye define karna zaroori hai.
+*************
+Spring Security Ka HTTP Configuration Set Karo
+🔹 Kaunse URLs secure honge aur kaunse open rahenge, ye define karna zaroori hai
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .authorizeRequests()
+        .antMatchers("/admin/**").hasRole("ADMIN")  // Admin ke liye access control
+        .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") // User aur Admin dono access kar sakte hain
+        .antMatchers("/public/**").permitAll()  // Public URL kisi bhi user ke liye open hai
+        .and()
+        .formLogin();  // Default login form enable kar raha hai
+}
+****************
+Spring Security me authorization configure karne ke liye, hume HTTP security rules define karne hote hain, jo batate hain ki kaunse endpoints kis role wale users access kar sakte hain.
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+}
+
+***************
+Spring Security ka latest version 6.1 hai
+OAuth2 Enhancements: OAuth2 support ko aur behtar banaya gaya
+OAuth2 client ko aur flexible banaya gaya hai, jisse aap asani se multiple OAuth2 providers (jaise Google, Facebook, GitHub) ke saath integrate kar sakte hain.
+*******
+Improved Password Storage: Password storage mechanisms ko upgrade kiya gaya hai,
+Better Integration with Spring Boot: Spring Boot ke saath integration ko aur smooth banaya gaya
+New APIs for Customization: Naye APIs introduce kiye gaye hain, jisse developers apne hisab se security features ko customize kar sakte hain
+*******
+Ab Spring Security zyada secure hashing algorithms (jaise bcrypt, PBKDF2, Argon2) ko default taur par use karta hai.
+****************************************************
+7. Explain basic authentication in Spring Security.
+Basic Authentication ek simple authentication mechanism hai jisme username & password ka use karke HTTP requests secure ki jaati hain
+Jab bhi koi client request bhejta hai, to username & password ko Base64 encode karke request ke header me send karta hai.
+@Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+            .anyRequest().authenticated() // Har request authenticated honi chahiye
+            .and()
+            .httpBasic(); // Basic Authentication enable karna
+    }
+
+********
+CSRF ek security attack hai jisme malicious site user ke authentication session ka unauthorized request bhejne ke liye misuse karti hai. 
+Spring Security by default CSRF protection enable karta hai taaki unauthorized requests block ho sakein
+**********
+CSRF Protection Disable Karna (API ke liye Recommended)
+Agar aapki application sirf REST APIs expose karti hai jo session-based authentication nahi use karti (e.g., JWT, OAuth2), to CSRF disable karna safe ho sakta hai kyunki REST APIs me session maintain nahi hota.
+🔹 CSRF disable karne ke liye
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .authorizeRequests()
+        .anyRequest().authenticated()
+        .and()
+        .csrf().disable(); // CSRF protection disabled
+}
+****************************************
+🔹 CSRF Enable/Disable Kab Karna Chahiye?
+Scenario	CSRF Enable	CSRF Disable
+Session-based authentication (Login Forms, Thymeleaf, JSP, etc.)	✅ Enable	❌
+REST APIs using JWT, OAuth2 (No session management)	❌	✅ Disable
+Microservices communication (Internal APIs)	❌	✅ Disable
+Public APIs (Token-based auth)	❌	✅ Disable
+*************
+what is Spring Security Filter Chain?
+Jab bhi ek HTTP request aati hai, Spring Security usko directly process nahi karta. Pehle ek filter chain ke through request pass hoti hai,
+jo security checks perform karti hai jaise authentication, authorization, CSRF protection, CORS handling
+******************
+Filter chain ek sequence of filters ka collection hai jo ek ke baad ek execute hote hain, jisme har filter ka ek specific role hota hai. Yeh ensure karta hai ki request valid hai ya nahi.
+2️⃣ Filter Chain Kaise Kaam Karta Hai?
+Example:
+Agar ek user dashboard page (/dashboard) open karta hai, to uski request filter chain ke through jaati hai.
+🔹 Client request -> 🔹 Filter 1 (CORS) -> 🔹 Filter 2 (Authentication) -> 🔹 Filter 3 (Authorization) -> 🔹 Filter 4 (CSRF) -> 🔹 Request Controller tak pahunchti hai
+**********
+FilterSecurityInterceptor	Authorization rules apply karta hai
+SecurityContextPersistenceFilter	User session ka security context maintain karta hai
+UsernamePasswordAuthenticationFilter	Username/Password authentication handle karta hai
+CsrfFilter	CSRF attacks se protect karta hai
+CorsFilter	CORS (Cross-Origin Requests) allow ya block karta hai
+***************************
+@Component
+public class CustomFilter extends OncePerRequestFilter {
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        System.out.println("Custom Filter Executing...");
+        filterChain.doFilter(request, response); // Next filter execute hoga
+    }
+}
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .addFilterBefore(new CustomFilter(), UsernamePasswordAuthenticationFilter.class);
+}
+******************************************
