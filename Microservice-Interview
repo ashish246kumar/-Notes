@@ -47,4 +47,46 @@ Fayde of Using API Gateway:
 Centralized Management: Sabhi requests ek hi entry point se handle hote hain, jo management ko easy banata hai.
 Security: Authentication aur authorization API Gateway level par handle hoti hai, jo security ko centralized banata hai.
 ********************************************************
+Circuit Breaker – System-Wide Failure Ko Kaise Prevent Karta Hai?
+Tumhara ek e-commerce system hai jisme:
+Order Service
+Payment Service
+Inventory Service
+Order Service ko Payment Service aur Inventory Service se data lena padta hai. Agar Payment Service slow ho ya fail ho jaye, toh Order Service continuously retry karega aur threads block ho sakti hain. 
+Poora system slow ho sakta hai ya down ho sakta hai.
+******************
+Circuit Breaker ek safety mechanism hai jo prevent karta hai system-wide failures ko. Ye kaise kaam karta hai?
+Monitor Requests:
+Circuit Breaker continuously service requests ko track karta hai.
+Agar ek particular service slow ho gayi ya baar-baar fail ho rahi hai, toh Circuit Breaker notice karega.
+Cut Off Failing Service (OPEN State):
+Jab failures threshold se zyada ho jaye, toh Circuit Breaker us service ke requests ko block kar deta hai.
+Iska matlab hai ki jo bhi naye requests us service ke liye aayenge, unko immediately reject kar diya jayega bina backend service ko call kiye.
+*******************
+Retry Mechanism (HALF-OPEN State):
+Thodi der baad, Circuit Breaker check karega ki service wapas theek ho gayi hai ya nahi.
+**********
+Circuit Breaker States (Modes of Operation)
+1️⃣ CLOSED (Normal Operation) ✅
+Service sahi se kaam kar rahi hai
+ OPEN (Failure Detected) ❌
+Service slow ya fail ho gayi hai.
+Circuit Breaker us service ko cut off kar deta hai.
+HALF-OPEN (Retry Mode) 🔄
+
+Thodi der baad Circuit Breaker test requests bhejta hai.
+Agar service recover ho gayi, toh Circuit Breaker CLOSED ho j
+***********
+Resilience4j
+Ye lightweight aur modern Circuit Breaker library hai jo Spring Boot ke saath easily integrate hoti hai.
+Ye functional programming aur reactive programming ke saath compatible hai.
+Features: Circuit Breaking, Rate Limiting, Bulkhead, Retry, Time Limiting
+************
+@CircuitBreaker(name = "paymentService", fallbackMethod = "fallbackPayment")
+<dependency>
+    <groupId>io.github.resilience4j</groupId>
+    <artifactId>resilience4j-spring-boot2</artifactId>
+    <version>1.7.1</version>
+</dependency>
+*******
 
