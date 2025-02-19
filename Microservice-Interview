@@ -89,4 +89,58 @@ Features: Circuit Breaking, Rate Limiting, Bulkhead, Retry, Time Limiting
     <version>1.7.1</version>
 </dependency>
 *******
+Saga Pattern
+=> Manages distributed transactions across multiple services via orchestration or choreography.
+🔧 Tools: Camunda, Temporal. explain in hinEnglish
 
+
+Jab hum monolithic application use karte hain, toh ek single database hota hai aur transactions easily handle ho jati hain using ACID properties (Atomicity, Consistency, Isolation, Durability).
+Lekin microservices architecture me distributed transactions ka issue aata hai kyunki har service apna alag database maintain karti hai.
+ Problem:
+Agar ek transaction multiple microservices me involve ho, toh agar ek service fail ho jaye, toh baaki services me changes rollback kaise hoga?
+
+💡 Solution: Saga Pattern
+Saga ek asynchronous transaction management pattern hai jo distributed transactions ko handle karta hai do tarike se:
+1️⃣ Choreography-based Saga
+2️⃣ Orchestration-based Saga
+*****
+1️⃣ Choreography-based Saga (Event-Driven Approach)
+Kaise Kaam Karta Hai?
+Choreography me koi central coordinator nahi hota. Har service apne events emit karti hai aur doosri services uss event ko listen karke apna operation perform karti hain.
+Agar koi service fail ho jaye, toh compensating events fire hote hain taaki previous operations rollback ho sake.
+
+👉 Example: E-commerce Order Processing
+
+Order Service → Order Create karta hai aur OrderCreated Event emit karta hai.
+Payment Service → OrderCreated event sunta hai aur payment process karta hai. Agar payment successful ho, toh PaymentSuccess Event emit karta hai.
+Inventory Service → PaymentSuccess event sunta hai aur inventory update karta hai.
+Shipping Service → Inventory update hone ke baad order ship karta hai.
+🛑 Agar koi step fail hota hai:
+
+Suppose Payment Fail ho gaya, toh Payment Service ek PaymentFailed Event emit karega.
+Order Service isko sunke Order ko cancel kar dega.
+Agar Inventory Update fail ho jaye, toh ek compensating event generate hoga jo payment refund karega.
+🔧 Tools for Choreography:
+
+Apache Kafka
+RabbitMQ
+****************************************************
+Orchestration-based Saga (Central Controller Approach)
+Kaise Kaam Karta Hai?
+Orchestration me ek central Saga Coordinator hota hai jo poori transaction ko manage karta hai. Har service directly Saga Coordinator se communicate karti hai,
+jo decide karta hai ki kaunsi service kab execute hogi aur agar koi failure hota hai toh rollback kaise hoga.
+**************
+xample: Flight Booking System
+
+User Flight Book Karta Hai → Saga Orchestrator transaction start karta hai.
+Payment Service → Saga Coordinator Payment process karta hai.
+Seat Booking Service → Payment success hone ke baad, Saga Coordinator seat booking request send karta hai.
+Notification Service → Ticket confirmation send karta hai.
+🛑 Agar koi step fail hota hai:
+
+Suppose Seat Booking fail ho jaye, toh Saga Coordinator Payment Service ko refund karne ka instruction dega.
+******
+Choreography Best Hai Jab:
+Microservices highly decentralized hain.
+System event-driven architecture follow karta hai.
+****************************************************************
