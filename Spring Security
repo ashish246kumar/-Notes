@@ -356,6 +356,7 @@ Agar hum plain text password ko database me directly store karein, toh ye securi
 jisme password ko unreadable format me convert kiya jata hai.
  Hashing Algorithms Used in Spring Security
 Spring Security me multiple hashing algorithms use kiye ja sakte hain:
+Security Improvement – Agar database leak ho jaye toh hashed passwords ko directly use nahi kiya ja sakta.
 
 Algorithm	Description
 MD5, SHA-1, SHA-256	Insecure, fast hashing algorithms. (MD5 aur SHA-1 ko avoid karna chahiye)
