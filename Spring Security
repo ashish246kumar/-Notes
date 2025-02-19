@@ -341,9 +341,27 @@ public class CustomUserDetailsService implements UserDetailsService {
 tep 2: In Spring Security configuration, enable in-memory authentication.
 auth.inMemoryAthentication()
 ***********
+ Explain potential web application vulnerabilities and how Spring Security mitigates them?
  SQL Injection
 🔸 Issue:
 SQL Injection me attacker malicious SQL queries execute karne ki koshish karta hai, jo database manipulation kar sakti hain
 Spring Prepared Statements aur ORM (Hibernate, JPA) ko promote karta hai jo SQL Injection ko prevent karta hai.
+Cross-Site Scripting (XSS)
+🔸 Issue:
+XSS me attacker malicious scripts inject karta hai jo users ke browsers me execute hote hain. Yeh mostly form inputs ya URLs ke through hota hai
 *********
+ Explain Hashing in Spring Security.
+
+Agar hum plain text password ko database me directly store karein, toh ye security risk ban sakta hai. Is wajah se password hashing ka use kiya jata hai, 
+jisme password ko unreadable format me convert kiya jata hai.
+ Hashing Algorithms Used in Spring Security
+Spring Security me multiple hashing algorithms use kiye ja sakte hain:
+
+Algorithm	Description
+MD5, SHA-1, SHA-256	Insecure, fast hashing algorithms. (MD5 aur SHA-1 ko avoid karna chahiye)
+BCrypt	Slow hashing algorithm, brute force resistent. Recommended
+Spring Security me BCrypt recommended hai kyunki ye slow hashing algorithm hai jo brute force attacks ko prevent karta hai.
+***************************
+
+
 
