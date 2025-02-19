@@ -528,4 +528,69 @@ ii) Property Binding ([ ])
 Event Binding (( ))
 <button (click)="onClick()">Click me</button>
 ***************************************************************
+Observables Angular me asynchronous operations handle karne ke liye use hote hain. Ye ek stream of data emit karte hain, 
+jo time ke sath multiple values emit kar sakta hai, unlike Promises jo sirf ek single value return karte hain.
+
+Feature	Observables	Promises
+Execution	Lazy (Jab tak subscribe nahi hoga, tab tak execute nahi hoga)	Eager (Jaise hi create hoga, execute ho jayega)
+Values Emitted	Multiple values over time	Single value only
+Cancellation	Can be cancelled (unsubscribe)	Cannot be cancelled
+Operators Support	Supports powerful operators (e.g., map, filter, retry)	No built-in operators
+Use Case	Best for handling real-time data and streaming	Best for single asynchronous operation
+**********
+Component (app.component.ts) – Subscribe to Observable
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Posts</h1>
+    <ul>
+      <li *ngFor="let post of posts">{{ post.title }}</li>
+    </ul>
+  `
+})
+export class AppComponent {
+  posts: any[] = [];
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.dataService.getPosts().subscribe(
+      data => this.posts = data,   // Success case
+      error => console.error(error), // Error case
+      () => console.log('Posts loaded') // Completion case
+    );
+  }
+}
+***************************************************************************************
+ RxJS (Reactive Extensions for JavaScript) – Observables Explained in Detail
+📌 What is RxJS?
+RxJS JavaScript ki ek library hai, jo asynchronous data streams ko handle karne ke liye use hoti hai.
+✔️ RxJS ka main concept "Observables" hai, jo multiple values ko asynchronously emit kar sakta hai.
+✔️ Iska use event handling, API calls, user interactions aur real-time data updates ke liye hota hai
+*************************
+How to Implement an Observable in RxJS?
+🔄 3 Steps to Use Observables
+1️⃣ Observable ko import karna
+2️⃣ Observable create karna aur data emit karna
+3️⃣ Observable ko subscribe karna
+
+*******************************
+import { Observable } from 'rxjs';
+*******
+const myObservable = new Observable(observer => {
+  observer.next('Hello, World!'); // Emit 1st value
+  observer.next('Welcome to RxJS!'); // Emit 2nd value
+  observer.next('This is an Observable example.'); // Emit 3rd value
+
+  observer.complete(); // Stream complete ho gaya
+});
+subscribe() function 3 callbacks accept karta hai:
+
+next(value): Jab observable koi naya data emit karega
+error(err): Agar koi error aayi to ye chalega
+complete(): Jab observable data emit karna band kar dega
+**************************
 
