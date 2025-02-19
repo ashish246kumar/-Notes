@@ -337,5 +337,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 @PreAuthorize: It is used to secure a method before it is executed.
 @PostAuthorize: It is used to secure a method after it is executed.
 ******************
+32. How to implement Spring Security with in-memory user storage.
 
 
