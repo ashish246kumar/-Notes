@@ -338,5 +338,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 @PostAuthorize: It is used to secure a method after it is executed.
 ******************
 32. How to implement Spring Security with in-memory user storage.
-
+tep 2: In Spring Security configuration, enable in-memory authentication.
+auth.inMemoryAthentication()
+***********
+ SQL Injection
+🔸 Issue:
+SQL Injection me attacker malicious SQL queries execute karne ki koshish karta hai, jo database manipulation kar sakti hain
+Spring Prepared Statements aur ORM (Hibernate, JPA) ko promote karta hai jo SQL Injection ko prevent karta hai.
+*********
 
