@@ -159,3 +159,53 @@ Ensures that numeric fields fall within a specified range.
 ************
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+********************************************************************************************************************************************************************
+Hibernate ek ORM (Object Relational Mapping) tool hai jo Java objects ko database tables se map karta hai.
+JPA (Java Persistence API) ek specification hai, aur Hibernate uska implementation provide karta hai.
+Ye boilerplate code ko remove karta hai aur transaction management ko handle karta hai.
+
+******************************************************************************************
+Key Interfaces in Hibernate:
+SessionFactory:
+
+Ek baar initialize hone wala object hota hai per database connection.
+Ye Session object provide karta hai.
+Key Methods:
+openSession(): Naya session create karta hai.
+getCurrentSession(): Current session return karta hai.
+Session:
+
+Database ke sath physical connection establish karta hai.
+CRUD operations, queries, aur transactions handle karta hai.
+Transaction:
+
+Transactions ko manage karta hai.
+Key Methods:
+begin(): Transaction start karta hai.
+commit(): Changes ko database me save karta hai.
+rollback(): Agar koi error aaye toh changes ko cancel karta hai.
+Query Interface:
+
+HQL (Hibernate Query Language) ya native SQL queries banane ke liye use hota hai.
+*********************************************
+Entity States in Hibernate:
+Transient State:
+
+Jab object new keyword se create hota hai aur kisi session se linked nahi hota.
+Iska koi database record nahi hota.
+
+User user = new User(); // Transient state
+user.setName("Ashish");
+*******
+Persistent State:
+Jab object Hibernate session ke sath linked hota hai aur database me save hota hai.
+Hibernate is object ka tracking karta hai.
+Session session = sessionFactory.openSession();
+session.beginTransaction();
+session.save(user); // Persistent state
+session.getTransaction().commit();
+*******************
+Detached State:
+Jab session close ho jata hai lekin object ab bhi database row ko represent karta hai.
+session.close();
+****************
