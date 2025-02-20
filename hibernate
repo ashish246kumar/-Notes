@@ -262,4 +262,14 @@ Example: CascadeType.REMOVE
 Agar hum chahte hain ki jab Customer delete ho toh uske saare Orders bhi delete ho jayein
 **********
 
+Use Case	Recommended Cascade
+Parent ke sath child bhi save karna hai	CascadeType.PERSIST / CascadeType.ALL
+Parent delete pe child bhi delete	CascadeType.REMOVE
+Parent update pe child bhi update	CascadeType.MERGE
+**********************************************************
+ When NOT to Use Cascading:
+Jab child entity ka multiple parent se link ho sakta hai.
+Jab accidental data loss ka risk ho (like using CascadeType.REMOVE in many-to-many).
+************************************
+
 
