@@ -1,0 +1,30 @@
+Creational Design Patterns ka use object creation ko efficient aur flexible banane ke liye kiya jata hai. Ye patterns object creation ko directly new keyword se nahi karte, 
+balki ek standard way provide karte hain, jisse code loosely coupled aur maintainable rahe.
+**********
+   Singleton Pattern – "Ek hi object baar-baar use karo"
+Is pattern me sirf ek hi instance create hota hai poore application ke liye.
+💡 Use Case: Logging, Configuration files, Database connections
+
+********
+  Factory Pattern – "Object ka factory banao"
+Is pattern me object creation ka control factory class ke paas hota hai.
+💡 Use Case: Complex object creation, Payment gateways, Notification services
+***********
+  5️⃣ Prototype Pattern – "Object ko copy karo"
+Jab object creation expensive ho, toh uska ek clone banaya jata hai.
+Isme clone() method ka use hota hai.
+💡 Use Case: Game character cloning, Document templates
+******
+  4️⃣ Builder Pattern – "Step by step object banao"
+Complex objects ko banane ke liye use hota hai jisme multiple parameters hote hain.
+Object creation ko step by step control kar sakte hain.
+  💡 Use Case: Pizza Builder, Complex Reports, Immutable Objects
+
+
+***************
+  3️⃣ Abstract Factory Pattern – "Factory of Factories"
+Is pattern me multiple related objects banane ke liye alag-alag factory classes hoti hain.
+Yaha ek super factory hoti hai jo sub-factories ko banati hai.
+*************************
+    
+    
