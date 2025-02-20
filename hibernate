@@ -270,7 +270,8 @@ Parent update pe child bhi update	CascadeType.MERGE
  When NOT to Use Cascading:
 Jab child entity ka multiple parent se link ho sakta hai.
 Jab accidental data loss ka risk ho (like using CascadeType.REMOVE in many-to-many).
-************************************
+***********************************
+2. What are the advantages of using Hibernate?
 HQL ka full form hai Hibernate Query Language. Ye object-oriented query language hai jo SQL jaisa lagta hai, 
 lekin tables aur columns ke jagah Java classes aur fields ko target karta hai.
 *******
@@ -295,7 +296,56 @@ List<String> names = query.list();
 String hql = "FROM Employee ORDER BY salary DESC";
 Query query = session.createQuery(hql);
 List<Employee> sortedEmployees = query.list();
-**********8
+**********
+String hql = "FROM Employee WHERE name = :empName";
+Query query = session.createQuery(hql);
+query.setParameter("empName", "Ashish");
+Employee employee = (Employee) query.uniqueResult();
+**********************
+1. Simplified Database Interaction:
+2. HQL (Hibernate Query Language):
+Hibernate apna khud ka query language provide karta hai – HQL
+. Database Independence:
+Hibernate queries database independent hoti hain. Agar kal ko database change karna ho (MySQL se PostgreSQL), toh code me zyada changes nahi karne padenge
+. Caching Mechanism:
+Hibernate caching support karta hai, jisse database queries ka load kam hota hai aur performance improve hoti hai.
+
+First Level Cache → Session ke andar kaam karta hai.
+Second Level Cache → Application level pe caching hoti hai
+****************
+Hibernate ACID (Atomicity, Consistency, Isolation, Durability) principles ko follow karta hai aur in-built transaction management provide karta hai.
+********************
+NamedQuery Hibernate ka ek feature hai jisme aap apne HQL (Hibernate Query Language) queries ko pre-define kar sakte ho aur unhe easily multiple places par reuse kar sakte ho. Ye queries directly 
+entity class me likhi jati hain aur runtime pe fetch ki jati hain.
+***************************
+@NamedQuery(
+    name = "Employee.findByDepartment",
+    query = "FROM Employee WHERE department = :dept"
+)
+Query query = session.createNamedQuery("Employee.findByDepartment");
+query.setParameter("dept", "IT");
+List<Employee> employees = query.list();
+************************
+. What happens when the no-args constructor is absent in the Entity bean?
+
+Hibernate me jab aap koi Entity class banate ho, toh No-Args Constructor (default constructor) hona mandatory hota hai.
+Agar wo constructor nahi hoga, toh Hibernate aapke entity object ko create nahi kar paayega, aur runtime pe Exception throw karega.
+
+💥 Why No-Args Constructor is Required?
+Hibernate Reflection API ka use karta hai object create karne ke liye.
+Reflection new operator ka use nahi karta, isliye wo parameterized constructor ko nahi samajh pata.
+Wo directly No-Args Constructor ko call karta hai entity object banane ke liye.
+
+*******************************
+Does Hibernate Support Native SQL Queries?
+Yes, Hibernate supports Native SQL Queries. Agar aapko directly apne database pe SQL chalani hai (bypassing HQL),
+toh Hibernate me aap Native SQL Queries ka use kar sakte ho.
+*********************************
+ Why Use Native SQL Queries?
+Complex Queries: Jab HQL se query banana mushkil ho.
+Database-Specific Features: Jo HQL support nahi karta (like specific SQL functions).
+Performance Optimization: Sometimes raw SQL is faster.
+************
 
 
 
