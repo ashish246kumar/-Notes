@@ -271,5 +271,31 @@ Parent update pe child bhi update	CascadeType.MERGE
 Jab child entity ka multiple parent se link ho sakta hai.
 Jab accidental data loss ka risk ho (like using CascadeType.REMOVE in many-to-many).
 ************************************
+HQL ka full form hai Hibernate Query Language. Ye object-oriented query language hai jo SQL jaisa lagta hai, 
+lekin tables aur columns ke jagah Java classes aur fields ko target karta hai.
+*******
+ Basic Syntax of HQL:
+
+SELECT <alias> FROM <EntityName> <alias> WHERE <condition>
+EntityName → Java class ka naam (table ka nahi)
+Fields → Entity ke properties ka naam (database columns ka nahi)
+**********
+Named parameters (:paramName) use karo for safer queries.
+Query.list() → Multiple results ke liye
+Query.uniqueResult() → Single result ke liye
+******
+String hql = "FROM Employee";  // Selects all employees
+Query query = session.createQuery(hql);
+List<Employee> employees = query.list();
+******
+String hql = "SELECT name FROM Employee";
+Query query = session.createQuery(hql);
+List<String> names = query.list();
+**
+String hql = "FROM Employee ORDER BY salary DESC";
+Query query = session.createQuery(hql);
+List<Employee> sortedEmployees = query.list();
+**********8
+
 
 
