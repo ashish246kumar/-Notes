@@ -20,6 +20,50 @@ public static void main(String[] args)-> isko explain karo.
 difference between hashcode and equals method
 Do you have working experience on Exception Handling , Multithreading , Concurrency Control
 *******************
+stream api 
+Stream API se for-loops ki jagah method chaining ka use hota hai, jisse code short aur clean lagta hai.
+Data ko ek form se dusre form me convert karna easy hota hai using map().
+✅ Performance boost with parallel streams
+✅ Functional programming ka flavor milta hai
+✅ Less code, more readability
+
+
+
+
+*********************************************************************************
+can we overload static method?
+Static methods ko overload kar sakte ho.
+Static ya non-static hone ka koi effect nahi padta.
+Static methods ko override nahi kiya ja sakta.
+Agar subclass me same naam ka static method likhoge, toh wo method hiding kehlata hai, overriding nahi.
+class Parent {
+    static void display() {
+        System.out.println("Parent static method");
+    }
+}
+
+class Child extends Parent {
+    static void display() {
+        System.out.println("Child static method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent obj1 = new Parent();
+        Parent obj2 = new Child();
+
+        obj1.display();  // Output: Parent static method
+        obj2.display();  // Output: Parent static method (method hiding hua, overriding nahi)
+    }
+}
+obj2 actually Child ka object hai, phir bhi Parent ka method call hua.
+Kyunki static methods class level pe bind hote hain, runtime pe nahi badalte.
+************************************************************************************
+
+
+
+*****************************************************************
 can we overload private method?
 Overloading ka matlab hota hai same method name ka use karna but alag-alag parameters ke saath.
 Dono methods private hain, lekin overloading within the class perfectly valid hai.
