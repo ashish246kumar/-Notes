@@ -364,8 +364,13 @@ BCrypt	Slow hashing algorithm, brute force resistent. Recommended
 Spring Security me BCrypt recommended hai kyunki ye slow hashing algorithm hai jo brute force attacks ko prevent karta hai.
 ***************************
  How to Implement Two-Factor Authentication (2FA) in Spring Security?
-Two-Factor Authentication (2FA) ek extra security layer provide karta hai jo password ke alawa ek additional authentication step add karta hai, jaise OTP, authenticator app, email verification, ya SMS code.
-Agar koi malicious actor password guess kar bhi le, toh bhi bina second authentication step ke wo login nahi kar sakta.
+*********************
+Two-Factor Authentication (2FA) ek extra security layer provide karta hai jo password ke alawa ek additional authentication step add karta hai, 
+jaise OTP, authenticator app, email verification, ya SMS code.
+Agar koi malicious actor password guess kar bhi le, toh bhi bina second authentication step ke wo login nahi kar sakta
+Best Practice hai ki OTP ko Redis me store karein aur expiry time set karein.
+✅ OTP email/SMS ke alawa Google Authenticator bhi use kar sakte ho (TOTP based 2FA).
+******
 
 
 
