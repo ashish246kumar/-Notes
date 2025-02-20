@@ -346,6 +346,38 @@ Complex Queries: Jab HQL se query banana mushkil ho.
 Database-Specific Features: Jo HQL support nahi karta (like specific SQL functions).
 Performance Optimization: Sometimes raw SQL is faster.
 ************
-
-
+Hibernate me caching ka use performance boost karne ke liye hota hai. 
+ First-Level Cache (Session Level Cache)
+By Default Enabled: Hibernate me yeh automatically on hota hai.
+Session Scoped: Har session ka apna cache hota hai.
+Valid till Session is Open: Jaise hi session close hoga, cache clear ho jayega
+*****
+Second-Level Cache (SessionFactory Level Cache)
+Manually Enable Karna Padta Hai.
+Shared Across Sessions: Multiple sessions same cached data ko use kar sakte hain.
+Works Even After Session Close: Jab tak cache clear nahi hoti ya expire nahi hota, data available rahega.
+***********
+Hibernate me get() aur load() dono hi methods database se data fetch karne ke liye use hote hain, lekin dono ka kaam karne ka tareeka alag hota hai.
+🟢 1️⃣ get() Method:
+Immediate Data Fetch: Jab get() call karte ho, turant database hit hota hai.
+Returns null if Not Found: Agar record nahi mila toh null return karega.
+Eager Loading: Data ko turant load kar leta hai.
+**********
+🟡 2️⃣ load() Method:
+Lazy Loading: Direct database hit nahi karta, pehle proxy object deta hai.
+Returns Proxy Object: Jab tak kisi property ko access nahi karte, DB hit nahi hota.
+Throws Exception if Not Found: Agar record nahi mila toh ObjectNotFoundException throw karega.
+************
+ session.save() Method:
+Return Type: Primary key (Serializable type) return karta hai.
+Transient to Persistent: Object ko transient se persistent state me convert karta hai.
+Immediate Insert: Jab call karoge, turant INSERT query fire hogi.
+********
+2️⃣ session.persist() Method:
+Return Type: Kuch return nahi karta (void method).
+JPA Standard: persist() JPA specification follow karta hai.
+Requires Active Transaction: Transaction ke andar hona mandatory hai, warna exception throw karega.
+No Immediate Insert: Jab tak transaction commit nahi hota, INSERT query nahi chalegi.
+No Duplicates: Duplicate objects save nahi honge.
+******
 
