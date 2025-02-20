@@ -19,6 +19,14 @@ what is the benefit of stram api
 public static void main(String[] args)-> isko explain karo. 
 difference between hashcode and equals method
 Do you have working experience on Exception Handling , Multithreading , Concurrency Control
+*******************
+difference between hashcode and equals method
+Java me hashCode() aur equals() methods ka use objects ko compare karne aur unka unique identity banane ke liye hota hai. 
+In dono ka sahi use HashMap, HashSet, aur Hashtable jese collections me important hota hai
+equals() Method:
+Purpose: Two objects ki equality check karta hai (content-based comparison).
+Defined In: java.lang.Object class.
+Purpose: Ye method do objects ko compare karta hai unke data/content ke basis par, na ki unke memory address ke basis par.
 
 ***********************de**************************
 Create a custom immutable class.
