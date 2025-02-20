@@ -21,30 +21,109 @@ difference between hashcode and equals method
 Do you have working experience on Exception Handling , Multithreading , Concurrency Control
 *******************
 difference between hashcode and equals method
-Java me hashCode() aur equals() methods ka use objects ko compare karne aur unka unique identity banane ke liye hota hai. 
-In dono ka sahi use HashMap, HashSet, aur Hashtable jese collections me important hota hai
+✅ 1. equals() aur hashCode() ka Default Behavior
+Jab hum kisi bhi class ka object banate hain aur equals() aur hashCode() override nahi karte, toh dono methods Object class ke methods use karte hain.
+
 equals() Method:
-Defined In: java.lang.Object class.
-Purpose: Ye method do objects ko compare karta hai unke data/content ke basis par, na ki unke memory address ke basis par.
-By Default: Agar equals() method override nahi kiya gaya, toh ye sirf memory address compare karega (jaise == operator karta hai).
-public class Student {
-    int id;
+By default, yeh memory reference ko compare karta hai, yaani ki do objects ek hi memory location ko point karte hain ya nahi.
+Agar do alag objects same data ke saath bhi banaye gaye hain, toh equals() false return karega kyunki unka memory address alag hoga.
+hashCode() Method:
+By default, yeh object ke memory address se ek unique integer generate karta hai.
+Do alag objects ka hashCode alag hoga, chahe unka data same hi kyun na ho.2 same object ka hascode same hoga but 2 alag object ka hashcode differnet hoga.
+hashCode() Method:
+By default, yeh object ke memory address se ek unique integer generate karta hai.
+Do alag objects ka hashCode alag hoga, chahe unka data same hi kyun na ho.
+
+Object o1 = new Object();
+Object o2 = o1;           // Same reference
+Object o3 = new Object();  // Different reference
+
+System.out.println(o1.equals(o2));  // true (dono same memory ko point karte hain)
+System.out.println(o1.equals(o3));  // false (alag memory location)
+
+System.out.println(o1.hashCode());  // Example: 102345
+System.out.println(o2.hashCode());  // 102345 (same as o1)
+System.out.println(o3.hashCode());  // Example: 205678 (different)
+✅ 2. Kyun equals() aur hashCode() Override Karna Zaroori Hai?
+Agar hum apne custom class ke objects ko HashMap, HashSet jaisi collections mein use karte hain, toh equals() aur hashCode() override karna zaroori hai.
+
+Scenario:
+Maan lo humare paas ek Student class hai jisme rollNum aur name fields hain.
+
+Without Overriding:
+java
+Copy
+Edit
+class Student {
+    int rollNum;
     String name;
 
-    Student(int id, String name) {
-        this.id = id;
+    Student(int rollNum, String name) {
+        this.rollNum = rollNum;
         this.name = name;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Student s1 = new Student(1, "Ashish");
-        Student s2 = new Student(1, "Ashish");
+        Student s1 = new Student(1, "Sam");
+        Student s2 = new Student(1, "Sam");
 
-        System.out.println(s1.equals(s2)); // ❌ Output: false (Different memory addresses)
+        System.out.println(s1.equals(s2));  // false (kyunki reference compare hoga)
+        System.out.println(s1.hashCode());  // Example: 123456
+        System.out.println(s2.hashCode());  // Example: 789012
     }
 }
+Yaha problem kya hai?
+
+Same roll number aur name hone ke bawajood equals() false de raha hai.
+HashSet ya HashMap mein yeh dono alag entries banayenge, jo galat behavior hai.
+✅ 3. Overriding equals() aur hashCode() sahi tarike se
+Ab hum dono methods override karenge taki Student object ka comparison data ke basis pe ho.
+class Student {
+    int rollNum;
+    String name;
+
+    Student(int rollNum, String name) {
+        this.rollNum = rollNum;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;  // Agar dono same object hain
+        if (obj == null || getClass() != obj.getClass()) return false;  
+
+        Student student = (Student) obj;
+        return this.rollNum == student.rollNum;  // RollNum se compare karo
+    }
+
+    @Override
+    public int hashCode() {
+        return rollNum;  // Same rollNum ka same hashCode hoga
+    }
+}
+Ab yeh kaise behave karega?
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student(1, "Sam");
+        Student s2 = new Student(1, "Sam");
+
+        System.out.println(s1.equals(s2));  // true (kyunki rollNum same hai)
+        System.out.println(s1.hashCode());  // 1
+        System.out.println(s2.hashCode());  // 1
+
+        // HashSet ka example
+        Set<Student> set = new HashSet<>();
+        set.add(s1);
+        set.add(s2);
+
+        System.out.println(set.size());  // Output: 1 (same object treat kiya gaya)
+    }
+}
+
+
 
 ***********************de**************************
 Create a custom immutable class.
@@ -366,3 +445,4 @@ Spring Initializr is a web-based tool that helps developers quickly generate Spr
 
 15. Can we create a non-web application in Spring Boot?
 Yes, you can create a non-web application in Spring Boot! While Spring Boot is widely used for building web applications, it can also be used to develop console-based, batch processing, or background task applications
+*********************************************************************************************
