@@ -20,6 +20,26 @@ public static void main(String[] args)-> isko explain karo.
 difference between hashcode and equals method
 Do you have working experience on Exception Handling , Multithreading , Concurrency Control
 *******************
+can we overload private method?
+Overloading ka matlab hota hai same method name ka use karna but alag-alag parameters ke saath.
+Dono methods private hain, lekin overloading within the class perfectly valid hai.
+Overloading compile-time pe decide hota hai, isliye access modifier (jaise private) ispe koi effect nahi daalta.
+Agar subclass mein same private method likhoge toh wo override nahi hoga, balki ek naya method banega, kyunki private methods subclass ko visible hi nahi hote.
+****************************
+Jab tum code likhte ho aur run karne se pehle compile karte ho, tabhi compiler check karta hai ki kis method ko call karna hai. Overloading sirf method signature pe depend karta hai — matlab
+method ka naam aur uske parameters (type aur number).
+*******************************
+
+
+
+
+
+
+
+
+
+
+
 difference between hashcode and equals method
 ✅ 1. equals() aur hashCode() ka Default Behavior
 Jab hum kisi bhi class ka object banate hain aur equals() aur hashCode() override nahi karte, toh dono methods Object class ke methods use karte hain.
