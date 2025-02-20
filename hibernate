@@ -208,4 +208,58 @@ session.getTransaction().commit();
 Detached State:
 Jab session close ho jata hai lekin object ab bhi database row ko represent karta hai.
 session.close();
-****************
+***************************************************
+Cascading ka matlab hota hai parent entity par ki gayi operation ko child entities par bhi apply karna.
+Hibernate me, cascading ka use hota hai taaki hume baar-baar session operations likhne ki zarurat na pade.
+****
+Maan lo humare paas do entities hain — Customer aur uske Orders.
+Agar hum Customer ko save karte hain aur chahte hain ki uske saare Orders bhi automatically save ho jayein, toh cascade ka use karenge.
+******
+@Entity
+public class Customer {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Order> orders = new ArrayList<>();
+}
+
+@Entity
+public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String product;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+}
+**************************************
+Customer customer = new Customer();
+customer.setName("Ashish");
+
+Order order1 = new Order();
+order1.setProduct("Laptop");
+order1.setCustomer(customer);
+
+Order order2 = new Order();
+order2.setProduct("Phone");
+order2.setCustomer(customer);
+
+customer.getOrders().add(order1);
+customer.getOrders().add(order2);
+
+session.save(customer); // Automatically saves order1 and order2
+*******************************************************
+Example: CascadeType.REMOVE
+Agar hum chahte hain ki jab Customer delete ho toh uske saare Orders bhi delete ho jayein
+**********
+
+
