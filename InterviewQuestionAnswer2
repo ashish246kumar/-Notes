@@ -20,6 +20,13 @@ public static void main(String[] args)-> isko explain karo.
 difference between hashcode and equals method
 Do you have working experience on Exception Handling , Multithreading , Concurrency Control
 *******************
+if in parent class there is exception and in child class there is no can we overide it.
+
+
+Child class method zyada strict ya same level ka exception handle kar sakta hai, lekin zyada broad nahi.
+No exception in the child method is allowed even if the parent throws an exception
+
+******************************************
 stream api 
 Stream API se for-loops ki jagah method chaining ka use hota hai, jisse code short aur clean lagta hai.
 Data ko ek form se dusre form me convert karna easy hota hai using map().
