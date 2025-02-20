@@ -26,6 +26,31 @@ Data ko ek form se dusre form me convert karna easy hota hai using map().
 ✅ Performance boost with parallel streams
 ✅ Functional programming ka flavor milta hai
 ✅ Less code, more readability
+*********************************
+if in parent class there is no  exception and in child class there is uncheked exception can we overide
+
+override kar sakte ho agar parent class ke method me koi exception nahi hai aur child class ke method me unchecked exception hai.
+Unchecked Exceptions (jaise RuntimeException, NullPointerException, etc.) ko method signature me declare karna zaroori nahi hota (throws lagane ki need nahi hoti).
+class Parent {
+    void show() {
+        System.out.println("Parent show()");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() throws RuntimeException {  // Unchecked exception
+        System.out.println("Child show() with unchecked exception");
+        throw new RuntimeException("Runtime Exception in Child");
+    }
+}
+Explanation:
+Parent Class ka show() method koi exception nahi throw kar raha.
+Child Class ka show() method unchecked exception (RuntimeException) throw kar raha.
+✅ Ye allowed hai kyunki unchecked exception compile time pe nahi check hota.
+Lekin agar tum checked exception (jaise IOException) throw karte ho bina parent me declare kiye, toh compile time error aayega.
+********************************
+
 
 
 
