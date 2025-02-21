@@ -26,5 +26,97 @@ Object creation ko step by step control kar sakte hain.
 Is pattern me multiple related objects banane ke liye alag-alag factory classes hoti hain.
 Yaha ek super factory hoti hai jo sub-factories ko banati hai.
 *************************
-    
-    
+    class Product {
+    private String part1;
+    private String part2;
+    private String part3;
+
+    public void setPart1(String part1) {
+        this.part1 = part1;
+    }
+
+    public void setPart2(String part2) {
+        this.part2 = part2;
+    }
+
+    public void setPart3(String part3) {
+        this.part3 = part3;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [part1=" + part1 + ", part2=" + part2 + ", part3=" + part3 + "]";
+    }
+}
+*******
+interface Builder {
+    void buildPart1();
+    void buildPart2();
+    void buildPart3();
+    Product getProduct();
+}
+******
+class ConcreteBuilder implements Builder {
+    private Product product = new Product();
+
+    @Override
+    public void buildPart1() {
+        product.setPart1("Part 1");
+    }
+
+    @Override
+    public void buildPart2() {
+        product.setPart2("Part 2");
+    }
+
+    @Override
+    public void buildPart3() {
+        product.setPart3("Part 3");
+    }
+
+    @Override
+    public Product getProduct() {
+        return product;
+    }
+}
+**********
+class Director {
+    private Builder builder;
+
+    public Director(Builder builder) {
+        this.builder = builder;
+    }
+
+    public void construct() {
+        builder.buildPart1();
+        builder.buildPart2();
+        builder.buildPart3();
+    }
+}
+*************
+public class BuilderPatternDemo {
+    public static void main(String[] args) {
+        Builder builder = new ConcreteBuilder();
+        Director director = new Director(builder);
+
+        director.construct();
+        Product product = builder.getProduct();
+
+        System.out.println(product);
+    }
+}
+Product [part1=Part 1, part2=Part 2, part3=Part 3]
+*************************
+ Product: Yeh woh class hai jise hum build karna chahte hain.
+
+Builder: Yeh ek interface hai jisme product ke har part ko set karne ke methods hote hain.
+
+ConcreteBuilder: Yeh woh class hai jo Builder interface ko implement karti hai aur product ke parts ko set karti hai.
+
+Director: Yeh class builder ka use karke product ko construct karti hai.
+
+Client Code: Yeh woh code hai jo builder pattern ka use karke product ko banata hai.
+************************************************************************************************************************************
+
+
+
