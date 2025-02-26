@@ -325,7 +325,7 @@ select * from student LIMIT(select count(*) from student)/2
 16. Write an SQL query to fetch the no. of Students for each MAJOR subject in the descending order.
 
 SELECT MAJOR, COUNT(MAJOR) from Student group by MAJOR order by COUNT(MAJOR) DESC;
-********************************\
+********************************
 Write an SQL query to print details of the Students whose FIRST_NAME ends with ‘a’ and contains five alphabets.
 Query:
 
