@@ -2328,4 +2328,54 @@ FROM (
 WHERE t.month_rank < 3
 ORDER BY month DESC, month_rank ASC;
 *****************************************************************
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTRING(CITY, 1, 1) NOT IN ('A', 'E', 'I', 'O', 'U')
+OR SUBSTRING(CITY, LENGTH(CITY), 1) NOT IN ('A', 'E', 'I', 'O', 'U');
+
+*******************
+WITH Ranked AS (
+    SELECT 
+        Name,
+        Occupation,
+        ROW_NUMBER() OVER (PARTITION BY Occupation ORDER BY Name) AS rn
+    FROM OCCUPATIONS
+)
+SELECT 
+    MAX(CASE WHEN Occupation = 'Doctor' THEN Name END) AS Doctor,
+    MAX(CASE WHEN Occupation = 'Professor' THEN Name END) AS Professor,
+    MAX(CASE WHEN Occupation = 'Singer' THEN Name END) AS Singer,
+    MAX(CASE WHEN Occupation = 'Actor' THEN Name END) AS Actor
+FROM Ranked
+GROUP BY rn
+ORDER BY rn;
+***************************************
+select co.Continent,FLOOR(AVG(c.Population)) AS AvgCityPopulation  from city c JOIN Country co on 
+c.CountryCode=co.Code group by co.Continent;
+****************************
+select c.company_code,c.founder, count(DISTINCT lm.lead_manager_code) as lead_manager_count,
+count(DISTINCT sm.senior_manager_code) as senior_manager_count,
+count(DISTINCT m.manager_code) as manager_count,
+count(DISTINCT e.employee_code) as employee_count
+FROM Company c  
+LEFT JOIN Lead_Manager lm on c.company_code=lm.company_code
+LEFT JOIN Senior_Manager sm on c.company_code=sm.company_code
+LEFT JOIN Manager m on c.company_code=m.company_code
+LEFT JOIN Employee e on c.company_code=e.company_code
+GROUP BY c.company_code,c.founder
+ORDER BY c.company_code;
+**********************************
+(SELECT CITY, LENGTH(CITY) AS name_length 
+ FROM STATION 
+ ORDER BY name_length ASC, CITY ASC 
+ LIMIT 1)
+
+UNION 
+
+(SELECT CITY, LENGTH(CITY) AS name_length 
+ FROM STATION 
+ ORDER BY name_length DESC, CITY ASC 
+ LIMIT 1);
+***********************************************
+
 
