@@ -426,6 +426,10 @@ Internal Structure	Backed by a hash table	        Backed by a hash table and a d
 Use Case	When order of elements doesn't matter   When insertion order matters
 Duplicates	No duplicates allowed	                No duplicates allowed
 Iteration Order	Unpredictable	                    Follows the order of insertion
+HadhSet vs linked hashset vs treeset
+Underlying Structure	Internally Hash Table use karta hai (hashing ke basis pe elements rakhe).	Internally Hash Table + Doubly Linked List use karta hai (order ke liye).	Internally Red-Black Tree use karta hai (sorted order ke liye).
+Ordering	Koi specific order nahi, elements randomly rakhe jaate hain (hash ke basis pe).	Insertion order maintain karta hai (jis order mein daale, usi order mein milenge).	Natural order (ya custom comparator) ke basis pe elements sort hote hain.
+Definition	Ek Set jisme elements ko unordered rakha jata hai, duplicates allowed nahi.	Ek Set jo insertion order maintain karta hai, duplicates allowed nahi.	Ek Set jo elements ko sorted order mein rakhta hai, duplicates allowed nahi.
 ***************************************************************************************************************************************************
 What do you mean by serialization?
 Serialization is the process of converting an object into a stream of bytes, which can then be stored in a file, sent over a network, or used for other purposes. 
