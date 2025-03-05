@@ -587,5 +587,8 @@ Definition	Ek data structure jisme elements ko priority ke basis pe sort kiya ja
         Highest priority wala nikal do.<br>- peek(): Highest priority d
 
 ***********************************************************
-
-
+HashMap vs HashTable
+Synchronization	Thread-safe nahi hota (non-synchronized), isliye multi-threading mein dikkat ho sakti hai.	Thread-safe hota hai (synchronized), multi-threading mein safe hai.
+Performance	Faster hai kyunki synchronized nahi hota, no overhead of locking.	Slower hai kyunki har operation synchronized hai, locking ka overhead hai.
+Values	Null keys aur null values allowed hain (ek null key daal sakte ho).	Null keys ya null values allowed nahi, agar try kiya toh
+Ordering     no                                                                       no
