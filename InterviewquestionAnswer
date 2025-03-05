@@ -1,0 +1,65 @@
+*************************************************************************************************
+  Java8 file
+
+Lambda Expressions
+why functional interface has only one abstract method?
+Method Reference
+Thread Creation with the help of method reference
+Functional Interface
+optional class
+Consumer Interface
+supplier
+map` vs `flatMap`
+stream vs parallel stream
+ArrayList vs Link,edList
+collection hierarchy
+priority queue vs dequeu
+hashMap vs hashtable
+
+***********
+interview Question Answer
+
+Q)How do we handle custom Exception in java
+
+error
+Q)what is meaning of threshhold value in context of hashMap
+ Q)why are you using map.entrySet().stream() that is why are you using entrySet
+Transactional
+Comparable vs Comparator
+Before Java 8:HashMap 
+public , private protected default
+Dependency Injection
+Spring Container responsebility:
+LifeCycle of Bean:
+MicroService Communication
+Sleep vs Wait
+Object class & its method available
+hashset vs Arraylist
+Difference between LocalDateTime.now() and new Date()
+Q)Give all the word that have been repeated
+Q)Give the count of tree word
+Q)Give the count of how many word that are repeated
+Q)Give the distinct word that are not repeated
+Q)Shift all the 1 in the array to the left
+@Modifying Annotation
+flushAutomatically
+Q) can we overide a static method
+hashset vs linked hashset vs tree set
+What do you mean by serialization?
+when to use abstract classes and when to use interface in real time
+In noSql mongodb relationship between two table?
+what is the use of primary key in table?
+What are the drawback of restApi?
+Advantages of Spring Security
+Spring Security Features
+what is the tradtional collection used in java  and  then the stram which is introduced in jdk 1.8
+Advantages of Actuator the Application
+
+different type of memory allocation done by jvm
+@Bean
+different different actuator  endpoint that are exposed 
+string vs string buffer vs string builder
+abstract method vs default method
+runnable interface vs thread class
+purpose of synchronized block
+*******************************************************************
