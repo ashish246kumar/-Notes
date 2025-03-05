@@ -573,6 +573,19 @@ ArrayList   LinkedList    Vector   Stack   piriority                Dequeue     
                                            Queue                       |                                                |           |
                                                                   ArrayDeque                                        TreeSet      TreeMap
 
+**********************************************************************
+priority queue vs deque
+********
+FIFO/LIFO Support	Directly FIFO/LIFO nahi hota, priority pe depend karta hai.	Dono support karta hai—queue (FIFO) ya stack (LIFO) ke liye use ho sakta ha
 
+Definition	Ek data structure jisme elements ko priority ke basis pe sort kiya jata hai.	Ek queue jisme dono ends (front aur rear) se elements add ya remove kar sakte hain.
+                
+                      Insertion order is not maintaied                                                  Insertion order is maintained
+        
+                add() / offer(): Element daal do.<br>- poll():                                             addFirst() / addLast():
+                                                                                              Dono taraf daal sakte ho.<br>- removeFirst() / removeLast():
+        Highest priority wala nikal do.<br>- peek(): Highest priority d
+
+***********************************************************
 
 
