@@ -63,3 +63,26 @@ abstract method vs default method
 runnable interface vs thread class
 purpose of synchronized block
 *******************************************************************
+*******************************************************************
+InterviewQuestionAnswer2
+****************************************************************
+15. Can we create a non-web application in Spring Boot?
+Spring Initializr
+Spring Boot CLI (Command Line Interface
+How Spring Boot Works
+Summary of Key Spring Boot CLI Commands
+2. What are the Spring Boot key components?
+PUT VS PATCH
+Using POST for an update operation is not RESTful and goes against standard HTTP semantics
+If a class does not extend any other class then it is a direct child class of Object
+how the string object are store in memory in java?
+generics and wildcards:-
+serialVersionUID
+Serialization, deserialization, and externalization.
+difference between hashcode and equals method
+can we overload private method?
+can we overload static method?
+if in parent class there is no  exception and in child class there is uncheked exception can we overide
+stream api 
+if in parent class there is exception and in child class there is no can we overide it.
+******************************************
