@@ -512,6 +512,18 @@ Map vs FlatMap
 | **Return Type**        | Returns a Stream of the same size as the input stream (same number of elements). | Returns a Stream with potentially different size (flattened). |
 
 | **Usage**              | Use when you want to convert each element of the stream into another object. | Use when you want to convert each element into a collection (e.g., List, Set) and flatten the result into a single Stream. 
+
+map: Jo output aata hai, woh as-it-is return hota hai, chahe nested arrays hi kyun na ho.
+flatMap: Output ko flatten kar deta hai, nested arrays ko ek single array mein convert kar deta hai.
+Length of Output:
+map: Input array ka length aur output array ka length same rahega.
+flatMap: Output array ka length badh sakta hai, depending on flattening.
+let numbers = [1, 2, 3];
+let result = numbers.map(num => [num, num * 2]);
+console.log(result); // Output: [[1, 2], [2, 4], [3, 6]]
+let numbers = [1, 2, 3];
+let flatResult = numbers.flatMap(num => [num, num * 2]);
+console.log(flatResult); // Output: [1, 2, 2, 4, 3, 6]
 *******************************************************************************************************************
  List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 
