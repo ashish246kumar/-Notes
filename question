@@ -86,3 +86,93 @@ if in parent class there is no  exception and in child class there is uncheked e
 stream api 
 if in parent class there is exception and in child class there is no can we overide it.
 ******************************************
+********
+oops
+*******
+Polymorphism
+why we can not create instance of abstract class?
+Encapsulation
+Inheritence
+******
+kafka
+to start the producer
+to start the consumer
+to see how many consumer group 
+are present
+given the group name for the consumer
+to start zookeeper server
+Start Kafka Server / Broker
+Describe topics
+Multiple producer can happen for same topic
+Consumers
+Brokers
+Zookeeper
+Kafka cluster
+Group leader
+Group coordinator
+During the time the rebalancing process is happening,
+offset
+@KafkaListener(
+Log-end Offset:
+Current Offset:
+Committed Offset:
+Internals when producer send a message-->
+consumer.poll 
+consumer.commit
+Types of Commit:
+When Does Rebalancing Happen?
+Responsibilities of the Group Coordinator:
+connections.max.idle.ms-->
+Main role of Zookeeper in kafka
+kafka scale horizontally by distributing the partion across multiple brocker
+Flow
+*********
+HIBERNATE
+**************************
+Hibernate
+important interface used in the hibernate
+SessionFactory
+session
+cascade
+Persistance
+Transaction
+Persistent State
+Detached State
+Spring Data JPA: 
+@Entity
+@Table
+@Id
+@GeneratedValue
+@Column
+@Transient
+@Lob
+@Temporal
+@OneToOne
+@JoinColumn
+@JoinTable
+@Cascade
+@Fetch
+cascade
+@NotNull
+@Size
+@Min / @Max
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+Key Interfaces in Hibernate:
+Entity States in Hibernate:
+2️⃣ session.persist() Method:
+ session.save() Method:
+ load() Method
+ get() Method
+Does Hibernate Support Native SQL Queries?
+ Why Use Native SQL Queries?
+Does Hibernate Support Native SQL Queries?
+ Why Use Native SQL Queries?
+Hibernate me caching ka use performance boost karne ke liye hota hai. 
+💥 Why No-Args Constructor is Required?
+. What happens when the no-args constructor is absent in the Entity bean?
+NamedQuery 
+ Basic Syntax of HQL:
+2. What are the advantages of using Hibernate?
+************
+
+
