@@ -143,9 +143,9 @@ private List<Order> orders;
 ***********************************************************************************************************
 The cascade = CascadeType.ALL means that any operation (like persist, merge, remove, etc.) performed on the User entity will cascade to the associated Order entities
 What this does:
-PERSIST: When a User is saved, all associated Order entities are also saved automatically.
 REMOVE: If a User is deleted, all associated Order entities are also deleted.
-MERGE: If a User is updated, all associated Order entities are updated too.
+MERGE: If PERSIST: When a User is saved, all associated Order entities are also saved automatically.
+a User is updated, all associated Order entities are updated too.
 DETACH: If a User is detached from the persistence context, all associated Order entities are also detached.
 *********************
 @NotNull
