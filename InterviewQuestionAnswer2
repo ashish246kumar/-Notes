@@ -542,3 +542,10 @@ Spring Initializr is a web-based tool that helps developers quickly generate Spr
 15. Can we create a non-web application in Spring Boot?
 Yes, you can create a non-web application in Spring Boot! While Spring Boot is widely used for building web applications, it can also be used to develop console-based, batch processing, or background task applications
 *********************************************************************************************
+Aspect	                                     hashCode()                                                         	equals()
+Definition (परिभाषा)	Ye ek method hai jo object ka ek unique integer value (hash code) return karta hai. 	Ye ek method hai jo do objects ko compare karta hai aur batata hai ki wo equal hain ya nahi.
+Return          Type (रिटर्न टाइप)	Integer (ek number)                                                       	Boolean (true ya false)
+Purpose (उद्देश्य)	Objects ko efficiently store aur retrieve karne ke liye use hota hai (e.g., HashMap, HashSet mein).	Do objects ke content ya value ko compare karne ke liye use hota hai.
+Relation (संबंध)	Agar do objects equals hain, to unka hashCode bhi same hona chahiye.	             Agar do objects ka hashCode same hai, to ye zaroori nahi ki wo equals hain.
+Performance (प्रदर्शन)	Fast hota hai kyunki sirf ek integer calculate karta hai.	               Thoda slow ho sakta hai kyunki detailed comparison karta hai.
+****************
