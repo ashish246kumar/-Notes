@@ -549,3 +549,109 @@ Purpose (उद्देश्य)	Objects ko efficiently store aur retrieve kar
 Relation (संबंध)	Agar do objects equals hain, to unka hashCode bhi same hona chahiye.	             Agar do objects ka hashCode same hai, to ye zaroori nahi ki wo equals hain.
 Performance (प्रदर्शन)	Fast hota hai kyunki sirf ek integer calculate karta hai.	               Thoda slow ho sakta hai kyunki detailed comparison karta hai.
 ****************
+consumer Interface
+
+https://youtube.com/shorts/Tdy8HQoO9t0?si=f64m11bCYshX09OK
+
+supplier interface
+https://youtube.com/shorts/xn6mYzaBk1s?si=nHYDjS3t2q7tJQSb
+predicate
+
+https://youtube.com/shorts/dqy1Dn4YLOI?si=IkOLwvNaZ-yG-znc
+
+functional interface
+https://youtube.com/shorts/4VMLaSVRphE?si=u4xnuAWLhlXyABrR
+java 8 new feature
+
+https://youtube.com/shorts/KYY8S06JqjY?si=hZ8eslWnwGQvAQit
+
+lambda expression
+https://youtube.com/shorts/nHv-f72lRPQ?si=Z372IuFtoyDlm6bo
+
+
+https://youtube.com/shorts/nHv-f72lRPQ?si=anNn2yWtFng_b2P0
+
+stream api
+https://youtube.com/shorts/kGJXM0nj_5g?si=tzbid_-u_sKsFr3g
+
+method reference
+https://www.youtube.com/watch?v=ar5jQQRWxFM
+
+hashmap vs hashtable
+
+https://youtube.com/shorts/cCHjZfh9vGo?si=6wvO3aGxexbPzyev
+
+
+hashmap vs hashset
+https://youtube.com/shorts/f4JENbCxQjM?si=cwQ9NRLDVg_sL4HW
+
+hashMap vs concurrentHashMap
+
+https://youtube.com/shorts/twDt-USkzoA?si=PiZDttvxlHgEZsHr
+
+HashMap vs linkedhashMap vs treeMap
+https://youtube.com/shorts/1F1Kvv6JLIw?si=T_kGlgfGRYKLtkih
+
+
+queue vs priorityQueue
+https://youtube.com/shorts/8Xik6C6FL40?si=uvF_VHZ5xnof0NIg
+
+deque
+
+https://youtube.com/shorts/5XOYJrOagDQ?si=fnMr2OlbMpoq0lwu
+
+https://youtube.com/shorts/f1YYdt-Qb9g?si=95VBAYKuVz6WRFpb
+
+arrays vs arraylist
+
+https://youtube.com/shorts/PwfbSoe9n4g?si=JFg7pVPLx5q2Bl4N
+
+
+arraylist vs linkedlist
+https://youtube.com/shorts/oEtdKJfEaQU?si=PBQZ7aCtUliS5j1A
+
+
+stream vs parallel stream
+https://youtube.com/shorts/9sWvarP_9Y8?si=kTtv9kIK6wi9l07s
+
+
+optional class
+https://youtube.com/shorts/5oU6u5lgWl8?si=rDT9KRlpj2HcgMNf
+https://youtube.com/shorts/ggezoW3y3YU?si=k00LBCtVlxsCWwVG
+
+
+omparable vs comparator
+https://www.youtube.com/watch?v=B9vwD5mA_jA
+https://youtube.com/shorts/ibTd_Cp2Z_8?si=1HdruaLU1dYUD3xQ
+
+https://youtube.com/shorts/Ksod8h7SCvk?si=nMeXskCH2kJaMVrJ
+
+volatile keyword
+https://www.youtube.com/watch?v=WDn_Bax0UFo
+https://youtube.com/shorts/TFxKKtaxOKs?si=YjLdQKACq7ewQpFn
+https://youtube.com/shorts/9c_wJ8yllwA?si=G4mczbXyg6gEq3yf
+https://www.youtube.com/shorts/8aGh1YzBRaQ
+
+
+
+future vs compatible future
+
+https://youtube.com/shorts/MX-EPzY5DHA?si=SczezNoCfnppcb0j
+
+********
+Completablefuture in java
+
+https://www.youtube.com/watch?v=JoYFkYqE8S0
+
+https://youtube.com/shorts/ewZXBJCev_M?si=Wy1Z4IZQoq6I89eu
+https://www.youtube.com/shorts/duDx_ZMpcOY
+*************
+Arrays.asList
+
+https://www.youtube.com/shorts/fICpWZbCDX8
+
+******
+@Target Annotatation
+https://youtube.com/shorts/aIHysrmQHZg?si=UQioMZgWw-5InPF3
+******
+
