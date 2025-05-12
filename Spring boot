@@ -118,6 +118,200 @@ To return JSON or XML, methods need to be annotated with @ResponseBody. Suitable
 
 ****************************
 
+hoising in javascript
+
+https://www.youtube.com/shorts/CNKE5rOihdE
+
+When JavaScript executes this code, it hoists all variable declarations (var) to the top of their scope, but not their assignments.
+
+event loop javascript
+https://youtube.com/shorts/XHglqbqgkMg?si=c4wKgyzHrgW-AfN3
+
+Ye continuously check karta hai:
+Call stack khali hai ya nahi.
+Microtask queue mein koi kaam hai ya nahi.
+Task queue mein koi kaam hai ya nahi.
+Agar call stack khali hai, to pehle microtask queue ke saare tasks execute hote hain, phir task queue ke tasks.
+
+slice vs splice
+https://youtube.com/shorts/k2iqCT_SsuA?si=wvxg58wr68nVNOeM
+
+string is immutable
+
+https://youtube.com/shorts/X7bXU9rNvAg?si=J1-iPUl5F5Q7nz4N
+
+circular reference
+
+https://youtube.com/shorts/_D30M8sm4BM?si=xseKIgRbeG6JCTr-
+
+how scope work
+
+https://youtube.com/shorts/CFNbjMqSQG0?si=LwxlfyeDCKzgdtXZ
+
+run all promises at once 
+https://youtube.com/shorts/bqyvx8PRWBo?si=4h5Svqvh-lF2whRX
+
+
+function expression vs function declarations
+https://youtube.com/shorts/AJnSg7Xcwu0?si=Q0mkgbKGJxvjEUhc
+
+**************************************
+Angulr interview 
+****************
+component in angular
+https://www.youtube.com/watch?v=TALdXKI0BZM&t=231s
+
+**************
+directive in angular
+https://www.youtube.com/watch?v=bKTGZAHUpgE
+
+******
+lifecycle of angular
+https://www.youtube.com/watch?v=hZw-QMY6fX4
+https://www.youtube.com/shorts/VNcWDPHocCE
+https://youtube.com/shorts/xOkpgV--Rzg?si=vQ5RE_tAY6E2oHd-
+
+***********
+api integration in angular
+https://www.youtube.com/watch?v=OrN4sdIbC5g
+***
+module
+https://www.youtube.com/watch?v=v9U1T2eIjoU
+
+
+module is a container that groups together components, directives, pipes, and services that are related and can be bundled together.
+ Modules help organize an application into cohesive blocks of functionality.
+*****
+Lazy loading
+https://www.youtube.com/watch?v=nVUUSGYLYPI
+**
+template driven form
+https://www.youtube.com/watch?v=WWLXIF0SNa8
+
+https://www.youtube.com/shorts/1ff7JYcvjvg
+************
+Reactive form
+https://www.youtube.com/watch?v=7gte--l3Uxo
+********
+
+two way data binding
+https://youtube.com/shorts/ds2YhxM5phQ?si=BQnCKfSXtSZefPR6
+
+***************
+https://youtube.com/shorts/HF_MZemjxYk?si=TQJyg9Kz2qL9Goyf
+
+*******
+interceptor
+
+https://www.youtube.com/watch?v=w1_AmHv2LmA&t=532s
+***********
+https://youtube.com/shorts/njCnO2yA5hM?si=43L7bvNLXPywqfnU
+******
+poling
+https://www.youtube.com/watch?v=ZBM28ZPlin8&t=17s
+****
+pub -sub
+https://www.youtube.com/watch?v=algmP8MGeL4
+*****
+routes in angular
+
+https://youtube.com/shorts/XxoLwoK0Bs8?si=UmdI3Jhi7v0fXddP
+https://youtube.com/shorts/GPiTcMznOYE?si=LeopagxBuqKYWIAT
+***********
+https://youtube.com/shorts/MxKisRjuh-M?si=7gEyngcDhFZaa_Wm
+
+******
+route guard in angular
+https://www.youtube.com/watch?v=rEegtnH6oYs
+https://youtube.com/shorts/lIJ8no0lfn8?si=Z5_oDNF6f6HeLWuX
+*****
+pipes
+
+https://www.youtube.com/watch?v=PlfgNrSkINA
+*******
+How to chain and wait for multiple API calls in Angular
+
+https://www.youtube.com/watch?v=CcdyJJolM-Y
+
+********
+spring seurity interview 
+
+https://www.youtube.com/watch?v=7Rt6UmsQTGM
+
+******
+how does spring handle concurrent session?
+https://youtube.com/shorts/5vrpkMDNb5Y?si=RDyIv28CbIykozMx
+****
+
+spring security architecure
+https://www.youtube.com/watch?v=7eSQd7me6QI
+******
+Jwt authentication
+
+https://youtube.com/shorts/NZNE4sDaw8s?si=M5LFLUwDS-BfNXYN
+****************
+
+duplicate bean in spring boot
+
+https://youtube.com/shorts/R1esKZvxLWE?si=0ymAGvQtKp3fu6Xe
+
+********
+@Configuration vs @Component
+
+https://www.youtube.com/shorts/QR5H6UX7aI4
+
+*****
+Bean overiding
+https://www.youtube.com/shorts/l6V-ec36aBo
+
+*********
+feature of bean annotation
+https://youtube.com/shorts/vqvPhzlYNrw?si=vQXSNxLf-c02LBo0
+********
+target annotation in spring booot
+https://youtube.com/shorts/aIHysrmQHZg?si=uUPErjbtWWgPQDtr
+******
+postConstruct vs postDestroy
+https://youtube.com/shorts/7dYn_NsCfr0?si=uAvRENL-SlRT7Dq6
+*****
+spring cloud config
+https://youtube.com/shorts/tnp01jmoHy8?si=87OirWLoN6UKSCdN
+
+************************
+comandline runner
+https://youtube.com/shorts/ieYA7eMBJJo?si=GODGHeuhrGd3SLje
+******
+Load big config file from json
+https://youtube.com/shorts/kojJ-Nw8u3c?si=ES3-H9P4vltPhQXD
+
+*******
+Java generics
+
+https://youtube.com/shorts/jK5DUo7rvM8?si=bLiVZyPJMalCZVrN
+
+*******
+print all the bean in spring boot application
+
+https://www.youtube.com/shorts/U0fR7hAUDE0
+
+************
+@Transactional annotation
+
+https://youtube.com/shorts/R22hFpwOk_g?si=qVPVWCu3ilpAIqmb
+
+*****
+default scope of the bean
+
+https://youtube.com/shorts/vfSyK1oGAnA?si=9J6HV93sSQ7JOtV8
+****
+
+limit the no of bean 
+https://youtube.com/shorts/mwEDqv0ALYw?si=f-DMHI0e1n9_RdYn
+
+*****
+inject protype bean in singleton bean
+https://youtube.com/shorts/OO5Nd8R4SXE?si=QoWgkZiaYZlpOMLy
+
 
 
 
