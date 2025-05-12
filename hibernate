@@ -380,4 +380,43 @@ Requires Active Transaction: Transaction ke andar hona mandatory hai, warna exce
 No Immediate Insert: Jab tak transaction commit nahi hota, INSERT query nahi chalegi.
 No Duplicates: Duplicate objects save nahi honge.
 ******
+***********************************************************************************************************************************************************************************
+
+                                                                               Hibernate
+
+*************************************************************************************************************************************************************************************
+jdbc vs hibernate
+https://www.youtube.com/shorts/T3-5LDAI0es
+
+
+
+********************************************************************************************************************************************************************************
+hibernate vs jpa
+
+https://youtube.com/shorts/PZahyX_H1eU?si=wBZ0yf7OFjmD2XiJ
+https://www.youtube.com/shorts/cHyscwTYDx0
+*************
+save vs persist
+
+https://youtube.com/shorts/jKuSDynzg8w?si=zy2HEyrLgQe2oh1J
+https://www.youtube.com/watch?v=ZHupUUBQUgQ
+***********
+cascading
+https://www.youtube.com/watch?v=ZHupUUBQUgQ
+******************
+lazy loaing vs eager loading
+https://www.youtube.com/shorts/7OF2_v2KWXI
+********
+criteria api
+https://www.youtube.com/watch?v=SvswgkNQ1MY
+https://youtube.com/shorts/AQAyljiRfTA?si=IhyiSF7QlhoceppM
+*******
+@JoinColumn
+https://www.youtube.com/shorts/qYgdf2n2Vg0
+***********************************************
+mapped by
+*****
+https://www.youtube.com/watch?v=VLlDaIcb3jE
+****
+
 
