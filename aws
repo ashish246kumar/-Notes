@@ -5,4 +5,23 @@ putty-.ppk
 ec2-instance-userName->ubuntu
 sudo apt update-->Ubuntu checks the repositories defined in /etc/apt/sources.list file and /etc/apt/sources.list.d/ directory for updates. 
 It downloads the package lists from the repositories and updates the information about available packages and their versions.
+********************************************************************************************************************************************************
+                                                    AWS interview question
+*****************************************************************************************************************************************************
+serverless computing
+https://youtube.com/shorts/KeRhA6uhb0g?si=S-stZCmEKLVu-CuJ
 
+*********
+https://youtube.com/shorts/-Mg2vH2jtO4?si=VCKA6H0_RopCMyf0
+
+****
+lamda funtion
+https://www.youtube.com/watch?v=6EhKPafkXhQ
+
+scenirio based
+https://www.youtube.com/watch?v=xAZRx071Yiw
+
+*****
+ec2 
+https://www.youtube.com/watch?v=S9KJS5fQ4x0
+*********************************************************
