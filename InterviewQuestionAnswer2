@@ -655,3 +655,23 @@ https://www.youtube.com/shorts/fICpWZbCDX8
 https://youtube.com/shorts/aIHysrmQHZg?si=UQioMZgWw-5InPF3
 ******
 
+
+public class MyService{
+  
+  public MyService(){
+  }
+  public void init(){
+  }
+  public void cleanUp(){
+  }
+}
+*******
+@Configuration
+public class AppConfig{
+  
+  @Bean(initMethod="init", destroyMethod="cleanUp")
+  public MyService myService(){
+     return new MyService();
+  }
+}
+*****************
