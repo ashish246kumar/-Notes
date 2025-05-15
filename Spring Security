@@ -1,5 +1,10 @@
 https://www.geeksforgeeks.org/spring-security-interview-questions/
+*************************
 
+jwt->json web tocket
+ header->what algo is used for the enryption of  this particular token
+ payload->data
+ sgnature->this is a basically a secret key which is used to sign your token and which one will be verified at server side.
 *********************************
 
 Spring Security is powerful and custimizable security framework that is used in spring boot application to handle authentication and authorization
