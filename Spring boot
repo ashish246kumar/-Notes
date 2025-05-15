@@ -312,8 +312,37 @@ https://youtube.com/shorts/mwEDqv0ALYw?si=f-DMHI0e1n9_RdYn
 inject protype bean in singleton bean
 https://youtube.com/shorts/OO5Nd8R4SXE?si=QoWgkZiaYZlpOMLy
 
+**********************************
+ Key Differences Between @Configuration and @Component in Spring
+1. Proxy Behavior (CGLIB Proxy)
+When you use @Configuration, Spring creates a CGLIB proxy for the configuration class.
 
+This proxy ensures that any method inside the configuration class that returns a bean will always return the same instance (singleton), even if the method is called multiple times.
 
+java
+Copy
+Edit
+@Configuration
+public class AppConfig {
+    
+    @Bean
+    public ServiceA serviceA() {
+        return new ServiceA();
+    }
+
+    @Bean
+    public ServiceB serviceB() {
+        return new ServiceB(serviceA()); // Will return the same instance of ServiceA
+    }
+}
+Even though serviceA() is called again inside serviceB(), Spring intercepts it and returns the already created singleton bean.
+
+2. Behavior of @Component
+If you annotate a class with @Component and define methods that return objects (as you would with @Bean), those methods are not intercepted or proxied.
+
+Therefore, each method call creates a new object, and Spring does not treat them as beans.
+
+*******************************
 
 
 
