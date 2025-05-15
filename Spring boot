@@ -116,6 +116,10 @@ To return JSON or XML, methods need to be annotated with @ResponseBody. Suitable
 @ComponentScan(basePackages = "com.example.myapp")
 ***************************
 
+jwt->json web tocket
+ header->what algo is used for the enryption of  this particular token
+ payload->data
+ sgnature->this is a basically a secret key which is used to sign your token and which one will be verified at server side.
 ****************************
 
 hoising in javascript
