@@ -675,3 +675,279 @@ public class AppConfig{
   }
 }
 *****************
+retry_failed_to_reltio_records
+
+***********************************************
+core java
+*************************
+marker interface
+https://youtube.com/shorts/oXlkcpfaZy0?si=nwp_EJQ01aiP0YEh
+
+*************
+java 11
+https://youtube.com/shorts/sQ_9TSbyFgs?si=BwrFXv08GKbEETYy
+******
+filter 
+https://youtube.com/shorts/qL_ItvIgSwk?si=msiSt0hWQm3ffcvw
+
+***
+reduce
+https://youtube.com/shorts/Nx6Vfvdb4Ao?si=W1CzOAxP6xsL-pJJ
+
+**********
+Streams
+https://youtube.com/shorts/VdUomgk1614?si=H69RU5xbQCK6QhPS
+
+*****
+limit,sorted,distinct
+https://youtube.com/shorts/i9U-Kpzs6OI?si=MRqeinalLKMoJY8X
+*******
+java 8 question
+
+https://youtube.com/shorts/_qrWqXeq4Eg?si=-lnSyrtMPkrKBqZ8
+
+*****
+functional interface
+
+https://youtube.com/shorts/9w6wcMaR368?si=JSKVR8GoSiUV_ucR
+********
+Sting buffer vs String builder
+https://youtube.com/shorts/n4vhfigJW1U?si=TzETtVjcfLglJV1y
+
+*****************
+skip,findfirst
+https://youtube.com/shorts/pIVaDhNnITY?si=knhk8_bRW3h72JpH
+
+*********
+String is a panagram or not
+https://youtube.com/shorts/PqLN8O7Dlx4?si=V4GAJ_t5X4qjSQ2e
+
+***************
+count 1s in the list
+
+https://youtube.com/shorts/KL-gN4oBkgU?si=MUw0S6wmvR__fTiM
+
+****
+enum
+https://youtube.com/shorts/C8EAtYtwjQg?si=6ePKhWC0Ac3yjO3j
+***
+https://youtube.com/shorts/i2wldd5KyxY?si=wGYYecD23DVZfrPF
+***
+compare two enum
+https://youtube.com/shorts/2rJ2i3oRA-Y?si=Zx73CmtqbwI0cTo2
+*****
+autoboxing 
+https://youtube.com/shorts/hbLgws0O9cs?si=Nw7DsQNgjJG9I9KU
+*******
+can we overload main method
+https://youtube.com/shorts/-A-ns-3V55M?si=po0d70XE2nwAY_AW
+*******
+String template -java 21
+https://youtube.com/shorts/RBzIjcXKzSE?si=hBFxKK7Gy0dAA1Rx
+******
+Sequence of access modifier does not matter in java
+main method 
+https://youtube.com/shorts/fMmgS4cpYvQ?si=__fRVfUAbwwhiLQS
+
+***********
+String joiner
+https://youtube.com/shorts/R-qeaalGjdI?si=A71fRosCp8Hs-7ZW
+*********
+Retention policy
+https://youtube.com/shorts/-tHLu3M04w0?si=URj8Ffid9EC6PEXD
+
+******
+Scheduled annotation
+https://youtube.com/shorts/IrEHU4msM3g?si=keDXfAf-2c8sx7h5
+*******
+initial capacity in list
+https://youtube.com/shorts/Zsqtl4056ew?si=qTOaQFhU05Tw__SO
+******
+switch to jetty in spring boot
+https://youtube.com/shorts/9IRc0ihnPCA?si=x7XTWVuYt_t2qwoP
+****
+@component vs @Bean
+https://youtube.com/shorts/atYaw5Vbj_0?si=D9LrGAtm7SYhO31d
+
+*******
+pagination
+https://youtube.com/shorts/9VXA4NF-J4E?si=ZXQLOCtScfOIfJUN
+
+********************
+spring data jpa repository new feature
+https://www.youtube.com/shorts/vNMrCe2WP7E
+
+********
+Retryable annotation
+https://youtube.com/shorts/e3cGzhRpSZ8?si=WS4I-nzcoxdwlYDW
+***********
+Recover annotation
+https://youtube.com/shorts/x539D1bENsw?si=SrGxEBgduUKg9Qfn
+******
+hascode method
+
+https://youtube.com/shorts/h717BjFSFLk?si=8vGvt0duxk-78byC
+
+*****
+interceptor
+https://youtube.com/shorts/D6uR1LdpPe4?si=TfQO_apcrUwgVpG8
+
+***************
+handler ineceptor
+
+https://youtube.com/shorts/F-4QRGmsy8g?si=02w4gA7BuzDpqMI8
+******
+implememnt interceptor
+https://youtube.com/shorts/r_OvtNu75gg?si=l8mz2XFgaBmjg2ol
+
+***************
+Resilense4j
+https://youtube.com/shorts/bKZ6kJcYSgo?si=ATxTrOMIHS4mzi2Z
+**********
+circuit breaker
+https://youtube.com/shorts/92Z8DQsYyN8?si=35mMOXkztgh4oZxi
+
+********
+circuit breaker in resilence4J
+https://youtube.com/shorts/oKp2xApq_iw?si=Vb3atOuninwnymmR
+
+********
+Retry in resilence4J
+https://youtube.com/shorts/-YZL2eFmMRg?si=mnW2A9mZsS4GkS1j
+******
+Rate limiter
+https://youtube.com/shorts/G1T5RRbp4I4?si=htuIYx7dfct4z9DO
+
+********
+time limiter
+
+https://youtube.com/shorts/v_tR4wAavtc?si=Mkr7hpT69xw1svev
+***********
+
+Scheduling
+https://youtube.com/shorts/Y0qILDVr_ws?si=mPIXNXzH4Cm8D47T
+
+fixed rate scheduling
+https://youtube.com/shorts/jz3pyNq-p_U?si=sKJHYaSLFcnNrUpk
+**************
+
+fixed delay
+https://youtube.com/shorts/PS6dugDgjj8?si=4mq3hZEsF-wzxGgM
+***
+fixed rate vs fixed delay
+https://youtube.com/shorts/x2AlggcmpzE?si=ithwL7znbxhWaJUx
+
+*******
+initial delay
+https://youtube.com/shorts/_v2UtQWOBlU?si=UvBxvR1qf3osenHI
+
+****
+dynamic scheduling
+
+https://youtube.com/shorts/6JbY_m8yJQ0?si=YyEldeLfXEsAMOh8
+
+**********************
+whaat happen when we load url from bowser
+https://youtube.com/shorts/Q4ld8Hrt6FY?si=-8Wcjy-fKWULxLad
+********
+limit no of bean
+https://youtube.com/shorts/mwEDqv0ALYw?si=wimGpt968PLZOktC
+
+************
+Transaction rollback
+
+https://youtube.com/shorts/R22hFpwOk_g?si=p9vZV4VPbmoW-D68
+
+******************
+ci-cd
+
+
+https://youtube.com/shorts/jQ9PdaCgPO4?si=Eeyj6pAfeg9mxuve
+*****
+jpa architecture
+https://youtube.com/shorts/hn8KqGs9XDU?si=zDVBbpIWpMCOAgE4
+
+*****
+slf4j
+https://youtube.com/shorts/-0KZiYJ7O5M?si=c7CakpEnApHSc9e3
+******
+map vs linkedhashmap vs treemap
+https://youtube.com/shorts/qcgDxoLlsYc?si=6jA5K4v4b-64gLRk
+*******
+custom annotaion
+https://youtube.com/shorts/RyZ3bSrkl_E?si=MidbIkPmWZlPmFyt
+
+*********
+yield keyword
+https://youtube.com/shorts/5rHGcWu5N1E?si=waVykMAWwThjyaE4
+*********
+try with resource
+https://youtube.com/shorts/aV2dPJkaYh8?si=2_ZVCm_gctNPs3mi
+*****
+
+singleton class
+https://youtube.com/shorts/EGI4Zkpx0x0?si=QAtDK-wbzLKLY_xa
+
+\************
+send email from spring boot app
+
+https://youtube.com/shorts/dDNPe6vOZ4Q?si=Z3ahmkrHE1lLHm5b
+
+*****
+REST Template 
+https://youtube.com/shorts/kctiStt3Qjs?si=VvFwrZNh86sSf8xY
+******
+interceptor vs filter
+https://youtube.com/shorts/EiyX7aLqQ3M?si=QIzM29mIXP4hVhIT
+**********
+first non repeating character in an array
+
+https://youtube.com/shorts/4teL2-VxLO0?si=u4PsUIDm7J2crubW
+******
+immutable class
+
+https://youtube.com/shorts/zeMsNeyNJYc?si=5G577eg45_MvT8YI
+
+**********
+
+@Profile
+
+https://youtube.com/shorts/SkBCsTVtqO4?si=t41zQcoiugVvE1cJ
+
+***************************\
+spring profile
+
+https://youtube.com/shorts/WpAAb7II6wQ?si=ntA4yEQ2d9WbcTjC
+*****
+@RequestBody
+https://youtube.com/shorts/LjJj8pgSncc?si=EOYSWvph0gDIy-_M
+*******
+@Configuration
+https://youtube.com/shorts/sMMNMZiEwyI?si=Slh3itnDjOMutx7p
+***
+spring transaction 
+https://youtube.com/shorts/ldsEoxDwodA?si=DODRDwli9djPZUg8
+*****
+@Predestroy 
+https://youtube.com/shorts/0Q-hI-0Kzqk?si=dX-w42MX7qqAvi9A
+*******
+dependency injection
+https://youtube.com/shorts/MLDf-4kkpHA?si=94Y5tg4HsA8J29pa
+
+********
+h2 database
+https://youtube.com/shorts/L121aP2iUVM?si=Bdd4_0M0-6bc9FQK
+
+*********************
+actutator
+
+https://youtube.com/shorts/pDcVUhiczO4?si=5zDj4bI599KqfP9n
+
+******
+internal working of hashset
+https://youtube.com/shorts/FKXzzZrPav0?si=qWsLZ5VzWotgduXD
+******
+spring cloud config
+https://youtube.com/shorts/tnp01jmoHy8?si=MANQLAVEjVIcBMdA
+*******
+
