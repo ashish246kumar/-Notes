@@ -125,7 +125,71 @@ jenkins/jenkins:latest → Pulls the latest Jenkins image from Docker Hub and ru
 The first 8080 (before :) is the port on the host machine (your computer).
 The second 8080 (after :) is the port inside the Docker container where Jenkins is running.
 
+************************************************************************************************************************
 
+ci-cd
+https://www.youtube.com/watch?v=k2aNsQKwyOo
+https://www.youtube.com/watch?v=jZYrxk2WMbY
+***
+conterization
+https://youtube.com/shorts/FZQQGERAggo?si=Bw-PIUeJd0tfksHz
+*********
+Automated Testing Pipeline Mein Kaise Fit Hota Hai?
+Ek typical CI/CD pipeline ka flow dekho:
+
+Code Push: Developer code ko Git repo mein push karta hai.
+Build: CI server (jaise Jenkins, GitHub Actions) code ko build karta hai (compile, dependencies resolve).
+Automated Tests: Yahan tests chalte hain:
+Unit Tests: Chhote functions check karte hain.
+Integration Tests: Alag-alag modules ke connection check karte hain.
+End-to-End Tests: Pura application flow check karte hain.
+Performance/Security Tests: System ki speed aur safety check karte hain.
+Deploy: Agar tests pass hote hain, toh code staging ya production mein jata hai.
+
+************
+Build Artifact Ka Role CI/CD Mein
+CI/CD pipeline mein build artifact ek bridge ki tarah kaam karta hai jo build phase se test aur deploy phase tak jata hai. Yeh pipeline ke different stages ke beech kaam aata hai, taaki har stage same output pe kaam kare.
+
+Pipeline Flow mein Artifacts:
+
+Code Push: Developer code ko repo mein push karta hai.
+Build: Pipeline code ko compile karta hai aur artifacts banata hai (jaise .jar, Docker image).
+Test: Yeh artifacts testing ke liye use hote hain (unit tests, integration tests).
+Deploy: Agar tests pass hote hain, toh artifacts staging ya production mein deploy hote hain.
+
+
+1. Artifacts Ko Store Karo
+Kahan Store Karte Hain?
+Artifacts ko ek dedicated artifact repository ya storage mein rakha jata hai.
+Common tools: Nexus, JFrog Artifactory, AWS S3, Azure Artifacts, GitHub Packages.
+CI/CD tools (jaise Jenkins, GitLab) apne built-in storage bhi dete hain chhote projects ke liye.
+Kyun Store Karte Hain?
+Artifacts ko baad mein testing, deployment, ya rollback ke liye use karna hota hai.
+Har build ka artifact versioned hota hai, taaki pata rahe kaun sa build kab bana.
+
+
+************
+
+jenkin default port 8080
+ 
+ jenkin can be installed through war file or linux or docker
+ 
+ war file installation
+  sudo apt-get uodate -y
+  sudo apt-get install openjdk-11-jdk -y
+  
+  download latest war 
+  sudo wget https://
+  
+  run the war
+  java -jar jenkins.war --httpPort=9090
+  
+  *******
+  jenkin video
+  https://www.youtube.com/watch?v=XaSdKR2fOU4&t=3925s
+  
+  *****************************************************************************************************************************************************************
+  
 
 
 
