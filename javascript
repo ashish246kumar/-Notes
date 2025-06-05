@@ -315,6 +315,98 @@ Function: A callable object.
 Date: Represents dates and times
 *****************************************************************
 
+unction declartion vs function expression
 
+function declartion
+function greet() {
+  console.log("Hello!");
+}
+Named function.
+
+Hoisted completely, meaning it can be called before it's defined in the code.
+
+***
+Function Expression
+const greet = function() {
+  console.log("Hello!");
+};
+Can be anonymous (no name) or named.
+
+Not hoisted the same way as declarations. The variable is hoisted, but its value (the function) is not.
+
+
+What is a Closure in JavaScript?
+
+A closure is a function that remembers the variables from its outer (enclosing) scope, even after the outer function has finished executing
+
+function outerFunction() {
+  let count = 0;
+
+  return function innerFunction() {
+    count++;
+    console.log("Count:", count);
+  };
+}
+
+const counter = outerFunction(); // outerFunction runs and returns innerFunction
+
+counter(); // Count: 1
+counter(); // Count: 2
+counter(); // Count: 3
+
+Even though outerFunction() has finished executing, innerFunction() still has access to count – this is a closure.
+
+*****
+callback function 
+
+a callback is a function that is passed as an argument to another function.
+this function allow to call another function 
+a call back function can run after another function has finished.
+
+function greet(name, callback) {
+  console.log("Hi " + name);
+  callback();
+}
+
+function sayBye() {
+  console.log("Bye!");
+}
+
+greet("Ashish", sayBye);
+
+***********
+A Promise is a way to handle asynchronous operations. It represents a value that may be available now, later, or never.
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data fetched!");
+    }, 2000);
+  });
+}
+
+fetchData()
+  .then(data => console.log(data))  // Data fetched!
+  .catch(err => console.error(err));
+****
+async and await are modern JavaScript features built on top of Promises to make asynchronous code look synchronous and cleaner.
+
+async function fetchUser() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching user:', error);
+  }
+}
+
+fetchUser();
+**********
 
 
