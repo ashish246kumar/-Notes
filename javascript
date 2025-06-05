@@ -408,5 +408,11 @@ async function fetchUser() {
 
 fetchUser();
 **********
-
+Feature	               Arrow Function                                              	Regular Function
+Syntax	Shorter, cleaner                                                           	More verbose
+this binding	Lexically binds this (inherits from parent scope)	           Dynamic this (depends on how it's called)
+arguments object	❌ Not available	                                           ✅ Available
+Constructor (new)	❌ Cannot be used as constructor                           	✅ Can be used
+Hoisting	❌ Not hoisted	                                                       ✅ Function declarations are hoisted
+Best for	Callbacks, short functions	Methods, constructors, complex logic
 
