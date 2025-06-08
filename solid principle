@@ -1,0 +1,154 @@
+The SOLID principles are five object-oriented design principles that make code easier to understand, maintain, and extend. Here’s a simple explanation of each with easy-to-understand Java examples.
+
+✅ 1. S - Single Responsibility Principle (SRP)
+A class should have only one reason to change.
+
+Bad:
+
+java
+Copy
+Edit
+class Report {
+    void generateReport() { System.out.println("Generating report"); }
+    void saveToFile() { System.out.println("Saving to file"); } // file handling
+}
+Good:
+
+java
+Copy
+Edit
+class ReportGenerator {
+    void generateReport() { System.out.println("Generating report"); }
+}
+
+class FileSaver {
+    void saveToFile() { System.out.println("Saving to file"); }
+}
+✅ 2. O - Open/Closed Principle (OCP)
+Software entities should be open for extension, but closed for modification.
+
+Bad:
+
+java
+Copy
+Edit
+class Discount {
+    double getDiscount(String type) {
+        if (type.equals("student")) return 0.5;
+        else if (type.equals("senior")) return 0.7;
+        return 1.0;
+    }
+}
+Good (Open for extension via subclass):
+
+java
+Copy
+Edit
+interface Discount {
+    double getDiscount();
+}
+
+class StudentDiscount implements Discount {
+    public double getDiscount() { return 0.5; }
+}
+
+class SeniorDiscount implements Discount {
+    public double getDiscount() { return 0.7; }
+}
+✅ 3. L - Liskov Substitution Principle (LSP)
+Subclasses should be substitutable for their base classes without breaking the program.
+
+Bad:
+
+java
+Copy
+Edit
+class Bird {
+    void fly() { System.out.println("Flying"); }
+}
+
+class Ostrich extends Bird {
+    void fly() { throw new UnsupportedOperationException(); } // Ostrich can't fly
+}
+Good:
+
+java
+Copy
+Edit
+interface Bird {}
+interface FlyingBird extends Bird {
+    void fly();
+}
+
+class Sparrow implements FlyingBird {
+    public void fly() { System.out.println("Sparrow flying"); }
+}
+
+class Ostrich implements Bird {} // doesn't implement fly
+✅ 4. I - Interface Segregation Principle (ISP)
+Clients should not be forced to implement interfaces they don't use.
+
+Bad:
+
+java
+Copy
+Edit
+interface Worker {
+    void work();
+    void eat();
+}
+
+class Robot implements Worker {
+    public void work() { System.out.println("Working"); }
+    public void eat() {} // Robot doesn't eat
+}
+Good:
+
+java
+Copy
+Edit
+interface Workable {
+    void work();
+}
+
+interface Eatable {
+    void eat();
+}
+
+class Robot implements Workable {
+    public void work() { System.out.println("Robot working"); }
+}
+✅ 5. D - Dependency Inversion Principle (DIP)
+Depend on abstractions, not on concrete classes.
+
+Bad:
+
+java
+Copy
+Edit
+class LightBulb {
+    void turnOn() { System.out.println("Bulb on"); }
+}
+
+class Switch {
+    LightBulb bulb = new LightBulb();
+    void operate() { bulb.turnOn(); }
+}
+Good:
+
+java
+Copy
+Edit
+interface Switchable {
+    void turnOn();
+}
+
+class LightBulb implements Switchable {
+    public void turnOn() { System.out.println("Bulb on"); }
+}
+
+class Switch {
+    private Switchable device;
+    public Switch(Switchable device) { this.device = device; }
+    void operate() { device.turnOn(); }
+}
