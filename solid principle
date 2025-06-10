@@ -121,34 +121,75 @@ class Robot implements Workable {
 ✅ 5. D - Dependency Inversion Principle (DIP)
 Depend on abstractions, not on concrete classes.
 
-Bad:
+Example Without DIP (Problematic Code)
 
-java
-Copy
-Edit
-class LightBulb {
-    void turnOn() { System.out.println("Bulb on"); }
+class PayPalProcessor {
+    public void processPayment(double amount) {
+        System.out.println("Processing payment of $" + amount + " via PayPal");
+    }
 }
 
-class Switch {
-    LightBulb bulb = new LightBulb();
-    void operate() { bulb.turnOn(); }
-}
-Good:
+class PaymentService {
+    private PayPalProcessor processor = new PayPalProcessor(); // Direct dependency
 
-java
-Copy
-Edit
-interface Switchable {
-    void turnOn();
+    public void makePayment(double amount) {
+        processor.processPayment(amount); // Tightly coupled to PayPalProcessor
+    }
 }
 
-class LightBulb implements Switchable {
-    public void turnOn() { System.out.println("Bulb on"); }
+public class Main {
+    public static void main(String[] args) {
+        PaymentService service = new PaymentService();
+        service.makePayment(100.0);
+    }
 }
 
-class Switch {
-    private Switchable device;
-    public Switch(Switchable device) { this.device = device; }
-    void operate() { device.turnOn(); }
+****
+Example With DIP (Improved Code)
+To follow DIP, we introduce an abstraction (interface) that both the high-level and low-level modules depend on
+// Abstraction (interface)
+interface PaymentProcessor {
+    void processPayment(double amount);
+}
+
+// Low-level module: PayPal implementation
+class PayPalProcessor implements PaymentProcessor {
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing payment of $" + amount + " via PayPal");
+    }
+}
+
+// Low-level module: Stripe implementation
+class StripeProcessor implements PaymentProcessor {
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing payment of $" + amount + " via Stripe");
+    }
+}
+
+// High-level module: Depends on abstraction, not concrete classes
+class PaymentService {
+    private PaymentProcessor processor; // Depends on interface
+
+    // Constructor injection for flexibility
+    public PaymentService(PaymentProcessor processor) {
+        this.processor = processor;
+    }
+
+    public void makePayment(double amount) {
+        processor.processPayment(amount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Inject PayPalProcessor
+        PaymentService paypalService = new PaymentService(new PayPalProcessor());
+        paypalService.makePayment(100.0);
+
+        // Inject StripeProcessor
+        PaymentService stripeService = new PaymentService(new StripeProcessor());
+        stripeService.makePayment(200.0);
+    }
 }
