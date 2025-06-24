@@ -26,9 +26,9 @@ It depends upon your project needs. However, in most cases, developers use HTTP/
 What is the meaning of OAuth?
 OAuth2 is authorization framework that allow third party application to obtain access to user resources without exposing there credential. 
 OAuth2 is widely used for secure authorization and resource access in Spring Boot applications.
-OAuth means open authorization protocol.  It helps you to share resources stored on one site with another site without the need for their credentials.
-Containers are easiest and effective method to manage the microservice based application. It also helps you to develop and deploy individually.
- open-standard authorization protocol 
+OAuth: Enables a third-party application to access resources on a user's behalf (e.g., allowing a social media app to post on a user's behalf) 
+without requiring the user to share their username and password directly with the third-party app. 
+ 
 **************************************************************************
 Spring Cloud-->. It provides a set of tools and libraries for building and managing cloud-native applications, addressing common challenges such as service discovery, 
 configuration management, load balancing, circuit breaking, and distributed tracing.
