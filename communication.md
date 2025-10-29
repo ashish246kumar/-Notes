@@ -184,5 +184,106 @@ These make your emails sound **clear, polite, and professional** 👇
 
 ---
 
-Would you like me to share **10 more advanced email phrases** — the kind that make you sound *confident and fluent* (like how senior professionals write)?
+
+I’ve grouped them by situation so you can pick easily 👇
+
+---
+
+### 💬 **1. To start speaking or share your opinion**
+
+1. **“If I may add something here…”**
+   → Polite way to jump into the discussion.
+
+2. **“From my perspective, I think…”**
+   → Expresses your view clearly without sounding forceful.
+
+3. **“I just want to highlight one important point.”**
+   → Great when you want to emphasize something specific.
+
+---
+
+### 🤝 **2. When you agree with someone**
+
+4. **“I completely agree with your point.”**
+   → Simple and professional agreement.
+
+5. **“That’s a great observation — I was thinking the same thing.”**
+   → Builds connection and reinforces collaboration.
+
+---
+
+### ⚖️ **3. When you disagree or add another view**
+
+6. **“I see where you’re coming from, but I’d like to offer another perspective.”**
+   → Respectful disagreement.
+
+7. **“That’s a valid point — maybe we could also consider…”**
+   → Gently introduces a different idea.
+
+---
+
+### 📅 **4. Managing the meeting or keeping it focused**
+
+8. **“Let’s keep this brief so we can stay on schedule.”**
+   → Good for keeping discussions efficient.
+
+9. **“Can we circle back to this topic after covering the main agenda?”**
+   → Keeps control of the flow without dismissing others.
+
+---
+
+### ✅ **5. Ending or summarizing**
+
+10. **“To summarize, we’ve agreed on the following points…”**
+    → Shows leadership and ensures clarity before ending.
+
+---
+
+Excellent 👏 — these next **10 phrases are perfect for presentations or demos**, Ashish.
+They’ll help you sound **clear, confident, and professional** when speaking in front of an audience — whether it’s a project demo, a client presentation, or a team meeting.
+
+---
+
+### 🎤 **1. Starting your presentation confidently**
+
+1. **“Good morning everyone, and thank you for joining.”**
+   → Polite and professional way to begin.
+
+2. **“Today, I’ll be walking you through…”**
+   → Clearly tells the audience what to expect.
+
+3. **“Before we begin, let me give you a quick overview of the agenda.”**
+   → Helps your audience follow along easily.
+
+---
+
+### 🔄 **2. Moving between slides or topics smoothly**
+
+4. **“Now, moving on to the next section…”**
+   → Simple transition to the next point.
+
+5. **“As you can see on this slide…”**
+   → Keeps the audience focused on the visual content.
+
+6. **“To put this into perspective…”**
+   → Great way to explain data or examples clearly.
+
+7. **“Let me quickly summarize what we’ve covered so far.”**
+   → Helps the audience stay aligned before continuing.
+
+---
+
+### 🏁 **3. Ending your presentation gracefully**
+
+8. **“That brings us to the conclusion of my presentation.”**
+   → Signals the wrap-up confidently.
+
+9. **“To sum up, the key takeaways are…”**
+   → Perfect for highlighting the main points again.
+
+10. **“Thank you for your attention — I’d be happy to take any questions.”**
+    → Professional and open way to finish.
+
+---
+
 
